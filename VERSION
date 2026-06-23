@@ -1,4 +1,4 @@
 # Single source of truth for the version number (SemVer 2.0.0).
 # See notes/reference/versioning.md. PATCH = default (fixes + ordinary changes),
 # MINOR = a real milestone, MAJOR (-> 1.0.0) = Fairy Fox's call only.
-0.3.0
+0.3.1
