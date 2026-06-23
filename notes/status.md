@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.2.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.3.0` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -19,11 +19,16 @@ The site is framed as a **project hub + documentation library** for Fairy Fox's
 work, written in a neutral documentation voice (not first-person, not glorifying;
 see [`context/principles.md`](context/principles.md)). It now includes:
 
-- A redesigned header with **dropdown navigation** (monogram wordmark; Projects
-  and Docs menus) that links straight into each project's own Pages docs site,
-  served under the custom domain (e.g. `fairyfox.io/pokered-save-editor-2/`).
-- An on-site **documentation library** (`/docs/`, the `_docs` collection):
-  ecosystem overview, the shared engineering standards, and a per-project doc page.
+- A **full-bleed, fluid visual design** (0.3.0): full-width section bands instead of
+  a single narrow column, a sticky footer, a refined violet/amber palette tuned to
+  **WCAG 2.1 AA**, focus-visible outlines, and a reduced-motion guard.
+- A **dropdown header nav** (monogram wordmark). The **Projects** menu lists the
+  projects and links to each one's on-site `/docs/<key>/` page; the **Updates** menu
+  (formerly "Blog") and **Docs** menu round it out.
+- A substantially **expanded on-site documentation library** (`/docs/`, the `_docs`
+  collection): the ecosystem overview, a **"This site"** group surfacing the whole
+  `notes/` tree (architecture, system map, deployment, updates workflow, decisions,
+  principles), the **shared standards**, and a per-project doc page.
 
 The rest of the structure is in place end to end:
 

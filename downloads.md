@@ -1,10 +1,12 @@
 ---
 layout: page
 title: Downloads
+eyebrow: Get the builds
 subtitle: The latest build artifacts for each project, with quick install-and-run instructions.
 permalink: /downloads/
 ---
 
+<div class="prose">
 <p>
   Each project below links to the latest build artifacts published on GitHub. Pick
   the tab for your platform for a direct download and the short version of how to
@@ -12,6 +14,7 @@ permalink: /downloads/
   yourself. Every project also links to its full <strong>release page</strong> (always
   the newest build) and its <strong>README</strong> for the complete instructions.
 </p>
+</div>
 
 {%- for dl in site.data.downloads -%}
   {%- assign proj = site.data.projects | where: "key", dl.key | first -%}
@@ -73,9 +76,11 @@ permalink: /downloads/
 </section>
 {%- endfor -%}
 
+<div class="prose">
 <p class="muted" style="margin-top:2rem">
   Direct download links point at a specific published build; the <strong>Release
   page</strong> link for each project always resolves to the newest release. For how
   the projects fit together, see the <a href="/projects/">projects</a> page and the
   <a href="/docs/">documentation library</a>.
 </p>
+</div>

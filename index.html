@@ -2,86 +2,104 @@
 layout: default
 title: null
 ---
-<section class="hero">
+<section class="band hero">
   <div class="wrap">
-    <h1><span class="grad">Fairy Fox</span> — projects &amp; documentation.</h1>
-    <p class="lede">
-      The hub for Fairy Fox's software work: an index of the projects, a
-      documentation library covering them and the standards behind them, and a
-      log of what's changing.
-    </p>
-    <div class="cta">
-      <a class="btn primary" href="{{ '/projects/' | relative_url }}">Browse projects →</a>
-      <a class="btn" href="{{ '/docs/' | relative_url }}">Documentation</a>
-      <a class="btn" href="https://github.com/{{ site.author.github }}">GitHub</a>
+    <div class="hero-inner">
+      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Project hub &amp; documentation library</span>
+      <h1>Fairy&nbsp;Fox's software work, <span class="grad">indexed and documented in the open.</span></h1>
+      <p class="lede">
+        One front door to the projects: an index of what's being built, a
+        documentation library covering each project and the engineering standards
+        behind them, and a running log of what changes.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="{{ '/projects/' | relative_url }}">Browse projects →</a>
+        <a class="btn" href="{{ '/docs/' | relative_url }}">Documentation</a>
+        <a class="btn" href="https://github.com/{{ site.author.github }}">GitHub ↗</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="wrap" style="margin-top:2.4rem">
-  <div class="section-head">
-    <h2 class="mb0">Projects</h2>
-    <a class="more" href="{{ '/projects/' | relative_url }}">All projects →</a>
-  </div>
-  <div class="grid cols-2" style="margin-top:1rem">
-    {%- for proj in site.data.projects -%}
-      {%- if proj.featured -%}
-      <div class="card">
-        <h3>{{ proj.name }}</h3>
-        <p>{{ proj.blurb }}</p>
-        <div style="margin-bottom:.6rem">
-          {%- for t in proj.tags limit: 3 -%}<span class="tag">{{ t }}</span>{%- endfor -%}
-          {%- if proj.status -%}<span class="tag muted">{{ proj.status }}</span>{%- endif -%}
-        </div>
-        <div class="card-links">
-          {%- if proj.docs -%}<a href="{{ proj.docs }}">Documentation ↗</a>{%- endif -%}
-          <a href="{{ proj.repo }}">Repository ↗</a>
-        </div>
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">
+        <h2>Projects</h2>
+        <p class="sub">Open-source software, each with its own documentation and releases.</p>
       </div>
-      {%- endif -%}
-    {%- endfor -%}
+      <a class="more" href="{{ '/projects/' | relative_url }}">All projects →</a>
+    </div>
+    <div class="grid cols-3">
+      {%- for proj in site.data.projects -%}
+        {%- if proj.featured -%}
+        <article class="card proj-card">
+          <div class="proj-top">
+            <span class="proj-glyph" aria-hidden="true">{{ proj.name | slice: 0, 1 }}</span>
+            <h3>{{ proj.name }}</h3>
+          </div>
+          <p class="blurb">{{ proj.blurb }}</p>
+          <div class="tags">
+            {%- for t in proj.tags limit: 3 -%}<span class="tag">{{ t }}</span>{%- endfor -%}
+            {%- if proj.status -%}<span class="tag muted">{{ proj.status }}</span>{%- endif -%}
+          </div>
+          <div class="card-links">
+            <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">Documentation →</a>
+            <a href="{{ proj.repo }}">Repository ↗</a>
+          </div>
+        </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
   </div>
 </section>
 
-<section class="wrap" style="margin-top:2.8rem">
-  <div class="section-head">
-    <h2 class="mb0">Documentation</h2>
-    <a class="more" href="{{ '/docs/' | relative_url }}">Full library →</a>
-  </div>
-  <p class="muted" style="margin:.4rem 0 1rem">
-    Reference material for the projects and the shared standards behind them.
-  </p>
-  <div class="grid cols-2">
-    {%- for cat in site.data.doc_categories -%}
-      {%- assign items = site.docs | where: "category", cat.slug | sort: "order" -%}
-      {%- if items.size > 0 -%}
-      <div class="card">
-        <h3>{{ cat.name }}</h3>
-        <div class="dd-links">
-          {%- for d in items -%}
-          <a href="{{ d.url | relative_url }}">{{ d.nav_title | default: d.title }}</a>
-          {%- endfor -%}
-        </div>
+<section class="band band-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">
+        <h2>Documentation library</h2>
+        <p class="sub">How the projects fit together, the shared engineering standards, and an entry point into each one — all on this site.</p>
       </div>
-      {%- endif -%}
-    {%- endfor -%}
+      <a class="more" href="{{ '/docs/' | relative_url }}">Full library →</a>
+    </div>
+    <div class="doc-cats">
+      {%- for cat in site.data.doc_categories -%}
+        {%- assign items = site.docs | where: "category", cat.slug | sort: "order" -%}
+        {%- if items.size > 0 -%}
+        <div class="doc-cat">
+          <div class="cat-title"><span class="bar" aria-hidden="true"></span>{{ cat.name }}</div>
+          <ul>
+            {%- for d in items -%}
+            <li><a href="{{ d.url | relative_url }}">{{ d.nav_title | default: d.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
   </div>
 </section>
 
-<section class="wrap" style="margin-top:2.8rem">
-  <div class="section-head">
-    <h2 class="mb0">Latest updates</h2>
-    <a class="more" href="{{ '/blog/' | relative_url }}">All updates →</a>
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">
+        <h2>Latest updates</h2>
+        <p class="sub">Round-ups of what changed across the projects.</p>
+      </div>
+      <a class="more" href="{{ '/blog/' | relative_url }}">All updates →</a>
+    </div>
+    <div class="update-grid">
+      {%- for post in site.posts limit: 4 -%}
+      <article class="update-card">
+        <div class="meta">{{ post.date | date: "%b %-d, %Y" }}</div>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 130 }}</p>
+      </article>
+      {%- else -%}
+      <p class="muted">No updates yet.</p>
+      {%- endfor -%}
+    </div>
   </div>
-  <ul class="post-list" style="margin-top:.4rem">
-    {%- for post in site.posts limit: 4 -%}
-    <li>
-      <div class="meta">{{ post.date | date: "%b %-d, %Y" }}</div>
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 140 }}</p>
-    </li>
-    {%- else -%}
-    <li><p class="muted">No updates yet.</p></li>
-    {%- endfor -%}
-  </ul>
 </section>

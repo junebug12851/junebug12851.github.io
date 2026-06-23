@@ -1,24 +1,27 @@
 ---
 layout: page
 title: Documentation library
-subtitle: Reference material for the projects and the standards behind them.
+eyebrow: Reference
+subtitle: How the projects fit together, this site's own internals, the shared engineering standards, and an entry point for each project.
 permalink: /docs/
 ---
 
+<div class="prose">
 <p>
-  This library collects the documentation maintained across Fairy Fox's
-  repositories: an overview of how the projects fit together, the shared
-  engineering standards they follow, and a documentation entry point for each
-  project. Each project also keeps its own full documentation site — linked from
-  its page below.
+  This library collects the documentation maintained across Fairy Fox's work: an
+  overview of how the projects fit together, how this site itself is built, the
+  shared engineering standards the repositories follow, and a documentation entry
+  point for each project. Every project also keeps its own full documentation site —
+  linked from its page.
 </p>
+</div>
 
 {%- for cat in site.data.doc_categories -%}
   {%- assign items = site.docs | where: "category", cat.slug | sort: "order" -%}
   {%- if items.size > 0 -%}
-<section style="margin-top:2rem">
+<section style="margin-top:2.4rem">
   <h2>{{ cat.name }}</h2>
-  <div class="grid cols-2" style="margin-top:.8rem">
+  <div class="grid cols-3" style="margin-top:1rem">
     {%- for d in items -%}
     <a class="card" href="{{ d.url | relative_url }}">
       <h3>{{ d.title }}</h3>
@@ -30,20 +33,23 @@ permalink: /docs/
   {%- endif -%}
 {%- endfor -%}
 
-<section style="margin-top:2.4rem">
+<section style="margin-top:2.8rem">
   <h2>Project documentation sites</h2>
-  <p>Each project is also published with its own documentation site, served under
-  this domain.</p>
-  <ul class="post-list">
+  <div class="prose">
+  <p>Each project is also published with its own full documentation site, served
+  under this domain.</p>
+  </div>
+  <div class="grid cols-3" style="margin-top:1rem">
     {%- for proj in site.data.projects -%}
-    <li>
-      <h3 style="margin:0 0 .2rem">{{ proj.name }}</h3>
-      <p>
-        {%- if proj.docs -%}<a href="{{ proj.docs }}">Documentation site ↗</a> · {% endif -%}
-        {%- if proj.notes -%}<a href="{{ proj.notes }}">Notes ↗</a> · {% endif -%}
+    <div class="card">
+      <h3 style="margin:0 0 .5rem">{{ proj.name }}</h3>
+      <div class="card-links">
+        <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">On-site page →</a>
+        {%- if proj.docs -%}<a href="{{ proj.docs }}">Docs site ↗</a>{% endif -%}
+        {%- if proj.notes -%}<a href="{{ proj.notes }}">Notes ↗</a>{% endif -%}
         <a href="{{ proj.repo }}">Repository ↗</a>
-      </p>
-    </li>
+      </div>
+    </div>
     {%- endfor -%}
-  </ul>
+  </div>
 </section>

@@ -1,11 +1,13 @@
 ---
 layout: page
-title: Blog
-subtitle: Updates on the projects, including round-ups of changes across the repositories.
+title: Updates
+eyebrow: What's changing
+subtitle: Notes on the projects, including round-ups of what changed across the repositories.
 permalink: /blog/
 ---
 
-<ul class="post-list" style="margin-top:1.4rem">
+<div class="prose">
+<ul class="post-list">
   {%- for post in site.posts -%}
   <li>
     <div class="meta">{{ post.date | date: "%b %-d, %Y" }}
@@ -17,6 +19,7 @@ permalink: /blog/
     <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 180 }}</p>
   </li>
   {%- else -%}
-  <li><p class="muted">No posts yet.</p></li>
+  <li><p class="muted">No updates yet.</p></li>
   {%- endfor -%}
 </ul>
+</div>

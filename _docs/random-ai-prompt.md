@@ -2,7 +2,7 @@
 title: Random AI Prompt
 nav_title: Random AI Prompt
 category: projects
-order: 2
+order: 3
 summary: A JavaScript prompt generator for Stable Diffusion.
 ---
 

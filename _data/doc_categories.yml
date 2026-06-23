@@ -1,8 +1,11 @@
 # Order + display names for the documentation library sections.
-# Each doc page sets `category: <slug>` and `order: <n>` in its front matter.
+# Array order = display order. Each doc page sets `category: <slug>` and
+# `order: <n>` (within its category) in its front matter.
 - name: Overview
   slug: overview
-- name: Engineering standards
+- name: This site
+  slug: site
+- name: Shared standards
   slug: standards
 - name: Project documentation
   slug: projects

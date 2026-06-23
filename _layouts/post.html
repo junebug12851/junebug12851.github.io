@@ -4,7 +4,7 @@ layout: default
 <article class="article">
   <div class="wrap">
     <p class="post-meta">
-      <a href="{{ '/blog/' | relative_url }}">Blog</a> ·
+      <a href="{{ '/blog/' | relative_url }}">Updates</a> ·
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
       {%- if page.tags and page.tags.size > 0 %} ·
         {% for t in page.tags %}<span class="tag muted">{{ t }}</span>{% endfor %}
@@ -16,6 +16,6 @@ layout: default
       {{ content }}
     </div>
     <hr>
-    <p class="muted"><a href="{{ '/blog/' | relative_url }}">← All posts</a></p>
+    <p class="muted"><a href="{{ '/blog/' | relative_url }}">← All updates</a></p>
   </div>
 </article>

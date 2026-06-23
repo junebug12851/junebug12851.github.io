@@ -1,9 +1,11 @@
 <footer class="site-footer">
   <div class="wrap">
     <span>© {{ 'now' | date: "%Y" }} {{ site.author.name }}</span>
+    <a href="{{ '/projects/' | relative_url }}">Projects</a>
+    <a href="{{ '/docs/' | relative_url }}">Docs</a>
+    <a href="{{ '/blog/' | relative_url }}">Updates</a>
     <a href="https://github.com/{{ site.author.github }}">GitHub</a>
     <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-    <a href="{{ '/projects/' | relative_url }}">Projects</a>
     <span class="spacer"></span>
     <span class="muted">Built with Jekyll</span>
   </div>

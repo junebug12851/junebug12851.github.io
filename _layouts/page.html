@@ -1,12 +1,17 @@
 ---
 layout: default
 ---
-<article class="article">
+<section class="page-head">
   <div class="wrap">
+    {%- if page.eyebrow %}<span class="eyebrow"><span class="dot" aria-hidden="true"></span>{{ page.eyebrow }}</span>{% endif -%}
     {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
     {% if page.subtitle %}<p class="lead">{{ page.subtitle }}</p>{% endif %}
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap">
     <div class="content">
       {{ content }}
     </div>
   </div>
-</article>
+</section>
