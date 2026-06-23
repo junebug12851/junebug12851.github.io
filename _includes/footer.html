@@ -1,12 +1,38 @@
 <footer class="site-footer">
   <div class="wrap">
-    <span>© {{ 'now' | date: "%Y" }} {{ site.author.name }}</span>
-    <a href="{{ '/projects/' | relative_url }}">Projects</a>
-    <a href="{{ '/docs/' | relative_url }}">Docs</a>
-    <a href="{{ '/blog/' | relative_url }}">Updates</a>
-    <a href="https://github.com/{{ site.author.github }}">GitHub</a>
-    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-    <span class="spacer"></span>
-    <span class="muted">Built with Jekyll</span>
+    <div class="footer-brand">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        <img class="brand-logo" src="{{ '/assets/icons/fox.png' | relative_url }}" alt="" aria-hidden="true">
+        <span class="brand-name">{{ site.author.name }}</span>
+      </a>
+      <p>The project hub and documentation library for {{ site.author.name }}'s software work.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a href="{{ '/docs/' | relative_url }}">Documentation</a>
+      <a href="{{ '/downloads/' | relative_url }}">Downloads</a>
+      <a href="{{ '/blog/' | relative_url }}">Updates</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+    </div>
+    <div class="footer-col">
+      <h4>Projects</h4>
+      {%- for proj in site.data.projects -%}
+      <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">{{ proj.name }}</a>
+      {%- endfor -%}
+    </div>
+    <div class="footer-col">
+      <h4>Elsewhere</h4>
+      <a href="https://github.com/{{ site.author.github }}">GitHub ↗</a>
+      <a href="{{ '/feed.xml' | relative_url }}">Atom feed</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="wrap">
+      <span>© {{ 'now' | date: "%Y" }} {{ site.author.name }}</span>
+      <span>Built with Jekyll · deployed on GitHub Pages</span>
+      <span class="spacer"></span>
+      <a href="https://github.com/{{ site.author.github }}">@{{ site.author.github }}</a>
+    </div>
   </div>
 </footer>

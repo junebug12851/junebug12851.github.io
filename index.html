@@ -2,21 +2,20 @@
 layout: default
 title: null
 ---
-<section class="band hero">
+<section class="masthead">
   <div class="wrap">
-    <div class="hero-inner">
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Project hub &amp; documentation library</span>
-      <h1>Fairy&nbsp;Fox's software work, <span class="grad">indexed and documented in the open.</span></h1>
-      <p class="lede">
-        One front door to the projects: an index of what's being built, a
-        documentation library covering each project and the engineering standards
-        behind them, and a running log of what changes.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="{{ '/projects/' | relative_url }}">Browse projects →</a>
-        <a class="btn" href="{{ '/docs/' | relative_url }}">Documentation</a>
-        <a class="btn" href="https://github.com/{{ site.author.github }}">GitHub ↗</a>
+    <div class="mast-id">
+      <img class="mast-logo" src="{{ '/assets/icons/fox.png' | relative_url }}" alt="Fairy Fox">
+      <div>
+        <div class="mast-name">Fairy&nbsp;Fox</div>
+        <p class="mast-tag">A hub for the projects, their docs, and what's changing.</p>
       </div>
+    </div>
+    <div class="mast-meta">
+      <span class="mchip"><b>{{ site.data.projects | size }}</b>&nbsp;projects</span>
+      {%- assign latest = site.posts | first -%}
+      {%- if latest %}<span class="mchip"><span class="pulse-dot" aria-hidden="true"></span>Updated {{ latest.date | date: "%b %-d" }}</span>{% endif -%}
+      <a class="btn sm primary" href="{{ '/projects/' | relative_url }}">Browse projects →</a>
     </div>
   </div>
 </section>
@@ -26,25 +25,29 @@ title: null
     <div class="section-head">
       <div class="label">
         <h2>Projects</h2>
-        <p class="sub">Open-source software, each with its own documentation and releases.</p>
+        <p class="sub">Each project links to its documentation, downloads, and source.</p>
       </div>
       <a class="more" href="{{ '/projects/' | relative_url }}">All projects →</a>
     </div>
     <div class="grid cols-3">
       {%- for proj in site.data.projects -%}
         {%- if proj.featured -%}
-        <article class="card proj-card">
+        <article class="card proj-card" style="--pc:{{ proj.color | default: '#8b6cff' }}">
           <div class="proj-top">
-            <span class="proj-glyph" aria-hidden="true">{{ proj.name | slice: 0, 1 }}</span>
-            <h3>{{ proj.name }}</h3>
+            <span class="proj-glyph" aria-hidden="true">{%- if proj.icon -%}<img src="{{ '/assets/icons/' | append: proj.icon | append: '.png' | relative_url }}" alt="">{%- endif -%}</span>
+            <div>
+              <h3>{{ proj.name }}</h3>
+              {%- if proj.status %}<div class="proj-status"><span class="sdot"></span>{{ proj.status }}</div>{% endif -%}
+            </div>
           </div>
           <p class="blurb">{{ proj.blurb }}</p>
           <div class="tags">
-            {%- for t in proj.tags limit: 3 -%}<span class="tag">{{ t }}</span>{%- endfor -%}
-            {%- if proj.status -%}<span class="tag muted">{{ proj.status }}</span>{%- endif -%}
+            {%- for t in proj.tags limit: 4 -%}<span class="tag{% if forloop.first %} accent{% endif %}">{{ t }}</span>{%- endfor -%}
           </div>
           <div class="card-links">
             <a href="{{ proj.key | prepend: '/docs/' | append: '/' | relative_url }}">Documentation →</a>
+            {%- assign dl = site.data.downloads | where: "key", proj.key | first -%}
+            {%- if dl %}<a href="{{ '/downloads/' | relative_url }}#{{ proj.key }}">Downloads</a>{% endif -%}
             <a href="{{ proj.repo }}">Repository ↗</a>
           </div>
         </article>
@@ -54,12 +57,41 @@ title: null
   </div>
 </section>
 
-<section class="band band-alt">
+<section class="band divider">
   <div class="wrap">
     <div class="section-head">
       <div class="label">
-        <h2>Documentation library</h2>
-        <p class="sub">How the projects fit together, the shared engineering standards, and an entry point into each one — all on this site.</p>
+        <h2>Latest updates</h2>
+        <p class="sub">Round-ups of what changed across the projects.</p>
+      </div>
+      <a class="more" href="{{ '/blog/' | relative_url }}">All updates →</a>
+    </div>
+    <div class="update-grid">
+      {%- for post in site.posts limit: 6 -%}
+        {%- assign pc = '#f59f0a' -%}{%- assign pname = 'Site' -%}
+        {%- for proj in site.data.projects -%}
+          {%- if post.tags contains proj.key -%}{%- assign pc = proj.color -%}{%- assign pname = proj.name -%}{%- endif -%}
+        {%- endfor -%}
+        {%- assign dt = post.title -%}
+        {%- if pname != 'Site' -%}{%- assign dt = post.title | remove_first: pname | remove_first: ": " | strip -%}{%- endif -%}
+        <a class="update-card" href="{{ post.url | relative_url }}" style="--pc:{{ pc }}">
+          <div class="update-meta"><span class="pdot" aria-hidden="true"></span><span class="uname">{{ pname }}</span><span class="udate">{{ post.date | date: "%b %-d" }}</span></div>
+          <h3>{{ dt }}</h3>
+          <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 130 }}</p>
+        </a>
+      {%- else -%}
+      <p class="muted">No updates yet.</p>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<section class="band divider">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">
+        <h2>Documentation</h2>
+        <p class="sub">The project ecosystem, this site's internals, and the shared engineering standards.</p>
       </div>
       <a class="more" href="{{ '/docs/' | relative_url }}">Full library →</a>
     </div>
@@ -76,29 +108,6 @@ title: null
           </ul>
         </div>
         {%- endif -%}
-      {%- endfor -%}
-    </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="label">
-        <h2>Latest updates</h2>
-        <p class="sub">Round-ups of what changed across the projects.</p>
-      </div>
-      <a class="more" href="{{ '/blog/' | relative_url }}">All updates →</a>
-    </div>
-    <div class="update-grid">
-      {%- for post in site.posts limit: 4 -%}
-      <article class="update-card">
-        <div class="meta">{{ post.date | date: "%b %-d, %Y" }}</div>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 130 }}</p>
-      </article>
-      {%- else -%}
-      <p class="muted">No updates yet.</p>
       {%- endfor -%}
     </div>
   </div>

@@ -13,8 +13,13 @@
 #   blurb     one-line description
 #   tags []   technologies
 #   status    short status string
+#   color     per-project accent (hex) — used for the card accent + status dot
+#   icon      icon slug under /assets/icons/<icon>.png
 #   featured  show on the home page
 #   reference pulled into assets/references for cross-project sync
+#
+# Display order = list order. Keep Random AI Prompt next to the Pokered editors,
+# with the predecessor (v1) last.
 
 - name: Pokered Save Editor 2
   key: pokered-save-editor-2
@@ -27,6 +32,23 @@
     in-game font keyboard.
   tags: [Qt 6, C++, QML, desktop]
   status: Active · alpha
+  color: "#e6488f"
+  icon: pse2
+  featured: true
+  reference: true
+
+- name: Random AI Prompt
+  key: random-ai-prompt
+  repo: https://github.com/junebug12851/random-ai-prompt
+  docs: https://fairyfox.io/random-ai-prompt/
+  notes: https://github.com/junebug12851/random-ai-prompt/tree/master/notes
+  blurb: >-
+    A JavaScript prompt generator for Stable Diffusion — controllable prompt
+    generation, a web UI, and one-click image-to-animation export.
+  tags: [JavaScript, Stable Diffusion, web UI]
+  status: Released
+  color: "#2dd4a7"
+  icon: rap
   featured: true
   reference: true
 
@@ -41,18 +63,7 @@
     The recommended working tool until the Qt 6 rewrite reaches parity.
   tags: [TypeScript, Angular, Electron, desktop]
   status: Released · stable · predecessor
+  color: "#f59f0a"
+  icon: pse2
   featured: true
   reference: false
-
-- name: Random AI Prompt
-  key: random-ai-prompt
-  repo: https://github.com/junebug12851/random-ai-prompt
-  docs: https://fairyfox.io/random-ai-prompt/
-  notes: https://github.com/junebug12851/random-ai-prompt/tree/master/notes
-  blurb: >-
-    A JavaScript prompt generator for Stable Diffusion — controllable prompt
-    generation, a web UI, and one-click image-to-animation export.
-  tags: [JavaScript, Stable Diffusion, web UI]
-  status: Released
-  featured: true
-  reference: true
