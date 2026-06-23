@@ -47,8 +47,8 @@
 - name: Random AI Prompt
   key: random-ai-prompt
   repo: https://github.com/junebug12851/random-ai-prompt
-  docs: null
-  notes: https://github.com/junebug12851/random-ai-prompt#readme
+  docs: https://fairyfox.io/random-ai-prompt/
+  notes: https://github.com/junebug12851/random-ai-prompt/tree/master/notes
   blurb: >-
     A JavaScript prompt generator for Stable Diffusion — controllable prompt
     generation, a web UI, and one-click image-to-animation export.

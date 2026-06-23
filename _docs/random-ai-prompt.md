@@ -18,13 +18,11 @@ range of controls over the output.
 - Supports one-click export of an image to an animation, and onward export to
   frame-interpolation tools.
 
-## Documentation
+## Full documentation
 
-A dedicated documentation site is not published for this project yet; the README
-is the current reference.
+The project publishes its own documentation site (generated API documentation plus
+its living notes), served under this domain, and is developed in the open:
 
-- README: <https://github.com/junebug12851/random-ai-prompt#readme>
+- Documentation site: <https://fairyfox.io/random-ai-prompt/>
+- Notes: <https://github.com/junebug12851/random-ai-prompt/tree/master/notes>
 - Repository: <https://github.com/junebug12851/random-ai-prompt>
-
-When a GitHub Pages site is enabled for it, it will be served under this domain at
-`fairyfox.io/random-ai-prompt/`, and this page will link directly to it.

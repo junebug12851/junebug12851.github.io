@@ -8,8 +8,10 @@ for the commit-by-commit changelog see [`version.md`](version.md).
 
 ## Current state (read this first)
 
-**The site is live** at https://junebug12851.github.io/ (2026-06-22), with the
-`fairyfox.io` custom domain configured (DNS pointing, HTTPS cert pending). It's a
+**The site is live** at https://junebug12851.github.io/ and at the **`fairyfox.io`
+custom domain** (2026-06-22) — the domain now resolves and serves over **HTTP**;
+the GitHub-issued **HTTPS certificate is still provisioning** (enable Enforce HTTPS
+once it lands). It's a
 clean, custom Jekyll build — no external theme — deployed to GitHub Pages by
 GitHub Actions on every push to `main`.
 
@@ -37,14 +39,12 @@ The rest of the structure is in place end to end:
 
 ## In flight / awaiting
 
-- **Custom domain `fairyfox.io`.** `CNAME` is committed and the site builds it,
-  but the domain is **not yet active**: DNS has no records pointing at GitHub
-  Pages, and the domain isn't set in Settings → Pages yet. Add the DNS records
-  (apex A/AAAA to GitHub Pages IPs, or ALIAS/ANAME → `junebug12851.github.io`),
-  then set the custom domain in Settings → Pages and enable Enforce HTTPS once
-  the cert issues. Until then the site lives at `junebug12851.github.io`.
-- **First project round-up post.** Pending a real diff to report (see
-  [`reference/blogging-workflow.md`](reference/blogging-workflow.md)).
+- **HTTPS for `fairyfox.io`.** The custom domain is **live over HTTP** (DNS points
+  at GitHub Pages and the domain is set in Settings → Pages). The only thing
+  outstanding is the **HTTPS certificate**, which GitHub is still provisioning;
+  once it issues, enable **Enforce HTTPS** in Settings → Pages. Both project Pages
+  sites are served under the domain too (`fairyfox.io/pokered-save-editor-2/`,
+  `fairyfox.io/random-ai-prompt/`).
 
 ## Next
 
@@ -59,5 +59,5 @@ first real "what changed in my projects" round-up once there's a diff to report.
 | Jekyll config + layouts | ✅ Scaffolded |
 | Content pages (home/projects/blog/about) | ✅ Live |
 | Pages deploy workflow | ✅ First run green; site live |
-| Custom domain | ⏳ CNAME committed; DNS + Settings pending |
+| Custom domain | ✅ Live over HTTP; ⏳ HTTPS cert provisioning |
 | Local build verification | ✅ `bundle install` + `jekyll build` green (Ruby 3.3.11) |
