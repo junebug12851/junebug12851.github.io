@@ -16,7 +16,7 @@ and 8 notes on disk. The command looked harmless:
 
 ```sh
 # Ran over the working mount — silent partial writes under load
-sed -i 's/OldName/NewName/g' projects/**/*.cpp
+sed -i 's/OldText/NewText/g' projects/**/*.cpp
 ```
 
 The tooling underneath was doing partial writes under load, and it had also been
