@@ -102,12 +102,18 @@ projects into `assets/references/` (to blog about changes — see
 standards. Both track the `dev` branch. Full model:
 `notes/reference/cross-project-sync.md`.
 
-**"Check for updates" here means the inbound side, not adoption.** This repo is the
-source of the shared standards, so it never adopts them *from* itself. When the
-user asks (in whatever words) to check the system for updates, for the hub that
-means: scan the registered siblings in `assets/references/` for new commits past
-their `hub/.last-seen.yml` markers (the round-up — see
-`notes/reference/blogging-workflow.md`), and confirm the hub's own docs/registry
-are internally consistent. Same posture as a node: **check and report first, act
-only on an explicit go-ahead.** The node-side adopting flow (the version projects
-run against this hub) is defined in `hub/standards/adopting-updates.md`.
+**Checking "the fairyfox system" for updates here means the inbound side, not
+adoption.** (The user calls this mesh **the fairyfox system** in conversation; the
+public website calls it the **hub** — same thing.) To invoke it the request must
+**name the fairyfox ecosystem** ("fairyfox" / "the hub" / "the mesh" / "the
+standards") *paired with* an update/sync intent — an update verb alone ("check for
+updates"), or a bare "system", isn't enough (ambiguous: OS, dependencies, a file).
+This repo is the source of the shared standards, so it never adopts them *from*
+itself: when asked to check the fairyfox system for updates, for this repo that
+means scan the registered siblings in
+`assets/references/` for new commits past their `hub/.last-seen.yml` markers (the
+round-up — see `notes/reference/blogging-workflow.md`), and confirm the standards
+docs/registry are internally consistent. Same posture as a node: **check and
+report first, act only on an explicit go-ahead.** The node-side adopting flow (the
+version projects run against this system) is defined in
+`hub/standards/adopting-updates.md`.

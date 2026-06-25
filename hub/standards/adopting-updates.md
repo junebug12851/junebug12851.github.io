@@ -21,13 +21,29 @@ deliberate, reviewable edit.
 
 ## Checking for updates — what to do when asked
 
-Treat the project as a **node that knows how to check the system for updates.**
-When the user asks — in whatever words — whether the system/hub has anything
-newer, to sync or refresh the standards, to get the latest version, or to pull a
-particular standard or runbook, that's this flow. It's an intent to recognize in
-natural conversation, not a fixed command or magic phrase; read it the way a
-colleague would (e.g. "are we up to date with the hub?", "grab the newest sync
-doc", "anything change upstream?").
+Treat the project as a **node that knows how to check the fairyfox system for
+updates.** ("The fairyfox system" is the user's name for this hub mesh; the public
+website calls it the *hub* — same thing.)
+
+**What must be present to invoke this flow** — both parts:
+
+1. **A reference to the fairyfox ecosystem** *(this is the gate)*. Any one of:
+   - "fairyfox" / "fairyfox.io" / "the fairyfox system"
+   - "the hub" / "the mesh"
+   - "the (shared) standards" / "the fairyfox standards"
+   - a named shared artifact or runbook ("the sync doc", "the git-workflow
+     standard", "adopting-updates")
+2. **An update/sync intent** paired with it: *check for updates · what changed ·
+   anything newer · sync · refresh · update from · pull the latest · get the
+   newest version · adopt the latest.*
+
+**An update verb alone is not enough.** "Check for updates" / "any updates?" /
+"are we current?" — with no fairyfox reference — is ambiguous (the OS,
+dependencies, a file) and must **not** trigger this flow. A bare "the system"
+isn't enough either; it has to be the *fairyfox* system. Recognize all of the
+above naturally, the way a colleague would — these are references to spot, not
+exact strings to match. If the fairyfox ecosystem isn't named, don't assume this
+flow: ask, or treat it as the ordinary kind of update it literally sounds like.
 
 **The default is check-and-report, then stop:**
 
