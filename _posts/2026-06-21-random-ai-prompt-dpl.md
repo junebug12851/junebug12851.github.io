@@ -118,6 +118,6 @@ old system is on its way out, which was the underlying goal all along.
 - [Random AI Prompt repository](https://github.com/junebug12851/random-ai-prompt) ·
   [documentation site](https://fairyfox.io/random-ai-prompt/)
 - DPL design and language notes:
-  [`reference/dpl-design.md`](https://github.com/junebug12851/random-ai-prompt/blob/master/notes/reference/dpl-design.md),
-  [`reference/dpl-language.md`](https://github.com/junebug12851/random-ai-prompt/blob/master/notes/reference/dpl-language.md)
+  [`reference/dpl-design.md`](https://github.com/junebug12851/random-ai-prompt/blob/main/notes/reference/dpl-design.md),
+  [`reference/dpl-language.md`](https://github.com/junebug12851/random-ai-prompt/blob/main/notes/reference/dpl-language.md)
 - Prior art: [sd-dynamic-prompts](https://github.com/adieyal/sd-dynamic-prompts) (the wildcard/variant idea in the wider ecosystem)

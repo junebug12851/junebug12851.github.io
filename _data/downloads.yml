@@ -144,7 +144,7 @@
   tabs:
     - label: "Run it (Node)"
       badge: Recommended
-      download: https://github.com/junebug12851/random-ai-prompt/archive/refs/heads/master.zip
+      download: https://github.com/junebug12851/random-ai-prompt/archive/refs/heads/main.zip
       filename: random-ai-prompt — source (.zip)
       intro: "Download the source, or clone it, then start the web UI with Node."
       steps:

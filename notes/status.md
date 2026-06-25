@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.6.5` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.6.6` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -44,8 +44,10 @@ The rest of the structure is in place end to end:
   the three lifecycle runbooks (setup · onboard · adopt), a **docs-site design
   system** (`hub/standards/docs-site/`, `0.5.x`) so every project's docs match the
   site, and a **full git-flow** model with the `master → main` mandate (`0.6.x`).
-  **Random AI Prompt is the first project to fully onboard** (mesh-aware `CLAUDE.md`
-  + a fairyfox-themed docs site, `2.6.1`).
+  **Both siblings are now fully onboarded** (mesh-aware `CLAUDE.md` + a fairyfox-themed
+  docs site each): Random AI Prompt (`2.6.1`, which also adopted git-flow and renamed
+  its stable branch `master` → `main`) and Pokered Save Editor 2 (`0.14.2-alpha`, themed
+  Doxygen docs).
 - **Notes:** this living-notes system, mirroring the convention used across my
   projects.
 - **Sync:** the pull-only cross-project model is documented

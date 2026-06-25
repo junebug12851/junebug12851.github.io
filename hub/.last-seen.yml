@@ -5,19 +5,21 @@
 # nothing here is a dependency.
 
 pokered-save-editor-2:
-  commit: 005a0cbff9022a107b76657efbb9c761df332d7f
+  commit: f88bbfd5e39c6ec294958e4f93bb17824dcd38a2
   branch: dev
   seen: 2026-06-25
-  # Covered through the 0.14.x static-analysis gate + test-type breadth push
-  # (blogged: _posts/2026-06-23-pokered-save-editor-2-static-analysis-and-tests.md).
-  # 2026-06-25 round-up: no new dev commits since this marker — nothing to blog.
+  # Covered through the project-side fairyfox-mesh onboarding (mesh-aware CLAUDE.md +
+  # cross-project-sync adoption) and theming its Doxygen docs site to the fairyfox
+  # design system (Case B — themed generator). Folded into the 2026-06-25 day post
+  # (_posts/2026-06-25-nodes-that-check-the-hub-for-updates.md). Earlier static-analysis
+  # gate / test push was blogged at _posts/2026-06-23-…. (dev was force-pushed; re-cloned.)
 
 random-ai-prompt:
-  commit: 96ee2ad57c14623b1d15be30591ee5794bbda10b
+  commit: a3cfd150a0121751c552dae7f1fbcfc21dafe6bc
   branch: dev
   seen: 2026-06-25
-  # Covered through 2.6.1: project-side onboarding into the fairyfox mesh
-  # (mesh-aware CLAUDE.md + a fairyfox-themed JSDoc docs site) and the
-  # SFW-by-default + top-bar NSFW toggle. Folded into the 2026-06-25 day post
-  # (_posts/2026-06-25-nodes-that-check-the-hub-for-updates.md). The Linux
+  # Covered through: project-side mesh onboarding + fairyfox-themed JSDoc docs, the
+  # SFW-by-default + top-bar NSFW toggle (2.6.1), and adopting the git-flow standard
+  # with the master → main rename (CI/Pages/release repointed). All folded into the
+  # 2026-06-25 day post. dev HEAD a3cfd15 (force-pushed; re-cloned). The Linux
   # visual-baseline regen around the toggle is incremental test plumbing, not a post.

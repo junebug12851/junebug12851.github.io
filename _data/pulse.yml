@@ -11,13 +11,13 @@
 bars: [16, 23, 10, 5, 19, 26, 15, 7, 4, 12, 21, 29, 17, 10, 8, 15, 25, 31, 14, 6, 11, 20, 34, 22, 10, 13, 24, 30, 9, 28]
 
 changes:
-  - { c: "var(--green)", text: "Random AI Prompt: SFW by default + NSFW toggle", when: "today" }
-  - { c: "var(--green)", text: "Random AI Prompt onboarded; fairyfox-themed docs site", when: "today" }
-  - { c: "var(--coral)", text: "Full git-flow is the shared git model",       when: "today" }
-  - { c: "var(--coral)", text: "main mandated as the stable branch mesh-wide", when: "today" }
-  - { c: "var(--coral)", text: "Docs-site theme standard for every project",  when: "today" }
-  - { c: "var(--coral)", text: "Nodes can check the hub for updates",          when: "today" }
-  - { c: "var(--coral)", text: "Self-locating project node pages",            when: "1d" }
-  - { c: "var(--coral)", text: "Warm visual language ported live",             when: "1d" }
-  - { c: "var(--pink)",  text: "Static-analysis gate (clang-tidy + cppcheck)", when: "2d" }
-  - { c: "var(--green)", text: "DPL parser + Vitest suite, shipped to master", when: "3d" }
+  - { c: "var(--pink)",  text: "Pokered Save Editor 2: fairyfox-themed docs site",   when: "today" }
+  - { c: "var(--green)", text: "Random AI Prompt renamed master → main (git-flow)",  when: "today" }
+  - { c: "var(--green)", text: "Random AI Prompt: SFW by default + NSFW toggle",      when: "today" }
+  - { c: "var(--coral)", text: "Full git-flow is the shared git model",              when: "today" }
+  - { c: "var(--coral)", text: "main mandated as the stable branch mesh-wide",        when: "today" }
+  - { c: "var(--coral)", text: "Docs-site theme standard for every project",          when: "today" }
+  - { c: "var(--coral)", text: "Nodes can check the hub for updates",                 when: "today" }
+  - { c: "var(--coral)", text: "Self-locating project node pages",                   when: "1d" }
+  - { c: "var(--pink)",  text: "Static-analysis gate (clang-tidy + cppcheck)",       when: "2d" }
+  - { c: "var(--green)", text: "DPL parser + Vitest suite",                           when: "3d" }

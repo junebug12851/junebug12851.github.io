@@ -36,8 +36,8 @@
   lifecycle: alpha
   version: "0.14.2"
   activity: active
-  updated: "Jun 23, 2026"
-  updated_iso: "2026-06-23"
+  updated: "Jun 25, 2026"
+  updated_iso: "2026-06-25"
   color: "#e6488f"
   icon: pse2
   featured: true
@@ -47,7 +47,7 @@
   key: random-ai-prompt
   repo: https://github.com/junebug12851/random-ai-prompt
   docs: https://fairyfox.io/random-ai-prompt/
-  notes: https://github.com/junebug12851/random-ai-prompt/tree/master/notes
+  notes: https://github.com/junebug12851/random-ai-prompt/tree/main/notes
   blurb: >-
     A generator for random and dynamic text prompts — built around a controllable
     dynamic-prompt language (DPL), with a CLI and a web UI.
@@ -94,7 +94,7 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.6.5"
+  version: "0.6.6"
   activity: active
   updated: "Jun 25, 2026"
   updated_iso: "2026-06-25"

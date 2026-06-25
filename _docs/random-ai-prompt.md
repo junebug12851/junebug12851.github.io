@@ -25,5 +25,5 @@ The project publishes its own documentation site (generated API documentation pl
 its living notes), served under this domain, and is developed in the open:
 
 - Documentation site: <https://fairyfox.io/random-ai-prompt/>
-- Notes: <https://github.com/junebug12851/random-ai-prompt/tree/master/notes>
+- Notes: <https://github.com/junebug12851/random-ai-prompt/tree/main/notes>
 - Repository: <https://github.com/junebug12851/random-ai-prompt>
