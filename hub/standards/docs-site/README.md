@@ -48,6 +48,7 @@ Full rule: [`09-adopting-and-maintaining.md`](09-adopting-and-maintaining.md).
 | [`07-accessibility.md`](07-accessibility.md) | The WCAG 2.1 AA bar, focus, contrast, reduced motion, semantics. |
 | [`08-compliance-checklist.md`](08-compliance-checklist.md) | A concrete checklist to verify a project is compliant. |
 | [`09-adopting-and-maintaining.md`](09-adopting-and-maintaining.md) | How to adopt this, keep it current, and record deliberate deviations. |
+| [`10-domain-and-publishing.md`](10-domain-and-publishing.md) | How a project joins the `fairyfox.io` domain on GitHub Pages (served at `fairyfox.io/<key>/`) — the infrastructure under the one-domain model. |
 
 ## In one paragraph
 

@@ -14,7 +14,9 @@ continuity are **required**, not optional.
 | `fairyfox.io/<key>/<...>` | Pages within the project docs site |
 
 `<key>` is the repo slug. Everything is one origin — links between these are plain
-same-domain links; never hard-code a different host.
+same-domain links; never hard-code a different host. How a project actually lands on
+this domain (GitHub Pages inherits the custom domain; set the base path to
+`/<key>`): [`10-domain-and-publishing.md`](10-domain-and-publishing.md).
 
 ## Parent → child (the main site links *in*)
 
