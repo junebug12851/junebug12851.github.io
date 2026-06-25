@@ -69,9 +69,10 @@ After making changes, without being asked:
    **changelog entry rides inside the commit** (top of `notes/version/YYYY-MM.md`,
    no hash marker), and **bump `VERSION`** in the same commit when warranted
    (PATCH default, MINOR milestone, never MAJOR).
-3. When the build is green, **fast-forward `main`** and push:
-   `git checkout main && git merge --ff-only dev && git push origin main && git checkout dev`.
-   Pushing `main` triggers the Pages deploy.
+3. When the build is green, **release `dev` → `main`** the git-flow way and push:
+   `git checkout main && git merge --no-ff dev && git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags && git checkout dev`
+   (tag matches `VERSION`). Pushing `main` triggers the Pages deploy. The `--no-ff`
+   merge commit is additive (a release marker), **not** a history rewrite.
 
 **Hard safety rules:** never `push --force` / rewrite pushed history; never
 `reset --hard` / `rebase` / `clean -fd` / delete a branch without an explicit
