@@ -103,9 +103,13 @@ with fairyfox.io**. Follow the [docs-site design system](docs-site/) standard:
 - Reproduce the theme (tokens, shell, components) in the project's stack — match as
   closely as the stack allows; exact values in
   [`docs-site/11-measurements-reference.md`](docs-site/11-measurements-reference.md)
-  and [`docs-site/reference/main.css`](docs-site/reference/).
-- Add the **required two-way links** — header brand → `fairyfox.io/`, a locator
-  back to the project's node page, footer back to the main site
+  and [`docs-site/reference/main.css`](docs-site/reference/). **If the docs are
+  generator-produced** (JSDoc, Doxygen, …), theme the generator itself — replace its
+  stylesheet, don't override
+  ([`docs-site/06`](docs-site/06-content-and-organization.md#generated-docs-doxygen-jsdoc-typedoc-sphinx-)).
+- Add the one **required way-home** link ("← Back to Fairy Fox" →  `fairyfox.io/`) on
+  every page; a footer/breadcrumb back to the node page is recommended, not required.
+  Project-forward branding is fine — the shared theme is the tie
   ([`docs-site/05-navigation-and-cross-linking.md`](docs-site/05-navigation-and-cross-linking.md)).
 - Publish it at **`fairyfox.io/<key>/`** on GitHub Pages
   ([`docs-site/10-domain-and-publishing.md`](docs-site/10-domain-and-publishing.md)) —
@@ -148,9 +152,12 @@ never be committed (committing it nests repos and bloats history).
 - The project resolves in **both** registries (`hub/registry.yml` and
   `_data/projects.yml`) with matching `key` and `branch`.
 - The themed docs site loads at `fairyfox.io/<key>/`, **wears the fairyfox theme**,
-  and links back to Fairy Fox — **look at the served page**; default-theme
-  JSDoc/Doxygen output or a merely-resolving `docs:` URL is a miss. Bar:
-  [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
+  and has the persistent **"← Back to Fairy Fox"** way-home link (project-forward
+  branding is fine) — **look at the served page**; default-theme JSDoc/Doxygen output
+  or a merely-resolving `docs:` URL is a miss. If the docs are generator-produced,
+  theme the generator itself
+  ([`docs-site/06`](docs-site/06-content-and-organization.md#generated-docs-doxygen-jsdoc-typedoc-sphinx-)).
+  Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
 - If the project builds/serves, it builds green.
 
 Don't report the project as fully set up unless every item above actually holds —

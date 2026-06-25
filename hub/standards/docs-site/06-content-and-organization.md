@@ -46,20 +46,59 @@ page should carry the equivalent of:
 This is what powers the grouped, ordered sidebar and the breadcrumb. Keep titles
 short and consistent in voice.
 
-## Generated API docs (Doxygen, JSDoc, TypeDoc, …)
+## Generated docs (Doxygen, JSDoc, TypeDoc, Sphinx, …)
 
-Machine-generated reference is **part of** the documentation but is treated as a
-**boundaried zone**, not the themed surface:
+Generators come in **two shapes**, and they need opposite techniques. Decide which
+one you're in before you touch any CSS.
 
-- **Link to it from the Reference group** with a clearly labelled entry ("API
-  Reference →"), so the user crosses an intended boundary rather than stumbling
-  out of the theme.
+### Case A — the generator is a *boundaried zone* inside a hand-authored site
+
+The themed docs site is hand-built (Jekyll, etc.) and the generated reference is one
+section reached from it:
+
+- **Link to it from the Reference group** ("API Reference →") so the user crosses an
+  intended boundary rather than stumbling out of the theme.
 - **Skin it where the generator allows** — apply the palette and fonts via the
-  generator's custom-CSS/header hooks so it at least rhymes with the theme. Match
-  what you reasonably can; don't fake the full shell.
-- **Always provide a way back** from the generated zone to the themed docs.
-- Don't try to hand-maintain what a generator produces — generate it, boundary it,
-  link it.
+  generator's custom-CSS hooks so it at least rhymes with the theme.
+- **Always provide a way back** to the themed docs.
+
+### Case B — the generator *is* the site (the generator is the docs site) {#generator-based-docs-sites-the-generator-is-the-site}
+
+When the whole docs site *is* the generator's output (e.g. a JSDoc/docdash site,
+with your living notes rendered as the generator's "tutorials"), there is no outer
+shell to skin from — **the generator's output is the surface, so you theme the
+generator itself.** This is a first-class, supported path. The technique:
+
+- **Replace the generator's stylesheet from scratch — do NOT override it.** Writing
+  a few overrides on top of the default theme is whack-a-mole: generators hard-code
+  light backgrounds on `body`/`section`/`nav`/tables, and your overrides leak
+  (white content panels, unstyled sidebars). **Author one fairyfox-themed stylesheet
+  and have the build swap it in for the generator's default** (e.g. overwrite
+  docdash's `styles/jsdoc.css`). Use the bundled
+  [`reference/main.css`](reference/) and [`11-measurements-reference.md`](11-measurements-reference.md)
+  as the exact source.
+- **Inject the brand + way-home into the generator's *own* layout — don't overlay a
+  separate bar.** A bolted-on sticky header fights a generator's fixed sidebar
+  (overlap, horizontal scroll). Instead inject the project brand and the "← Back to
+  Fairy Fox" link **into the generator's persistent sidebar/DOM** (most generators
+  expose a `scripts`/template hook). Work *with* the generator's structure, not on
+  top of it.
+- **Verify your assets actually land in the output.** A generator may *reference*
+  your custom CSS/JS in every page's `<head>` but **not copy the files** into the
+  build (the docdash `scripts` gotcha → 404s in CI). Make the build step copy your
+  theme files (and any logo) into the output directory, and confirm they're there.
+- **Lead with the project's own brand** in that injected sidebar — that's the
+  [project-forward branding](05-navigation-and-cross-linking.md) the standard now
+  expects; the theme + the way-home carry the mesh connection.
+
+Per-generator landmines to expect: hard-coded light backgrounds (forces full
+replacement, not overrides); fixed-sidebar layouts (inject into them, don't overlay);
+asset references that aren't deployed (copy them in the build). A ready-to-adapt
+starter skin may live in [`reference/`](reference/) over time — until then, the
+`reference/main.css` snapshot is your source of exact values.
+
+- Either case: don't hand-maintain what a generator produces — generate it, theme
+  it, and (Case A) boundary it or (Case B) make it the themed site.
 
 ## Voice & house style
 

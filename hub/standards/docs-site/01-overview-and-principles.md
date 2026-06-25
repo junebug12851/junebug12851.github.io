@@ -48,10 +48,12 @@ Three facts make true seamlessness possible rather than aspirational:
 ## What "a project docs site" means here
 
 The **canonical, themed documentation experience** for a project, served at
-`fairyfox.io/<project>/`. It is authored content (overview, guides, reference)
-wearing this design system. Machine-generated API docs (Doxygen, JSDoc, TypeDoc)
-are *part of* a project's documentation but are treated as a linked/boundaried
-zone, not the themed surface itself — see
+`fairyfox.io/<project>/`, wearing this design system. It may be hand-authored
+content (overview, guides, reference) **or** a documentation generator's output
+themed directly — both are first-class. Machine-generated reference (Doxygen,
+JSDoc, TypeDoc) is *part of* the docs: sometimes a boundaried zone inside a
+hand-built site, sometimes the whole site itself (then you theme the generator).
+Both cases — see
 [`06-content-and-organization.md`](06-content-and-organization.md).
 
 ## Naming note

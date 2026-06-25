@@ -1,8 +1,10 @@
 # 05 · Navigation & Cross-Linking
 
-This is the part that makes the transition **seamless**. A project can match the
-skin perfectly and still fail here — the two-way links and the on-domain
-continuity are **required**, not optional.
+This is the part that makes the transition **seamless**. Two things carry it: the
+**shared theme** (the real connective tissue — same colours, type, and shell across
+every project) and a single, always-present **way home**. Those two are required.
+Richer cross-linking (breadcrumbs, footer link columns) is **recommended, not
+required** — the mesh is meant to be *flat*, not a deep web of mandatory links.
 
 ## The one-domain model
 
@@ -33,30 +35,41 @@ exist at its URL so these resolve. The links the main site provides:
 A project's registry entry (`_data/projects.yml`) carries `docs:` (the docs-site
 URL) and `repo:` so these render. Keep that entry accurate.
 
-## Child → parent (the project links *back*) — REQUIRED
+## Child → parent (the project links *back*)
 
-Every project docs site must offer an obvious, persistent way back. Three places:
+### Required: one persistent "way home"
 
-1. **Header brand → home.** The brand mark is **Fairy Fox** and links to
-   `https://fairyfox.io/`. This is the primary "way home" and must be on every
-   page (the header is sticky).
-2. **A locator/breadcrumb → the node page.** Near the top of each page, show the
-   trail and link the parent crumbs:
-   `Fairy Fox / Projects / <Project Name>` — where **Fairy Fox** → `fairyfox.io/`
-   and **Projects** → `fairyfox.io/projects/`, and ideally the project name → its
-   node page `fairyfox.io/projects/<key>/`. (This mirrors the `.locator` pattern on
-   the main site's node pages.)
-3. **Footer → the main site.** The footer's "Explore" column links to the main
-   site's sections (Projects, Documentation, Downloads, Updates, About) and
-   includes an explicit home link.
+Every project docs site must offer **one obvious, always-visible link back to
+`https://fairyfox.io/`** — a single "← Back to Fairy Fox" control, present on every
+page (e.g. in the sticky header or the persistent sidebar). That's the whole hard
+requirement for back-linking. It doesn't need to be a breadcrumb or a brand mark —
+a plain, self-explanatory button is enough.
 
-### The sub-brand: showing "this is a project under Fairy Fox"
+### Recommended (not required): richer links back
 
-Keep the Fairy Fox mark as the brand, and place the **project's own name** beside
-or beneath it (a sub-brand, a divider + project name, or the locator's last crumb).
-The reading should always be "**Fairy Fox** → *this project*", so the parent is
-never hidden and the way back is never ambiguous. Do **not** replace the Fairy Fox
-brand with the project's brand.
+Add these where they fit, but their absence is **not** a compliance failure:
+
+- A **footer** linking the project's node page (`fairyfox.io/projects/<key>/`),
+  repo, notes, and the main-site sections.
+- A **breadcrumb/locator** near the page top (`Fairy Fox / Projects / <Project>`).
+
+A project may carry the node-page link in the footer only, or skip the breadcrumb
+entirely, and still be compliant — as long as the single way-home and the shared
+theme are present.
+
+### Branding: project-forward is fine — the theme is the tie
+
+**A project leads with its own identity.** Its docs site can show the **project's
+own logo and name** as the primary brand; you do **not** have to put the Fairy Fox
+mark first, and you may replace it. What keeps the project visibly part of the mesh
+is the **shared design system** — the same palette, typography, and shell from
+[`02-design-tokens.md`](02-design-tokens.md) — plus the way-home link. The theme is
+the family resemblance; the brand can be the project's own.
+
+Keeping a small Fairy Fox cue (a footer mark, a hint in the way-home control) is
+welcome but optional. The earlier "never replace the Fairy Fox brand / show Fairy
+Fox → project" rule is **retired** — it made the mesh feel too tightly coupled;
+shared theme + a clear way home is the right amount of connection.
 
 ## Project docs-site navigation
 
@@ -83,14 +96,18 @@ shifts:
 - **No interstitial** — links between main site and project resolve directly (same
   origin), with no redirect bounce.
 
-## Generated API docs (the boundary)
+## Generated docs (two cases)
 
-When a project links into machine-generated reference (Doxygen, JSDoc, TypeDoc),
-that zone may not wear the full theme. Handle it cleanly:
+Many projects document via a generator (JSDoc, Doxygen, TypeDoc, Sphinx). There are
+two distinct situations — don't conflate them:
 
-- Reach it through a normal, themed link from the project docs (e.g. an "API
-  Reference →" entry), so the user crosses a clear, intended boundary.
-- Where the generator allows, apply the palette/fonts (custom CSS/header) so it at
-  least rhymes with the theme.
-- Always give a way back from the generated zone to the themed docs (a header link).
-See [`06-content-and-organization.md`](06-content-and-organization.md).
+1. **The generator is a *boundaried zone* inside a hand-authored docs site.** Reach
+   it through a themed "API Reference →" link, theme it as far as the generator
+   allows, and always give a way back to the themed docs.
+2. **The generator *is* the whole docs site** (e.g. the docs site is JSDoc/docdash
+   output). Then you don't "rhyme with" the theme from outside — you **replace the
+   generator's stylesheet and inject the brand + way-home into its own layout.**
+   This is a first-class, fully-supported path with its own technique and gotchas:
+   see [`06-content-and-organization.md`](06-content-and-organization.md#generator-based-docs-sites-the-generator-is-the-site).
+
+Either way, the single required way-home link still applies.

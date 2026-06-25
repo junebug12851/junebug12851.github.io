@@ -36,15 +36,24 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
       specs (shape, radius, border, shadow, hover).
 - [ ] `:focus-visible` shows the accent outline on every interactive element.
 
-## Cross-linking (required)
+## Cross-linking & branding
 
-- [ ] Header brand is **Fairy Fox** and links to `https://fairyfox.io/` on every page.
-- [ ] A locator/breadcrumb links back to the main site and the project node page.
-- [ ] The project's own name shows as a sub-brand/last crumb — the Fairy Fox mark is
-      **not** replaced.
-- [ ] The footer links back to the main site's sections + a home link.
+**Required:**
+
+- [ ] One persistent **"← Back to Fairy Fox"** link to `https://fairyfox.io/` on
+      every page (header or persistent sidebar).
 - [ ] The site is reachable at `fairyfox.io/<key>/` and the registry entry
       (`docs:`, `repo:`) is accurate so the main site links *in* resolve.
+
+**Recommended (absence is not a failure):**
+
+- [ ] A footer linking the project's node page, repo, notes, and the main-site
+      sections.
+- [ ] A breadcrumb/locator near the page top.
+
+**Branding:** the project may lead with its **own logo and name** (the Fairy Fox
+mark may be replaced). Membership is carried by the **shared theme** + the way-home
+link — not by brand precedence. A small Fairy Fox cue is welcome but optional.
 
 ## Seamlessness
 

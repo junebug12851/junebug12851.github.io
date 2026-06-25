@@ -105,27 +105,31 @@ Adopt the [docs-site design system](docs-site/) so the project's documentation i
 seamless with fairyfox.io — but **reconcile, don't clobber**, the same as the rest
 of onboarding:
 
-- If the project already has a docs site (Doxygen output, an existing Pages site),
-  **re-skin it toward the theme** and fold its content in rather than discarding it;
-  generated API docs stay a boundaried zone
-  ([`docs-site/06-content-and-organization.md`](docs-site/06-content-and-organization.md)).
-- Add the **required links back** to Fairy Fox and publish at `fairyfox.io/<key>/`
-  (set the base path to `/<key>`, no project CNAME —
-  [`docs-site/10-domain-and-publishing.md`](docs-site/10-domain-and-publishing.md)).
-- This can be **partial on day one** (skin the shell now, deepen later) — mark it
-  honestly and tighten via [`adopting-updates.md`](adopting-updates.md). Check
-  progress against [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
+- **First decide which docs shape the project is** (this drives everything —
+  [`docs-site/06`](docs-site/06-content-and-organization.md#generated-docs-doxygen-jsdoc-typedoc-sphinx-)):
+  a hand-authored site (theme the shell, boundary any generated reference), or a
+  **generator-IS-the-site** project (JSDoc/docdash/Doxygen output *is* the docs).
+- **For a generator-is-the-site project, theme the generator itself** — **replace
+  its stylesheet from scratch (don't override it), inject the project brand + the
+  way-home into the generator's own sidebar, and make the build copy your theme
+  assets into the output.** Don't author a separate Jekyll shell to wrap it; that
+  fights the project's tooling.
+- **Required to pass:** the served site **wears the fairyfox theme** and has the one
+  persistent **"← Back to Fairy Fox"** link. Project-forward branding is fine
+  ([`docs-site/05`](docs-site/05-navigation-and-cross-linking.md)). Publish at
+  `fairyfox.io/<key>/` (base path `/<key>`, no project CNAME —
+  [`docs-site/10`](docs-site/10-domain-and-publishing.md)).
+- **Partial on day one is OK** *if reported as partial* — tighten via
+  [`adopting-updates.md`](adopting-updates.md). Bar:
+  [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
 
 > **Raw generated docs served alone do NOT satisfy this — and don't count as
-> "partial" either.** A bare JSDoc / Doxygen / TypeDoc dump at `fairyfox.io/<key>/`,
-> with the generator's default theme and no Fairy Fox shell or back-links, is an
-> *unthemed boundaried zone with no site around it* — the exact failure this step
-> exists to catch. The compliant minimum is a **themed docs site** (the shared
-> tokens, header/footer, and the two-way links from
-> [`docs-site/05-navigation-and-cross-linking.md`](docs-site/05-navigation-and-cross-linking.md))
-> that *wraps and links to* the generated reference. **Verify by actually looking at
-> the served page**, not by trusting that a `docs:` URL resolves — a URL that
-> resolves to default-theme generator output is a miss, not a pass.
+> "partial" either.** A bare JSDoc / Doxygen / TypeDoc dump at `fairyfox.io/<key>/`
+> in the generator's *default* theme, with no fairyfox palette/type and no way-home,
+> is the exact failure this step catches. The fix is **not** to wrap it in a shell —
+> it's to **theme the generator** (replace its stylesheet, inject the brand +
+> way-home). **Verify by actually looking at the served page**, not by trusting that
+> a `docs:` URL resolves — a URL that resolves to default-theme output is a miss.
 
 ### 7. Register with the hub *(hub-side change)*
 
@@ -134,7 +138,9 @@ A commit **in the hub repo**, not the project:
 - Add the entry to [`hub/registry.yml`](../registry.yml) — and set **`branch` to
   the project's real branch** (from step 2), not a wishful `dev`.
 - Set `adopts_hub` / `notes_system` **honestly** — partial adoption is fine and
-  normal for an existing repo; mark what's actually true today.
+  normal for an existing repo; mark what's actually true today. **Never pre-set them
+  `true` before the project-side work exists** — an optimistic flag seeds exactly the
+  false "registered = done" signal this runbook warns against.
 - Add the companion row to the site's `_data/projects.yml`.
 
 ### 8. Commit on the project's working branch, then fast-forward
@@ -187,16 +193,23 @@ to be onboarded; finding `missing` rows means it isn't.
 |---|-----------|-------------------|
 | 1 | Working tree | `git status` clean; `assets/references/` untracked/ignored; nothing pre-existing clobbered (README, license, CI, history intact). |
 | 2 | Versioning | `VERSION` reflects the project's **real** version (not reset to `0.1.0`), SemVer-shaped. |
-| 3 | Branch model | Registry `branch` matches the repo's **actual** default/work branch. |
+| 3 | Branch model | Registry `branch` (the **sync-tracking** branch — `dev` by default, or the project's real work branch) is honest. A `dev`→`master` project tracking `dev` is correct; the field is *not* the repo's default branch. |
 | 4 | Notes system | The `notes/` tree exists with a real `status.md`; existing docs mapped in, not duplicated. |
 | 5 | **Mesh-awareness in `CLAUDE.md`** | The project's `CLAUDE.md` **actually contains** the "Cross-project standards & checking the fairyfox system for updates" standing instruction. **Open the file and confirm the text is there** — don't infer it from the project being registered. |
-| 6 | **Themed docs site** | `fairyfox.io/<key>/` serves a site **wearing the fairyfox theme** with the **two-way links back** to Fairy Fox. **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
+| 6 | **Themed docs site** | `fairyfox.io/<key>/` serves a site **wearing the fairyfox theme** with the persistent **"← Back to Fairy Fox"** way-home link (project-forward branding is fine; theme + way-home are the bar). **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
 | 7 | Hub registration | Resolves in **both** registries with honest `adopts_hub` / `notes_system` flags; node + docs pages present. |
 
 **Reporting rule:** only call a project **"fully onboarded" when rows 1–7 are all
 `done`.** If any row is `partial` or `missing`, say exactly which — e.g. "registered
 and noted, but the docs site is unthemed JSDoc and the `CLAUDE.md` mesh block is
 missing." A clean hub-side registration is **not** a green light.
+
+**Verifying under a held-`master` flow.** If you're committing on `dev` and holding
+`master` until an explicit go-ahead, the live `fairyfox.io/<key>/` page can't change
+until the final fast-forward. That's fine: **verify the built output locally**
+(open it in a browser) on each iteration, then do **one live re-verification of the
+served page after the FF + Pages deploy.** Local-during, live-once-after — Row 6 still
+gets its real look at a rendered page.
 
 ## Gotchas
 

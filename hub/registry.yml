@@ -5,9 +5,21 @@
 # Per entry:
 #   key      short slug = the folder name under assets/references/
 #   repo     github URL
-#   branch   branch to track for sync (default: dev)
-#   adopts_hub  true if this project pulls standards from this hub
-#   notes_system  true if the project uses the shared living-notes system
+#   branch   the branch the hub TRACKS FOR SYNC = the project's work branch
+#            (default: dev). This is NOT necessarily the repo's default branch:
+#            a project on the dev->master model tracks `dev` (latest work), even
+#            though its default/stable branch is `master`. (Two onboarding sessions
+#            misread this as "default branch" — it isn't.)
+#   adopts_hub    true ONLY once the project has actually adopted the standards
+#                 (mesh-aware CLAUDE.md, notes, themed docs) — see honesty rule below.
+#   notes_system  true ONLY once the shared living-notes system is actually in place.
+#
+# Honesty rule (don't seed a false "done"): set adopts_hub / notes_system to reflect
+# what is REALLY true today, and don't pre-register a project with optimistic flags
+# before the project-side work exists. A registry row is "listed", which is NOT the
+# same as "integrated" — see hub/standards/onboarding-existing-project.md
+# ("Registered != integrated"). When project-side onboarding is genuinely complete,
+# update the flags; until then, mark the real (partial) state.
 #
 # last_seen is updated by the round-up pass (see notes/reference/blogging-workflow.md)
 # to remember where the previous diff stopped.
