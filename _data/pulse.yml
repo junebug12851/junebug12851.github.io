@@ -8,16 +8,16 @@
 # changes : recent micro-changes for the scrolling ticker (newest first)
 #           c = a CSS colour var so it adapts to light/dark
 
-bars: [4, 13, 16, 23, 10, 5, 19, 26, 15, 7, 4, 12, 21, 29, 17, 10, 8, 15, 25, 31, 14, 6, 11, 20, 34, 22, 10, 13, 24, 30]
+bars: [13, 16, 23, 10, 5, 19, 26, 15, 7, 4, 12, 21, 29, 17, 10, 8, 15, 25, 31, 14, 6, 11, 20, 34, 22, 10, 13, 24, 30, 9]
 
 changes:
-  - { c: "var(--coral)", text: "Home \"Recently\" list + shared pulse rows",   when: "today" }
-  - { c: "var(--coral)", text: "Clickable project cards, simpler nav",        when: "today" }
-  - { c: "var(--coral)", text: "Day-centric updates feed",                    when: "today" }
-  - { c: "var(--coral)", text: "Activity panel rendered at build time",       when: "today" }
-  - { c: "var(--coral)", text: "Self-locating project node pages",           when: "today" }
-  - { c: "var(--coral)", text: "Warm visual language ported live",            when: "today" }
-  - { c: "var(--pink)",  text: "Static-analysis gate (clang-tidy + cppcheck)", when: "1d" }
-  - { c: "var(--green)", text: "DPL parser + Vitest suite, shipped to master", when: "2d" }
-  - { c: "var(--pink)",  text: "Pokémon editor: team & box writes",           when: "4d" }
-  - { c: "var(--green)", text: "React + Vite web app",                         when: "5d" }
+  - { c: "var(--coral)", text: "Nodes can check the hub for updates",          when: "today" }
+  - { c: "var(--coral)", text: "Update check gated on a named hub reference",  when: "today" }
+  - { c: "var(--coral)", text: "Three hub lifecycle runbooks: setup · onboard · adopt", when: "1d" }
+  - { c: "var(--coral)", text: "Self-locating project node pages",            when: "1d" }
+  - { c: "var(--coral)", text: "Day-centric updates feed",                     when: "1d" }
+  - { c: "var(--coral)", text: "Warm visual language ported live",             when: "1d" }
+  - { c: "var(--pink)",  text: "Static-analysis gate (clang-tidy + cppcheck)", when: "2d" }
+  - { c: "var(--green)", text: "DPL parser + Vitest suite, shipped to master", when: "3d" }
+  - { c: "var(--pink)",  text: "Pokémon editor: team & box writes",           when: "5d" }
+  - { c: "var(--green)", text: "React + Vite web app",                         when: "6d" }

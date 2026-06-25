@@ -46,3 +46,16 @@ The rest of the day put that direction into the live site, in small verified pas
 Each change was built, screenshotted, and shipped on its own, carrying the version through the
 `0.4.x` line. What's left is the deeper, decoupled machinery — generating the activity data
 from the projects' real history, and adding interactive examples — rather than structure.
+
+## Setup and update procedures, written down
+
+The same day also added the first two lifecycle runbooks to the shared standards — the
+project-agnostic procedures (for an assistant or a person) for moving a project through the
+mesh. One covers **setting up a fresh project** end to end: the two-branch git model, copying
+in the templates and the notes skeleton, adopting the standards, and registering it in both
+registries. A second covers **onboarding an established repository** that already has its own
+history, README, and version scheme — a reconcile-not-clobber path that folds the standard
+around what is already there rather than overwriting it (no forced branch rename, no version
+reset, honest partial-adoption flags). Both are kept current by default whenever the lifecycle
+procedure changes. They live under the shared standards in the
+[documentation library](/docs/new-project-setup/).
