@@ -18,6 +18,10 @@ low-risk** history — "a dull flat repo over a screwed-up one."
   [`cross-project-sync.md`](cross-project-sync.md)).
 - **No feature branches** for now (solo, early). Add one only to isolate a
   genuinely large/risky change, then FF/merge it back and delete it.
+- **`main` is mandatory across the mesh** — `master` is not used. A project still on
+  `master` renames it to `main` on adoption (a safe rename, not history surgery; fix
+  the Pages/CI/`tree/master/…` references). This repo is already on `main`. Full
+  procedure: the [git-workflow standard](../../hub/standards/git-workflow.md#master--main-is-mandatory).
 
 ## Merging — fast-forward only
 

@@ -53,14 +53,17 @@ Inventory the repo so you adopt onto reality, not over it:
 - **Docs** — existing `README`, a `docs/` or wiki, any AI-context file?
 - **Ignores / license / CI** — an existing `.gitignore`, `LICENSE`, workflows.
 
-### 2. Decide the branch model — adopt, don't force
+### 2. Adopt the branch model — `dev` + `main` (rename `master`)
 
-The mesh tracks **`dev`** (work) fast-forwarding to **`main`** (stable). If the
-repo already fits or can move cheaply, adopt it. **If it lives on `master` and a
-rename would be disruptive** (published URLs, others' clones, CI wired to it),
-**don't force it** — record the *real* branch in the registry instead and adopt
-the rest. The standard is the default, not a mandate that justifies risky history
-surgery.
+The mesh uses **`dev`** (work) fast-forwarding to **`main`** (stable). **`main` is
+mandatory: a repo still on `master` renames it to `main`** as part of onboarding —
+required, not optional. This is a safe **rename**, not history surgery; follow the
+procedure in the
+[git-workflow standard](git-workflow.md#master--main-is-mandatory) and fix the
+references it lists (the **Pages source branch**, **CI/release** `on: push` branch
+filters, and any `tree/master/…` URLs such as the registry's `notes:` link). The
+registry's `branch` field tracks the **work** branch (`dev`) and is unchanged by
+the rename.
 
 ### 3. Pull a read-only copy of the hub
 
@@ -193,7 +196,7 @@ to be onboarded; finding `missing` rows means it isn't.
 |---|-----------|-------------------|
 | 1 | Working tree | `git status` clean; `assets/references/` untracked/ignored; nothing pre-existing clobbered (README, license, CI, history intact). |
 | 2 | Versioning | `VERSION` reflects the project's **real** version (not reset to `0.1.0`), SemVer-shaped. |
-| 3 | Branch model | Registry `branch` (the **sync-tracking** branch — `dev` by default, or the project's real work branch) is honest. A `dev`→`master` project tracking `dev` is correct; the field is *not* the repo's default branch. |
+| 3 | Branch model | Stable branch is **`main`** (a repo on `master` has been renamed — mandatory; Pages/CI/URL refs fixed). Registry `branch` is the **sync-tracking work branch** (`dev` by default), honest — it is *not* the repo's default branch. |
 | 4 | Notes system | The `notes/` tree exists with a real `status.md`; existing docs mapped in, not duplicated. |
 | 5 | **Mesh-awareness in `CLAUDE.md`** | The project's `CLAUDE.md` **actually contains** the "Cross-project standards & checking the fairyfox system for updates" standing instruction. **Open the file and confirm the text is there** — don't infer it from the project being registered. |
 | 6 | **Themed docs site** | `fairyfox.io/<key>/` serves a site **wearing the fairyfox theme** with the persistent **"← Back to Fairy Fox"** way-home link (project-forward branding is fine; theme + way-home are the bar). **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
@@ -216,7 +219,8 @@ gets its real look at a rendered page.
 - **Never rewrite history to fit the standard.** No force-push, no rebase of
   published commits, no branch deletion without an explicit request.
 - **Don't reset the version.** Carry the existing number forward.
-- **Don't force a `master → main` rename** just for tidiness — record the real
-  branch and move on.
+- **`master` must become `main`** — rename it (safely; see step 2 and the
+  git-workflow standard) and fix the Pages / CI / `tree/master/…` references. The
+  registry's `branch` (the `dev` work branch) is unaffected.
 - **Honesty over completeness** in the registry — a half-adopted project is a real
   state worth recording accurately.

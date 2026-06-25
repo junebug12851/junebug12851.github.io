@@ -6,10 +6,11 @@
 #   key      short slug = the folder name under assets/references/
 #   repo     github URL
 #   branch   the branch the hub TRACKS FOR SYNC = the project's work branch
-#            (default: dev). This is NOT necessarily the repo's default branch:
-#            a project on the dev->master model tracks `dev` (latest work), even
-#            though its default/stable branch is `master`. (Two onboarding sessions
-#            misread this as "default branch" — it isn't.)
+#            (default: dev). This is NOT the repo's default/stable branch:
+#            projects track `dev` (latest work); the stable branch is `main`
+#            (MANDATORY — a repo still on `master` is renamed to `main` on
+#            adoption; see hub/standards/git-workflow.md). Two onboarding sessions
+#            misread this field as "default branch" — it isn't.
 #   adopts_hub    true ONLY once the project has actually adopted the standards
 #                 (mesh-aware CLAUDE.md, notes, themed docs) — see honesty rule below.
 #   notes_system  true ONLY once the shared living-notes system is actually in place.
