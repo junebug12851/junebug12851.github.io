@@ -1,0 +1,23 @@
+# ── Activity pulse (static for now) ──────────────────────────────────────────
+# Feeds the home "Activity · last 30 days" panel (chart + ticker), rendered at
+# BUILD TIME in Liquid — no client JS. This is placeholder data; later the
+# decoupled gathering layer generates this file from the projects' real history
+# (see notes/context/design-direction.md §4, notes/plans/implementation.md).
+#
+# bars    : per-day commit counts across all projects (oldest → newest)
+# changes : recent micro-changes for the scrolling ticker (newest first)
+#           c = a CSS colour var so it adapts to light/dark
+
+bars: [9, 4, 13, 16, 23, 10, 5, 19, 26, 15, 7, 4, 12, 21, 29, 17, 10, 8, 15, 25, 31, 14, 6, 11, 20, 34, 22, 10, 13, 24]
+
+changes:
+  - { c: "var(--coral)", text: "Status taxonomy + fairyfox.io listed",        when: "today" }
+  - { c: "var(--coral)", text: "Live re-skin to the warm language",           when: "today" }
+  - { c: "var(--pink)",  text: "Static analysis layer (clang-tidy + cppcheck)", when: "2d" }
+  - { c: "var(--green)", text: "DPL parser + Vitest suite",                    when: "3d" }
+  - { c: "var(--pink)",  text: "Pokémon editor: team & box writes",           when: "5d" }
+  - { c: "var(--green)", text: "React + Vite web app",                         when: "6d" }
+  - { c: "var(--pink)",  text: "Library coverage to ~90%",                     when: "8d" }
+  - { c: "var(--green)", text: "Prompt list overhaul",                         when: "9d" }
+  - { c: "var(--pink)",  text: "Drag-and-drop save loading",                   when: "12d" }
+  - { c: "var(--green)", text: "ES modules · Node 24 LTS",                     when: "14d" }
