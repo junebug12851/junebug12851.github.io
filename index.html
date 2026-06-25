@@ -56,14 +56,14 @@ title: null
       <h2>Recently</h2>
       <a class="more" href="{{ '/blog/' | relative_url }}">All updates →</a>
     </div>
-    <div class="update-grid">
+    <div class="pulse">
       {%- for post in site.posts limit: 6 -%}
         {%- assign pc = '#ef6149' -%}
         {%- for proj in site.data.projects -%}{%- if post.tags contains proj.key -%}{%- assign pc = proj.color -%}{%- endif -%}{%- endfor -%}
-        <a class="update-card" href="{{ post.url | relative_url }}" style="--pc:{{ pc }}">
-          <div class="update-meta"><span class="pdot" aria-hidden="true"></span><span class="udate">{{ post.date | date: "%b %-d, %Y" }}</span></div>
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 130 }}</p>
+        <a class="pulse-row" href="{{ post.url | relative_url }}" style="--pc:{{ pc }}">
+          <span class="pdot" aria-hidden="true"></span>
+          <span class="pwhat">{{ post.title }}</span>
+          <span class="pdate">{{ post.date | date: "%b %-d" }}</span>
         </a>
       {%- else -%}
       <p class="muted">No updates yet.</p>

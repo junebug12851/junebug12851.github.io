@@ -94,7 +94,7 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.4.4"
+  version: "0.4.5"
   activity: active
   updated: "Jun 24, 2026"
   updated_iso: "2026-06-24"
