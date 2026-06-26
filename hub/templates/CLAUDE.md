@@ -91,6 +91,14 @@ under `assets/references/`, diff it against what this project has adopted, and
 until the user clearly says go ahead; applying is a separate, confirmed act. Full
 procedure: the shared `adopting-updates` runbook (in `hub/standards/`).
 
+**Exception — pre-authorized changes.** The system keeps an express-authorization
+ledger (`hub/authorizations.yml`). If an active entry there `covers` the change
+you're adopting, the user **already gave the go-ahead at the system** — apply it
+directly, skipping the "wait" pause. Skip *only* that redundant pause: still
+reconcile (don't clobber local divergence — re-prompt if you would), still write
+the process report, still commit as a reviewable act. Nothing in the ledger covers
+it → fall back to check-report-wait.
+
 **After running any fairyfox system procedure, write a process report.** Every such
 run — setup, onboarding, adopting updates, or just checking for updates — ends with a
 short, honest report in `notes/fairyfox-reports/YYYY-MM-DD-<procedure>.md` (from
@@ -101,8 +109,11 @@ rule: the shared `process-reports` standard (in `hub/standards/`).
 
 **Guardrails (don't break these):** on-request only — never auto-pull or schedule
 cross-repo syncs (anti-recursion); the reference clone is read-only and
-git-ignored; never apply changes or rewrite history without an explicit go-ahead;
-reconcile with local edits, don't clobber them.
+git-ignored (the authorization ledger included — reading it lets you skip a
+prompt, it never lets the system act on this repo); never apply changes or rewrite
+history without an explicit go-ahead (an active `authorizations.yml` entry that
+covers the change *is* that go-ahead, given at the system); reconcile with local
+edits, don't clobber them.
 
 > Naming: the user calls it **the fairyfox system** in conversation; the public
 > website calls it the **hub**. Both name the same fairyfox.io mesh.

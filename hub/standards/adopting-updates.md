@@ -58,6 +58,33 @@ user clearly says to go ahead — again, in whatever words ("yeah do it", "adopt
 it", "apply those"). Reporting changes nothing on disk; applying is always a
 separate, confirmed act.
 
+### When it's pre-authorized (coming from the fairyfox system)
+
+The check-and-report pause exists so a node never *changes itself* without a
+go-ahead. When that go-ahead was **already given at the hub**, the pause is
+redundant — re-asking the user for a confirmation they already made here is the
+friction this carve-out removes.
+
+The hub keeps an **express-authorization ledger**,
+[`hub/authorizations.yml`](../authorizations.yml): the on-record go-aheads Fairy
+Fox makes at the system for changes to roll out. Read it from the read-only hub
+clone (same on-request, read-only access as everything else — it adds no
+automation and no hub→node push). **If an active entry `covers` the change you're
+about to adopt**, the change is pre-authorized — it came from the fairyfox system
+with the user's express go-ahead, so it is *not* an unprompted self-edit:
+
+- **Skip the "stop and wait" pause** and go straight into applying (steps 3–5).
+- **Keep every other safety step.** Still copy-not-clobber; still **re-prompt
+  before overwriting a deliberate local divergence** (see
+  [When the project has diverged](#when-the-project-has-diverged)); still write
+  the process report; still commit as a reviewable act; still build green. A
+  pre-authorization removes *one redundant confirmation*, never the safety floor.
+
+If **nothing** in the ledger covers the change — or the entry has `expires`d —
+fall back to the normal check-and-report-then-stop default above. The user is fine
+with confirmation by default; the carve-out applies only to what they expressly
+authorized here.
+
 **Either way, write a process report.** Running this procedure — whether you applied
 anything or only checked and reported — is a fairyfox system interaction, so it ends
 with a process report in `notes/fairyfox-reports/` (step 4 below). A check-only run
@@ -172,6 +199,9 @@ improves the project, on purpose." The hub is the source of truth for the shared
 - Changelog + session log + (if bumped) `VERSION` ride in the same commit.
 - A **process report** for this run is in `notes/fairyfox-reports/` and committed
   (written even on a check-only run) — [process-reports standard](process-reports.md).
+- If a run **skipped the pause**, an active [`hub/authorizations.yml`](../authorizations.yml)
+  entry actually `covers`ed the change (not assumed), and the other safety steps still
+  ran — divergence re-prompt, process report, reviewable commit, build-check.
 - If the project builds/serves, it builds green.
 
 ## Anti-recursion reminders
@@ -183,3 +213,7 @@ improves the project, on purpose." The hub is the source of truth for the shared
   so it can't trigger anything downstream.
 - A standard becomes part of the project by **copy**, not a runtime dependency
   that re-resolves.
+- The **authorization ledger is read like any other hub artifact** — read-only,
+  on-request, from the git-ignored clone. A pre-authorization lets a node *skip a
+  prompt*; it never lets the hub *reach in and act*. The node still adopts only
+  when the user invokes the flow.

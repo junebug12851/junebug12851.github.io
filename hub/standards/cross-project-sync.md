@@ -53,6 +53,16 @@ git -C assets/references/<hub-name> pull --depth 1 --ff-only origin dev      # r
 Adopting a standard is a **copy committed locally**, not a live link — re-pull
 later and merge changes by hand.
 
+Alongside the standards, the project also reads the hub's
+**express-authorization ledger** ([`hub/authorizations.yml`](authorizations.yml))
+out of the same read-only clone. It records the go-aheads the system owner makes
+at the hub; a node adopting a change the ledger `covers` treats it as
+pre-authorized and skips its redundant confirmation pause — **but only that pause;
+every other adoption safety step still runs** (see
+[`adopting-updates.md`](adopting-updates.md#when-its-pre-authorized-coming-from-the-fairyfox-system)).
+This is still a read, on request — it adds no automation and no push into the
+node, so anti-recursion holds.
+
 ## Anti-recursion checklist
 
 - ✅ Pulls are manual / on request — never scheduled to chain across repos.
@@ -60,6 +70,9 @@ later and merge changes by hand.
 - ✅ Reference clones are git-ignored — a pull produces no commit, so it triggers
   nothing downstream.
 - ✅ Adoption is a copy, not a runtime dependency.
+- ✅ The express-authorization ledger is **read-only on the far side** like every
+  other artifact — a pre-authorization lets a node skip a prompt, never lets the
+  hub act on the node. The node still adopts only when the user invokes the flow.
 
 ## Why `assets/references/`, not submodules
 

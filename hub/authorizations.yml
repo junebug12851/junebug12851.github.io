@@ -1,0 +1,63 @@
+# ── Express-authorization ledger ─────────────────────────────────────────────
+# The hub's tracked record of the express authorizations Fairy Fox makes HERE, at
+# the system, for changes to roll out into the nodes.
+#
+# WHY THIS EXISTS
+#   Adopting a hub change into a project is normally a "check, report, then wait"
+#   act — the node reports what would change and stops until the user says go (see
+#   hub/standards/adopting-updates.md). That confirmation gate is good by default.
+#   But when the user has ALREADY expressly authorized a change here at the hub,
+#   the node's second prompt is redundant: the go-ahead was given at the system.
+#   This file is how the system "keeps track of" those express authorizations so a
+#   node can recognize a change as pre-authorized and skip ONLY that redundant
+#   pause — every other safety step (copy-not-clobber, divergence re-prompt,
+#   process report, reviewable commit, build-check, anti-recursion) still runs.
+#
+#   Changes that originate here ARE guarded carefully; an authorization recorded
+#   below is the user's express, on-record go-ahead. A node adopting under it is
+#   not doing anything unauthorized — it is acting on a confirmation already given.
+#
+# HOW A NODE USES IT
+#   On the outbound adopt flow the node reads this file out of its read-only hub
+#   clone (assets/references/<hub>/). If the change it is about to adopt is covered
+#   by an ACTIVE entry below, it is pre-authorized: apply directly, no "wait for
+#   go-ahead" pause. If nothing here covers the change, fall back to the normal
+#   check-and-report-then-stop default. Reading this file is still read-only and
+#   on-request — it adds no automation and no hub→node push (anti-recursion holds).
+#
+# SCOPE DISCIPLINE (so this stays a deliberate carve-out, not a blanket off-switch)
+#   - An entry covers SPECIFIC artifacts (name the standards/files), not "all",
+#     unless the user explicitly grants a standing scope.
+#   - `expires` keeps a one-off rollout from lingering as a permanent bypass; use a
+#     date for a specific push, null only for a deliberate standing grant.
+#   - Safety is never bypassed — only the redundant confirmation pause is. A node
+#     still re-prompts before clobbering a deliberate local divergence.
+#
+# Per entry:
+#   id            short kebab slug, unique
+#   date          YYYY-MM-DD the authorization was made
+#   authorized_by who gave it (Fairy Fox — only the system owner authorizes)
+#   grants        what it permits. Current value: adopt-without-reprompt
+#                 (skip the node-side check-and-report pause; keep all other safety)
+#   covers        list of hub artifacts the authorization applies to (paths under
+#                 hub/, or a named standard). A node matches the change it is
+#                 adopting against these.
+#   expires       YYYY-MM-DD after which the entry is inert, or null for standing
+#   note          plain-English what/why
+
+authorizations:
+  - id: express-authorization-rollout
+    date: 2026-06-26
+    authorized_by: Fairy Fox
+    grants: adopt-without-reprompt
+    covers:
+      - hub/standards/cross-project-sync.md
+      - hub/standards/adopting-updates.md
+      - hub/authorizations.yml
+      - hub/templates/CLAUDE.md   # the mesh-awareness block (express-auth carve-out)
+    expires: null
+    note: >
+      Establishes the express-authorization mechanism itself. Nodes may adopt this
+      change set — the pre-authorized-adoption rule and this ledger — without the
+      check-and-report pause; it is the user's standing go-ahead for the feature
+      that lets future go-aheads carry. All other adoption safety steps still apply.

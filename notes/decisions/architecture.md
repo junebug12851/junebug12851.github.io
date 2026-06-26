@@ -2,6 +2,26 @@
 
 Key structural choices and why. Newest on top.
 
+### Express authorizations carry the user's go-ahead from hub to node (2026-06-26)
+
+Adoption defaults to "check, report, then wait" at each node — a safety gate
+against unprompted self-edits. But when Fairy Fox has **already expressly
+authorized a change at the hub**, the node's second confirmation is pure friction
+("the stupid updates ... I already gave [it] here"). Chosen model: the hub keeps a
+tracked **express-authorization ledger** (`hub/authorizations.yml`); a node adopting
+a change the ledger `covers` treats it as pre-authorized and skips **only** the wait
+pause, keeping every other safety step (copy-not-clobber, divergence re-prompt,
+process report, reviewable commit, build-check).
+
+Why a ledger rather than a blanket "skip all hub changes": the user is fine with
+confirmation by default — the carve-out is scoped to what they expressly authorized,
+and entries can expire so a one-off rollout doesn't linger as a permanent bypass.
+Why it doesn't break anti-recursion: the node *reads* the ledger from its read-only,
+git-ignored clone, on request — a pre-authorization lets a node skip a prompt, it
+never lets the hub reach in and act. The node still adopts only when the user invokes
+the flow. The carve-out lives in the CLAUDE.md template's mesh-awareness block too,
+so every node has the same understanding. (`0.9.0`.)
+
 ### fairyfox.io is a listed meta-project (2026-06-24)
 
 The hub/site itself (`fairyfox.io`, repo `junebug12851.github.io`) is a **first-class
