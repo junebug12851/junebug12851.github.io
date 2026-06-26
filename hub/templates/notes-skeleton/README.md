@@ -20,6 +20,7 @@ from the fairyfox.io hub).
 | `reference/` | Quick lookup: `git-workflow.md`, `versioning.md`, … |
 | `decisions/` | `architecture.md` (choices + why), `rejected.md` (don't repeat). |
 | `plans/` | `next-steps.md`, `future.md`. |
+| [`fairyfox-reports/`](fairyfox-reports/README.md) | Process reports — one per run of a fairyfox system procedure (setup, onboarding, adopting updates, check-for-updates); the feedback the hub reviews to improve the standards. |
 
 ## Maintenance loop (keep current by default)
 
@@ -30,6 +31,7 @@ from the fairyfox.io hub).
 | Health / next changed | `status.md` |
 | Made / rejected a decision | `decisions/architecture.md` / `rejected.md` |
 | A change warrants a version | Bump repo-root `VERSION`, same commit |
+| Ran a fairyfox system procedure | Write a report in `fairyfox-reports/YYYY-MM-DD-<procedure>.md` |
 
 Write direct and plain; code blocks for code, tables for lookups; cross-link,
 don't duplicate. The structure is meant to grow — add files where they belong.

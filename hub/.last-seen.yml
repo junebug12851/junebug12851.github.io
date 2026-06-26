@@ -3,11 +3,17 @@
 # pass ran, so the next pass knows where to resume. Updated by the cross-project
 # round-up pass (see notes/reference/blogging-workflow.md). Git-only awareness;
 # nothing here is a dependency.
+#
+# reports_through: the date of the newest process report (notes/fairyfox-reports/)
+# this hub has already digested for that project, so the report-review pass knows
+# where to resume. Updated by the review pass — see hub/standards/process-reports.md.
+# null = none digested yet.
 
 pokered-save-editor-2:
   commit: f88bbfd5e39c6ec294958e4f93bb17824dcd38a2
   branch: dev
   seen: 2026-06-25
+  reports_through: null
   # Covered through the project-side fairyfox-mesh onboarding (mesh-aware CLAUDE.md +
   # cross-project-sync adoption) and theming its Doxygen docs site to the fairyfox
   # design system (Case B — themed generator). Folded into the 2026-06-25 day post
@@ -18,6 +24,7 @@ random-ai-prompt:
   commit: a3cfd150a0121751c552dae7f1fbcfc21dafe6bc
   branch: dev
   seen: 2026-06-25
+  reports_through: null
   # Covered through: project-side mesh onboarding + fairyfox-themed JSDoc docs, the
   # SFW-by-default + top-bar NSFW toggle (2.6.1), and adopting the git-flow standard
   # with the master → main rename (CI/Pages/release repointed). All folded into the

@@ -58,6 +58,13 @@ user clearly says to go ahead — again, in whatever words ("yeah do it", "adopt
 it", "apply those"). Reporting changes nothing on disk; applying is always a
 separate, confirmed act.
 
+**Either way, write a process report.** Running this procedure — whether you applied
+anything or only checked and reported — is a fairyfox system interaction, so it ends
+with a process report in `notes/fairyfox-reports/` (step 4 below). A check-only run
+still produces useful feedback: "I checked the fairyfox system for updates, here's
+what I found and where the diff was painful." See the
+[process-reports standard](process-reports.md).
+
 **Why bounded this way (the integration that won't surprise you):** the node can
 *discover and explain* updates on its own, but never *changes itself* without a
 clear go-ahead. Combined with the anti-recursion rules below — on-request only,
@@ -124,13 +131,19 @@ Per the standing maintenance loop:
   `notes/version/YYYY-MM.md`, in the **same commit**.
 - Bump `VERSION` if warranted (PATCH default, MINOR for a milestone, never MAJOR).
 - Update `notes/status.md` if the adoption changed the project's state.
+- **Write the process report** — a file in `notes/fairyfox-reports/`
+  (`YYYY-MM-DD-adopting-updates.md`, from
+  [`templates/fairyfox-report.md`](../templates/fairyfox-report.md)): what you
+  adopted (or just checked), what was rough about the diff/apply, and any suggestion
+  for the runbook or standard. This is how the hub learns to improve the procedure —
+  [process-reports standard](process-reports.md). A **check-only** run writes one too.
 
 ### 5. Commit, push, fast-forward `main`
 
 On `dev`, staging specific files:
 
 ```sh
-git add notes <other-touched-files>      # never -A; never assets/references/*
+git add notes <other-touched-files>      # incl. notes/fairyfox-reports/<report>; never -A; never assets/references/*
 git commit -m "chore: adopt hub updates (<what>)"
 git push origin dev
 
@@ -152,6 +165,8 @@ improves the project, on purpose." The hub is the source of truth for the shared
 - The adopted change is present in the project's own tree (not just the
   reference clone).
 - Changelog + session log + (if bumped) `VERSION` ride in the same commit.
+- A **process report** for this run is in `notes/fairyfox-reports/` and committed
+  (written even on a check-only run) — [process-reports standard](process-reports.md).
 - If the project builds/serves, it builds green.
 
 ## Anti-recursion reminders

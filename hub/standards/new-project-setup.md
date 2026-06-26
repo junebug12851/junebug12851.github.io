@@ -30,6 +30,7 @@ The end state — tick every box before calling a project done:
 | Standards adopted | The project follows the hub's git, versioning, notes, and AI-context standards (copied in, not linked). |
 | Registered | The project is listed in the hub's [`registry.yml`](../registry.yml) **and** the site's `_data/projects.yml`. |
 | Docs site | A themed documentation site published at `fairyfox.io/<key>/`, built to the [docs-site design system](docs-site/) (seamless with fairyfox.io, links back). |
+| Process report | A `notes/fairyfox-reports/` folder exists (from the skeleton) and this setup run is written up in it — see [process-reports](process-reports.md). |
 
 ## Before you start
 
@@ -126,12 +127,21 @@ commit **in the hub repo**, not the project:
 - Add the human-facing companion entry to the site's `_data/projects.yml`
   (keep the two registries in step).
 
-### 7. First commit, push, fast-forward `main`
+### 8. Write the setup process report
+
+Setting a project up is a fairyfox system interaction, so it ends with a process
+report in `notes/fairyfox-reports/YYYY-MM-DD-setup.md` (from
+[`templates/fairyfox-report.md`](../templates/fairyfox-report.md)): how the bootstrap
+went, which steps were ambiguous or didn't fit a fresh repo, and any suggestion for
+the runbook. This is the feedback the hub uses to improve setup — see the
+[process-reports standard](process-reports.md). It's committed with the rest below.
+
+### 9. First commit, push, fast-forward `main`
 
 Inside the project, on `dev`:
 
 ```sh
-git add CLAUDE.md VERSION .gitignore notes        # specific files, never -A
+git add CLAUDE.md VERSION .gitignore notes        # incl. notes/fairyfox-reports/; specific files, never -A
 git commit -m "chore: adopt hub standards and notes system"
 git push origin dev
 
@@ -159,6 +169,8 @@ never be committed (committing it nests repos and bloats history).
   ([`docs-site/06`](docs-site/06-content-and-organization.md#generated-docs-doxygen-jsdoc-typedoc-sphinx-)).
   Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
 - If the project builds/serves, it builds green.
+- `notes/fairyfox-reports/` exists and holds this run's setup report, committed —
+  [process-reports standard](process-reports.md).
 
 Don't report the project as fully set up unless every item above actually holds —
 name any that don't rather than rounding up.

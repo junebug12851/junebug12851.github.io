@@ -146,12 +146,24 @@ A commit **in the hub repo**, not the project:
   false "registered = done" signal this runbook warns against.
 - Add the companion row to the site's `_data/projects.yml`.
 
-### 8. Commit on the project's working branch, then fast-forward
+### 8. Write the onboarding process report
+
+Onboarding is a fairyfox system interaction, so it ends with a process report in
+`notes/fairyfox-reports/YYYY-MM-DD-onboarding.md` (from
+[`templates/fairyfox-report.md`](../templates/fairyfox-report.md)). For an existing
+repo this is the **highest-value** report of all: capture every place "reconcile, not
+clobber" was awkward — what fought the template, what the runbook assumed that wasn't
+true here, what you had to decide by hand. That friction is exactly what the hub needs
+to make onboarding smoother. Mark the outcome honestly (`partial` is common and fine).
+See the [process-reports standard](process-reports.md). It's committed with the rest
+below.
+
+### 9. Commit on the project's working branch, then fast-forward
 
 Stage specific files (never `-A`; never `assets/references/*`):
 
 ```sh
-git add CLAUDE.md VERSION .gitignore notes
+git add CLAUDE.md VERSION .gitignore notes        # incl. notes/fairyfox-reports/
 git commit -m "chore: onboard into hub mesh (adopt standards + notes)"
 git push origin <work-branch>
 # if on the dev/main model:
@@ -201,8 +213,9 @@ to be onboarded; finding `missing` rows means it isn't.
 | 5 | **Mesh-awareness in `CLAUDE.md`** | The project's `CLAUDE.md` **actually contains** the "Cross-project standards & checking the fairyfox system for updates" standing instruction. **Open the file and confirm the text is there** — don't infer it from the project being registered. |
 | 6 | **Themed docs site** | `fairyfox.io/<key>/` serves a site **wearing the fairyfox theme** with the persistent **"← Back to Fairy Fox"** way-home link (project-forward branding is fine; theme + way-home are the bar). **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
 | 7 | Hub registration | Resolves in **both** registries with honest `adopts_hub` / `notes_system` flags; node + docs pages present. |
+| 8 | Process report | `notes/fairyfox-reports/` holds this onboarding's report, committed, with the reconcile friction and an honest outcome — [process-reports](process-reports.md). |
 
-**Reporting rule:** only call a project **"fully onboarded" when rows 1–7 are all
+**Reporting rule:** only call a project **"fully onboarded" when rows 1–8 are all
 `done`.** If any row is `partial` or `missing`, say exactly which — e.g. "registered
 and noted, but the docs site is unthemed JSDoc and the `CLAUDE.md` mesh block is
 missing." A clean hub-side registration is **not** a green light.

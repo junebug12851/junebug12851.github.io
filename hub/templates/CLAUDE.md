@@ -87,6 +87,14 @@ under `assets/references/`, diff it against what this project has adopted, and
 until the user clearly says go ahead; applying is a separate, confirmed act. Full
 procedure: the shared `adopting-updates` runbook (in `hub/standards/`).
 
+**After running any fairyfox system procedure, write a process report.** Every such
+run — setup, onboarding, adopting updates, or just checking for updates — ends with a
+short, honest report in `notes/fairyfox-reports/YYYY-MM-DD-<procedure>.md` (from
+`hub/templates/fairyfox-report.md`): what was done, what was rough, and suggestions
+to improve the procedure. It's the node's only way to feed real experience back; the
+hub reads these reports to improve the system. A check-only run writes one too. Full
+rule: the shared `process-reports` standard (in `hub/standards/`).
+
 **Guardrails (don't break these):** on-request only — never auto-pull or schedule
 cross-repo syncs (anti-recursion); the reference clone is read-only and
 git-ignored; never apply changes or rewrite history without an explicit go-ahead;

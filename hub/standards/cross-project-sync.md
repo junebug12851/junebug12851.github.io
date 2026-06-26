@@ -33,6 +33,12 @@ git -C assets/references clone --depth 1 --branch dev <project-url>      # first
 git -C assets/references/<project> pull --depth 1 --ff-only origin dev   # refresh
 ```
 
+What the hub reads out of these clones: the project's history (for blog round-ups)
+**and** its `notes/fairyfox-reports/` — the [process reports](process-reports.md) a
+node writes after running a system procedure, which the hub reviews to improve the
+standards. Both reuse this one read-only inbound flow; neither adds a connection
+between the repos.
+
 ### 2. Project reads the hub (outbound)
 
 The project keeps a read-only shallow clone of the hub under its own

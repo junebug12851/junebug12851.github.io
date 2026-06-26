@@ -95,6 +95,7 @@ The notes are a living document — keep them current as you work, by default.
 | Made / rejected a decision | `notes/decisions/architecture.md` / `rejected.md` |
 | A change warrants a version | Bump `VERSION`, same commit |
 | A convention becomes reusable across projects | Promote it to `hub/standards/` |
+| Ran a fairyfox system procedure here (a round-up, a report-review pass, adopting one of our own standards) | Write a process report in `notes/fairyfox-reports/YYYY-MM-DD-<procedure>.md` — fairyfox.io is a node too (`hub/standards/process-reports.md`) |
 | The setup or update procedure changes (git model, registry shape, template/skeleton layout, sync flow) | Keep the lifecycle runbooks current, by default: `hub/standards/new-project-setup.md`, `hub/standards/onboarding-existing-project.md`, and `hub/standards/adopting-updates.md` |
 | The site's visual design system changes (tokens, layout, components, cross-linking) — e.g. edits to `assets/css/main.css`, layouts, or includes | Keep the docs-site standard `hub/standards/docs-site/` in step, by default: the spec prose, `11-measurements-reference.md`, **and** the bundled snapshot `docs-site/reference/main.css`. fairyfox.io is the **master copy: manual review only, never auto-applied** here — but the *standard* must mirror what the site actually is |
 
@@ -124,3 +125,12 @@ docs/registry are internally consistent. Same posture as a node: **check and
 report first, act only on an explicit go-ahead.** The node-side adopting flow (the
 version projects run against this system) is defined in
 `hub/standards/adopting-updates.md`.
+
+**Reviewing the siblings' process reports is the hub's other inbound duty.** Each
+node writes a process report after running a system procedure, into its own
+`notes/fairyfox-reports/`; the hub reads those out of the same `assets/references/`
+clones and folds the feedback into the standards. On a *fairyfox*-named review
+request, read each sibling's reports past its `reports_through` marker in
+`hub/.last-seen.yml`, look for patterns, **report findings then stop**, and only
+improve `hub/standards/` on an explicit go-ahead — never edit a node to close out its
+report. Full procedure: `hub/standards/process-reports.md`.

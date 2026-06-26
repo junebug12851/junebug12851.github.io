@@ -27,6 +27,7 @@ current. Read [`status.md`](status.md) first for the actual current state.
 | `reference/` | Quick lookup, no story: [`git-workflow.md`](reference/git-workflow.md), [`versioning.md`](reference/versioning.md), [`deployment.md`](reference/deployment.md) (Pages/Actions), [`documentation.md`](reference/documentation.md), [`cross-project-sync.md`](reference/cross-project-sync.md) (the pull-only model), [`blogging-workflow.md`](reference/blogging-workflow.md) (how update posts get written). |
 | `decisions/` | Rationale: [`architecture.md`](decisions/architecture.md) (choices + why), [`rejected.md`](decisions/rejected.md) (things considered and not done). |
 | `plans/` | What's next: [`next-steps.md`](plans/next-steps.md), [`implementation.md`](plans/implementation.md) (the v2 build plan), [`future.md`](plans/future.md). |
+| [`fairyfox-reports/`](fairyfox-reports/README.md) | **Process reports** — the hub's own reports for each fairyfox system procedure it runs, and the home of the loop it reads from the siblings (`../hub/standards/process-reports.md`). |
 
 > **`version.md` vs `reference/versioning.md`** — easy to confuse. `version.md`
 > (+ `version/`) is the **changelog** (what changed). `reference/versioning.md`
@@ -91,4 +92,6 @@ notes/
     architecture.md  rejected.md
   plans/                 ← what comes next
     next-steps.md  implementation.md  future.md
+  fairyfox-reports/      ← process reports (this node's own runs; the loop the hub reads)
+    README.md  YYYY-MM-DD-<procedure>.md
 ```

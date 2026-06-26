@@ -50,7 +50,11 @@ a discussion, a decision). It appears automatically on the home page (latest few
 
 Runs on explicit request (a human ask or a scheduled prompt) — never silent automation;
 keeps the pull-on-request / anti-recursion rule intact
-([`cross-project-sync.md`](cross-project-sync.md)).
+([`cross-project-sync.md`](cross-project-sync.md)). The clones this pass refreshes also
+carry each node's `notes/fairyfox-reports/`; reviewing those **process reports** to
+improve the standards is a sibling pass with its own runbook
+([`../../hub/standards/process-reports.md`](../../hub/standards/process-reports.md)) —
+related but distinct from writing the day's post.
 
 1. **Refresh the clones.** For each project in
    [`../../hub/registry.yml`](../../hub/registry.yml), shallow-pull its `dev` branch into

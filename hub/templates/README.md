@@ -9,7 +9,8 @@ in [`../standards/`](../standards/) for the *why* behind each.
 | `CLAUDE.md` | repo root | Fill in the project identity, landmines, build/run, and any project-specific standing instructions. Follows [`../standards/ai-context.md`](../standards/ai-context.md). |
 | `VERSION` | repo root | Set the starting number (usually `0.1.0`). Follows [`../standards/versioning.md`](../standards/versioning.md). |
 | `project.gitignore` | merge into `.gitignore` | Adds the `assets/references/` ignore (+ common cruft). |
-| `notes-skeleton/` | `notes/` | The living-notes tree. Follows [`../standards/notes-system.md`](../standards/notes-system.md). |
+| `notes-skeleton/` | `notes/` | The living-notes tree (includes `fairyfox-reports/`). Follows [`../standards/notes-system.md`](../standards/notes-system.md). |
+| `fairyfox-report.md` | `notes/fairyfox-reports/YYYY-MM-DD-<procedure>.md` | One per run of a fairyfox system procedure — the feedback the hub reviews. Follows [`../standards/process-reports.md`](../standards/process-reports.md). |
 
 ## One-time adoption (run inside the project)
 

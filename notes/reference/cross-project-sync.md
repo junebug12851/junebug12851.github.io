@@ -37,7 +37,10 @@ git -C assets/references/<project> pull --depth 1 --ff-only origin dev
 ```
 
 What the hub does with them: diff against what was last seen and write a blog
-round-up of the changes — see [`blogging-workflow.md`](blogging-workflow.md).
+round-up of the changes — see [`blogging-workflow.md`](blogging-workflow.md) — **and**
+read each project's `notes/fairyfox-reports/` to review the [process reports](../../hub/standards/process-reports.md)
+nodes write after running a system procedure, folding that feedback into the shared
+standards. Both reuse this same read-only inbound clone; neither adds coupling.
 
 ### 2. Projects read the hub (outbound — to adopt shared standards)
 

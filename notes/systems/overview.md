@@ -55,6 +55,10 @@ explicit request**, both tracking the **`dev`** branch:
 - **No submodules, no live dependency, no build coupling.** Just git.
 - **Pull-only + on-request** is the anti-recursion rule: nothing here triggers a
   pull in the other repo, so there's no loop.
+- The inbound clones carry two things the hub reads: project **history** (for
+  round-ups) and each node's **process reports** (`notes/fairyfox-reports/`) — the
+  feedback loop where nodes report on each system run and the hub reviews it to
+  improve the standards ([`../../hub/standards/process-reports.md`](../../hub/standards/process-reports.md)).
 - Full model + commands: [`../reference/cross-project-sync.md`](../reference/cross-project-sync.md).
 
 ## How the four relate
