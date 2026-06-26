@@ -35,8 +35,11 @@ version elsewhere.
 
 ## Releases / tags
 
-Tag the release commit `vX.Y.Z` and push the tag — **on request, not
-automatically.** A clean tagged checkout shows the plain number with no `+g…`.
+**Every release on `main` is tagged** `vX.Y.Z` (the tag matches `VERSION`) and the
+tag is pushed as part of the release — see the
+[git-workflow standard](git-workflow.md). "Tagging" is a **deliberate release act**,
+not a per-commit automation: ordinary `dev` commits are never tagged. A clean tagged
+checkout shows the plain number with no `+g…`.
 
 ## Relationship to the changelog
 

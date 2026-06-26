@@ -228,12 +228,12 @@ to be onboarded; finding `missing` rows means it isn't.
 and noted, but the docs site is unthemed JSDoc and the `CLAUDE.md` mesh block is
 missing." A clean hub-side registration is **not** a green light.
 
-**Verifying under a held-`master` flow.** If you're committing on `dev` and holding
-`master` until an explicit go-ahead, the live `fairyfox.io/<key>/` page can't change
-until the final fast-forward. That's fine: **verify the built output locally**
+**Verifying under a held-release flow.** If you're committing on `dev` and holding
+the release to `main` until an explicit go-ahead, the live `fairyfox.io/<key>/` page
+can't change until that release. That's fine: **verify the built output locally**
 (open it in a browser) on each iteration, then do **one live re-verification of the
-served page after the FF + Pages deploy.** Local-during, live-once-after — Row 6 still
-gets its real look at a rendered page.
+served page after the release merge + Pages deploy.** Local-during, live-once-after —
+Row 6 still gets its real look at a rendered page.
 
 ## Gotchas
 
