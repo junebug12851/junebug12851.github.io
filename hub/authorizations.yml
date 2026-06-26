@@ -11,7 +11,8 @@
 #   This file is how the system "keeps track of" those express authorizations so a
 #   node can recognize a change as pre-authorized and skip ONLY that redundant
 #   pause — every other safety step (copy-not-clobber, divergence re-prompt,
-#   process report, reviewable commit, build-check, anti-recursion) still runs.
+#   process report, reviewable commit, full verification [build/tests + standards
+#   `## Verify` + project-constraint checks], anti-recursion) still runs.
 #
 #   Changes that originate here ARE guarded carefully; an authorization recorded
 #   below is the user's express, on-record go-ahead. A node adopting under it is
@@ -31,7 +32,10 @@
 #   - `expires` keeps a one-off rollout from lingering as a permanent bypass; use a
 #     date for a specific push, null only for a deliberate standing grant.
 #   - Safety is never bypassed — only the redundant confirmation pause is. A node
-#     still re-prompts before clobbering a deliberate local divergence.
+#     still re-prompts before clobbering a deliberate local divergence, and still
+#     runs the full verification floor (build/tests + standards `## Verify` +
+#     project-constraint checks, before AND after the apply). If verification can't
+#     be completed, the node does not auto-apply — it falls back to check-report-wait.
 #
 # Per entry:
 #   id            short kebab slug, unique

@@ -4,16 +4,21 @@
 # round-up pass (see notes/reference/blogging-workflow.md). Git-only awareness;
 # nothing here is a dependency.
 #
-# reports_through: the date of the newest process report (notes/fairyfox-reports/)
+# reports_through: the LIST of process-report filenames (notes/fairyfox-reports/)
 # this hub has already digested for that project, so the report-review pass knows
-# where to resume. Updated by the review pass — see hub/standards/process-reports.md.
-# null = none digested yet.
+# where to resume — it reads any report file NOT on the list. A filename list, not a
+# bare date or a commit SHA: two reports can share a date (and a same-day follow-on
+# can even sort lexically before its sibling), and a SHA won't survive a force-push,
+# so the filename is the only stable resume key. Updated (appended) by the review
+# pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
   commit: ef9578756201426b5815df49db4503265bb43c18
   branch: dev
   seen: 2026-06-26
-  reports_through: 2026-06-26   # 2026-06-26-adopting-updates.md digested → folded into standards 0.9.1
+  reports_through:             # digested-report filenames (append-only); see header
+    - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
+    - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
   # Covered through the project-side fairyfox-mesh onboarding (mesh-aware CLAUDE.md +
   # cross-project-sync adoption) and theming its Doxygen docs site to the fairyfox
   # design system (Case B — themed generator). Folded into the 2026-06-25 day post
@@ -27,7 +32,8 @@ random-ai-prompt:
   commit: 53fe12d13aaf8b9666d38ea88753747ced04e93a
   branch: dev
   seen: 2026-06-26
-  reports_through: 2026-06-26   # 2026-06-26-adopting-updates.md digested → folded into standards 0.9.1
+  reports_through:             # digested-report filenames (append-only); see header
+    - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
   # Covered through: project-side mesh onboarding + fairyfox-themed JSDoc docs, the
   # SFW-by-default + top-bar NSFW toggle (2.6.1), and adopting the git-flow standard
   # with the master → main rename (CI/Pages/release repointed). All folded into the

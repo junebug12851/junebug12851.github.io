@@ -69,8 +69,11 @@ Alongside the standards, the project also reads the hub's
 out of the same read-only clone. It records the go-aheads the system owner makes
 at the hub; a node adopting a change the ledger `covers` treats it as
 pre-authorized and skips its redundant confirmation pause — **but only that pause;
-every other adoption safety step still runs** (see
+every other adoption safety step still runs, and the verification floor (build/tests
++ standards `## Verify` + project-constraint checks, before and after the apply) is
+never skipped** (see
 [`adopting-updates.md`](adopting-updates.md#when-its-pre-authorized-coming-from-the-fairyfox-system)).
+If that verification can't be completed, the node falls back to check-report-wait.
 This is still a read, on request — it adds no automation and no push into the
 node, so anti-recursion holds.
 

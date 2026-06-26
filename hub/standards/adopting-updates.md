@@ -74,16 +74,28 @@ about to adopt**, the change is pre-authorized — it came from the fairyfox sys
 with the user's express go-ahead, so it is *not* an unprompted self-edit:
 
 - **Skip the "stop and wait" pause** and go straight into applying (steps 3–5).
-- **Keep every other safety step.** Still copy-not-clobber; still **re-prompt
-  before overwriting a deliberate local divergence** (see
-  [When the project has diverged](#when-the-project-has-diverged)); still write
-  the process report; still commit as a reviewable act; still build green. A
-  pre-authorization removes *one redundant confirmation*, never the safety floor.
+- **Keep every other safety step — the verification floor is never skipped.**
+  Still copy-not-clobber; still **re-prompt before overwriting a deliberate local
+  divergence** (see [When the project has diverged](#when-the-project-has-diverged));
+  still write the process report; still commit as a reviewable act. And still run
+  **full verification, before *and* after the apply**: reconcile without clobbering
+  local divergence, run the project's build/tests, run the standards
+  **compliance / `## Verify`** checks, and confirm the change stays within every
+  project constraint. A pre-authorization removes *one redundant confirmation*,
+  never the safety floor.
+- **If full verification can't be completed, do not auto-apply** — fall back to the
+  check-report-wait default. Pre-authorization (like any automated apply) buys you
+  out of the confirmation pause only, never out of verifying the result.
 
 If **nothing** in the ledger covers the change — or the entry has `expires`d —
 fall back to the normal check-and-report-then-stop default above. The user is fine
 with confirmation by default; the carve-out applies only to what they expressly
 authorized here.
+
+**Bootstrap case.** The first adoption that *introduces* express-authorization to a
+node can't itself ride the carve-out — the node has no express-auth machinery yet, so
+that one still takes the pause and the explicit go-ahead. Express-authorizations carry
+only on subsequent runs, once the node has actually adopted the feature.
 
 **Either way, write a process report.** Running this procedure — whether you applied
 anything or only checked and reported — is a fairyfox system interaction, so it ends
@@ -271,7 +283,10 @@ improves the project, on purpose." The hub is the source of truth for the shared
   `reset --hard` hit the mirror only.
 - If a run **skipped the pause**, an active [`hub/authorizations.yml`](../authorizations.yml)
   entry actually `covers`ed the change (not assumed), and the other safety steps still
-  ran — divergence re-prompt, process report, reviewable commit, build-check.
+  ran — divergence re-prompt, process report, reviewable commit, and **full
+  verification (build/tests + standards `## Verify` + project-constraint checks)
+  before and after**. If verification couldn't complete, the run fell back to
+  check-report-wait rather than auto-applying.
 - If the project builds/serves, it builds green.
 
 ## Anti-recursion reminders

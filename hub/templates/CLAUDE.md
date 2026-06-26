@@ -96,8 +96,11 @@ ledger (`hub/authorizations.yml`). If an active entry there `covers` the change
 you're adopting, the user **already gave the go-ahead at the system** — apply it
 directly, skipping the "wait" pause. Skip *only* that redundant pause: still
 reconcile (don't clobber local divergence — re-prompt if you would), still write
-the process report, still commit as a reviewable act. Nothing in the ledger covers
-it → fall back to check-report-wait.
+the process report, still commit as a reviewable act, and still run **full
+verification before *and* after** — build/tests, the standards `## Verify` /
+compliance checks, and the project's own constraints. If verification can't be
+completed, **do not auto-apply** — fall back to check-report-wait. Nothing in the
+ledger covers it → fall back to check-report-wait.
 
 **After running any fairyfox system procedure, write a process report.** Every such
 run — setup, onboarding, adopting updates, or just checking for updates — ends with a

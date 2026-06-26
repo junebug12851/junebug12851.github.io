@@ -133,10 +133,15 @@ request only**, never on a schedule that chains across repos.
    shallow-pull its `dev` into `assets/references/<project>/` (the re-clone fallback
    in [`adopting-updates.md`](adopting-updates.md) applies if a force-push blocks the
    fast-forward). Reading reports reuses the round-up clones — no new sync.
-2. **Read new reports.** In each node's `notes/fairyfox-reports/`, read the reports
-   written since the last review (track the cut-off the same way the round-up tracks
-   commits — see the `reports_through` marker in [`.last-seen.yml`](.last-seen.yml)).
-   Include the **hub's own** `notes/fairyfox-reports/` — fairyfox.io is a node too.
+2. **Read new reports.** In each node's `notes/fairyfox-reports/`, read every report
+   **not already in** that node's `reports_through` list in
+   [`.last-seen.yml`](.last-seen.yml). The marker is a **list of digested report
+   filenames**, not a bare date or a commit SHA: two reports can share a date (a
+   same-day follow-on like `…-adopting-updates-express-auth.md` even sorts
+   *lexically before* `…-adopting-updates.md`), and a SHA won't survive a force-push —
+   so a filename list is the only resume key that stays correct. Read any file whose
+   name isn't on the list. Include the **hub's own** `notes/fairyfox-reports/` —
+   fairyfox.io is a node too.
 3. **Synthesize.** Look across reports for **patterns**: the same friction reported by
    more than one node, or repeatedly by one, is a strong signal the standard (not the
    run) is at fault. A one-off may still be worth a fix, but patterns come first.
@@ -147,8 +152,9 @@ request only**, never on a schedule that chains across repos.
    affected `hub/standards/` / `hub/templates/` files **in the hub repo**, the normal
    git-flow way (changelog + `VERSION` in the same commit). The hub never edits a node
    to "close out" that node's report — it fixes the shared standard, and nodes pick the
-   improvement up later through ordinary [adoption](adopting-updates.md). Advance the
-   `reports_through` marker for the reports digested.
+   improvement up later through ordinary [adoption](adopting-updates.md). Append each
+   report you digested to that node's `reports_through` list (the marker is a
+   filename list, so advancing it is an append, never a date bump).
 
 **Invoking the review.** Like every cross-repo read here, it's gated on an explicit,
 *fairyfox*-named request paired with the intent — e.g. "review the fairyfox process
@@ -175,5 +181,6 @@ qualify (see the gate in [`adopting-updates.md`](adopting-updates.md)).
 - The front matter's `hub_version` is a **real version number** (usable as the next
   adoption's "last adopted" anchor), not a placeholder like "see VERSION at run time".
 - A check that became an adopt in one session is a **single combined** report, not two.
-- On the hub side, a review pass advanced `reports_through` only for reports it
-  actually digested, and any standard changes it made are hub-side commits.
+- On the hub side, a review pass appended to `reports_through` (the digested-report
+  **filename list**, not a date) only the reports it actually digested, and any
+  standard changes it made are hub-side commits.
