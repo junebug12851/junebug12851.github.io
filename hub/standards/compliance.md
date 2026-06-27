@@ -61,9 +61,9 @@ pass". A bare "check things" doesn't qualify (see the gate in
 [`adopting-updates.md`](adopting-updates.md)).
 
 1. **Pick the target.** The hub itself, or a node read out of the read-only
-   `assets/references/<project>/` clone (re-clone fallback in
-   [`adopting-updates.md`](adopting-updates.md) if a force-push blocks the pull). No new
-   sync — reuse the round-up clones.
+   `assets/references/<project>/` clone (single-branch full clone; the deepen/re-clone
+   recovery in [`adopting-updates.md`](adopting-updates.md) only if a stale shallow
+   mirror blocks the fast-forward). No new sync — reuse the round-up clones.
 2. **Run each matrix row** against the target, using that standard's `## Verify` check.
 3. **Report `done`/`partial`/`missing` per row**, naming the exact gap for anything not
    `done`. A clean-looking repo with one `missing` row is not compliant — say which.

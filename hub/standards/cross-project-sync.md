@@ -7,7 +7,7 @@ each other **without entanglement.**
 
 **Communication is git-only, one-directional per flow, and happens only on
 explicit request.** No submodules, no package dependency, no build-time coupling,
-no webhooks, no cross-repo automation. Each side *reads* a shallow clone of the
+no webhooks, no cross-repo automation. Each side *reads* a clone of the
 other when a human or AI deliberately asks. Both flows track the **`dev`** branch
 (latest work); fall back to a repo's default branch if it has no `dev`.
 
@@ -25,16 +25,20 @@ in a loop.
 
 ### 1. Hub reads projects (inbound)
 
-The hub keeps read-only shallow clones under `assets/references/<project>/`
-(git-ignored, never committed):
+The hub keeps read-only, **single-branch (full-history, not shallow)** clones under
+`assets/references/<project>/` (git-ignored, never committed):
 
 ```sh
-git -C assets/references clone --depth 1 --branch dev <project-url>      # first time
-git -C assets/references/<project> pull --depth 1 --ff-only origin dev   # refresh
-# refresh aborts? dev was force-pushed (routine) — reset the mirror, don't fight it:
-git -C assets/references/<project> fetch origin dev
-git -C assets/references/<project> reset --hard origin/dev               # mirror only — never a tracked branch
+git -C assets/references clone --branch dev --single-branch <project-url>   # first time
+git -C assets/references/<project> fetch origin dev                         # refresh
+git -C assets/references/<project> merge --ff-only origin/dev               #   fast-forward only
 ```
+
+Clone **one branch but full history** — *not* `--depth 1`. A shallow mirror can't
+compute a merge base, so `--ff-only` aborts with `refusing to merge unrelated
+histories` even on a perfectly clean fast-forward. That false signal is exactly what
+used to get misread as "dev was force-pushed" and answered with a needless
+`reset --hard`. A single-branch full clone fast-forwards every time.
 
 What the hub reads out of these clones: the project's history (for blog round-ups)
 **and** its `notes/fairyfox-reports/` — the [process reports](process-reports.md) a
@@ -44,21 +48,24 @@ between the repos.
 
 ### 2. Project reads the hub (outbound)
 
-The project keeps a read-only shallow clone of the hub under its own
-`assets/references/<hub>/` and **copies** what it needs out of `hub/standards/`
-and `hub/templates/` into its own tree, committing *that*:
+The project keeps a read-only, **single-branch (full-history, not shallow)** clone
+of the hub under its own `assets/references/<hub>/` and **copies** what it needs out
+of `hub/standards/` and `hub/templates/` into its own tree, committing *that*:
 
 ```sh
-git -C assets/references clone --depth 1 --branch dev <hub-url> <hub-name>   # first time
-git -C assets/references/<hub-name> pull --depth 1 --ff-only origin dev      # refresh
-# refresh aborts? hub dev was force-pushed (routine) — reset the mirror, don't fight it:
-git -C assets/references/<hub-name> fetch origin dev
-git -C assets/references/<hub-name> reset --hard origin/dev                  # mirror only — never a tracked branch
+git -C assets/references clone --branch dev --single-branch <hub-url> <hub-name>   # first time
+git -C assets/references/<hub-name> fetch origin dev                               # refresh
+git -C assets/references/<hub-name> merge --ff-only origin/dev                     #   fast-forward only
 ```
 
-The hub's `dev` is force-pushed routinely, so the `--ff-only` refresh will usually
-abort; the `reset --hard` (or a re-clone) on the **git-ignored mirror** is the
-expected fallback, never a `reset` of project history. Full detail:
+**`dev` is append-only across the whole mesh — nothing force-pushes `dev`** (a hard
+safety rule; see [`git-workflow.md`](git-workflow.md)). So the refresh is always a
+clean fast-forward. If `--ff-only` ever aborts, that is an **anomaly to investigate,
+not a routine to reset through**: almost always it is a leftover `--depth 1` shallow
+mirror that can't see the merge base — rebuild it full (`git fetch --unshallow`, or
+delete and re-clone single-branch). Only a genuine history rewrite would make a
+full-history mirror fail to fast-forward, and that should never happen here — stop
+and find out who rewrote it rather than papering over it. Full detail:
 [`adopting-updates.md`](adopting-updates.md) step 1.
 
 Adopting a standard is a **copy committed locally**, not a live link — re-pull
@@ -91,5 +98,5 @@ node, so anti-recursion holds.
 ## Why `assets/references/`, not submodules
 
 Submodules pin a commit and couple repos at clone/build time — the opposite of the
-goal. A throwaway shallow clone in a git-ignored folder gives the content to read
-with zero coupling and zero history weight.
+goal. A throwaway single-branch clone in a git-ignored folder gives the content to
+read with zero coupling and negligible history weight.

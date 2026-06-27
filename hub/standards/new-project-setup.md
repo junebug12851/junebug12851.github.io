@@ -55,12 +55,14 @@ git checkout -b dev          # all work lives here
 
 ### 2. Pull a read-only copy of the hub
 
-The hub is read by **shallow clone into a git-ignored folder** — never a
-submodule, never a dependency.
+The hub is read by **single-branch clone into a git-ignored folder** — never a
+submodule, never a dependency. Clone one branch but **full history** (not
+`--depth 1`), so later refreshes fast-forward cleanly instead of tripping a shallow
+mirror's missing merge base.
 
 ```sh
 mkdir -p assets/references
-git -C assets/references clone --depth 1 --branch dev \
+git -C assets/references clone --branch dev --single-branch \
     https://github.com/junebug12851/junebug12851.github.io fairyfox.io
 ```
 

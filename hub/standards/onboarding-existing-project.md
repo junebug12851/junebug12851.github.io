@@ -72,9 +72,12 @@ the rename.
 
 ```sh
 mkdir -p assets/references
-git -C assets/references clone --depth 1 --branch dev \
+git -C assets/references clone --branch dev --single-branch \
     https://github.com/junebug12851/junebug12851.github.io fairyfox.io
 ```
+
+Clone one branch but **full history** (not `--depth 1`) so later refreshes
+fast-forward cleanly — a shallow mirror can't compute the merge base and aborts.
 
 Git-ignored, read-only — never a submodule (see step 4 for the ignore line).
 

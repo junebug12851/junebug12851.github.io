@@ -5,7 +5,7 @@ node: <project-key>            # the repo this report is about (e.g. random-ai-p
 outcome: <completed | partial | checked-only | aborted>
 hub_version: <X.Y.Z>           # REAL version number (e.g. 0.9.1), not "see VERSION at run time" —
                                # the next adoption uses this as the "last adopted" anchor
-hub_commit: <short-sha>        # the hub dev commit the run was against (may vanish on force-push; version is the durable anchor)
+hub_commit: <short-sha>        # the hub dev commit the run was against (version is the durable anchor; the SHA can drift if the mirror is re-cloned)
 ---
 
 # Process Report — <procedure>, <YYYY-MM-DD>
