@@ -15,7 +15,7 @@ in [`../standards/`](../standards/) for the *why* behind each.
 ## One-time adoption (run inside the project)
 
 ```sh
-git -C assets/references clone --depth 1 --branch dev \
+git -C assets/references clone --branch dev --single-branch \
     https://github.com/junebug12851/junebug12851.github.io fairyfox.io
 H=assets/references/fairyfox.io/hub/templates
 

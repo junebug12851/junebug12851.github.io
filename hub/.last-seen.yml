@@ -8,8 +8,8 @@
 # this hub has already digested for that project, so the report-review pass knows
 # where to resume — it reads any report file NOT on the list. A filename list, not a
 # bare date or a commit SHA: two reports can share a date (and a same-day follow-on
-# can even sort lexically before its sibling), and a SHA won't survive a force-push,
-# so the filename is the only stable resume key. Updated (appended) by the review
+# can even sort lexically before its sibling), and a bare date or SHA is a fragile
+# resume key, so the filename is the stable one. Updated (appended) by the review
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:

@@ -30,8 +30,8 @@ track the **`dev`** branch. Full write-up:
 ## Adopting the standards in a project (quick start)
 
 ```sh
-# inside the project, pull a read-only copy of this hub
-git -C assets/references clone --depth 1 --branch dev \
+# inside the project, pull a read-only copy of this hub (one branch, full history — not shallow)
+git -C assets/references clone --branch dev --single-branch \
     https://github.com/junebug12851/junebug12851.github.io fairyfox.io
 
 # copy what you need into the project's own tree, then commit it there

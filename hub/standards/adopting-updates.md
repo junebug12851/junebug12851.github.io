@@ -46,8 +46,7 @@ of update it literally sounds like.
 
 **The default is check-and-report, then stop:**
 
-1. **Refresh** the read-only hub clone — step 1 below (with the re-clone
-   fallback).
+1. **Refresh** the read-only hub clone — a plain fast-forward; step 1 below.
 2. **Diff** what changed against what the project has adopted — step 2.
 3. **Report** a short summary: what changed in the hub, which project files
    adopting it would touch, and a recommended action.
@@ -119,45 +118,56 @@ zero risk of an unprompted edit or a cross-repo loop.
 
 ### 1. Refresh the read-only hub clone
 
-```sh
-git -C assets/references/fairyfox.io pull --depth 1 --ff-only origin dev
-```
-
-**Expect this to abort.** The hub's `dev` is force-pushed routinely (history is
-rewritten when work is squashed), so a `--ff-only` pull failing with
-`fatal: Not possible to fast-forward, aborting` is the *normal* case, not an error
-— don't fight it, fall straight through to the force-push refresh:
+The hub mirror is a single-branch, **full-history (not shallow)** clone. Refresh is
+a plain fast-forward:
 
 ```sh
-# preferred — lighter than a re-clone, keeps the old commit around for the diff in step 2:
 git -C assets/references/fairyfox.io fetch origin dev
-git -C assets/references/fairyfox.io reset --hard origin/dev
+git -C assets/references/fairyfox.io merge --ff-only origin/dev
+```
+
+**This should always succeed.** `dev` is append-only across the whole mesh — nothing
+force-pushes it (a hard safety rule, [`git-workflow.md`](git-workflow.md)) — so a
+full-history mirror fast-forwards cleanly every time. There is no "expect this to
+abort"; a clean refresh is the normal case.
+
+**If `--ff-only` aborts, diagnose — do *not* reach for `reset --hard`.** The abort is
+almost always a *stale shallow mirror*, not a force-push: an old `--depth 1` clone
+has no merge base, so git refuses with `refusing to merge unrelated histories` even
+on a perfectly clean fast-forward. (This false signal is what the procedure used to
+misread as a routine force-push.) Deepen the mirror to full history and retry:
+
+```sh
+# mirror is shallow from an old clone — deepen to full history, then fast-forward:
+git -C assets/references/fairyfox.io fetch --unshallow
+git -C assets/references/fairyfox.io merge --ff-only origin/dev
 ```
 
 ```sh
-# heavier equivalent, if the clone is corrupt or missing — delete and re-clone fresh:
+# or rebuild the disposable mirror from scratch (also fine if it's corrupt/missing):
 rm -rf assets/references/fairyfox.io
-git -C assets/references clone --depth 1 --branch dev \
+git -C assets/references clone --branch dev --single-branch \
     https://github.com/junebug12851/junebug12851.github.io fairyfox.io
 ```
 
-**`reset --hard` is allowed here and *only* here:** `assets/references/*` is a
-disposable, git-ignored **mirror of the hub**, never project history. This is the
-one carve-out from the "never `reset --hard` without an explicit request" safety
-rule — it can never rewrite your repo, because the clone isn't your repo. Never
-point a `reset --hard` at `main`/`dev` or anything tracked.
+If a **full-history** mirror still won't fast-forward, `dev` was genuinely
+rewritten — which must never happen here. **Stop and find out who or what rewrote it**
+before touching anything; do not bulldoze it.
 
-The clone is git-ignored, so fetching, resetting, or re-cloning never produces a
-commit.
+Deepening or rebuilding the **git-ignored mirror** is always safe — it isn't your
+repo, so it can never rewrite project history, and because it's git-ignored none of
+it produces a commit. The standing "never `reset --hard` / `rebase` / `clean -fd`
+without an explicit request" rule still applies in full to every **tracked** branch:
+never point any of them at `main`/`dev` or anything in your own history.
 
 ### 2. See what changed since you last adopted
 
-**Anchor on the hub VERSION, not a commit.** Because the hub's `dev` is
-force-pushed (step 1), the commit you last cloned may no longer exist, so
-`git log old..new` and a SHA-to-SHA diff are unreliable. The durable anchor is the
+**Anchor on the hub VERSION, not a commit.** The durable anchor is the
 **`hub_version` recorded in this project's most recent adopting-updates process
-report** (`notes/fairyfox-reports/`). That number survives any rewrite — it's your
-"last adopted" mark, no extra marker file needed.
+report** (`notes/fairyfox-reports/`): a human-readable number that stays valid even
+if the mirror is re-cloned, with no extra marker file to keep. (`dev` isn't
+force-pushed, so a last-adopted SHA would survive too — the version is simply the
+sturdier, self-documenting anchor, and it reads straight off the changelog.)
 
 So the primary signal is the **hub's append-only changelog**, read across that span:
 
@@ -245,14 +255,14 @@ git checkout dev
 [git-workflow standard](git-workflow.md#cutting-a-release).)
 
 **Close out — say what changed, where (unprompted).** An adoption touches several
-branches and may `reset --hard` the hub mirror; that combination looks alarming
-without a plain summary, so end every run with one — don't wait to be asked:
+branches, so end every run with a plain summary — don't wait to be asked:
 
 - `dev`: local vs `origin` — identical? (just pushed, so yes)
 - `main`: untouched except the release merge (or untouched entirely on a check-only run)
 - working tree: clean; `assets/references/` still git-ignored
-- **the only `reset --hard` was on the disposable `assets/references/` hub mirror —
-  project history was never rewritten** (state this explicitly whenever step 1 used it).
+- **anything done to refresh the hub mirror (a fast-forward, or an `--unshallow` /
+  re-clone if it was a stale shallow clone) touched only the disposable
+  `assets/references/` mirror — project history was never rewritten** (state explicitly).
 
 ## When the project has diverged
 
@@ -264,14 +274,13 @@ improves the project, on purpose." The hub is the source of truth for the shared
 
 ## Verify
 
-- `git status` is clean; `assets/references/` stayed untracked/ignored. Any
-  `reset --hard` during the run targeted **only** the git-ignored hub mirror, never a
-  tracked branch.
+- `git status` is clean; `assets/references/` stayed untracked/ignored. Any mirror
+  refresh (fast-forward, `--unshallow`, or re-clone) targeted **only** the git-ignored
+  hub mirror, never a tracked branch — and no routine `reset --hard` was needed.
 - The adopted change is present in the project's own tree (not just the
   reference clone).
 - "What changed" was scoped from the hub **changelog** across the version span (last
-  adopted `hub_version` → current hub `VERSION`), not from a SHA diff against a
-  force-pushed commit.
+  adopted `hub_version` → current hub `VERSION`).
 - Changelog + session log + (if bumped) `VERSION` ride in the same commit.
 - A **process report** for this run is in `notes/fairyfox-reports/` and committed —
   written even on a check-only run, **except** a check-only run on a node that hasn't
@@ -279,8 +288,8 @@ improves the project, on purpose." The hub is the source of truth for the shared
   ([process-reports standard](process-reports.md)).
 - If `release.yml` owns tagging, the release **did not** hand-push a tag; otherwise the
   hand tag matches `VERSION`.
-- The run ended with a **close-out** stating `dev`/`main` status and that any
-  `reset --hard` hit the mirror only.
+- The run ended with a **close-out** stating `dev`/`main` status and that any hub-mirror
+  refresh (fast-forward / `--unshallow` / re-clone) hit the git-ignored mirror only.
 - If a run **skipped the pause**, an active [`hub/authorizations.yml`](../authorizations.yml)
   entry actually `covers`ed the change (not assumed), and the other safety steps still
   ran — divergence re-prompt, process report, reviewable commit, and **full

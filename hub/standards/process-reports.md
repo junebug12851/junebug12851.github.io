@@ -29,7 +29,7 @@ wastes the loop. Say what was awkward even when the run succeeded.
 
 **A report is just a note in the node's own repo. It travels the same git-only,
 read-only, on-request inbound flow everything else does — the node never pushes a
-report to the hub.** The hub *reads* reports out of the read-only shallow clones it
+report to the hub.** The hub *reads* reports out of the read-only clones it
 already keeps under `assets/references/<project>/` (the same ones it pulls for blog
 round-ups), exactly when a human or AI asks it to. Nothing about writing a report
 reaches across repos, so it can't trigger anything downstream — the anti-recursion
@@ -103,8 +103,8 @@ The shape, in short:
   line (`completed` · `partial` · `checked-only` · `aborted`), and the hub version /
   commit the procedure was run against. The **`hub_version`** here doubles as the
   node's "last adopted hub version" anchor: the next adoption reads it from the newest
-  `*-adopting-updates.md` report to bound "what changed since," instead of relying on a
-  commit SHA that a hub force-push may have erased (see
+  `*-adopting-updates.md` report to bound "what changed since," a sturdier, self-
+  documenting anchor than a commit SHA across a mirror re-clone (see
   [`adopting-updates.md`](adopting-updates.md) step 2). Record a real version number,
   not "see VERSION at run time," so the anchor is usable.
 - **What was done** — the actual path taken, step by step at a useful grain. Note
@@ -130,16 +130,18 @@ This is the **inbound** side — the hub reading the nodes — and it runs **on 
 request only**, never on a schedule that chains across repos.
 
 1. **Refresh the clones.** For each project in [`../registry.yml`](registry.yml),
-   shallow-pull its `dev` into `assets/references/<project>/` (the re-clone fallback
-   in [`adopting-updates.md`](adopting-updates.md) applies if a force-push blocks the
-   fast-forward). Reading reports reuses the round-up clones — no new sync.
+   fast-forward its `dev` in `assets/references/<project>/` (a single-branch
+   full-history clone — `fetch` + `merge --ff-only`; the deepen/re-clone recovery in
+   [`adopting-updates.md`](adopting-updates.md) step 1 applies only if a leftover
+   shallow mirror blocks the fast-forward). Reading reports reuses the round-up clones
+   — no new sync.
 2. **Read new reports.** In each node's `notes/fairyfox-reports/`, read every report
    **not already in** that node's `reports_through` list in
    [`.last-seen.yml`](.last-seen.yml). The marker is a **list of digested report
    filenames**, not a bare date or a commit SHA: two reports can share a date (a
    same-day follow-on like `…-adopting-updates-express-auth.md` even sorts
-   *lexically before* `…-adopting-updates.md`), and a SHA won't survive a force-push —
-   so a filename list is the only resume key that stays correct. Read any file whose
+   *lexically before* `…-adopting-updates.md`), and a bare date or commit SHA is a
+   fragile resume key — so a filename list is the one that stays correct. Read any file whose
    name isn't on the list. Include the **hub's own** `notes/fairyfox-reports/` —
    fairyfox.io is a node too.
 3. **Synthesize.** Look across reports for **patterns**: the same friction reported by
