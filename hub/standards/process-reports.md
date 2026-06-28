@@ -106,7 +106,9 @@ The shape, in short:
   `*-adopting-updates.md` report to bound "what changed since," a sturdier, self-
   documenting anchor than a commit SHA across a mirror re-clone (see
   [`adopting-updates.md`](adopting-updates.md) step 2). Record a real version number,
-  not "see VERSION at run time," so the anchor is usable.
+  not "see VERSION at run time," so the anchor is usable. If an earlier report left a
+  placeholder, backfill the real number (read it off the hub changelog) so the next
+  adoption still has a stable anchor.
 - **What was done** — the actual path taken, step by step at a useful grain. Note
   any deviation from the runbook and why.
 - **What went well** — what was clear and worked first try (so it doesn't get

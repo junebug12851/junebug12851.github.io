@@ -19,6 +19,7 @@ pokered-save-editor-2:
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
+    - 2026-06-26-check-for-updates.md            # digested 2026-06-28 report-review (0.9.8) — no-change confirming pass, nothing to fold
   # Covered through the project-side fairyfox-mesh onboarding (mesh-aware CLAUDE.md +
   # cross-project-sync adoption) and theming its Doxygen docs site to the fairyfox
   # design system (Case B — themed generator). Folded into the 2026-06-25 day post
@@ -44,6 +45,16 @@ random-ai-prompt:
   seen: 2026-06-28
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
+    - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
+    - 2026-06-26-adopting-updates-3.md           # digested 0.9.8 — verification floor already in 0.9.3; the "promote reset --hard" ask superseded by 0.9.6
+    - 2026-06-27-adopting-updates.md             # digested 0.9.8 — working-tree sanity-check (adopting-updates check flow); "promote reset --hard" ask superseded by 0.9.6
+  # 2026-06-28 report-review (0.9.8): digested the three reports above + PSE2's check-for-updates.
+  # Folded Theme B (elevate CI-owns-tag to a callout in git-workflow.md "Cutting a release"),
+  # Theme C (backfill note for stale hub_version placeholders in process-reports.md), and Theme D
+  # (check-only runs glance at the node's own working tree — mid-merge/conflicts/detached HEAD —
+  # in adopting-updates.md). The siblings' recurring "promote the reset --hard force-push fallback"
+  # request was NOT adopted: 0.9.6 already established that was a shallow-mirror misread, not a real
+  # force-push; instead added a pre-0.9.6 re-adopt nudge to adopting-updates.md step 1.
   # Covered through: project-side mesh onboarding + fairyfox-themed JSDoc docs, the
   # SFW-by-default + top-bar NSFW toggle (2.6.1), and adopting the git-flow standard
   # with the master → main rename (CI/Pages/release repointed). All folded into the

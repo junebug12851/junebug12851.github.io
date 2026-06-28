@@ -69,6 +69,13 @@ the feature is legible in history and revertible in one move
 **The release path is set by the SemVer level** (see the versioning standard) — this
 is the compromise that keeps ceremony proportional to the change:
 
+> **First check `release.yml`.** If the project's CI creates the version tag itself on
+> the `main` push (a *tag-gated* release), do **not** hand-tag in the commands below —
+> a hand-pushed tag makes the gated run find the tag already present and skip itself, a
+> silent no-op release. In that case drop the `git tag`/`--tags` lines and just push
+> `main`. Full rule: [Who creates the tag](#who-creates-the-tag--ci-vs-by-hand) below.
+> The `git tag …` lines that follow are the **by-hand** path.
+
 - **PATCH** (the default — fixes, docs, ordinary changes): release **directly**
   `dev → main`. No release branch — patches are frequent and low-stakes.
 
