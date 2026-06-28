@@ -48,9 +48,15 @@ of update it literally sounds like.
 
 1. **Refresh** the read-only hub clone — a plain fast-forward; step 1 below.
 2. **Diff** what changed against what the project has adopted — step 2.
-3. **Report** a short summary: what changed in the hub, which project files
+3. **Glance at the node's own working tree.** A check is the right moment to catch
+   trouble that has nothing to do with the hub: a half-finished merge, unresolved
+   conflicts, a detached HEAD, or a large unpushed divergence. Surface anything
+   alarming in the report — but do **not** act on it (resolving it is out of fairyfox
+   scope, and the git-safety rules forbid an unattended run from touching it). A
+   scheduled check is often the only thing positioned to notice a stuck local state.
+4. **Report** a short summary: what changed in the hub, which project files
    adopting it would touch, and a recommended action.
-4. **Stop and wait.** Apply **nothing** yet.
+5. **Stop and wait.** Apply **nothing** yet.
 
 Continue into applying (steps 3–5: apply by hand → record → commit) only when the
 user clearly says to go ahead — again, in whatever words ("yeah do it", "adopt
@@ -130,6 +136,13 @@ git -C assets/references/fairyfox.io merge --ff-only origin/dev
 force-pushes it (a hard safety rule, [`git-workflow.md`](git-workflow.md)) — so a
 full-history mirror fast-forwards cleanly every time. There is no "expect this to
 abort"; a clean refresh is the normal case.
+
+> **Carrying pre-0.9.6 wording?** If this project's adopted copy of the sync runbook
+> still says `dev` is "force-pushed routinely" and tells you to `reset --hard` on every
+> refresh, that's the old **shallow-mirror misread** — re-adopt this corrected step
+> (plain `fetch` + `--ff-only`; treat an abort as a stale shallow clone to deepen, not
+> a force-push to bulldoze), and if your mirror is shallow, `--unshallow` or re-clone it
+> once so future refreshes fast-forward.
 
 **If `--ff-only` aborts, diagnose — do *not* reach for `reset --hard`.** The abort is
 almost always a *stale shallow mirror*, not a force-push: an old `--depth 1` clone
@@ -290,6 +303,9 @@ improves the project, on purpose." The hub is the source of truth for the shared
   hand tag matches `VERSION`.
 - The run ended with a **close-out** stating `dev`/`main` status and that any hub-mirror
   refresh (fast-forward / `--unshallow` / re-clone) hit the git-ignored mirror only.
+- On a **check-only** run, the node's own working tree was glanced at and anything
+  alarming (mid-merge, conflicts, detached HEAD, large unpushed divergence) was
+  surfaced in the report **without** being acted on.
 - If a run **skipped the pause**, an active [`hub/authorizations.yml`](../authorizations.yml)
   entry actually `covers`ed the change (not assumed), and the other safety steps still
   ran — divergence re-prompt, process report, reviewable commit, and **full
