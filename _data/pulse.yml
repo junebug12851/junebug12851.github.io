@@ -8,18 +8,18 @@
 # changes : recent micro-changes for the scrolling ticker (newest first)
 #           c = a CSS colour var so it adapts to light/dark
 
-bars: [19, 26, 15, 7, 4, 12, 21, 29, 17, 10, 8, 15, 25, 31, 14, 6, 11, 20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3]
+bars: [26, 15, 7, 4, 12, 21, 29, 17, 10, 8, 15, 25, 31, 14, 6, 11, 20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38]
 
 changes:
-  - { c: "var(--green)", text: "Random AI Prompt: prompts dispatch to 16+ image-generation providers", when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt: photo gallery + single-image view with metadata",   when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt: per-prompt image batches + central output folder",  when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt: AI rewrite pass before image generation",           when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.7.0 — two-engine split, v3-only",                  when: "1d" }
-  - { c: "var(--pink)",  text: "Pokered Save Editor 2 adopts express authorizations",                 when: "1d" }
-  - { c: "var(--coral)", text: "Standards: verification floor for express-authorized adoption",       when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt adopts process-reports + compliance",                when: "1d" }
-  - { c: "var(--pink)",  text: "Pokered Save Editor 2 adopts git-flow + process-reports",             when: "2d" }
-  - { c: "var(--coral)", text: "Standards compliance audit + per-standard Verify checks",             when: "2d" }
-  - { c: "var(--coral)", text: "Process-reports standard — the mesh's feedback loop",                 when: "2d" }
-  - { c: "var(--pink)",  text: "Pokered Save Editor 2: fairyfox-themed docs site",                    when: "3d" }
+  - { c: "var(--green)", text: "Random AI Prompt: stripped online build live at prompt.fairyfox.io",   when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.10.0 — DPL intensity dial ({#name NN%}, auto-scaling)", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt: provider header redesign — dropdown + per-key BYOK",  when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt: keyword tooling + DPL insert toolbar",                when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt: CodeMirror DPL editors with highlight + autocomplete", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt: content refactor across all five DPL categories",     when: "1d" }
+  - { c: "var(--coral)", text: "Standards: full-history mirrors — the phantom force-push is gone (0.9.6)", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt: prompts dispatch to 16+ image-generation providers",  when: "2d" }
+  - { c: "var(--green)", text: "Random AI Prompt: photo gallery + single-image view with metadata",     when: "2d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.7.0 — two-engine split, v3-only",                    when: "2d" }
+  - { c: "var(--pink)",  text: "Pokered Save Editor 2 adopts express authorizations",                   when: "2d" }
+  - { c: "var(--coral)", text: "Standards: process-reports loop + compliance audit",                   when: "3d" }

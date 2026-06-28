@@ -54,10 +54,10 @@
     prompts to many image-generation providers and keeps a built-in photo gallery.
   tags: [JavaScript, Node 24, Web UI]
   lifecycle: released
-  version: "2.7.25"
+  version: "2.10.4"
   activity: active
-  updated: "Jun 26, 2026"
-  updated_iso: "2026-06-26"
+  updated: "Jun 27, 2026"
+  updated_iso: "2026-06-27"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -95,7 +95,7 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.9.5"
+  version: "0.9.6"
   activity: active
   updated: "Jun 27, 2026"
   updated_iso: "2026-06-27"
