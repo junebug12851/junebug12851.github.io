@@ -15,7 +15,7 @@
 pokered-save-editor-2:
   commit: 1bae326187b72c9eb8c67d716c44e1a887d52738
   branch: dev
-  seen: 2026-06-27
+  seen: 2026-06-28
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -35,11 +35,13 @@ pokered-save-editor-2:
   # 0.9.4, no change to adopt (still 0.14.2-alpha). No-op docs/notes; nothing blog-notable.
   # Marker advanced 3ff32c6 → 1bae326. (It also added a new fairyfox report file,
   # 2026-06-26-check-for-updates.md — left for the inbound report-review pass, not this one.)
+  # 2026-06-28 round-up: no new commits past 1bae326 (still 0.14.2-alpha). Nothing to blog.
+  # Marker unchanged; seen advanced to 2026-06-28.
 
 random-ai-prompt:
-  commit: 1868b588073580a6486852cf7b69b46627ff2821
+  commit: e491232a7e4a0bdcf01a40583e58b5a3c4845cab
   branch: dev
-  seen: 2026-06-27
+  seen: 2026-06-28
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
   # Covered through: project-side mesh onboarding + fairyfox-themed JSDoc docs, the
@@ -60,3 +62,12 @@ random-ai-prompt:
   # .json metadata sidecars (keys stripped). Also re-synced the 0.9.2/0.9.3 standards deltas
   # (commits f0cf652/0cd35ce, no version bump). Folded into the 2026-06-26 day post
   # ("The prompt tool starts generating images"). Marker → 1868b58, VERSION 2.7.0 → 2.7.25.
+  # 2026-06-28 round-up: 1868b58 → e491232, 32 commits all dated 2026-06-27, VERSION 2.7.25 → 2.10.4.
+  # (Mirror hit an "incorrect old value" fetch anomaly mid-refresh — re-cloned fresh, full history,
+  # per the 0.9.6 standard.) The 2.7.26–2.10.4 line: CodeMirror DPL editors, sidecar priority+nsfw,
+  # result/gallery polish, the stripped generate-only ONLINE build (now hosted at prompt.fairyfox.io
+  # via Netlify), keyword tooling + DPL insert bar, the provider-header redesign (Providers dropdown +
+  # per-key BYOK + Prompt/Negative switch), and the headline DPL intensity dial ({#name NN%}, conditions,
+  # auto-scaling) with a content refactor across all five categories (incl. stripping masterpiece/best-
+  # quality from the default wrapper). Folded into the 2026-06-27 day post
+  # ("A dial for the prompt language, a home for it online…"). Marker → e491232, VERSION 2.7.25 → 2.10.4.

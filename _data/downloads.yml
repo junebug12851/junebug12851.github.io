@@ -140,7 +140,8 @@
   docs_url: null
   note: >-
     This one is a JavaScript tool with a web UI — there are no packaged binaries
-    to download; you run it from source with Node.
+    to download; you run it from source with Node. A stripped, generate-only build
+    is also hosted online at <a href="https://prompt.fairyfox.io">prompt.fairyfox.io</a>.
   tabs:
     - label: "Run it (Node)"
       badge: Recommended
