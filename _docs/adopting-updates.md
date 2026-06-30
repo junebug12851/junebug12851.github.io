@@ -24,9 +24,10 @@ reviewable edit.
 ## Checking for updates is report-first
 
 When a project is asked to check the hub for updates, the default is
-**check-and-report, then stop**: refresh the read-only hub clone (with a re-clone
-fallback if a force-push makes the shallow pull abort), diff what changed against
-what the project has adopted, report a short summary of what changed and which
+**check-and-report, then stop**: refresh the read-only hub clone (a plain
+fast-forward, or just re-clone the disposable mirror if that ever fails), diff what
+changed against what the project has adopted, report a short summary of what changed
+and which
 files adopting it would touch — and then wait. Nothing is applied until an
 explicit go-ahead. The node can *discover and explain* updates on its own, but
 never *changes itself* without confirmation.

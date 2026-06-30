@@ -52,9 +52,9 @@ request, both tracking the `dev` branch:
   ┌─────────────────────────────┐      ┌──────────────────────────────┐
   │ fairyfox.io                  │      │ some-project                 │
   │  assets/references/<proj>  <─┼──────┤  (its dev branch)            │
-  │   (shallow clone, ignored)  │ pull │                              │
+  │   (clone, ignored)          │ pull │                              │
   │                             │      │  assets/references/fairyfox <┼── pull
-  │  hub/  ─────────────────────┼──────┼─> (shallow clone of hub dev) │
+  │  hub/  ─────────────────────┼──────┼─> (clone of hub dev)         │
   └─────────────────────────────┘      └──────────────────────────────┘
 ```
 

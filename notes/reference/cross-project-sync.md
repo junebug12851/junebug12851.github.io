@@ -24,9 +24,8 @@ Both track the **`dev`** branch (latest work).
 
 ### 1. Hub reads projects (inbound — for blogging + awareness)
 
-The hub keeps read-only, single-branch (full-history, **not shallow**) clones of
-each registered project under `assets/references/<project>/` (git-ignored — never
-committed).
+The hub keeps read-only, single-branch clones of each registered project under
+`assets/references/<project>/` (git-ignored — never committed).
 
 ```sh
 # first time
@@ -46,9 +45,9 @@ standards. Both reuse this same read-only inbound clone; neither adds coupling.
 
 ### 2. Projects read the hub (outbound — to adopt shared standards)
 
-Each project keeps its own read-only, single-branch (full-history, **not shallow**)
-clone of this hub under *its* `assets/references/fairyfox.io/` and refreshes it to
-pull the shared standards in `hub/`:
+Each project keeps its own read-only, single-branch clone of this hub under *its*
+`assets/references/fairyfox.io/` and refreshes it to pull the shared standards in
+`hub/`:
 
 ```sh
 # inside some-project, first time
@@ -60,11 +59,10 @@ git -C assets/references/fairyfox.io fetch origin dev
 git -C assets/references/fairyfox.io merge --ff-only origin/dev
 ```
 
-If a refresh ever *won't* fast-forward, it is almost certainly a leftover
-`--depth 1` shallow mirror (no merge base → `refusing to merge unrelated histories`);
-deepen it with `git fetch --unshallow` or delete and re-clone it. Don't `reset --hard`
-through it — `dev` is append-only and a genuine non-fast-forward would be an anomaly
-to investigate. Full detail: [`adopting-updates`'s mirror-refresh step](../../hub/standards/adopting-updates.md).
+If a refresh ever *won't* fast-forward, the git-ignored mirror is disposable — just
+delete and re-clone it. Don't `reset --hard` through it — `dev` is append-only and a
+genuine non-fast-forward would be an anomaly to investigate. Full detail:
+[`adopting-updates`'s mirror-refresh step](../../hub/standards/adopting-updates.md).
 
 The project then copies what it needs out of `hub/standards/` and
 `hub/templates/` into its own tree (and commits *that* — the standard becomes

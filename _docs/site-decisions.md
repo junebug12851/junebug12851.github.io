@@ -47,7 +47,7 @@ owner's first person and not as a personal brand — see
 
 **Git submodules for sharing** — rejected. Submodules pin a commit and couple
 repositories at clone and build time, the opposite of the loose wiring wanted here.
-Replaced by on-demand shallow clones in a git-ignored folder.
+Replaced by on-demand clones in a git-ignored folder.
 
 **Automatic cross-repository triggers** (webhooks, CI chaining) — rejected. Having
 one repository's update automatically build another is the recursion risk the model

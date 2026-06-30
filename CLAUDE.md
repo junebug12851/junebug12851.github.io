@@ -34,7 +34,7 @@ The full notes system is in `notes/` (map: `notes/README.md`). Quick index:
   sandbox is unreliable here (stale/truncated reads, can corrupt data). All shell
   work goes through PowerShell on the real Windows machine; file work through
   Read/Write/Edit.
-- **Never commit `assets/references/*`** — those are read-only shallow clones of
+- **Never commit `assets/references/*`** — those are read-only clones of
   OTHER repos (git-ignored). Committing them nests repos and bloats history.
 - **`notes/`, `hub/`, and `assets/references/` are excluded from the site** in
   `_config.yml`. If you add a top-level folder that shouldn't publish, exclude it.
@@ -61,6 +61,12 @@ Deploy is automatic: every push to `main` runs `.github/workflows/pages.yml`
 (Bundler + Jekyll → Pages). See `notes/reference/deployment.md`.
 
 ## Default Workflow — Do These By Default (a standing instruction)
+
+**Plan before you execute.** For non-trivial work (multiple files/steps, a real
+decision), write a short structured plan **first** — decisions, work breakdown by
+file/area, open items, release shape — in `notes/plans/`, then execute against it
+(for execution reliability, not paperwork; trivial one-step changes are exempt). See
+`hub/standards/planning.md`.
 
 After making changes, without being asked:
 

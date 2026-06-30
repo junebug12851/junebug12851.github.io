@@ -35,7 +35,7 @@ data flow of each piece see [`../systems/overview.md`](../systems/overview.md).
 ├─ assets/
 │  ├─ css/main.css     the theme
 │  ├─ favicon.svg
-│  └─ references/      shallow clones of OTHER repos (git-ignored; read-only)
+│  └─ references/      clones of OTHER repos (git-ignored; read-only)
 ├─ .github/workflows/pages.yml   build + deploy
 ├─ CLAUDE.md           AI-context entry point
 ├─ notes/              this living-notes system (excluded from the site)

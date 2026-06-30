@@ -45,10 +45,10 @@ explicit request**, both tracking the **`dev`** branch:
   ┌─────────────────────────────┐      ┌──────────────────────────────┐
   │ fairyfox.io                  │      │ some-project                 │
   │  assets/references/<proj>  <─┼──────┤  (its dev branch)            │
-  │   (shallow clone of proj    │ pull │                              │
-  │    dev; git-ignored)        │ dev  │                              │
+  │   (clone of proj dev;       │ pull │                              │
+  │    git-ignored)             │ dev  │                              │
   │                             │      │  assets/references/fairyfox  <┼── pull
-  │  hub/  ─────────────────────┼──────┼─> (shallow clone of hub dev) │   dev
+  │  hub/  ─────────────────────┼──────┼─> (clone of hub dev)         │   dev
   └─────────────────────────────┘      └──────────────────────────────┘
 ```
 

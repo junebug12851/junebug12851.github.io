@@ -50,8 +50,10 @@ index that drives the pass.
 | [ai-context](ai-context.md) | the six required `CLAUDE.md` pieces match the template | [ai-context `## Verify`](ai-context.md#verify-is-it-being-followed) — root `CLAUDE.md` has all six; workflow matches git-flow |
 | [cross-project-sync](cross-project-sync.md) | the inbound/outbound flows match the runbooks, incl. the express-authorization ledger read | [cross-project-sync anti-recursion checklist](cross-project-sync.md#anti-recursion-checklist) — pulls on-request, read-only, git-ignored, copy-not-link; the [`authorizations.yml`](../authorizations.yml) ledger is read-only and only skips a prompt (never lets the hub act on a node) |
 | [process-reports](process-reports.md) | the report step is wired into all three runbooks + skeleton | [process-reports `## Verify`](process-reports.md#verify) — a real report per run; `reports_through` advanced honestly |
-| [docs-site](docs-site/) | tokens/layout/components match the bundled `reference/main.css` snapshot | [docs-site compliance checklist](docs-site/08-compliance-checklist.md) — themed site + way-home link |
-| lifecycle runbooks ([setup](new-project-setup.md) · [onboard](onboarding-existing-project.md) · [adopt](adopting-updates.md)) | each runbook's release path matches git-workflow | their own `Verify`/checklist rows; no stale `--ff-only` release wording |
+| [docs-site](docs-site/) | tokens/layout/components match the bundled `reference/main.css` snapshot | [docs-site compliance checklist](docs-site/08-compliance-checklist.md) — node appears as a page of the site (shared chrome, brand/Home as way-home) |
+| [deployment](deployment.md) | the static→Pages / app→Netlify policy + games exception stated in spec and reflected in the registry | [deployment `## Verify`](deployment.md#verify-is-it-being-followed) — each project's live URL matches its kind; games on `fairyfox.io/games/`; recorded exceptions only |
+| [planning](planning.md) | plan-before-execute stated in the CLAUDE template's Default Workflow (and each project's `CLAUDE.md`) | [planning `## Verify`](planning.md#verify-is-it-being-followed) — substantive work has a written plan before execution |
+| lifecycle runbooks ([setup](new-project-setup.md) · [onboard](onboarding-existing-project.md) · [adopt](adopting-updates.md)) | each runbook's release path matches git-workflow | their own `Verify`/checklist rows; no stale release wording |
 
 ## How to run it (on request only)
 
@@ -61,9 +63,9 @@ pass". A bare "check things" doesn't qualify (see the gate in
 [`adopting-updates.md`](adopting-updates.md)).
 
 1. **Pick the target.** The hub itself, or a node read out of the read-only
-   `assets/references/<project>/` clone (single-branch full clone; the deepen/re-clone
-   recovery in [`adopting-updates.md`](adopting-updates.md) only if a stale shallow
-   mirror blocks the fast-forward). No new sync — reuse the round-up clones.
+   `assets/references/<project>/` clone (an ordinary single-branch clone; if a refresh
+   ever fails, just delete and re-clone the disposable mirror). No new sync — reuse the
+   round-up clones.
 2. **Run each matrix row** against the target, using that standard's `## Verify` check.
 3. **Report `done`/`partial`/`missing` per row**, naming the exact gap for anything not
    `done`. A clean-looking repo with one `missing` row is not compliant — say which.

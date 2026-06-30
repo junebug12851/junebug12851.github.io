@@ -77,19 +77,19 @@ generator itself.** This is a first-class, supported path. The technique:
   docdash's `styles/jsdoc.css`). Use the bundled
   [`reference/main.css`](reference/) and [`11-measurements-reference.md`](11-measurements-reference.md)
   as the exact source.
-- **Inject the brand + way-home into the generator's *own* layout — don't overlay a
+- **Inject the shared chrome into the generator's *own* layout — don't overlay a
   separate bar.** A bolted-on sticky header fights a generator's fixed sidebar
-  (overlap, horizontal scroll). Instead inject the project brand and the "← Back to
-  Fairy Fox" link **into the generator's persistent sidebar/DOM** (most generators
-  expose a `scripts`/template hook). Work *with* the generator's structure, not on
-  top of it.
+  (overlap, horizontal scroll). Instead inject the **Fairy Fox brand + Home link** (the
+  way home — no separate back-button) **into the generator's persistent sidebar/DOM**
+  (most generators expose a `scripts`/template hook). Work *with* the generator's
+  structure, not on top of it.
 - **Verify your assets actually land in the output.** A generator may *reference*
   your custom CSS/JS in every page's `<head>` but **not copy the files** into the
   build (the docdash `scripts` gotcha → 404s in CI). Make the build step copy your
   theme files (and any logo) into the output directory, and confirm they're there.
-- **Lead with the project's own brand** in that injected sidebar — that's the
-  [project-forward branding](05-navigation-and-cross-linking.md) the standard now
-  expects; the theme + the way-home carry the mesh connection.
+- **Lead with the project's own brand** in that injected sidebar's sub-brand — that's
+  the [project-forward branding](05-navigation-and-cross-linking.md) the standard
+  expects; the shared chrome (theme + brand/Home link) carries the mesh connection.
 
 Per-generator landmines to expect: hard-coded light backgrounds (forces full
 replacement, not overrides); fixed-sidebar layouts (inject into them, don't overlay);

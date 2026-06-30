@@ -25,8 +25,8 @@ in a loop.
 
 ### 1. Hub reads projects (inbound)
 
-The hub keeps read-only, **single-branch (full-history, not shallow)** clones under
-`assets/references/<project>/` (git-ignored, never committed):
+The hub keeps read-only, single-branch clones under `assets/references/<project>/`
+(git-ignored, never committed):
 
 ```sh
 git -C assets/references clone --branch dev --single-branch <project-url>   # first time
@@ -34,11 +34,8 @@ git -C assets/references/<project> fetch origin dev                         # re
 git -C assets/references/<project> merge --ff-only origin/dev               #   fast-forward only
 ```
 
-Clone **one branch but full history** — *not* `--depth 1`. A shallow mirror can't
-compute a merge base, so `--ff-only` aborts with `refusing to merge unrelated
-histories` even on a perfectly clean fast-forward. That false signal is exactly what
-used to get misread as "dev was force-pushed" and answered with a needless
-`reset --hard`. A single-branch full clone fast-forwards every time.
+An ordinary clone fast-forwards every time, since `dev` is append-only across the
+mesh.
 
 What the hub reads out of these clones: the project's history (for blog round-ups)
 **and** its `notes/fairyfox-reports/` — the [process reports](process-reports.md) a
@@ -48,9 +45,9 @@ between the repos.
 
 ### 2. Project reads the hub (outbound)
 
-The project keeps a read-only, **single-branch (full-history, not shallow)** clone
-of the hub under its own `assets/references/<hub>/` and **copies** what it needs out
-of `hub/standards/` and `hub/templates/` into its own tree, committing *that*:
+The project keeps a read-only, single-branch clone of the hub under its own
+`assets/references/<hub>/` and **copies** what it needs out of `hub/standards/` and
+`hub/templates/` into its own tree, committing *that*:
 
 ```sh
 git -C assets/references clone --branch dev --single-branch <hub-url> <hub-name>   # first time
@@ -61,12 +58,10 @@ git -C assets/references/<hub-name> merge --ff-only origin/dev                  
 **`dev` is append-only across the whole mesh — nothing force-pushes `dev`** (a hard
 safety rule; see [`git-workflow.md`](git-workflow.md)). So the refresh is always a
 clean fast-forward. If `--ff-only` ever aborts, that is an **anomaly to investigate,
-not a routine to reset through**: almost always it is a leftover `--depth 1` shallow
-mirror that can't see the merge base — rebuild it full (`git fetch --unshallow`, or
-delete and re-clone single-branch). Only a genuine history rewrite would make a
-full-history mirror fail to fast-forward, and that should never happen here — stop
-and find out who rewrote it rather than papering over it. Full detail:
-[`adopting-updates.md`](adopting-updates.md) step 1.
+not a routine to reset through** — the mirror is disposable and git-ignored, so just
+delete and re-clone it. (A genuine history rewrite is the only other cause, and that
+should never happen here — stop and find out who rewrote it rather than papering over
+it.) Full detail: [`adopting-updates.md`](adopting-updates.md) step 1.
 
 Adopting a standard is a **copy committed locally**, not a live link — re-pull
 later and merge changes by hand.

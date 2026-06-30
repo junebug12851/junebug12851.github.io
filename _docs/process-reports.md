@@ -27,7 +27,7 @@ A report is just a note committed in the project's **own** repository, under
 `notes/fairyfox-reports/`, named by date and procedure. Writing one pushes nothing
 across repositories and triggers nothing downstream. The hub *reads* reports the same
 way it reads everything else about the projects — out of the read-only, git-ignored
-shallow clones it already keeps, and only when someone asks. This preserves the
+clones it already keeps, and only when someone asks. This preserves the
 [cross-project sync](/docs/cross-project-sync/) model's anti-recursion guarantee
 exactly: writing is local, reading is on-request and read-only.
 

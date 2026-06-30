@@ -124,8 +124,7 @@ zero risk of an unprompted edit or a cross-repo loop.
 
 ### 1. Refresh the read-only hub clone
 
-The hub mirror is a single-branch, **full-history (not shallow)** clone. Refresh is
-a plain fast-forward:
+The hub mirror is an ordinary single-branch clone. Refresh is a plain fast-forward:
 
 ```sh
 git -C assets/references/fairyfox.io fetch origin dev
@@ -133,45 +132,22 @@ git -C assets/references/fairyfox.io merge --ff-only origin/dev
 ```
 
 **This should always succeed.** `dev` is append-only across the whole mesh — nothing
-force-pushes it (a hard safety rule, [`git-workflow.md`](git-workflow.md)) — so a
-full-history mirror fast-forwards cleanly every time. There is no "expect this to
-abort"; a clean refresh is the normal case.
+force-pushes it (a hard safety rule, [`git-workflow.md`](git-workflow.md)) — so the
+mirror fast-forwards cleanly every time. A clean refresh is the normal case.
 
-> **Carrying pre-0.9.6 wording?** If this project's adopted copy of the sync runbook
-> still says `dev` is "force-pushed routinely" and tells you to `reset --hard` on every
-> refresh, that's the old **shallow-mirror misread** — re-adopt this corrected step
-> (plain `fetch` + `--ff-only`; treat an abort as a stale shallow clone to deepen, not
-> a force-push to bulldoze), and if your mirror is shallow, `--unshallow` or re-clone it
-> once so future refreshes fast-forward.
-
-**If `--ff-only` aborts, diagnose — do *not* reach for `reset --hard`.** The abort is
-almost always a *stale shallow mirror*, not a force-push: an old `--depth 1` clone
-has no merge base, so git refuses with `refusing to merge unrelated histories` even
-on a perfectly clean fast-forward. (This false signal is what the procedure used to
-misread as a routine force-push.) Deepen the mirror to full history and retry:
+If `--ff-only` ever aborts on the **git-ignored mirror**, just rebuild it from
+scratch — it's a disposable, read-only clone, so deleting and re-cloning is always
+safe and never touches your own history:
 
 ```sh
-# mirror is shallow from an old clone — deepen to full history, then fast-forward:
-git -C assets/references/fairyfox.io fetch --unshallow
-git -C assets/references/fairyfox.io merge --ff-only origin/dev
-```
-
-```sh
-# or rebuild the disposable mirror from scratch (also fine if it's corrupt/missing):
 rm -rf assets/references/fairyfox.io
 git -C assets/references clone --branch dev --single-branch \
     https://github.com/junebug12851/junebug12851.github.io fairyfox.io
 ```
 
-If a **full-history** mirror still won't fast-forward, `dev` was genuinely
-rewritten — which must never happen here. **Stop and find out who or what rewrote it**
-before touching anything; do not bulldoze it.
-
-Deepening or rebuilding the **git-ignored mirror** is always safe — it isn't your
-repo, so it can never rewrite project history, and because it's git-ignored none of
-it produces a commit. The standing "never `reset --hard` / `rebase` / `clean -fd`
-without an explicit request" rule still applies in full to every **tracked** branch:
-never point any of them at `main`/`dev` or anything in your own history.
+The standing "never `reset --hard` / `rebase` / `clean -fd` without an explicit
+request" rule still applies in full to every **tracked** branch: never point any of
+them at `main`/`dev` or anything in your own history.
 
 ### 2. See what changed since you last adopted
 
@@ -273,9 +249,9 @@ branches, so end every run with a plain summary — don't wait to be asked:
 - `dev`: local vs `origin` — identical? (just pushed, so yes)
 - `main`: untouched except the release merge (or untouched entirely on a check-only run)
 - working tree: clean; `assets/references/` still git-ignored
-- **anything done to refresh the hub mirror (a fast-forward, or an `--unshallow` /
-  re-clone if it was a stale shallow clone) touched only the disposable
-  `assets/references/` mirror — project history was never rewritten** (state explicitly).
+- **anything done to refresh the hub mirror (a fast-forward, or a re-clone if it was
+  corrupt/missing) touched only the disposable `assets/references/` mirror — project
+  history was never rewritten** (state explicitly).
 
 ## When the project has diverged
 
@@ -288,8 +264,8 @@ improves the project, on purpose." The hub is the source of truth for the shared
 ## Verify
 
 - `git status` is clean; `assets/references/` stayed untracked/ignored. Any mirror
-  refresh (fast-forward, `--unshallow`, or re-clone) targeted **only** the git-ignored
-  hub mirror, never a tracked branch — and no routine `reset --hard` was needed.
+  refresh (fast-forward, or re-clone) targeted **only** the git-ignored hub mirror,
+  never a tracked branch — and no `reset --hard` was used.
 - The adopted change is present in the project's own tree (not just the
   reference clone).
 - "What changed" was scoped from the hub **changelog** across the version span (last
@@ -302,7 +278,7 @@ improves the project, on purpose." The hub is the source of truth for the shared
 - If `release.yml` owns tagging, the release **did not** hand-push a tag; otherwise the
   hand tag matches `VERSION`.
 - The run ended with a **close-out** stating `dev`/`main` status and that any hub-mirror
-  refresh (fast-forward / `--unshallow` / re-clone) hit the git-ignored mirror only.
+  refresh (fast-forward / re-clone) hit the git-ignored mirror only.
 - On a **check-only** run, the node's own working tree was glanced at and anything
   alarming (mid-merge, conflicts, detached HEAD, large unpushed divergence) was
   surfaced in the report **without** being acted on.

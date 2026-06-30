@@ -23,7 +23,7 @@ the site's `_data/projects.yml`).
 
 ## The path
 
-Create the repository and the `dev` branch, pull a read-only shallow clone of the
+Create the repository and the `dev` branch, pull a read-only clone of the
 hub into a git-ignored `assets/references/` folder, copy the templates in (copy,
 never link), and fill them out for the project. Confirm each shared standard is
 present and reconciled with how the project actually works, register the project

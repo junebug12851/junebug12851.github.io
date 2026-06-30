@@ -3,13 +3,13 @@ title: Docs-site design system
 nav_title: Docs-site design system
 category: standards
 order: 10
-summary: The shared look, structure, and cross-linking that make every project's documentation site feel like one continuous site with fairyfox.io.
+summary: The shared chrome, look, and structure that make every project's documentation site appear as a page of fairyfox.io.
 ---
 
 Each project publishes its own documentation site, and this standard is what makes
-those sites feel like one continuous surface with fairyfox.io — so moving from the
-main site into a project's docs, and back again, is seamless. Its canonical machine
-copy lives in the repository under `hub/standards/docs-site/`; this page is the
+each one **appear as a page of fairyfox.io** — same chrome, same nav, so moving from
+the main site into a project's docs, and back, never feels like leaving. Its canonical
+machine copy lives in the repository under `hub/standards/docs-site/`; this page is the
 readable summary.
 
 ## A specification, not a theme package
@@ -34,14 +34,17 @@ publishing** model, and a precise **measurements reference** that pins every val
 A read-only copy of the master stylesheet is bundled as the ultimate exact
 reference — to reimplement, not to link.
 
-## One domain, two-way links
+## One domain, shared chrome
 
 Seamlessness rests on three things. Every project publishes its docs **under the
-same domain** as the main site (served at `fairyfox.io/<project>/`); every site
-wears the **same tokens, layout, and components**; and the links run **both ways** —
-each project's header offers the way back to fairyfox.io and to the project's own
-node page, while the main site links into each project's docs. Get those right and
-the boundary between the hub and a project disappears.
+same domain** as the main site (served at `fairyfox.io/<project>/`); every site wears
+the **same chrome** — the same header, the same global primary nav
+(Home · Projects · Games · Docs · Downloads · Updates · About), an optional submenu for
+section links, and the same footer, tokens, and components; and because that header is
+shared, its **brand/Home link is the way home** — there is no separate back-button.
+Built/runnable apps live on their own host (Netlify) and wear the same chrome; static
+content lives on the shared domain. Get those right and the boundary between the hub
+and a project disappears.
 
 ## fairyfox.io is the master copy
 

@@ -57,8 +57,8 @@ improve the standards is a sibling pass with its own runbook
 related but distinct from writing the day's post.
 
 1. **Refresh the clones.** For each project in
-   [`../../hub/registry.yml`](../../hub/registry.yml), shallow-pull its `dev` branch into
-   `assets/references/<project>/`.
+   [`../../hub/registry.yml`](../../hub/registry.yml), fast-forward its `dev` branch in
+   `assets/references/<project>/` (`fetch` + `merge --ff-only`).
 2. **Reconstruct each day.** For the day(s) since last time, read — across *all*
    projects — their `notes/sessions/` (day logs) and `notes/version/` (changelog), plus
    `git -C assets/references/<project> log --oneline`. **Include the hub (fairyfox.io)

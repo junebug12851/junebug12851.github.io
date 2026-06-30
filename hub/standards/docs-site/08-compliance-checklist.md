@@ -36,24 +36,29 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
       specs (shape, radius, border, shadow, hover).
 - [ ] `:focus-visible` shows the accent outline on every interactive element.
 
-## Cross-linking & branding
+## Chrome, cross-linking & branding
 
 **Required:**
 
-- [ ] One persistent **"← Back to Fairy Fox"** link to `https://fairyfox.io/` on
-      every page (header or persistent sidebar).
+- [ ] The **shared header** is present with the **global primary nav** in the fixed
+      order **Home · Projects · Games · Docs · Downloads · Updates · About** (not
+      reordered or trimmed per project).
+- [ ] The **brand mark and `Home` nav item link to `https://fairyfox.io/`** — this is
+      the way home. There is **no separate "← Back to Fairy Fox" back-button**.
 - [ ] The site is reachable at `fairyfox.io/<key>/` and the registry entry
       (`docs:`, `repo:`) is accurate so the main site links *in* resolve.
 
 **Recommended (absence is not a failure):**
 
+- [ ] A **submenu** row below the primary nav for section/context links (the project's
+      own pages, or the projects list), in the shared pill style.
 - [ ] A footer linking the project's node page, repo, notes, and the main-site
       sections.
 - [ ] A breadcrumb/locator near the page top.
 
-**Branding:** the project may lead with its **own logo and name** (the Fairy Fox
-mark may be replaced). Membership is carried by the **shared theme** + the way-home
-link — not by brand precedence. A small Fairy Fox cue is welcome but optional.
+**Branding:** the project may lead with its **own name** in its sub-brand/content.
+Membership is carried by the **shared chrome** (header, primary nav, footer, theme) +
+the brand/Home way-home — not by brand precedence.
 
 ## Seamlessness
 

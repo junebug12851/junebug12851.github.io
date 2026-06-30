@@ -16,6 +16,18 @@ For AI or human. Run the steps in order; each is small and reversible.
 > scheme is a different path — use
 > [`onboarding-existing-project.md`](onboarding-existing-project.md) instead.
 
+> **Single app vs. collection (monorepo).** The default shape is **one app per
+> repo**, and the steps below read that way. A **collection / monorepo** — many
+> self-contained units in one repo (e.g. `fairyfox-games`, with a `games/<slug>/`
+> per game) — is an allowed **deliberate exception**, made only when the owner and
+> Claude talk it out and agree it's the right call, with the reason recorded in the
+> project's `decisions/` notes. In a collection: the unit of quality is the
+> **per-sub-unit folder** (its own core, tests, docs, and — if it versions
+> independently — version), while `VERSION`, the release flow, and the notes system
+> stay **repo-level**; and the repo's site is a **landing index** over the units
+> rather than one app's site (see step 6 and the
+> [deployment standard](deployment.md)).
+
 ## What "fully set up" means
 
 The end state — tick every box before calling a project done:
@@ -29,7 +41,7 @@ The end state — tick every box before calling a project done:
 | Ignores | `.gitignore` excludes `assets/references/*` and build cruft. |
 | Standards adopted | The project follows the hub's git, versioning, notes, and AI-context standards (copied in, not linked). |
 | Registered | The project is listed in the hub's [`registry.yml`](../registry.yml) **and** the site's `_data/projects.yml`. |
-| Docs site | A themed documentation site published at `fairyfox.io/<key>/`, built to the [docs-site design system](docs-site/) (seamless with fairyfox.io, links back). |
+| Docs site | A documentation site published at `fairyfox.io/<key>/`, built to the [docs-site design system](docs-site/) so it **appears as a page of fairyfox.io** (shared chrome; brand/Home is the way home). For a **static** project the published site can double as the docs site — one surface, not two. |
 | Process report | A `notes/fairyfox-reports/` folder exists (from the skeleton) and this setup run is written up in it — see [process-reports](process-reports.md). |
 
 ## Before you start
@@ -56,9 +68,7 @@ git checkout -b dev          # all work lives here
 ### 2. Pull a read-only copy of the hub
 
 The hub is read by **single-branch clone into a git-ignored folder** — never a
-submodule, never a dependency. Clone one branch but **full history** (not
-`--depth 1`), so later refreshes fast-forward cleanly instead of tripping a shallow
-mirror's missing merge base.
+submodule, never a dependency. An ordinary clone refreshes by fast-forward every time.
 
 ```sh
 mkdir -p assets/references
@@ -99,25 +109,31 @@ and cross-project sync. Adopting a standard is a **copy committed locally**, not
 a live link; re-pull later to see what changed (see
 [`adopting-updates.md`](adopting-updates.md)).
 
-### 6. Build the project's themed docs site
+### 6. Build the project's docs site so it's a page of fairyfox
 
-A project isn't fully set up until it has a documentation site that's **seamless
-with fairyfox.io**. Follow the [docs-site design system](docs-site/) standard:
+A project isn't fully set up until it has a documentation site that **appears as a
+page of fairyfox.io** — same chrome, same nav, no sense of having left. Follow the
+[docs-site design system](docs-site/) standard:
 
-- Reproduce the theme (tokens, shell, components) in the project's stack — match as
-  closely as the stack allows; exact values in
+- Wear the shared chrome (header, primary nav + submenu, footer) — copy the reference
+  markup in [`docs-site/reference/`](docs-site/reference/) rather than reverse-
+  engineering it; exact values in
   [`docs-site/11-measurements-reference.md`](docs-site/11-measurements-reference.md)
   and [`docs-site/reference/main.css`](docs-site/reference/). **If the docs are
   generator-produced** (JSDoc, Doxygen, …), theme the generator itself — replace its
   stylesheet, don't override
   ([`docs-site/06`](docs-site/06-content-and-organization.md#generated-docs-doxygen-jsdoc-typedoc-sphinx-)).
-- Add the one **required way-home** link ("← Back to Fairy Fox" →  `fairyfox.io/`) on
-  every page; a footer/breadcrumb back to the node page is recommended, not required.
-  Project-forward branding is fine — the shared theme is the tie
+- The **brand/Home link is the way home** to `fairyfox.io/` — there is **no separate
+  "back to Fairy Fox" button** (you never left). Project-forward branding is fine — the
+  shared chrome is the tie
   ([`docs-site/05-navigation-and-cross-linking.md`](docs-site/05-navigation-and-cross-linking.md)).
-- Publish it at **`fairyfox.io/<key>/`** on GitHub Pages
-  ([`docs-site/10-domain-and-publishing.md`](docs-site/10-domain-and-publishing.md)) —
-  enable Pages, set the base path to `/<key>`, no project CNAME.
+- Publish on the **shared domain** at **`fairyfox.io/<key>/`** so it's truly same-origin
+  ([`docs-site/10-domain-and-publishing.md`](docs-site/10-domain-and-publishing.md) and
+  the [deployment standard](deployment.md)) — enable Pages, set the base path to
+  `/<key>`, no project CNAME. **Built/runnable apps deploy to Netlify instead** (see
+  [deployment](deployment.md)); they wear the same chrome but live on their own host.
+- For a **static** project the published site can double as the docs site — don't build
+  two overlapping surfaces.
 - Verify against [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
 
 ### 7. Register the project with the hub *(hub-side change)*
@@ -169,13 +185,15 @@ never be committed (committing it nests repos and bloats history).
 - `VERSION` reads a sane starting number.
 - The project resolves in **both** registries (`hub/registry.yml` and
   `_data/projects.yml`) with matching `key` and `branch`.
-- The themed docs site loads at `fairyfox.io/<key>/`, **wears the fairyfox theme**,
-  and has the persistent **"← Back to Fairy Fox"** way-home link (project-forward
-  branding is fine) — **look at the served page**; default-theme JSDoc/Doxygen output
-  or a merely-resolving `docs:` URL is a miss. If the docs are generator-produced,
-  theme the generator itself
+- The docs site loads at `fairyfox.io/<key>/`, **wears the shared fairyfox chrome**
+  (header, nav + submenu, footer) so it reads as a page of the site, with the
+  **brand/Home link as the way home** and **no separate back-button** — **look at the
+  served page**; default-theme JSDoc/Doxygen output or a merely-resolving `docs:` URL is
+  a miss. If the docs are generator-produced, theme the generator itself
   ([`docs-site/06`](docs-site/06-content-and-organization.md#generated-docs-doxygen-jsdoc-typedoc-sphinx-)).
   Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
+- The deploy target matches the project's kind (static → Pages on the shared domain;
+  built app → Netlify) per the [deployment standard](deployment.md).
 - If the project builds/serves, it builds green.
 - `notes/fairyfox-reports/` exists and holds this run's setup report, committed —
   [process-reports standard](process-reports.md).

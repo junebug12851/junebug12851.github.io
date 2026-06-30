@@ -1,0 +1,94 @@
+<!--
+  reference/chrome.html — the shared fairyfox chrome (header + submenu + footer),
+  as static markup. This is the canonical structure a project copies so its docs
+  site appears as a page of fairyfox.io, rather than reverse-engineering the hub's
+  _includes/. Reimplement in the project's own stack/templating — don't hot-link.
+
+  - Verbatim source: the hub's _includes/header.html and _includes/footer.html
+    (Liquid resolved to plain links here). Snapshot: 2026-06-30.
+  - The PRIMARY nav is the fixed mesh-wide set, identical on every page/project:
+    Home · Projects · Games · Docs · Downloads · Updates · About (About last).
+  - The brand mark + the Home item ARE the way home — there is no separate
+    "← Back to Fairy Fox" button.
+  - Use absolute https://fairyfox.io/... URLs (shown) so the chrome works whether the
+    project is same-origin on Pages or on its own host (a Netlify app). On the main
+    site these are root-relative.
+  - The SUBMENU (.subnav) is recommended: a secondary row for section/context links —
+    the project's own pages, or the projects list. Mark the current item .active.
+  - Classes match reference/main.css; styling comes from the reproduced stylesheet.
+-->
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="https://fairyfox.io/">
+      <img class="brand-logo" src="https://fairyfox.io/assets/icons/fox.png" alt="" aria-hidden="true">
+      <span class="brand-name">Fairy&nbsp;Fox</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="https://fairyfox.io/">Home</a>
+      <a href="https://fairyfox.io/projects/">Projects</a>
+      <a href="https://fairyfox.io/games/">Games</a>
+      <a href="https://fairyfox.io/docs/">Docs</a>
+      <a href="https://fairyfox.io/downloads/">Downloads</a>
+      <a href="https://fairyfox.io/blog/">Updates</a>
+      <a href="https://fairyfox.io/about/">About</a>
+    </nav>
+  </div>
+</header>
+
+<!--
+  Submenu (recommended). Inside a project, list THIS project's pages; on the Projects
+  area, list the projects. Same flat pill style as .nav; mark the current item .active.
+-->
+<nav class="subnav" aria-label="Section">
+  <div class="wrap">
+    <a href="./" class="active">Overview</a>
+    <a href="./guides/">Guides</a>
+    <a href="./reference/">Reference</a>
+    <a href="./changelog/">Changelog</a>
+  </div>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="https://fairyfox.io/">
+        <img class="brand-logo" src="https://fairyfox.io/assets/icons/fox.png" alt="" aria-hidden="true">
+        <span class="brand-name">Fairy Fox</span>
+      </a>
+      <p>The project hub and documentation library for Fairy Fox's software work.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="https://fairyfox.io/projects/">Projects</a>
+      <a href="https://fairyfox.io/docs/">Documentation</a>
+      <a href="https://fairyfox.io/downloads/">Downloads</a>
+      <a href="https://fairyfox.io/blog/">Updates</a>
+      <a href="https://fairyfox.io/about/">About</a>
+    </div>
+    <div class="footer-col">
+      <h4>This project</h4>
+      <!-- node page, repo, notes for THIS project -->
+      <a href="https://fairyfox.io/projects/&lt;key&gt;/">Node page</a>
+      <a href="https://github.com/junebug12851/&lt;key&gt;">Repository ↗</a>
+    </div>
+    <div class="footer-col">
+      <h4>Elsewhere</h4>
+      <a href="https://github.com/junebug12851">GitHub ↗</a>
+      <a href="https://fairyfox.io/feed.xml">Atom feed</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="wrap">
+      <span>© Fairy Fox</span>
+      <span>Built with the fairyfox docs-site standard</span>
+      <span class="spacer"></span>
+      <a href="https://github.com/junebug12851">@junebug12851</a>
+    </div>
+  </div>
+</footer>

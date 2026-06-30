@@ -60,6 +60,7 @@ controls and pills at `999px`. Container: `--maxw 1180px`, `--maxw-text 43rem`,
 | nav item (`.nav > a`) | padding **`.45rem .72rem`**, `.93rem`, weight 600, radius `999px`, color `--text-soft` |
 | nav hover | color `--text` on `--panel-2` |
 | nav `.active` | color `--text` on `color-mix(--violet 16%, transparent)` |
+| `.subnav` (recommended, secondary row below header) | full-width row under `.site-header`; inner `.wrap` flex, `gap:.12rem`; items reuse `.nav > a` metrics (padding `.45rem .72rem`, `.93rem`, weight 600, radius `999px`) one step lighter (`--text-soft`/quieter fill); same `.active` treatment. Exact values land when the shared submenu ships in `main.css`. |
 | `.nav-toggle` | **`42px × 42px`**, padding `10px`, radius `10px`, `1px --line-2`, bg `--panel-2`; bars `2px` tall |
 | mobile breakpoint | **`max-width:820px`** — nav becomes a `--panel` dropdown, padding `.5rem`, radius `20px`, `--shadow-lg` |
 | header @ `≤540px` | height drops to **`60px`** |

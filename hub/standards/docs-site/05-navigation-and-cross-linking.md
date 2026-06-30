@@ -1,10 +1,11 @@
 # 05 · Navigation & Cross-Linking
 
-This is the part that makes the transition **seamless**. Two things carry it: the
-**shared theme** (the real connective tissue — same colours, type, and shell across
-every project) and a single, always-present **way home**. Those two are required.
-Richer cross-linking (breadcrumbs, footer link columns) is **recommended, not
-required** — the mesh is meant to be *flat*, not a deep web of mandatory links.
+This is the part that makes a project read as **a page of fairyfox.io** — not a
+separate site you traveled to. Two things carry it: the **shared chrome** (the same
+header, **primary nav**, footer, and theme across every project) and the **brand/Home
+link** that is always the way home. Those are required. A **submenu** for section/context
+nav and richer cross-linking (footer link columns) are **recommended** — the mesh is
+meant to be *flat*, not a deep web of mandatory links.
 
 ## The one-domain model
 
@@ -37,13 +38,14 @@ URL) and `repo:` so these render. Keep that entry accurate.
 
 ## Child → parent (the project links *back*)
 
-### Required: one persistent "way home"
+### Required: the brand/Home link is the way home (no back-button)
 
-Every project docs site must offer **one obvious, always-visible link back to
-`https://fairyfox.io/`** — a single "← Back to Fairy Fox" control, present on every
-page (e.g. in the sticky header or the persistent sidebar). That's the whole hard
-requirement for back-linking. It doesn't need to be a breadcrumb or a brand mark —
-a plain, self-explanatory button is enough.
+A project wears the **shared header**, whose **brand mark and `Home` nav item link to
+`https://fairyfox.io/`**. That *is* the way home — always present, by virtue of the
+shared chrome. There is **no separate "← Back to Fairy Fox" control**: the project
+looks and behaves like a page of fairyfox, so a back-button would be redundant and
+would imply you'd left. (This **retires** the earlier required back-button — the brand/
+Home link supersedes it.)
 
 ### Recommended (not required): richer links back
 
@@ -53,31 +55,37 @@ Add these where they fit, but their absence is **not** a compliance failure:
   repo, notes, and the main-site sections.
 - A **breadcrumb/locator** near the page top (`Fairy Fox / Projects / <Project>`).
 
-A project may carry the node-page link in the footer only, or skip the breadcrumb
-entirely, and still be compliant — as long as the single way-home and the shared
-theme are present.
+### Branding: project-forward is fine — the chrome is the tie
 
-### Branding: project-forward is fine — the theme is the tie
+**A project leads with its own identity** in its content and sub-brand. What keeps it
+visibly a page of fairyfox is the **shared chrome** — the same header, primary nav,
+footer, palette, and typography from [`02-design-tokens.md`](02-design-tokens.md). The
+global brand/Home link stays in the header; the project's own name belongs in the
+**submenu locator / sub-brand**, not in place of the global nav. The earlier "never
+replace the Fairy Fox brand" rule is retired — the shared chrome, not brand exclusivity,
+is what carries membership.
 
-**A project leads with its own identity.** Its docs site can show the **project's
-own logo and name** as the primary brand; you do **not** have to put the Fairy Fox
-mark first, and you may replace it. What keeps the project visibly part of the mesh
-is the **shared design system** — the same palette, typography, and shell from
-[`02-design-tokens.md`](02-design-tokens.md) — plus the way-home link. The theme is
-the family resemblance; the brand can be the project's own.
+## Shared chrome: primary nav + submenu
 
-Keeping a small Fairy Fox cue (a footer mark, a hint in the way-home control) is
-welcome but optional. The earlier "never replace the Fairy Fox brand / show Fairy
-Fox → project" rule is **retired** — it made the mesh feel too tightly coupled;
-shared theme + a clear way home is the right amount of connection.
+A project does **not** invent its own header. It wears the **same chrome as the main
+site** so there is no visible "jump":
 
-## Project docs-site navigation
+- **Primary nav (global, identical on every page).** Slot order:
+  **Home · Projects · Games · Docs · Downloads · Updates · About** (About last). These
+  point at the main-site sections (same origin for Pages projects). The set and order
+  are fixed across the mesh — don't reorder, drop, or add items per project. The exact
+  markup is in [`reference/`](reference/); mark the current top-level section `.active`.
+- **Submenu (recommended) — a secondary row directly below the primary nav** that
+  carries the **context** links and localizes you within a section. It's the same flat
+  pill style as the primary nav. Two canonical uses, identical in shape:
+  - On the **Projects** area, the submenu lists the projects.
+  - Inside a **project**, the submenu lists *that* project's own pages (Overview ·
+    Guides · Reference · Changelog …).
 
-The project's own primary nav covers **its** sections (e.g. Overview · Guides ·
-Reference · Changelog) in the same flat, plain-link, pill style as the main site —
-plus the brand-home link. Don't reproduce the main site's nav items (Projects,
-Downloads, etc.) inside a project; link to those through the brand/locator/footer
-instead. Mark the current section `.active`.
+  The primary nav never changes between pages; the submenu is the part that changes.
+  Mark the current submenu item `.active`. (The shared chrome's submenu row is being
+  rolled out on the main site; until a project carries it, its section links may live
+  in a project-local nav of the same style.)
 
 ## Seamlessness checklist (no visible "jump")
 
@@ -106,8 +114,8 @@ two distinct situations — don't conflate them:
    allows, and always give a way back to the themed docs.
 2. **The generator *is* the whole docs site** (e.g. the docs site is JSDoc/docdash
    output). Then you don't "rhyme with" the theme from outside — you **replace the
-   generator's stylesheet and inject the brand + way-home into its own layout.**
-   This is a first-class, fully-supported path with its own technique and gotchas:
-   see [`06-content-and-organization.md`](06-content-and-organization.md#generator-based-docs-sites-the-generator-is-the-site).
+   generator's stylesheet and inject the shared chrome (brand + Home link) into its own
+   layout.** This is a first-class, fully-supported path with its own technique and
+   gotchas: see [`06-content-and-organization.md`](06-content-and-organization.md#generator-based-docs-sites-the-generator-is-the-site).
 
-Either way, the single required way-home link still applies.
+Either way, the brand/Home way-home link still applies.

@@ -19,9 +19,11 @@ Three facts make true seamlessness possible rather than aspirational:
 2. **A small, tokenised design system.** The whole fairyfox.io look reduces to a
    compact set of variables (colour, type, spacing, motion). Reproducing it is a
    matter of applying tokens, not reverse-engineering a sprawling stylesheet.
-3. **A shared shell.** A sticky header and a footer with a fixed structure and a
-   fixed set of links. Implement that shell once per project and most of the
-   continuity is already there.
+3. **A shared shell.** A sticky header carrying the **same global primary nav**
+   (Home · Projects · Games · Docs · Downloads · Updates · About), an optional submenu
+   row for section links, and a footer with a fixed structure. Implement that shared
+   chrome once per project — copy [`reference/chrome.html`](reference/chrome.html) — and
+   most of the continuity is already there.
 
 ## Principles
 
@@ -39,9 +41,11 @@ Three facts make true seamlessness possible rather than aspirational:
 - **Flat and self-standing.** Every docs site is a complete node on its own:
   themed, navigable, and linked back to the parent without depending on it at
   build time. Interconnected, never entangled.
-- **Two-way links are part of the design.** A project that looks right but offers
-  no way back to fairyfox.io is *not* compliant. The return path is a requirement,
-  not a courtesy — see [`05-navigation-and-cross-linking.md`](05-navigation-and-cross-linking.md).
+- **The way home is the shared chrome.** Because a project wears the same header, its
+  **brand/Home link is always the way back to fairyfox.io** — there's no separate
+  "back to Fairy Fox" button (you never left). A project that drops the shared chrome,
+  and so the brand/Home link, is *not* compliant — see
+  [`05-navigation-and-cross-linking.md`](05-navigation-and-cross-linking.md).
 - **Both light and dark are first-class.** The theme is dark-first with a fully
   designed light theme that follows the OS — not one inverted from the other.
 

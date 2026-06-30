@@ -33,8 +33,8 @@ The standing job is to periodically check the projects for changes and write up 
 interesting ones. It runs only on explicit request — a person asking, or a
 scheduled task that asks for a pass — never as silent automation. A pass is:
 
-1. **Refresh the clones.** For each project in the registry, shallow-pull its `dev`
-   branch into `assets/references/<project>/` (see
+1. **Refresh the clones.** For each project in the registry, fast-forward its `dev`
+   branch in `assets/references/<project>/` (see
    [cross-project sync](/docs/cross-project-sync/)).
 2. **See what changed since last time.** The reliable signal is each project's own
    living history — the new entries in its changelog and session logs, plus its

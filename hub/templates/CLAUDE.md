@@ -37,7 +37,13 @@ follows the shared living-notes standard. Highlights:
 
 ## Default Workflow — Do These By Default (a standing instruction)
 
-After making changes, run this loop **without being asked**:
+**Plan before you execute.** For non-trivial work (multiple files/steps, a real
+decision), write a short structured plan **first** — decisions, work breakdown by
+file/area, open items, release shape — in `notes/plans/`, then execute against it.
+This is for execution reliability, not paperwork; trivial one-step changes are exempt.
+Full rule: the shared `planning` standard (in `hub/standards/`).
+
+Then, after making changes, run this loop **without being asked**:
 
 1. **Build / check** the change.
 2. **Test** the affected area; full suite/check before releasing to `main`. Only

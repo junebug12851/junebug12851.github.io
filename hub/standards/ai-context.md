@@ -15,10 +15,10 @@ re-briefed each session. A template is in
 4. **Build / run** — how to actually build, test, run (and that the assistant
    *can* — name the real tools, e.g. PowerShell, not a sandbox).
 5. **Default workflow** — the standing loop done **by default** without asking:
-   build → test → commit/push on `dev` → green-gated **release to `main` the
-   git-flow way** (`--no-ff` + tag; PATCH direct, MINOR/MAJOR via `release/*`),
-   with the inline-changelog + `VERSION` bump riding inside the commit. See the
-   [git-workflow standard](git-workflow.md).
+   **plan non-trivial work first** ([planning standard](planning.md)) → build → test →
+   commit/push on `dev` → green-gated **release to `main` the git-flow way** (`--no-ff`
+   + tag; PATCH direct, MINOR/MAJOR via `release/*`), with the inline-changelog +
+   `VERSION` bump riding inside the commit. See the [git-workflow standard](git-workflow.md).
 6. **Maintaining the notes** — the trigger→file table (from the notes-system
    standard) so docs stay living.
 

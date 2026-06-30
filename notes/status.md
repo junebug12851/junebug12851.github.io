@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.9.14` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.10.0` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -54,7 +54,15 @@ The rest of the structure is in place end to end:
   all other adoption safety stays), and a **first fold-back of node feedback** (`0.9.1`):
   the siblings' process reports drove the force-push-proof refresh, VERSION-anchored
   change detection, a CI-owns-tagging decision, and report-lifecycle fixes across the
-  adopt/sync/git-flow/process-reports standards.
+  adopt/sync/git-flow/process-reports standards. The **one-seamless-site milestone**
+  (`0.10.0`) followed: the docs-site standard now makes every node **appear as a page
+  of fairyfox.io** (shared chrome + global nav, the back-button retired for a brand/Home
+  way-home, a recommended `.subnav` submenu, a `reference/chrome.html` snippet); two new
+  standards landed — **deployment** (static→Pages on the shared domain, built apps→Netlify,
+  games the recorded Pages exception) and **planning** (plan-before-execute by default);
+  the collection/monorepo shape is a recorded exception; and the old shallow-clone
+  refresh prose was purged in favour of plain clones. (Site code for `/games/` on Pages
+  + the submenu nav is a planned follow-up — `plans/one-site-and-deployment.md`.)
   **Both siblings are now fully onboarded** (mesh-aware `CLAUDE.md` + a fairyfox-themed
   docs site each): Random AI Prompt (`2.28.18` — the repo split into an active `engine-v3`
   + a frozen `engine-v1-2` snapshot, v3-only; the 2.7.x line built out an

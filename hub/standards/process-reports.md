@@ -132,11 +132,10 @@ This is the **inbound** side — the hub reading the nodes — and it runs **on 
 request only**, never on a schedule that chains across repos.
 
 1. **Refresh the clones.** For each project in [`../registry.yml`](registry.yml),
-   fast-forward its `dev` in `assets/references/<project>/` (a single-branch
-   full-history clone — `fetch` + `merge --ff-only`; the deepen/re-clone recovery in
-   [`adopting-updates.md`](adopting-updates.md) step 1 applies only if a leftover
-   shallow mirror blocks the fast-forward). Reading reports reuses the round-up clones
-   — no new sync.
+   fast-forward its `dev` in `assets/references/<project>/` (an ordinary single-branch
+   clone — `fetch` + `merge --ff-only`; if a refresh ever fails, just delete and
+   re-clone the disposable mirror). Reading reports reuses the round-up clones — no new
+   sync.
 2. **Read new reports.** In each node's `notes/fairyfox-reports/`, read every report
    **not already in** that node's `reports_through` list in
    [`.last-seen.yml`](.last-seen.yml). The marker is a **list of digested report

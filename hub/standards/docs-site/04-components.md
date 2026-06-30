@@ -28,12 +28,25 @@ A round logo image + the wordmark, used in the header and footer.
   `border-radius: 999px`, no wrap.
 - Hover: `--text` on a `--panel-2` fill. **Active page**: `--text` on a faint
   accent wash (`color-mix(--accent 16%, transparent)`).
-- **No dropdowns.** fairyfox.io uses plain top-level links (Home · Projects · Docs ·
-  Downloads · Updates · About). Project docs sites use their own item set but keep
-  the same flat, plain-link style.
+- **No dropdowns.** Plain top-level links in the fixed mesh-wide order
+  **Home · Projects · Games · Docs · Downloads · Updates · About**. This is the
+  **shared global nav** — every project carries the same set in the same order (a
+  project's *own* pages go in the submenu below, not in the primary nav).
 - **Mobile (`≤820px`):** the row hides behind a `.nav-toggle` (42px square, `--panel-2`
   fill, `--line-2` border, three bars) and opens as a `--panel` dropdown with
   `--shadow-lg`.
+
+## Submenu (`.subnav`) — recommended
+
+A secondary row of pill links directly below the primary nav, for **section/context**
+navigation. Same flat, plain-link, pill style as `.nav`, visually lighter (it's the
+local layer). It localizes the visitor while the primary nav stays constant:
+
+- On the **Projects** area it lists the projects; inside a **project** it lists that
+  project's own pages (Overview · Guides · Reference · Changelog …).
+- Mark the current item `.active` (same active treatment as `.nav`).
+- It is the shared chrome's section layer — keep it identical in shape across the mesh
+  rather than inventing a bespoke per-project secondary nav.
 
 ## Buttons (`.btn`)
 
@@ -64,7 +77,12 @@ The workhorse surface for indexes and grids.
 - **Activity** (`.activity.active|.inactive`): a small dot + label.
 - **Chip** (`.mchip`): `--panel-2` fill, `--line` border, `.84rem`, pill — for meta
   facts (e.g. "Built with …").
-- **Tag** (`.tag`): small, muted, pill — category/tech tags.
+- **Tag** (`.tag`): small, muted, pill — category/tech tags. **Display-only** across
+  the mesh: tags are presentational chips, not a system feature — there is no shared
+  tag vocabulary and no mesh-wide tag index or filter. If a project wants its tags to
+  be clickable/filterable, that's a **node-local** choice within the project (e.g.
+  fairyfox-games filtering its own game list); it is not a hub standard and other
+  projects don't inherit it.
 
 ## Code
 

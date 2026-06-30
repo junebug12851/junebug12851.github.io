@@ -33,6 +33,11 @@ Identical to greenfield — see the checklist in
 difference is purely the **path**: every step below is "fit the standard to what's
 already here," not "create from blank."
 
+The same **single-app vs. collection (monorepo)** note applies here too: a collection
+is an allowed deliberate exception (per-sub-unit quality, repo-level version/notes, a
+landing-index site) — see the callout in
+[`new-project-setup.md`](new-project-setup.md#what-fully-set-up-means).
+
 ## The governing rule
 
 **Reconcile, don't overwrite.** The repo already encodes decisions — a version
@@ -76,8 +81,7 @@ git -C assets/references clone --branch dev --single-branch \
     https://github.com/junebug12851/junebug12851.github.io fairyfox.io
 ```
 
-Clone one branch but **full history** (not `--depth 1`) so later refreshes
-fast-forward cleanly — a shallow mirror can't compute the merge base and aborts.
+An ordinary single-branch clone refreshes by fast-forward every time.
 
 Git-ignored, read-only — never a submodule (see step 4 for the ignore line).
 
@@ -110,9 +114,9 @@ link out rather than copy. One fact, one home.
 
 ### 6. Bring its docs onto the themed docs site *(often incremental)*
 
-Adopt the [docs-site design system](docs-site/) so the project's documentation is
-seamless with fairyfox.io — but **reconcile, don't clobber**, the same as the rest
-of onboarding:
+Adopt the [docs-site design system](docs-site/) so the project's documentation
+**appears as a page of fairyfox.io** — but **reconcile, don't clobber**, the same as
+the rest of onboarding:
 
 - **First decide which docs shape the project is** (this drives everything —
   [`docs-site/06`](docs-site/06-content-and-organization.md#generated-docs-doxygen-jsdoc-typedoc-sphinx-)):
@@ -123,11 +127,13 @@ of onboarding:
   way-home into the generator's own sidebar, and make the build copy your theme
   assets into the output.** Don't author a separate Jekyll shell to wrap it; that
   fights the project's tooling.
-- **Required to pass:** the served site **wears the fairyfox theme** and has the one
-  persistent **"← Back to Fairy Fox"** link. Project-forward branding is fine
-  ([`docs-site/05`](docs-site/05-navigation-and-cross-linking.md)). Publish at
-  `fairyfox.io/<key>/` (base path `/<key>`, no project CNAME —
-  [`docs-site/10`](docs-site/10-domain-and-publishing.md)).
+- **Required to pass:** the served site **wears the shared fairyfox chrome** (header,
+  nav + submenu, footer) so it reads as a page of the site, with the **brand/Home link
+  as the way home** and **no separate back-button**. Project-forward branding is fine
+  ([`docs-site/05`](docs-site/05-navigation-and-cross-linking.md)). Publish on the shared
+  domain at `fairyfox.io/<key>/` (base path `/<key>`, no project CNAME —
+  [`docs-site/10`](docs-site/10-domain-and-publishing.md) and the
+  [deployment standard](deployment.md); built apps go to Netlify instead).
 - **Partial on day one is OK** *if reported as partial* — tighten via
   [`adopting-updates.md`](adopting-updates.md). Bar:
   [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md).
@@ -217,6 +223,12 @@ to be onboarded; finding `missing` rows means it isn't. This is the **join-time*
 gate; the recurring whole-set check (every standard, re-runnable anytime) is the
 [standards compliance audit](compliance.md).
 
+> **If a setup/onboarding report from the same day already exists**, read it first
+> (`notes/fairyfox-reports/YYYY-MM-DD-*.md`). A verification run right after setup
+> shouldn't re-litigate caveats the setup report already recorded (e.g. a
+> collection/monorepo shape, or a static project whose site doubles as its docs) —
+> confirm against it rather than re-deriving.
+
 | # | Dimension | Passes only when… |
 |---|-----------|-------------------|
 | 1 | Working tree | `git status` clean; `assets/references/` untracked/ignored; nothing pre-existing clobbered (README, license, CI, history intact). |
@@ -224,7 +236,7 @@ gate; the recurring whole-set check (every standard, re-runnable anytime) is the
 | 3 | Branch model | Stable branch is **`main`** (a repo on `master` has been renamed — mandatory; Pages/CI/URL refs fixed). Registry `branch` is the **sync-tracking work branch** (`dev` by default), honest — it is *not* the repo's default branch. |
 | 4 | Notes system | The `notes/` tree exists with a real `status.md`; existing docs mapped in, not duplicated. |
 | 5 | **Mesh-awareness in `CLAUDE.md`** | The project's `CLAUDE.md` **actually contains** the "Cross-project standards & checking the fairyfox system for updates" standing instruction. **Open the file and confirm the text is there** — don't infer it from the project being registered. |
-| 6 | **Themed docs site** | `fairyfox.io/<key>/` serves a site **wearing the fairyfox theme** with the persistent **"← Back to Fairy Fox"** way-home link (project-forward branding is fine; theme + way-home are the bar). **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
+| 6 | **Docs site is a page of fairyfox** | `fairyfox.io/<key>/` serves a site **wearing the shared fairyfox chrome** (header, nav + submenu, footer) so it reads as a page of the site, with the **brand/Home link as the way home** and **no separate back-button** (project-forward branding is fine). **Look at the actual page.** Default-theme JSDoc/Doxygen output, or a `docs:` URL that merely resolves, is `missing` — not `partial`. Deploy target matches the project's kind ([deployment](deployment.md)). Bar: [`docs-site/08-compliance-checklist.md`](docs-site/08-compliance-checklist.md). |
 | 7 | Hub registration | Resolves in **both** registries with honest `adopts_hub` / `notes_system` flags; node + docs pages present. |
 | 8 | Process report | `notes/fairyfox-reports/` holds this onboarding's report, committed, with the reconcile friction and an honest outcome — [process-reports](process-reports.md). |
 

@@ -1,4 +1,4 @@
-# reference/ — the master stylesheet, read-only
+# reference/ — the master stylesheet + chrome, read-only
 
 [`main.css`](main.css) is a **faithful, verbatim snapshot of fairyfox.io's master
 stylesheet** (`assets/css/main.css`), bundled here as the ultimate exact reference
@@ -6,7 +6,15 @@ for the docs-site standard. When a value isn't restated in
 [`../11-measurements-reference.md`](../11-measurements-reference.md) or files
 `02`–`04`, this is the source of truth.
 
-Snapshot: **2026-06-25** (site `0.5.x`, the warm design line).
+[`chrome.html`](chrome.html) is the **canonical shared chrome markup** (header +
+primary nav + submenu + footer), snapshotted from the hub's `_includes/` with Liquid
+resolved to plain links. Copy it as the starting structure so a project's docs site
+appears as a page of fairyfox.io — the brand/Home link is the way home, the primary
+nav is the fixed mesh-wide set (incl. Games), and there's no separate back-button.
+Reproduce it in the project's own stack; don't hot-link it.
+
+Snapshot: **2026-06-25** (`main.css`, site `0.5.x` warm line) · **2026-06-30**
+(`chrome.html`).
 
 ## How to use it
 

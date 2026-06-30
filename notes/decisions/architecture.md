@@ -2,6 +2,47 @@
 
 Key structural choices and why. Newest on top.
 
+### One seamless site: nodes are pages of fairyfox, not similar sites (2026-06-30)
+
+Chosen direction (owner, this session): rather than each node building a *similar*
+site, the mesh **controls one site** and nodes **appear as pages of it** — the Games
+link is the model (an ordinary nav link landing on what looks like another page). So
+the docs-site standard now requires the **shared chrome** (header + the fixed global
+nav `Home · Projects · Games · Docs · Downloads · Updates · About` + footer), and the
+**"← Back to Fairy Fox" back-button is retired**: because you never leave, the
+brand/Home link *is* the way home. A recommended **submenu** (`.subnav`) carries
+section/context nav (the Projects list, or a project's own pages) so the global nav
+stays constant. This overrides the earlier "match the theme, keep a back-button"
+framing.
+
+Coupled decisions:
+
+- **Deployment** (new standard): static content → GitHub Pages on the shared domain
+  (`fairyfox.io/<key>/`, same-origin → truly a page of the site); built/runnable apps →
+  **Netlify** (better for building/running apps, but its own host → seamless only via
+  shared chrome). **fairyfox-games is the recorded exception** — a static games
+  collection that's part of the site, so Pages `/games/`, no Netlify, no subdomain.
+- **Collection/monorepo** is an allowed **deliberate, recorded exception** (per-sub-unit
+  quality, repo-level version/notes, landing-index site), not the default — decided
+  case-by-case (as for fairyfox-games).
+- **Tags** stay games-local (display-only mesh-wide); no shared tag vocabulary or
+  mesh-wide filter — rejected the briefing's system-wide tag proposal.
+- **Shallow clones retired for good**: clones are plain single-branch clones (`fetch` +
+  `merge --ff-only`; re-clone the disposable mirror if it ever fails). The
+  `--depth 1`/`--unshallow`/`reset --hard` recovery prose is gone from the standards.
+
+Site code (serve games at `/games/` on Pages, build the submenu) is a planned
+follow-up: [`../plans/one-site-and-deployment.md`](../plans/one-site-and-deployment.md). (`0.10.0`.)
+
+### Plan before execute, by default, across the mesh (2026-06-30)
+
+New **planning** standard: non-trivial work gets a short structured plan first
+(decisions → work breakdown → open items → release shape), then execution against it.
+The rationale is **execution reliability, not paperwork** — work runs more dependably
+off an organized plan than off improvisation (owner's stated reason). Trivial one-step
+changes are exempt. Wired into the Default Workflow of the CLAUDE template + root
+`CLAUDE.md`, `ai-context.md`, and the compliance matrix. (`0.10.0`.)
+
 ### Express authorizations carry the user's go-ahead from hub to node (2026-06-26)
 
 Adoption defaults to "check, report, then wait" at each node — a safety gate
