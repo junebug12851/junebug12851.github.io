@@ -19,7 +19,7 @@ permalink: /docs/
 {%- for cat in site.data.doc_categories -%}
   {%- assign items = site.docs | where: "category", cat.slug | sort: "order" -%}
   {%- if items.size > 0 -%}
-<section style="margin-top:2.4rem">
+<section id="{{ cat.slug }}" style="margin-top:2.4rem;scroll-margin-top:5rem">
   <h2>{{ cat.name }}</h2>
   <div class="grid cols-3" style="margin-top:1rem">
     {%- for d in items -%}

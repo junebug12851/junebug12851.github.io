@@ -52,6 +52,7 @@ random-ai-prompt:
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
     - 2026-06-26-adopting-updates-3.md           # digested 0.9.8 — verification floor already in 0.9.3; the "promote reset --hard" ask superseded by 0.9.6
     - 2026-06-27-adopting-updates.md             # digested 0.9.8 — working-tree sanity-check (adopting-updates check flow); "promote reset --hard" ask superseded by 0.9.6
+    - 2026-06-28-adopting-updates.md             # digested 0.10.0 — check-only vs 0.9.6; already-addressed, and the shallow-clone recovery prose is now fully removed mesh-wide
   # 2026-06-28 report-review (0.9.8): digested the three reports above + PSE2's check-for-updates.
   # Folded Theme B (elevate CI-owns-tag to a callout in git-workflow.md "Cutting a release"),
   # Theme C (backfill note for stale hub_version placeholders in process-reports.md), and Theme D
@@ -111,7 +112,10 @@ fairyfox-games:
   commit: f31f45bcd2cf74e09c10bcc424fa3c19a2b0ad57
   branch: dev
   seen: 2026-06-30
-  reports_through: []          # digested-report filenames (append-only); see header
+  reports_through:             # digested-report filenames (append-only); see header
+    - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
+    - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
+    - 2026-06-30-docs-site-feedback.md    # digested 0.10.0 — one-seamless-site model (no back-button, shared chrome + submenu, Games nav slot); tags kept games-local
   # 2026-06-29: hub brought the games repo in as a tracked node — full-history dev mirror
   # cloned under assets/references/fairyfox-games. Repo is at VERSION 0.2.0 (two games:
   # Ink Bloom + Echo Chamber; themed docs site live, Netlify games.fairyfox.io mirror

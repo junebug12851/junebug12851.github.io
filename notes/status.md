@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.10.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.11.0` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -61,8 +61,11 @@ The rest of the structure is in place end to end:
   standards landed — **deployment** (static→Pages on the shared domain, built apps→Netlify,
   games the recorded Pages exception) and **planning** (plan-before-execute by default);
   the collection/monorepo shape is a recorded exception; and the old shallow-clone
-  refresh prose was purged in favour of plain clones. (Site code for `/games/` on Pages
-  + the submenu nav is a planned follow-up — `plans/one-site-and-deployment.md`.)
+  refresh prose was purged in favour of plain clones. The **submenu nav** (`.subnav`)
+  then shipped site-side (`0.11.0`) — a shared secondary nav row under the primary nav,
+  live on the Projects + Docs sections — and the digested report markers were advanced.
+  (Remaining follow-up: serving games at `/games/` needs the games repo renamed
+  `fairyfox-games → games`, a node-side change — `plans/one-site-and-deployment.md`.)
   **Both siblings are now fully onboarded** (mesh-aware `CLAUDE.md` + a fairyfox-themed
   docs site each): Random AI Prompt (`2.28.18` — the repo split into an active `engine-v3`
   + a frozen `engine-v1-2` snapshot, v3-only; the 2.7.x line built out an

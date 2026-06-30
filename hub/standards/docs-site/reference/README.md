@@ -13,8 +13,8 @@ appears as a page of fairyfox.io — the brand/Home link is the way home, the pr
 nav is the fixed mesh-wide set (incl. Games), and there's no separate back-button.
 Reproduce it in the project's own stack; don't hot-link it.
 
-Snapshot: **2026-06-25** (`main.css`, site `0.5.x` warm line) · **2026-06-30**
-(`chrome.html`).
+Snapshot: `main.css` **2026-06-25** (site `0.5.x` warm line), with the **`.subnav`
+submenu added 2026-06-30** · `chrome.html` **2026-06-30**.
 
 ## How to use it
 

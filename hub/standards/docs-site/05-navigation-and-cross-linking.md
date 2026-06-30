@@ -83,9 +83,9 @@ site** so there is no visible "jump":
     Guides · Reference · Changelog …).
 
   The primary nav never changes between pages; the submenu is the part that changes.
-  Mark the current submenu item `.active`. (The shared chrome's submenu row is being
-  rolled out on the main site; until a project carries it, its section links may live
-  in a project-local nav of the same style.)
+  Mark the current submenu item `.active`. (The shared chrome's submenu row is live on
+  the main site — `.subnav` in [`reference/`](reference/); until a project carries it,
+  its section links may live in a project-local nav of the same style.)
 
 ## Seamlessness checklist (no visible "jump")
 

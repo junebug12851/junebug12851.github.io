@@ -60,7 +60,9 @@ controls and pills at `999px`. Container: `--maxw 1180px`, `--maxw-text 43rem`,
 | nav item (`.nav > a`) | padding **`.45rem .72rem`**, `.93rem`, weight 600, radius `999px`, color `--text-soft` |
 | nav hover | color `--text` on `--panel-2` |
 | nav `.active` | color `--text` on `color-mix(--violet 16%, transparent)` |
-| `.subnav` (recommended, secondary row below header) | full-width row under `.site-header`; inner `.wrap` flex, `gap:.12rem`; items reuse `.nav > a` metrics (padding `.45rem .72rem`, `.93rem`, weight 600, radius `999px`) one step lighter (`--text-soft`/quieter fill); same `.active` treatment. Exact values land when the shared submenu ships in `main.css`. |
+| `.subnav` (recommended, secondary row below header) | full-width row under `.site-header`: `1px --line` bottom border, bg `color-mix(--bg 80%, transparent)`; inner `.wrap` flex, `gap:.1rem`, `flex-wrap:wrap`, `padding-block:.5rem` |
+| `.subnav a` | padding `.32rem .62rem`, `.86rem`, weight 600, radius `999px`, `--text-soft`; hover `--text` on `--panel-2`; `.active` `--text` on `color-mix(--violet 16%, transparent)` |
+| `.subnav` @ `≤540px` | `.wrap` becomes `flex-wrap:nowrap` + `overflow-x:auto` (hidden scrollbar) |
 | `.nav-toggle` | **`42px × 42px`**, padding `10px`, radius `10px`, `1px --line-2`, bg `--panel-2`; bars `2px` tall |
 | mobile breakpoint | **`max-width:820px`** — nav becomes a `--panel` dropdown, padding `.5rem`, radius `20px`, `--shadow-lg` |
 | header @ `≤540px` | height drops to **`60px`** |

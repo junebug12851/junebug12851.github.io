@@ -1,9 +1,17 @@
 # Plan — one seamless site, deployment policy, and standards cleanup
 
-**Status:** STANDARDS APPLIED (`0.10.0`, 2026-06-30) — the standards/notes portion
-(sections A–F, H) shipped this release. **Site code (section G — serve games at
-`/games/` on Pages, build the submenu nav) and the marker advances remain TODO.**
-`.last-seen.yml` markers were **not** advanced. Original plan preserved below.
+**Status:** IN PROGRESS.
+- Sections A–F, H — **shipped in `0.10.0`** (standards/notes).
+- Section G submenu nav — **shipped in `0.11.0`** (`.subnav`, live on Projects + Docs).
+- Marker advances — **done in `0.11.0`** (fairyfox-games ×3, RAP 2026-06-28).
+- **REMAINING:** serve games at `fairyfox.io/games/` — requires renaming the games repo
+  `fairyfox-games → games` (node-side: repo rename + base path `/games` + update its
+  CLAUDE/notes), then **retire the hub `/games/` redirect** (`games.html`) and update
+  the registries (`key`/`docs`). The hub doesn't rename a node from its own session, so
+  this is a games-repo change (or an explicit owner go-ahead to drive it via `gh`). The
+  `games.fairyfox.io` Netlify subdomain is dropped either way.
+
+Original plan preserved below.
 **Date:** 2026-06-30
 **Origin:** owner decisions in the live session following the 2026-06-30 inbound
 report-review (`notes/fairyfox-reports/inbound/INBOX-2026-06-30-0208.md`), which

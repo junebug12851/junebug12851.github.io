@@ -1,0 +1,33 @@
+{%- comment -%}
+  Shared submenu (secondary nav) — the section/context layer below the primary nav.
+  Part of the shared chrome (see hub/standards/docs-site/05). The primary nav stays
+  constant across the site; this row changes to localize you within a section.
+
+  Auto-enables for the Projects and Docs sections; a page can force a variant with
+  `subnav: projects|docs` or suppress it with `subnav: none` in front matter.
+{%- endcomment -%}
+{%- assign sub = page.subnav -%}
+{%- if sub == nil -%}
+  {%- if page.url contains '/projects/' -%}{%- assign sub = 'projects' -%}
+  {%- elsif page.url contains '/docs/' -%}{%- assign sub = 'docs' -%}{%- endif -%}
+{%- endif -%}
+{%- if sub == 'projects' -%}
+<nav class="subnav" aria-label="Projects">
+  <div class="wrap">
+    <a href="{{ '/projects/' | relative_url }}"{% if page.url == '/projects/' %} class="active" aria-current="page"{% endif %}>All&nbsp;Projects</a>
+    {%- for proj in site.data.projects -%}
+    {%- assign purl = proj.key | prepend: '/projects/' | append: '/' -%}
+    <a href="{{ purl | relative_url }}"{% if page.url == purl %} class="active" aria-current="page"{% endif %}>{{ proj.name }}</a>
+    {%- endfor -%}
+  </div>
+</nav>
+{%- elsif sub == 'docs' -%}
+<nav class="subnav" aria-label="Documentation">
+  <div class="wrap">
+    <a href="{{ '/docs/' | relative_url }}"{% if page.url == '/docs/' %} class="active" aria-current="page"{% endif %}>All&nbsp;Docs</a>
+    {%- for cat in site.data.doc_categories -%}
+    <a href="{{ '/docs/' | relative_url }}#{{ cat.slug }}">{{ cat.name }}</a>
+    {%- endfor -%}
+  </div>
+</nav>
+{%- endif -%}
