@@ -99,7 +99,7 @@
     pure, tested logic from rendering; play them embedded on the Fun page.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.1.0"
+  version: "0.1.2"
   activity: active
   updated: "Jun 29, 2026"
   updated_iso: "2026-06-29"

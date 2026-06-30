@@ -62,6 +62,6 @@ projects:
   - key: fairyfox-games
     repo: https://github.com/junebug12851/fairyfox-games
     branch: dev
-    adopts_hub: false
+    adopts_hub: true
     notes_system: true
     last_seen: null
