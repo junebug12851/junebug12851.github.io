@@ -54,10 +54,10 @@
     prompts to many image-generation providers and keeps a built-in photo gallery.
   tags: [JavaScript, Node 24, Web UI]
   lifecycle: released
-  version: "2.14.0"
+  version: "2.28.18"
   activity: active
-  updated: "Jun 28, 2026"
-  updated_iso: "2026-06-28"
+  updated: "Jun 29, 2026"
+  updated_iso: "2026-06-29"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -99,7 +99,7 @@
     pure, tested logic from rendering; play them embedded on the Games page.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.2.0"
+  version: "0.4.0"
   activity: active
   updated: "Jun 29, 2026"
   updated_iso: "2026-06-29"
@@ -120,10 +120,10 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.9.12"
+  version: "0.9.13"
   activity: active
-  updated: "Jun 29, 2026"
-  updated_iso: "2026-06-29"
+  updated: "Jun 30, 2026"
+  updated_iso: "2026-06-30"
   meta: true
   color: "#ff7a5e"
   icon: fox

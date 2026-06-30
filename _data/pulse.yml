@@ -8,18 +8,22 @@
 # changes : recent micro-changes for the scrolling ticker (newest first)
 #           c = a CSS colour var so it adapts to light/dark
 
-bars: [15, 7, 4, 12, 21, 29, 17, 10, 8, 15, 25, 31, 14, 6, 11, 20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33]
+bars: [7, 4, 12, 21, 29, 17, 10, 8, 15, 25, 31, 14, 6, 11, 20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33, 78]
 
 changes:
-  - { c: "var(--green)", text: "Random AI Prompt 2.12.0 — the Manage tab: in-app content manager with live hot-apply", when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.13.0 — DPL focus dial + global layer auto-merge",   when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.14.0 — list Dedupe/Sort, Manage Insert bar, AI Expand", when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt: Manage tab restore-default + ghost (restorable) pills", when: "1d" }
-  - { c: "var(--coral)", text: "Standards: folded sibling report feedback — CI-owns-tag callout (0.9.8)", when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.11.0 — online build fully static, browser-direct generation", when: "2d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.10.0 — DPL intensity dial ({#name NN%}, auto-scaling)", when: "2d" }
-  - { c: "var(--green)", text: "Random AI Prompt: provider header redesign — dropdown + per-key BYOK",  when: "2d" }
-  - { c: "var(--green)", text: "Random AI Prompt: stripped online build live at prompt.fairyfox.io",   when: "2d" }
-  - { c: "var(--coral)", text: "Standards: full-history mirrors — the phantom force-push is gone (0.9.6)", when: "2d" }
-  - { c: "var(--green)", text: "Random AI Prompt: prompts dispatch to 16+ image-generation providers",  when: "3d" }
-  - { c: "var(--coral)", text: "Standards: process-reports loop + compliance audit",                   when: "4d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.28.0 — provider expansion: 18 text providers + a full upscaler/enhancer row", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.16–2.17 — single-image view: re-roll/variation, tracked ancestry, Markdown export", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.28.18 — loader memoization: ~280× faster prompt generation", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.28.x — Phase 4–6 refactor: modular decomposition + new test nets, Lighthouse 100", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.15.0 — SPA internationalization (react-intl + FormatJS)", when: "1d" }
+  - { c: "var(--green)", text: "Fairy Fox Games 0.3.0 — Orbit Slingshot: a gravity game (pure core + 16 tests)", when: "1d" }
+  - { c: "var(--green)", text: "Fairy Fox Games 0.4.0 — Polarity: a charge-match runner (pure core + 15 tests)", when: "1d" }
+  - { c: "var(--coral)", text: "Site: Fairy Fox Games registered as an integrated mesh node (0.9.10–0.9.12)", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.12.0 — the Manage tab: in-app content manager with live hot-apply", when: "2d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.13.0 — DPL focus dial + global layer auto-merge",   when: "2d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.14.0 — list Dedupe/Sort, Manage Insert bar, AI Expand", when: "2d" }
+  - { c: "var(--green)", text: "Random AI Prompt: Manage tab restore-default + ghost (restorable) pills", when: "2d" }
+  - { c: "var(--coral)", text: "Standards: folded sibling report feedback — CI-owns-tag callout (0.9.8)", when: "2d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.10.0 — DPL intensity dial ({#name NN%}, auto-scaling)", when: "3d" }
+  - { c: "var(--green)", text: "Random AI Prompt: stripped online build live at prompt.fairyfox.io",   when: "3d" }
+  - { c: "var(--coral)", text: "Standards: full-history mirrors — the phantom force-push is gone (0.9.6)", when: "3d" }

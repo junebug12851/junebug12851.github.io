@@ -20,3 +20,7 @@ left to rot. The first game is **Ink Bloom**: steer a steadily growing line, dri
 glowing motes to grow, and don't cross your own trail — the longer you survive, the
 less room you leave yourself. **Echo Chamber** followed: a timing game where you catch
 an expanding echo as it crosses the target band, the window tightening with every hit.
+Then **Orbit Slingshot**: hold to thrust a probe around a planet, sweep the targets,
+and don't crash or fly off into the void. And **Polarity**: a charge-match runner where
+you flip between cyan and magenta to match each incoming gate — a clash ends the run,
+and it keeps speeding up.

@@ -15,7 +15,7 @@
 pokered-save-editor-2:
   commit: 1bae326187b72c9eb8c67d716c44e1a887d52738
   branch: dev
-  seen: 2026-06-29
+  seen: 2026-06-30
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -40,11 +40,13 @@ pokered-save-editor-2:
   # Marker unchanged; seen advanced to 2026-06-28.
   # 2026-06-29 round-up: still no new commits past 1bae326 (clean ff "Already up to date",
   # still 0.14.2-alpha). Nothing to reconcile or blog. Marker unchanged; seen → 2026-06-29.
+  # 2026-06-30 round-up: still no new commits past 1bae326 (clean ff "Already up to date",
+  # still 0.14.2-alpha). Nothing to reconcile or blog. Marker unchanged; seen → 2026-06-30.
 
 random-ai-prompt:
-  commit: ba5b65a6f93d1912f0748045497346e3df72384d
+  commit: 2b6b8e6a95b2ea37f994afc68dac4acd87e83703
   branch: dev
-  seen: 2026-06-29
+  seen: 2026-06-30
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -92,14 +94,33 @@ random-ai-prompt:
   # $ keyword sigil) + global layer auto-merge (2.13.0); and list Dedupe/Sort + Manage Insert bar + AI Expand +
   # live DPL-validity lint (2.14.0). Folded into the 2026-06-28 day post ("An editor for the catalog, a second
   # dial…"). Marker → ba5b65a, VERSION 2.10.4 → 2.14.0.
+  # 2026-06-30 round-up: fast-forwarded cleanly ba5b65a → 2b6b8e6 (no force-push), VERSION
+  # 2.14.0 → 2.28.18 — RAP's biggest single day (all commits dated 2026-06-29). The 2.15.0–2.28.18
+  # line: SPA internationalization (react-intl + FormatJS, 2.15.0); the single-image view's actions —
+  # re-roll/variation + tracked ancestry + Markdown export (2.16.0) then inline actions/live strips/
+  # resize/View Raw (2.17.0); a big provider expansion (2.18–2.28.0) — an AI upscale/enhance framework +
+  # NSFW soft-lock, a dedicated Upscaler/Enhancer row, and a run of upscale/enhancer providers (DeepAI,
+  # Picsart, Segmind, local SD A1111/Forge/SD.Next/ComfyUI, Clipdrop, Venice, WaveSpeed, Claid, Deep-Image,
+  # neural.love, VanceAI, Leonardo, Replicate) plus text providers to 18 total; then the Phase 4–6 refactor
+  # (floor-up modular decomposition of Home/SingleView/Manage/listManifest/contentSafety/DPL with new test
+  # nets landed alongside each extraction), a Lighthouse polish (SEO+A11y 100, Perf 97) + SEO meta + CI gate,
+  # and a loader memoization (~280× faster generate(), no behavior change). Folded into the 2026-06-29 day
+  # post ("More providers, a deep refactor, and two new games"). Marker → 2b6b8e6, VERSION 2.14.0 → 2.28.18.
 
 fairyfox-games:
-  commit:                      # null = not yet digested; next round-up blogs from repo start
+  commit: f31f45bcd2cf74e09c10bcc424fa3c19a2b0ad57
   branch: dev
-  seen: 2026-06-29
+  seen: 2026-06-30
   reports_through: []          # digested-report filenames (append-only); see header
   # 2026-06-29: hub brought the games repo in as a tracked node — full-history dev mirror
   # cloned under assets/references/fairyfox-games. Repo is at VERSION 0.2.0 (two games:
   # Ink Bloom + Echo Chamber; themed docs site live, Netlify games.fairyfox.io mirror
   # pending owner DNS). Not yet blogged — marker left null so the next round-up covers the
   # full history (af796e2 → 8947a48).
+  # 2026-06-30 round-up: first blogged pass for this node. Fast-forwarded cleanly 8947a48 → f31f45b
+  # (no force-push), VERSION 0.2.0 → 0.4.0 — two new games dated 2026-06-29: Orbit Slingshot (a gravity
+  # game, symplectic-Euler core + 16 tests, v0.3.0) and Polarity (a charge-match runner, core + 15 tests,
+  # v0.4.0); four games total now (Ink Bloom, Echo Chamber, Orbit Slingshot, Polarity). The two new games
+  # were folded into the 2026-06-29 day post ("More providers, a deep refactor, and two new games"); the
+  # node's earlier arrival/history is covered by the hub-side integration write-up in that same post.
+  # Marker null → f31f45b, VERSION 0.4.0.

@@ -52,6 +52,10 @@ permalink: /about/
     <li><strong><a href="/projects/pokered-save-editor/">Pokered Save Editor</a></strong> —
     the predecessor: the original editor, built with Electron and Angular. Complete and
     stable, and the recommended working tool until the Qt 6 rewrite reaches parity.</li>
+    <li><strong><a href="/projects/fairyfox-games/">Fairy Fox Games</a></strong> — a
+    collection of small, self-contained canvas games, each splitting pure, tested logic
+    from rendering, integrated with this site and playable in the browser. Currently in
+    alpha, with a fresh experiment most days.</li>
     <li><strong><a href="/projects/fairyfox-io/">fairyfox.io</a></strong> — this site: the
     hand-built Jekyll hub and documentation library itself, listed as a project like the
     rest.</li>
