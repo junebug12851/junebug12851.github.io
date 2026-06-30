@@ -13,7 +13,10 @@ line the web app grew an **image-generation layer**: prompts can be dispatched t
 of hosted and local providers (OpenAI, Stability, Replicate, fal.ai, Gemini, Grok,
 FLUX/BFL, Ideogram, Leonardo, NovelAI, ComfyUI, Forge/SD.Next, Midjourney, and a plain
 copy-out), with an optional AI rewrite pass, a central output folder, and a built-in
-photo gallery with per-image metadata and a dedicated single-image view. The web app's
+photo gallery with per-image metadata and a dedicated single-image view with re-roll,
+variation, and tracked ancestry. Generation is no longer the end of the line: a
+dozen-plus **AI upscale / enhance** providers can sharpen a finished image, and the web
+app's interface is fully internationalized (react-intl). The web app's
 editing surface matured alongside it — CodeMirror DPL editors, a keyword toolbar, a
 Providers dropdown with per-provider keys, and an in-app **Manage tab** that edits the
 prompt catalog (blocks, lists, folders) on disk with live hot-apply — and a stripped,

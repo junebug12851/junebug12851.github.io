@@ -23,7 +23,7 @@ shared engineering standards those projects follow.
 
 The repositories are linked only through git, and only in one direction per flow:
 
-- **The hub reads the projects.** On request, it pulls a shallow, read-only copy
+- **The hub reads the projects.** On request, it pulls a read-only copy
   of each project so their changes can be summarised on the [blog](/blog/).
 - **The projects read the hub.** Each project pulls the hub's `hub/` directory to
   refresh the shared standards, then copies what it needs into its own tree.
