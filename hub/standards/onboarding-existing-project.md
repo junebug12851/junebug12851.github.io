@@ -94,7 +94,11 @@ Fold each template in around what's there — never a straight overwrite:
 | `CLAUDE.md` | Copy it in and fill out the project identity, **including the mesh-awareness block** (see below). | Fold the standard's structure into the existing AI-context file, keeping the project's real landmines/build steps — **but you must still add the mesh-awareness block** (see below); an existing `CLAUDE.md` almost never has it. |
 | `VERSION` | Create it — but **seed it from the project's actual version** (latest tag / `package.json`), *not* `0.1.0`. Reconcile the scheme toward SemVer. | Leave the real number; just confirm it matches the SemVer rule. |
 | `.gitignore` | Add the `assets/references/` ignore (+ cruft). | **Merge** the `assets/references/` line in; don't replace the existing file. |
+| `.gitattributes` | Copy `project.gitattributes` in. | **Merge** the LF rules; keep any deliberately different entries and note them ([agent-tooling](agent-tooling.md)). |
 | `notes/` skeleton | Drop the skeleton in and seed `status.md` from reality. | Add the skeleton *alongside* existing docs; migrate them in over time, not big-bang. |
+| `SECURITY.md`, `dependabot.yml`, `branch-sync.yml` | Copy in; enable branch protection on `main` (solo config) + signed releases ([supply-chain-hardening](supply-chain-hardening.md)). | Reconcile with existing workflows/policy; add least-privilege `permissions:` + SHA-pins to existing workflows. |
+| `legal/` pages | Copy the templates in and **rewrite to match the code** ([legal-docs](legal-docs.md)). | Replace any third-party generator links with self-hosted, accurate pages. |
+| README badges | Paste the applicable block from `README-badges.md` ([badges](badges.md)). | Reconcile with any existing badges; show all that apply, drop stale ones. |
 
 > **The mesh-awareness block is required — and it's the easiest thing to skip when
 > reconciling an existing `CLAUDE.md`.** The project's `CLAUDE.md` must carry the
@@ -181,11 +185,13 @@ git push origin dev
 # release dev → main the git-flow way (PATCH: direct, --no-ff, tagged):
 git checkout main && git merge --no-ff dev
 git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags
-git checkout dev
+git checkout dev && git merge --ff-only main && git push origin dev   # back-merge — dev must contain main
 ```
 
 (A MINOR/MAJOR milestone goes through a `release/*` branch instead — see the
-[git-workflow standard](git-workflow.md#cutting-a-release).)
+[git-workflow standard](git-workflow.md#cutting-a-release). Once `main` is
+branch-protected, release via the
+[PR-based path](git-workflow.md#releasing-when-main-is-branch-protected-pr-based).)
 
 ## Registered ≠ integrated (read before declaring "done")
 

@@ -85,6 +85,8 @@ is the compromise that keeps ceremony proportional to the change:
   git tag -a vX.Y.Z -m "vX.Y.Z"        # tag matches VERSION
   git push origin main --tags
   git checkout dev
+  git merge --ff-only main             # back-merge — dev must contain main (see below)
+  git push origin dev
   ```
 
 - **MINOR / MAJOR** (a milestone): go through a **`release/X.Y.0`** branch, so the
@@ -99,10 +101,15 @@ is the compromise that keeps ceremony proportional to the change:
   git merge --no-ff release/X.Y.0
   git tag -a vX.Y.0 -m "vX.Y.0"         # tag matches VERSION
   git checkout dev
-  git merge --no-ff release/X.Y.0       # carry the release finalizations back
+  git merge --ff-only main              # back-merge — one shared merge commit; dev == main after
   git branch -d release/X.Y.0
   git push origin main dev --tags
   ```
+
+  This **replaces** the old "merge `release/X.Y.0` into `dev` separately" step: a
+  second `--no-ff` merge into `dev` created a *different* merge commit, leaving `main`
+  with a commit `dev` lacked. Fast-forwarding `dev` up to `main` gives one shared merge
+  commit and `dev == main` — see [the back-merge invariant](#the-back-merge-invariant-dev-must-contain-main).
 
 ### Who creates the tag — CI vs. by hand
 
@@ -120,6 +127,56 @@ a silent no-op release.** Check `release.yml` before tagging:
 Either way the invariant holds: every commit on `main` ends up carrying its matching
 `vX.Y.Z` tag — the question is only *which actor* applies it.
 
+### The back-merge invariant: `dev` must contain `main`
+
+**After any release, `dev` must contain every commit on `main`.** Miss this and `dev`
+drifts one commit behind `main` per release — the `--no-ff` release merge (and, on the
+milestone path, the release finalizations) lands on `main` and never returns. Left
+unchecked it compounds silently: a real case reached **`dev` 32 commits behind `main`**,
+with README/badge/CI edits stranded on `main` and a feature nearly shipped off a stale
+base. So every release ends by bringing `main` back into `dev`:
+
+- **PATCH** and **MINOR/MAJOR** — `git checkout dev && git merge --ff-only main` (shown
+  in the blocks above). Because `main` was advanced *from* `dev`, `dev` is an ancestor
+  of the new `main`, so this fast-forwards cleanly and leaves `dev == main`.
+- **HOTFIX** — `dev` has diverged from `main` (it carries unreleased work), so a
+  fast-forward can't apply; use a real merge: `git checkout dev && git merge --no-ff main`.
+
+**Never author content directly on `main`.** Even release-time polish — README badges,
+deploy notes, CI tweaks, lockfile refreshes — goes on `dev` and reaches `main` only via
+the release merge. Committing straight to `main` is exactly how real content gets
+stranded; the back-merge only rescues what came through `dev`.
+
+**Feature branches are not CI-tested.** CI runs only on `dev`/`main`, so a `feature/*`
+branch's first real test is its `dev` merge. Before releasing, **confirm `dev` CI is
+green** — the `dev` merge is the gate, not the feature branch. A companion
+[`branch-sync` CI guard](../templates/branch-sync.yml) (in `hub/templates/`) fails when
+`git rev-list --count origin/dev..origin/main` is non-zero, catching a skipped
+back-merge within a day instead of at the next release.
+
+### Releasing when `main` is branch-protected (PR-based)
+
+The [supply-chain-hardening standard](supply-chain-hardening.md) makes **branch
+protection on `main` mandatory**, which blocks the local `git push origin main` above.
+On a protected repo the release moves through a **pull request** — the merge to `main`
+still happens, just via `gh` instead of a direct push:
+
+```sh
+# on dev (PATCH) or the release/X.Y.0 branch (MINOR/MAJOR), pushed and CI-green:
+gh pr create --base main --head dev --title "Release vX.Y.Z" --body "vX.Y.Z"
+gh pr checks --watch                       # wait for the required checks
+gh pr merge --merge                         # --no-ff merge commit on main (NOT squash/rebase)
+# CI-owned tagging applies vX.Y.Z on the main push (see "Who creates the tag").
+git checkout dev && git merge --ff-only main && git push origin dev   # back-merge
+```
+
+Use `--merge` (never `--squash`/`--rebase`) so the release stays a `--no-ff` merge
+commit and history is preserved. The back-merge invariant and CI-owned-tagging rules are
+unchanged — only the *push to `main`* becomes a PR merge. The canonical solo
+branch-protection config (require PR, **0 approvals**, strict checks, enforce-admins,
+linear history **off** so `--no-ff` merges pass) lives in
+[supply-chain-hardening](supply-chain-hardening.md).
+
 ## Hotfixes
 
 A production problem that can't wait for the next `dev` cycle is fixed on a branch
@@ -133,10 +190,13 @@ git checkout main
 git merge --no-ff hotfix/X.Y.Z
 git tag -a vX.Y.Z -m "vX.Y.Z"
 git checkout dev
-git merge --no-ff hotfix/X.Y.Z
+git merge --no-ff main                 # back-merge — dev has diverged, so a real merge (not ff-only)
 git branch -d hotfix/X.Y.Z
 git push origin main dev --tags
 ```
+
+(Merge **`main`** back into `dev`, not the `hotfix/*` branch: `main` carries the
+`--no-ff` hotfix *merge commit* that `dev` would otherwise still be missing.)
 
 ## Solo / small-project latitude
 
@@ -215,6 +275,9 @@ The check that catches a violation — run on request, report `done`/`partial`/`
 |-------------------|--------------|
 | Stable branch is **`main`**, not `master` | `git branch -a` |
 | Every commit on `main` is a `--no-ff` **release merge** carrying a matching `vX.Y.Z` tag — no direct commits | `git log --first-parent --oneline main`; `git tag` |
+| **`dev` contains `main`** — the back-merge ran after every release (no drift) | `git rev-list --count origin/dev..origin/main` is **0** |
+| No content authored directly on `main` (release polish went via `dev`) | `git log --first-parent main` shows only release/hotfix merges, no stray docs/CI commits |
+| On a branch-protected repo, releases went through a **PR merge** (`--merge`, not squash/rebase) | protected `main`; release merges are PR merge commits |
 | Pushed history is intact — no force-push / rebase / reset of published commits | history stable across fetches; no `--force` in reflog |
 | Spent `feature/`/`release/`/`hotfix/` branches deleted; `main`/`dev` intact | `git branch -a` |
-| Each release to `main` rode a green build/test checkpoint | release followed a green check |
+| Each release to `main` rode a green build/test checkpoint (feature branches are not CI-tested — the `dev` merge is the gate) | release followed a green `dev` check |

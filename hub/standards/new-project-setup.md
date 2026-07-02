@@ -39,7 +39,11 @@ The end state — tick every box before calling a project done:
 | Notes system | A `notes/` tree (from the skeleton), with a real `status.md`. |
 | Versioning | A `VERSION` file at the root (usually `0.1.0`). |
 | Ignores | `.gitignore` excludes `assets/references/*` and build cruft. |
-| Standards adopted | The project follows the hub's git, versioning, notes, and AI-context standards (copied in, not linked). |
+| Line endings | A root `.gitattributes` (`* text=auto eol=lf` + `.bat`/`.cmd` CRLF, binaries) — [agent-tooling](agent-tooling.md). |
+| Security | `SECURITY.md`, least-privilege + SHA-pinned workflows, signed releases, `main` branch-protected (solo config), Dependabot — [supply-chain-hardening](supply-chain-hardening.md). |
+| Legal | Self-hosted, code-accurate Privacy/Terms/Cookies — [legal-docs](legal-docs.md). |
+| Badges | The README opens with the applicable badge block — [badges](badges.md). |
+| Standards adopted | The project follows the hub's git, versioning, notes, AI-context, supply-chain, dependencies, legal-docs, agent-tooling, and badges standards (copied in, not linked). |
 | Registered | The project is listed in the hub's [`registry.yml`](../registry.yml) **and** the site's `_data/projects.yml`. |
 | Docs site | A documentation site published at `fairyfox.io/<key>/`, built to the [docs-site design system](docs-site/) so it **appears as a page of fairyfox.io** (shared chrome; brand/Home is the way home). For a **static** project the published site can double as the docs site — one surface, not two. |
 | Process report | A `notes/fairyfox-reports/` folder exists (from the skeleton) and this setup run is written up in it — see [process-reports](process-reports.md). |
@@ -82,11 +86,22 @@ Copy — don't link. The templates become part of *this* repo.
 
 ```sh
 H=assets/references/fairyfox.io/hub/templates
-cp    $H/CLAUDE.md          ./CLAUDE.md
-cp    $H/VERSION            ./VERSION
-cat   $H/project.gitignore >> ./.gitignore
-cp -r $H/notes-skeleton     ./notes
+cp    $H/CLAUDE.md              ./CLAUDE.md
+cp    $H/VERSION                ./VERSION
+cat   $H/project.gitignore     >> ./.gitignore
+cp    $H/project.gitattributes  ./.gitattributes   # LF normalization — agent-tooling standard
+cp -r $H/notes-skeleton         ./notes
+cp    $H/SECURITY.md            ./SECURITY.md       # supply-chain-hardening
+mkdir -p .github/workflows
+cp    $H/dependabot.yml         .github/dependabot.yml            # dependencies + supply-chain
+cp    $H/branch-sync.yml        .github/workflows/branch-sync.yml # git-workflow back-merge guard
+cp -r $H/legal                  ./public/legal       # legal-docs — place per the app's origin
+# README badges: paste the applicable block from $H/README-badges.md into the README (badges standard)
 ```
+
+Then, still part of setup: enable **branch protection** on `main` (solo config) and wire
+**signed releases** per [supply-chain-hardening](supply-chain-hardening.md); the release
+flow is the **PR-based** path in [git-workflow](git-workflow.md#releasing-when-main-is-branch-protected-pr-based).
 
 ### 4. Fill in the templates for this project
 
@@ -167,11 +182,13 @@ git push origin dev
 # release dev → main the git-flow way (PATCH: direct, --no-ff, tagged):
 git checkout main && git merge --no-ff dev
 git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags
-git checkout dev
+git checkout dev && git merge --ff-only main && git push origin dev   # back-merge — dev must contain main
 ```
 
 (A MINOR/MAJOR milestone goes through a `release/*` branch instead — see the
-[git-workflow standard](git-workflow.md#cutting-a-release).)
+[git-workflow standard](git-workflow.md#cutting-a-release). Once `main` is
+branch-protected, the direct push is blocked — release via the
+[PR-based path](git-workflow.md#releasing-when-main-is-branch-protected-pr-based).)
 
 Stage the **reference clone out** — `assets/references/*` is git-ignored and must
 never be committed (committing it nests repos and bloats history).

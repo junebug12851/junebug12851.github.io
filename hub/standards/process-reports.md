@@ -77,6 +77,32 @@ until the node actually adopts process-reports, at which point the folder is cre
 as part of that adoption. Don't create the folder just to drop a check-only report in
 it — that quietly adopts the standard behind the user's back.
 
+## A node proposing a standard *upward* (node → hub)
+
+Most reports are about a *run*. A distinct, first-class kind is a **proposal**: a node
+that hit something generic — a gap, a fix, a policy worth sharing — and wants it to
+become a hub standard. Five such proposals arrived in one cycle with inconsistent
+front matter (`procedure:` variously `propose-standard`, `standard-proposal`,
+`roundup`; one with no front matter at all), which made them hard to triage. So the
+shape is fixed:
+
+- **`procedure: propose-standard`** — the canonical value for an upward proposal (don't
+  reuse `roundup`/`adopting-updates` for one).
+- **Required front matter:** `date`, `procedure: propose-standard`, `node`,
+  `outcome: proposal-only (hub NOT modified)`, and the `hub_version` / `hub_commit` the
+  proposal was written against. Front matter is **mandatory** — never omit it.
+- **Body:** the one-line ask · why (the trigger) · the proposed standard sketch (name +
+  rough shape) · the reference implementation in this node · guardrails honored.
+- **The guardrail, always restated:** a node **never edits the hub**. The proposal is a
+  report in the node's own repo; the owner carries it upstream, and the hub adopts it on
+  the [inbound review pass](#how-the-hub-consumes-reports-the-review-pass). This is the
+  same anti-recursion boundary as every other report — a proposal reaches nothing
+  downstream on its own.
+
+The hub triages these exactly like any other report (they ride the same inbound read),
+but the fixed `procedure: propose-standard` lets the review pass pick them out as
+"candidate standards" rather than run feedback.
+
 ## Where reports live, and what they're named
 
 In the node's **own** repo:
@@ -184,6 +210,9 @@ qualify (see the gate in [`adopting-updates.md`](adopting-updates.md)).
 - The front matter's `hub_version` is a **real version number** (usable as the next
   adoption's "last adopted" anchor), not a placeholder like "see VERSION at run time".
 - A check that became an adopt in one session is a **single combined** report, not two.
+- A **node → hub proposal** uses `procedure: propose-standard` with complete front
+  matter (incl. `hub_version`/`hub_commit`) and restates the "a node never edits the
+  hub" guardrail — no bare/frontmatter-less proposals.
 - On the hub side, a review pass appended to `reports_through` (the digested-report
   **filename list**, not a date) only the reports it actually digested, and any
   standard changes it made are hub-side commits.

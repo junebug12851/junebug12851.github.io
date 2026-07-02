@@ -1,0 +1,29 @@
+# Dependabot — keep dependencies and GitHub Actions current.
+# Copy to `.github/dependabot.yml`. See hub/standards/dependencies.md (upgrade policy)
+# and supply-chain-hardening.md (the github-actions ecosystem keeps SHA-pinned Actions
+# current). Targets the WORKING branch (dev) so update PRs match the mesh's git-flow
+# instead of piling onto the default branch.
+
+version: 2
+updates:
+  # App/library dependencies. Adjust `package-ecosystem` + `directory` per project
+  # (npm/pip/cargo/…; monorepos list one block per package dir).
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-branch: "dev"
+    open-pull-requests-limit: 10
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+    labels: ["dependencies"]
+
+  # GitHub Actions — required so SHA-pinned Actions stay current (Scorecard
+  # Pinned-Dependencies stays green without going stale).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-branch: "dev"
+    labels: ["dependencies", "github-actions"]

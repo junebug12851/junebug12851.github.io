@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.11.2` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.12.0` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -64,6 +64,15 @@ The rest of the structure is in place end to end:
   refresh prose was purged in favour of plain clones. The **submenu nav** (`.subnav`)
   then shipped site-side (`0.11.0`) — a shared secondary nav row under the primary nav,
   live on the Projects + Docs sections — and the digested report markers were advanced.
+  Then a **standards fold-back** (`0.12.0`) adopted Random AI Prompt's six process-report
+  proposals as mandatory mesh-wide standards: a **git-workflow fix** (the
+  dev-must-contain-main back-merge invariant + a PR-based release path) and five new
+  standards — **supply-chain-hardening** (mandatory branch protection, SHA-pinned/least-priv
+  workflows, `SECURITY.md`, signed releases), **dependencies** (upgrade aggressively behind a
+  real test gate), **legal-docs** (self-hosted, code-accurate Privacy/Terms/Cookies),
+  **agent-tooling** (PowerShell not the bash sandbox; `.gitattributes` hygiene), and
+  **badges** (the README status-badge set) — each with a `## Verify` slice + compliance row,
+  plus six new `hub/templates/`.
   (Remaining follow-up: serving games at `/games/` needs the games repo renamed
   `fairyfox-games → games`, a node-side change — `plans/one-site-and-deployment.md`.)
   **Both siblings are now fully onboarded** (mesh-aware `CLAUDE.md` + a fairyfox-themed

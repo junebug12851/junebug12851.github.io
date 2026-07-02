@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+  Privacy Policy — hub template. Self-host this from the app's own origin; do NOT link
+  out to a third-party generator. REWRITE every clause to match what the code ACTUALLY
+  does before shipping (see hub/standards/legal-docs.md). Delete clauses that don't
+  apply; add anything missing. Placeholders in <ALL-CAPS>. Keep "Last updated" current.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — <PROJECT></title>
+</head>
+<body>
+  <main>
+    <h1>Privacy Policy</h1>
+    <p><em>Last updated: <YYYY-MM-DD></em></p>
+
+    <p>
+      This policy describes how <PROJECT> handles information. It is written to match
+      what the software actually does — read it against the code and correct anything
+      that has changed.
+    </p>
+
+    <h2>What we collect</h2>
+    <!-- Be truthful. If the app has no accounts, no analytics, and stores nothing on a
+         server, say exactly that. Do not import boilerplate about accounts/marketing
+         emails/camera access the app doesn't have. -->
+    <p>
+      <PROJECT> does not require an account and collects no personal information on a
+      server. <STATE_LOCAL_STORAGE: e.g. "Your settings and content are stored only in
+      your browser / on your device.">
+    </p>
+
+    <h2>Third-party services</h2>
+    <p>
+      <LIST_ANY: e.g. "When you supply your own API key, requests go directly from your
+      device to the provider you chose; we do not relay or log them.">
+      <NAME_HOSTING_PROCESSORS: e.g. "The site is hosted on GitHub Pages / Netlify,
+      which may log standard request metadata as processors.">
+      <FLAG_THIRD_PARTY_IP_EXPOSURE_OR_STATE_NONE: e.g. "Fonts are self-hosted; no
+      request is made to Google Fonts or any third-party CDN.">
+    </p>
+
+    <h2>Analytics &amp; tracking</h2>
+    <p><STATE_HONESTLY: e.g. "We use no analytics, tracking pixels, or advertising."></p>
+
+    <h2>Cookies</h2>
+    <p>See the <a href="cookies.html">Cookies Policy</a>. <IF_NONE: "This app sets no cookies."></p>
+
+    <h2>Children</h2>
+    <p>
+      <IF_ADULT_CONTENT_POSSIBLE: "This app is intended for users 18 and older."
+       ELSE: "This app is not directed at children under 13.">
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions: <CONTACT@PROJECT-OWNED-DOMAIN> <!-- prefer a project-owned address over a personal one -->
+    </p>
+
+    <p><small>
+      This document is provided for transparency and is not legal advice. For a
+      high-stakes project, have it reviewed by a qualified professional.
+    </small></p>
+  </main>
+</body>
+</html>

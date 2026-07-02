@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+  Cookies Policy — hub template. Self-host from the app's own origin. The most common
+  honest version for a mesh app is "we set no cookies; we use local storage, which is
+  not a cookie and is not shared with anyone." Rewrite to match reality — do NOT import
+  boilerplate about login/auth/advertising cookies the app doesn't set.
+  See hub/standards/legal-docs.md. Keep "Last updated" current.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cookies Policy — <PROJECT></title>
+</head>
+<body>
+  <main>
+    <h1>Cookies Policy</h1>
+    <p><em>Last updated: <YYYY-MM-DD></em></p>
+
+    <!-- Pick the truthful branch and delete the other. -->
+
+    <!-- BRANCH A — no cookies (typical for a client-side mesh app): -->
+    <h2>We use no cookies</h2>
+    <p>
+      <PROJECT> sets no cookies and uses no third-party tracking. <IF_LOCAL_STORAGE:
+      "It stores your settings and content in your browser's local storage — this stays
+      on your device, is not a cookie, and is never sent to a server."> You can clear it
+      any time from your browser.
+    </p>
+
+    <!-- BRANCH B — if the app DOES set cookies, replace the above with an honest table:
+    <h2>Cookies we set</h2>
+    <table>
+      <tr><th>Name</th><th>Purpose</th><th>Duration</th></tr>
+      <tr><td>...</td><td>...</td><td>...</td></tr>
+    </table>
+    -->
+
+    <h2>Contact</h2>
+    <p><CONTACT@PROJECT-OWNED-DOMAIN></p>
+
+    <p><small>Provided for transparency; not legal advice.</small></p>
+  </main>
+</body>
+</html>

@@ -195,6 +195,7 @@ edits — the project's copy may legitimately diverge.
 | **Structure** (notes skeleton, folder layout) | `notes/` tree | Add new files/sections; don't blow away existing content to match the skeleton. |
 | **Spec / convention** (a shared rule or format) | wherever the project encodes it | Update the project's implementation and its doc to match the new spec. |
 | **Template** (`CLAUDE.md`, `.gitignore`, `VERSION` format) | repo root | Port the meaningful change; never overwrite the project's filled-in identity. |
+| **New shared file** (`.gitattributes`, `SECURITY.md`, `.github/dependabot.yml`, `.github/workflows/branch-sync.yml`, `legal/*`, README badges) | repo root / `.github` / app origin | **Copy if absent; don't clobber** a node's deliberately different one (re-prompt). These carry the supply-chain, dependencies, legal-docs, agent-tooling, and badges standards. |
 | **Design system** (the [docs-site standard](docs-site/) — tokens, layout, components, cross-linking, the bundled `reference/main.css`) | the project's themed docs site | Re-apply the *intent* to the project's stack; diff `docs-site/` (incl. `11-measurements-reference.md` + `reference/main.css`) and re-run the [compliance checklist](docs-site/08-compliance-checklist.md). |
 | **Design / other shared asset** | the project's own design layer | Adopt the *intent*; the hub holds the convention, the project owns its rendering. |
 
@@ -229,8 +230,14 @@ git push origin dev
 # release dev → main the git-flow way (PATCH: direct, --no-ff, tagged):
 git checkout main && git merge --no-ff dev
 git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags
-git checkout dev
+git checkout dev && git merge --ff-only main && git push origin dev   # back-merge — dev must contain main
 ```
+
+> **If `main` is branch-protected** (mandatory once the node adopts
+> [supply-chain-hardening](supply-chain-hardening.md)), the direct `push origin main` is
+> blocked — release through a PR instead (`gh pr create --base main` → `gh pr checks
+> --watch` → `gh pr merge --merge` → back-merge `dev`). See
+> [git-workflow](git-workflow.md#releasing-when-main-is-branch-protected-pr-based).
 
 > **Does your `release.yml` create the version tag itself?** Some projects' release
 > pipelines derive `v<VERSION>` and tag on the `main` push, and gate the release on

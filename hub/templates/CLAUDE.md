@@ -31,6 +31,11 @@ follows the shared living-notes standard. Highlights:
 > State capabilities honestly: which shell/tools the assistant actually has, and
 > that it CAN build/test/run/commit. Don't claim a limitation that isn't real.
 
+- **Tooling (mesh rule):** use **PowerShell** (the `Windows-MCP` PowerShell tool) + the
+  file tools (Read/Edit/Write/Glob/Grep). **Never the Cowork bash sandbox** — it is
+  broken on this environment (stale/truncated reads, `.git` unlink failures, CRLF
+  mangling). And **execute** verify/commit/release directly; don't hand the user a
+  script. Full rule: the shared `agent-tooling` standard.
 - <How to build.>
 - <How to test.>
 - <How to run.>
@@ -56,8 +61,13 @@ Then, after making changes, run this loop **without being asked**:
    `--no-ff`, **tagged** merge, never a fast-forward or a direct commit. A **PATCH**
    (the default) releases **directly**:
    `git checkout main && git merge --no-ff dev && git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags && git checkout dev`.
-   A **MINOR/MAJOR** milestone goes through a `release/*` branch, and an urgent
-   production fix through a `hotfix/*` branch — see the `git-workflow` standard.
+   **Then back-merge — `dev` must contain `main`:** `git merge --ff-only main && git push origin dev`
+   (skip this and `dev` drifts a commit behind `main` every release). A **MINOR/MAJOR**
+   milestone goes through a `release/*` branch, an urgent production fix through a
+   `hotfix/*` branch — see the `git-workflow` standard. **If `main` is branch-protected**
+   (the `supply-chain-hardening` standard makes it mandatory), the direct push is
+   blocked — release via a PR instead (`gh pr create --base main` → `gh pr checks --watch`
+   → `gh pr merge --merge` → back-merge `dev`).
 
 **Hard safety rules:** never `push --force` / rewrite pushed history; never
 `reset --hard` / `rebase` / `clean -fd` / delete a branch without an explicit
@@ -75,6 +85,7 @@ The notes are a living document — keep them current as you work, by default.
 | Health / next changed | Update `notes/status.md` |
 | Made / rejected a decision | `notes/decisions/architecture.md` / `rejected.md` |
 | A change warrants a version | Bump `VERSION`, same commit |
+| Data practices / third-party deps changed | Update the self-hosted legal pages + "Last updated" date, same change (`legal-docs` standard) |
 
 ## Cross-project standards & checking the fairyfox system for updates
 
