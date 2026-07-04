@@ -100,10 +100,10 @@
     pure, tested logic from rendering; play them embedded on the Games page.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.11.2"
+  version: "0.12.0"
   activity: active
-  updated: "Jul 2, 2026"
-  updated_iso: "2026-07-02"
+  updated: "Jul 3, 2026"
+  updated_iso: "2026-07-03"
   integrated: true
   color: "#8b7bff"
   featured: true
@@ -121,10 +121,10 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.12.2"
+  version: "0.12.3"
   activity: active
-  updated: "Jul 3, 2026"
-  updated_iso: "2026-07-03"
+  updated: "Jul 4, 2026"
+  updated_iso: "2026-07-04"
   meta: true
   color: "#ff7a5e"
   icon: fox

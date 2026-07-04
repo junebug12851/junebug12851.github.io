@@ -15,7 +15,7 @@
 pokered-save-editor-2:
   commit: 1bae326187b72c9eb8c67d716c44e1a887d52738
   branch: dev
-  seen: 2026-07-03
+  seen: 2026-07-04
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -48,11 +48,13 @@ pokered-save-editor-2:
   # reconcile or blog. Marker unchanged; seen → 2026-07-02.
   # 2026-07-03 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
   # reconcile or blog. Marker unchanged; seen → 2026-07-03.
+  # 2026-07-04 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
+  # reconcile or blog. Marker unchanged; seen → 2026-07-04.
 
 random-ai-prompt:
-  commit: 43f4c2b0184a8aa09afe99ea3ee3ac705715a854
+  commit: cdfaf7cf3c2e8717e4ea9bc393f6b9d8ed4e7cd4
   branch: dev
-  seen: 2026-07-03
+  seen: 2026-07-04
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -157,11 +159,17 @@ random-ai-prompt:
   # downloads.yml + _projects/random-ai-prompt.md + _docs/random-ai-prompt.md, responsive note on the node.
   # Folded into the 2026-07-02 day post ("A responsive rebuild, a seventh game, and six new standards").
   # Marker → 43f4c2b. (New sibling report 1263fba roundup-proposal left for the inbound report-review pass.)
+  # 2026-07-04 round-up: clean fast-forward 43f4c2b → cdfaf7c, VERSION unchanged at 2.41.0 (all commits
+  # dated 2026-07-03). CI/tooling only: fixed the release-signing step so v2.41.0 could actually publish
+  # (pinned cosign 2.x), then modernized signing to cosign 3.x Sigstore bundles (<asset>.sigstore.json,
+  # pinned v3.1.1; deployment.md verify updated) + an in-range Vite build-tool bump. No product change, so
+  # projects.yml/downloads left at 2.41.0 / Jul 2; the signing thread was folded into the 2026-07-03 day
+  # post ("An eighth game, and a modernized release signature"). Marker → cdfaf7c.
 
 fairyfox-games:
-  commit: 3a44d611477dccc8ac5be4cd803ec5950b4a2c33
+  commit: 1994e12db17abbf7422a87797b3a2f439378c746
   branch: dev
-  seen: 2026-07-03
+  seen: 2026-07-04
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -199,3 +207,9 @@ fairyfox-games:
   # **Netlify retired** (GitHub Pages sole host, 0.11.1) + Actions bumped to Node-24-compatible (0.11.2). 217
   # tests green. Reconciled: projects.yml (games → 0.11.2 / Jul 2), _projects/fairyfox-games.md (added Loft +
   # the growth-architecture note). Folded into the 2026-07-02 day post. Marker → 3a44d61, VERSION 0.11.2.
+  # 2026-07-04 round-up: clean fast-forward 3a44d61 → 1994e12, VERSION 0.11.2 → 0.12.0 (commits dated
+  # 2026-07-03). An eighth, mechanically-distinct game **Poise** (balance — a ball on a tilting beam;
+  # pure normalised core + external shell, full growth stack, 25 tests incl. controllability + resting
+  # no-drift regression) + grew Skyline with a **near-miss line** ("N floors short of your best", +2
+  # tests). 244 tests green. Reconciled: projects.yml (games → 0.12.0 / Jul 3), _projects/fairyfox-games.md
+  # (added Poise). Folded into the 2026-07-03 day post. Marker → 1994e12, VERSION 0.12.0.
