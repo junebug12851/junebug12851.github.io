@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.13.2` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.14.0` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -31,9 +31,10 @@ through the `0.4.x` line; it now includes:
   project's own page** on the domain (`fairyfox.io/<key>/`, repo as the fallback) —
   the hub-local `/projects/<key>/` node pages were **retired in `0.13.0`** (they cached
   detail that went stale; each project explains itself). See the design note below.
-- A **shared "Aa" reader menu** (`0.13.0`): a Kindle-style reading control in the header
-  — Theme (Auto/Light/**Sepia**/Dark) · text size · line spacing · width — saved under an
-  **origin-wide `fairyfox:reader` key**, so the choice is shared across every fairyfox.io
+- A **shared "Aa" reader menu** (`0.13.0`, redesigned `0.14.0`): a reading control in the
+  header — Theme (Auto/Light/**Sepia**/Dark) · an **accent-colour picker** · text size ·
+  line spacing · width — saved under a **versioned origin-wide `fairyfox:reader:b` key**, so
+  the choice is shared across every fairyfox.io
   site (the hub + each project's docs). Adopted from Random AI Prompt's docs theme and
   codified as a required shared component in `hub/standards/docs-site/`. The button sits
   at the **far right** of the header (past About).

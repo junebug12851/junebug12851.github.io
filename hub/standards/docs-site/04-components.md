@@ -60,12 +60,23 @@ behaviour and constants are normative; see
   `--panel-2` fill, `--line-2` border, 40px tall. Kept a direct child of the header
   wrap so it stays visible when the nav collapses on mobile. `aria-haspopup="dialog"`, `aria-expanded` toggled.
 - **Panel:** a fixed popover (`role="dialog"`), `--panel` on `--line-2`, `--radius`,
-  `--shadow-lg`, opening below the button. Four labelled rows —
-  **Theme** (Auto/Light/Sepia/Dark) · **Text size** (A− / A+) · **Line spacing**
-  (Tight/Normal/Relaxed) · **Width** (Narrow/Normal/Wide) — each a segmented control
-  (`.ff-seg`) whose selected item carries `aria-pressed="true"`. Closes on outside
-  click or Escape; a hint line notes the choice is remembered across Fairy Fox.
-- Changes apply **live** and are saved immediately to `fairyfox:reader`.
+  `--shadow-lg`, opening below the button. Five labelled rows:
+  - **Theme** — segmented Auto/Light/Sepia/Dark.
+  - **Accent** — a row of colour circles (`.ff-swatch`, 26px), a multi-colour
+    "Default" swatch first (reverts to the theme accent) then the presets. Selected
+    swatch gets a ring; picking one recolours the accent site-wide.
+  - **Text size** — a **5-step segmented scale** (`.ff-seg.ff-size`), each button an
+    "A" at its own increasing size; the active step is highlighted. (Not a `+`/`−`
+    stepper — the scale shows where you are.)
+  - **Line spacing** — segmented Tight/Normal/Relaxed.
+  - **Width** — segmented Narrow/Normal/Wide.
+
+  Each segmented item carries `aria-pressed="true"` when active. Closes on outside
+  click or Escape; a hint notes theme/accent/size apply site-wide and the choice is
+  remembered across Fairy Fox.
+- Changes apply **live** and are saved immediately to `fairyfox:reader:b` (see
+  [`02-design-tokens.md`](02-design-tokens.md#the-reader-menu-required-shared-component)
+  for the model + constants).
 
 ## Buttons (`.btn`)
 

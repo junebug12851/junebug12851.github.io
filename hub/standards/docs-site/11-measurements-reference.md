@@ -70,7 +70,7 @@ controls and pills at `999px`. Container: `--maxw 1180px`, `--maxw-text 43rem`,
 ## Reader ("Aa") menu
 
 Inserted at the far right of the header, just **after** `.nav` (past "About"), with
-`margin-left:.5rem` for spacing from the nav. Constants (sizes/spacing/width steps + the `fairyfox:reader` key) are in
+`margin-left:.5rem` for spacing from the nav. Constants (size/spacing/width steps + the `fairyfox:reader:b` key) are in
 [`02-design-tokens.md`](02-design-tokens.md#the-reader-menu-required-shared-component).
 
 | Element | Value |
@@ -80,6 +80,8 @@ Inserted at the far right of the header, just **after** `.nav` (past "About"), w
 | `.ff-reader-panel` | fixed, `z-index:1300`, `top:calc(64px + .5rem)`, `right:clamp(.8rem,3vw,1.6rem)`, `width:min(20rem, 100vw − 1.6rem)`, bg `--panel`, `1px --line-2`, radius `--radius`, `--shadow-lg`, padding `1rem 1.05rem 1.1rem` |
 | `.ff-reader-row` | `margin:0 0 1rem` (last `0`); label `.68rem`, weight 700, uppercase, `--text-faint` |
 | `.ff-seg` | flex, `gap:.3rem`, bg `--panel-3`, `1px --line`, radius `11px`, padding `.28rem`; buttons `.82rem` weight 600, radius `8px`; selected (`aria-pressed`) bg `--panel`, `1px --line-2`, `--shadow` |
+| `.ff-seg.ff-size` | 5 buttons, family `--display` weight 700; each "A" set to its own size (`0.82 / 0.95 / 1.08 / 1.22 / 1.4rem`) |
+| `.ff-swatches` / `.ff-swatch` | flex, `gap:.44rem`; each swatch **`26px`** circle, `2px --line-2` border; selected → ring `0 0 0 2px --panel, 0 0 0 4px --text`; the `.ff-swatch-default` shows a conic multi-colour gradient |
 | `.ff-hint` | `.72rem`, `--text-faint`, `margin-top:.9rem` |
 
 ## Buttons

@@ -7,21 +7,22 @@
 
 :root{
   /* brand hues — warmed. Lifecycle status hues are fixed: alpha=red, beta=yellow, released=green */
-  --violet:#ff7a5e; --violet-deep:#ef6149; --pink:#ff7ab0; --amber:#f6b25a; --green:#38d3a3;
-  --coral:#ff7a5e; --honey:#f6b25a; --mint:#38d3a3; --plum:#b88ce8;
-  --hue-alpha:#e5484d; --hue-beta:#e0a210; --hue-released:#22a06b;
+  --violet:#ff8368; --violet-deep:#ef6149; --pink:#ff7ab0; --amber:#f6b25a; --green:#38d3a3;
+  --coral:#ff8368; --honey:#f6b25a; --mint:#38d3a3; --plum:#c79bf0;
+  --hue-alpha:#f0565b; --hue-beta:#eeb01e; --hue-released:#33b982;
 
-  /* warm dark theme (default) */
-  --bg:#191116; --bg-grad-top:#211622;
-  --panel:#241823; --panel-2:#2a1d29; --panel-3:#322433;
-  --line:#3a2a37; --line-2:#4a3646;
-  --text:#f7ece6; --text-soft:#cdb8c2; --text-faint:#9c8893;
-  --accent:var(--violet); --accent-ink:#ffb59f; --on-accent:#241016;
-  --link:#ffb59f; --link-hover:#ffd0c2;
-  --glow:rgba(255,122,94,.34);
-  --card-grad:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0));
-  --shadow:0 1px 0 rgba(255,255,255,.03), 0 18px 40px -24px rgba(0,0,0,.8);
-  --shadow-lg:0 34px 80px -30px rgba(0,0,0,.86);
+  /* warm dark theme (default) — raised panels + brighter secondary text for real
+     surface separation and contrast (tuned to WCAG 2.1 AA). */
+  --bg:#181017; --bg-grad-top:#241827;
+  --panel:#281b28; --panel-2:#342433; --panel-3:#402e3e;
+  --line:#483446; --line-2:#5e4659;
+  --text:#fbf3ee; --text-soft:#e0cdd7; --text-faint:#b8a3af;
+  --accent:var(--violet); --accent-ink:#ffc6b3; --on-accent:#2a1219;
+  --link:#ffc6b3; --link-hover:#ffe0d5;
+  --glow:rgba(255,131,104,.4);
+  --card-grad:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,0));
+  --shadow:0 1px 0 rgba(255,255,255,.04), 0 18px 40px -24px rgba(0,0,0,.86);
+  --shadow-lg:0 34px 80px -30px rgba(0,0,0,.9);
   --grain-op:.05; --code-bg:#120c12;
 
   --radius:20px; --radius-sm:13px; --radius-xs:9px;
@@ -32,71 +33,76 @@
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --ease:cubic-bezier(.22,.61,.36,1);
 
-  /* reading controls — tuned live by the reader ("Aa") menu. The choice lives
-     under an origin-wide localStorage key (fairyfox:reader), so it is SHARED
-     across every same-origin fairyfox.io site (the hub + each project's docs). */
-  --reading-fs:1.05rem; --reading-lh:1.8; --reading-width:46rem;
+  /* reading controls — set live by the reader ("Aa") menu. Text size scales the
+     document root font-size (so it works on every page); line spacing drives body
+     line-height; width caps the reading measure. Saved under a versioned origin-wide
+     key (fairyfox:reader:b) shared across every same-origin fairyfox.io site. */
+  --reading-lh:1.65; --reading-width:46rem;
 }
 
 /* Light — applies two ways: the OS default (media query, only when there's no
    manual choice — :not([data-theme])) and the explicit reader pick. Kept
-   identical between the two selectors. */
+   identical between the two selectors. A deeper cream ground + near-white panels +
+   stronger hairlines so surfaces read as distinct (not flat). */
 @media (prefers-color-scheme: light){
   :root:not([data-theme]){
-    --violet:#ef6149; --violet-deep:#dd4f37; --pink:#e6488f; --amber:#e08a1e; --green:#1fae84;
-    --coral:#ef6149; --honey:#f0a330; --mint:#1fae84;
-    --bg:#fbf2ea; --bg-grad-top:#fff6ee;
-    --panel:#fffaf5; --panel-2:#fdf2e9; --panel-3:#f7e7da;
-    --line:#efddcf; --line-2:#e6cdba;
-    --text:#2c2230; --text-soft:#6a5a62; --text-faint:#9c8b92;
-    --accent:var(--violet); --accent-ink:#c8462f; --on-accent:#fff8f4;
-    --link:#c8462f; --link-hover:#bb3c25;
-    --glow:rgba(239,97,73,.26);
-    --card-grad:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0));
-    --shadow:0 1px 2px rgba(80,40,30,.05), 0 14px 34px -20px rgba(120,60,40,.28);
-    --shadow-lg:0 30px 70px -28px rgba(120,55,35,.4);
-    --grain-op:.03; --code-bg:#2b2030;
+    --violet:#d1462c; --violet-deep:#b23a22; --pink:#c93b7e; --amber:#c17d16; --green:#158a66;
+    --coral:#d1462c; --honey:#c17d16; --mint:#158a66;
+    --bg:#efe4d1; --bg-grad-top:#f7eede;
+    --panel:#fffdf8; --panel-2:#f5ead8; --panel-3:#eaddc6;
+    --line:#e0cfb4; --line-2:#c9b088;
+    --text:#231a25; --text-soft:#50444f; --text-faint:#67586a;
+    --accent:var(--violet); --accent-ink:#a5361d; --on-accent:#fff8f4;
+    --link:#a5361d; --link-hover:#89290f;
+    --glow:rgba(209,70,44,.22);
+    --card-grad:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,0));
+    --shadow:0 1px 2px rgba(80,40,30,.07), 0 16px 34px -20px rgba(120,60,40,.34);
+    --shadow-lg:0 30px 70px -28px rgba(120,55,35,.46);
+    --grain-op:.02; --code-bg:#2b2030;
   }
 }
 :root[data-theme="light"]{
-  --violet:#ef6149; --violet-deep:#dd4f37; --pink:#e6488f; --amber:#e08a1e; --green:#1fae84;
-  --coral:#ef6149; --honey:#f0a330; --mint:#1fae84;
-  --bg:#fbf2ea; --bg-grad-top:#fff6ee;
-  --panel:#fffaf5; --panel-2:#fdf2e9; --panel-3:#f7e7da;
-  --line:#efddcf; --line-2:#e6cdba;
-  --text:#2c2230; --text-soft:#6a5a62; --text-faint:#9c8b92;
-  --accent:var(--violet); --accent-ink:#c8462f; --on-accent:#fff8f4;
-  --link:#c8462f; --link-hover:#bb3c25;
-  --glow:rgba(239,97,73,.26);
-  --card-grad:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0));
-  --shadow:0 1px 2px rgba(80,40,30,.05), 0 14px 34px -20px rgba(120,60,40,.28);
-  --shadow-lg:0 30px 70px -28px rgba(120,55,35,.4);
-  --grain-op:.03; --code-bg:#2b2030;
+  --violet:#d1462c; --violet-deep:#b23a22; --pink:#c93b7e; --amber:#c17d16; --green:#158a66;
+  --coral:#d1462c; --honey:#c17d16; --mint:#158a66;
+  --bg:#efe4d1; --bg-grad-top:#f7eede;
+  --panel:#fffdf8; --panel-2:#f5ead8; --panel-3:#eaddc6;
+  --line:#e0cfb4; --line-2:#c9b088;
+  --text:#231a25; --text-soft:#50444f; --text-faint:#67586a;
+  --accent:var(--violet); --accent-ink:#a5361d; --on-accent:#fff8f4;
+  --link:#a5361d; --link-hover:#89290f;
+  --glow:rgba(209,70,44,.22);
+  --card-grad:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,0));
+  --shadow:0 1px 2px rgba(80,40,30,.07), 0 16px 34px -20px rgba(120,60,40,.34);
+  --shadow-lg:0 30px 70px -28px rgba(120,55,35,.46);
+  --grain-op:.02; --code-bg:#2b2030;
 }
 
 /* Sepia — warm paper for long reading. Manual-only (picked in the reader menu).
-   Palette shared with the project docs theme so it looks identical across the mesh. */
+   A proper tan ground with clearly raised panels and near-ink brown text so it reads
+   with strong contrast, not flat. */
 :root[data-theme="sepia"]{
-  --violet:#c25a3f; --violet-deep:#9c3f26; --pink:#c14b7f; --amber:#b3792a; --green:#3c7d5f; --plum:#7d5aa8;
-  --coral:#c25a3f; --honey:#b3792a; --mint:#3c7d5f;
-  --bg:#ece0c8; --bg-grad-top:#f3e9d4;
-  --panel:#f1e7d3; --panel-2:#e7dabf; --panel-3:#ddcdac;
-  --line:#dccba9; --line-2:#cdb891;
-  --text:#3d3427; --text-soft:#63563f; --text-faint:#756445;
-  --accent:var(--violet); --accent-ink:#8a3a1c; --on-accent:#fdf6ea;
-  --link:#8a3a1c; --link-hover:#782f14;
-  --glow:rgba(187,90,60,.22);
+  --violet:#a94c2a; --violet-deep:#8a3d1f; --pink:#ad4270; --amber:#966119; --green:#37744f; --plum:#6f5091;
+  --coral:#a94c2a; --honey:#966119; --mint:#37744f;
+  --bg:#e5d6b6; --bg-grad-top:#eee2c8;
+  --panel:#f4ead0; --panel-2:#e4d5b0; --panel-3:#d8c79c;
+  --line:#cdb888; --line-2:#b89c68;
+  --text:#2c2411; --text-soft:#544625; --text-faint:#665730;
+  --accent:var(--violet); --accent-ink:#883718; --on-accent:#fdf6ea;
+  --link:#883718; --link-hover:#712c10;
+  --glow:rgba(169,76,42,.24);
   --card-grad:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,0));
-  --shadow:0 1px 2px rgba(90,60,20,.06), 0 14px 34px -20px rgba(120,80,30,.24);
-  --shadow-lg:0 30px 70px -28px rgba(120,80,30,.34);
-  --grain-op:.03; --code-bg:#33291b;
+  --shadow:0 1px 2px rgba(90,60,20,.09), 0 16px 34px -20px rgba(120,80,30,.32);
+  --shadow-lg:0 30px 70px -28px rgba(120,80,30,.42);
+  --grain-op:.03; --code-bg:#332818;
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* Root font-size is the reader's "Text size" lever — scaling it resizes the whole
+   rem-based UI, so text size visibly works on every page. Default 16.5px. */
+html{scroll-behavior:smooth;font-size:16.5px}
 body{
   margin:0; min-height:100vh; display:flex; flex-direction:column;
-  font-family:var(--sans); font-size:16.5px; line-height:1.62;
+  font-family:var(--sans); font-size:1rem; line-height:var(--reading-lh);
   color:var(--text); background:var(--bg);
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow-x:hidden;
 }
@@ -144,7 +150,7 @@ th{font-weight:700;color:var(--text)}
   transition:transform .15s var(--ease),border-color .2s,background .2s,box-shadow .2s}
 .btn:hover{text-decoration:none;transform:translateY(-2px);border-color:color-mix(in srgb,var(--violet) 50%,var(--line-2))}
 .btn.primary{border:none;color:#fff;background:var(--violet-deep);box-shadow:0 10px 26px -12px var(--glow)}
-.btn.primary:hover{background:#6f4fe6;color:#fff;box-shadow:0 16px 36px -14px var(--glow)}
+.btn.primary:hover{background:var(--violet);color:#fff;box-shadow:0 16px 36px -14px var(--glow)}
 .btn.sm{padding:.42rem .8rem;font-size:.86rem}
 
 /* ── Header / nav ────────────────────────────────────────────────────────── */
@@ -233,7 +239,7 @@ th{font-weight:700;color:var(--text)}
 .hero-text{position:relative;z-index:1}
 .hero h1{font-family:var(--sans);font-weight:700;letter-spacing:-.025em;max-width:16ch;font-size:clamp(2.1rem,4.2vw,3rem);margin:0}
 .hero .lead{margin:1rem 0 0;font-size:1.2rem;color:var(--text-soft);max-width:34rem}
-.hero .amp{font-family:var(--sans);font-weight:500;font-style:normal}
+.hero .amp{font-family:var(--display);font-weight:600;font-style:italic;color:var(--accent-ink)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
 .hero-stat{margin-top:1.4rem;color:var(--text-faint);font-family:var(--sans);font-size:.9rem}
 .hero-stat b{color:var(--text-soft);font-weight:600}
@@ -261,7 +267,9 @@ th{font-weight:700;color:var(--text)}
 /* ── Section headers ─────────────────────────────────────────────────────── */
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
 .section-head .label{max-width:42rem}
-.section-head h2{margin:0 0 .2em}
+.section-head h2{margin:0 0 .2em;position:relative;padding-left:.9rem}
+.section-head h2::before{content:"";position:absolute;left:0;top:.14em;bottom:.14em;width:4px;border-radius:3px;
+  background:linear-gradient(180deg,var(--accent),color-mix(in srgb,var(--accent) 55%,transparent))}
 .section-head .sub{margin:0;color:var(--text-soft)}
 .section-head a.more,.more{font-size:.92rem;font-weight:650;white-space:nowrap;color:var(--accent)}
 
@@ -369,8 +377,8 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
 .article > .wrap{padding-block:clamp(2rem,5vw,3.2rem);max-width:calc(var(--reading-width) + 2 * var(--gutter))}
 .article .post-meta{display:flex;align-items:center;gap:.5rem;color:var(--text-faint);font-size:.9rem;margin-bottom:1.2rem}
 .article .content > :first-child{margin-top:0}
-/* Reading surfaces — size / spacing / width driven by the reader ("Aa") menu. */
-.prose,.doc-content .content,.article .content{font-size:var(--reading-fs);line-height:var(--reading-lh)}
+/* Reading measure — capped by the reader's "Width" control (text size + line spacing
+   ride on the root font-size + body line-height, so they apply everywhere). */
 .prose{max-width:var(--reading-width)}
 .prose h2{margin:2rem 0 .6rem}
 
@@ -516,7 +524,13 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
   transition:background .14s var(--ease),color .14s var(--ease)}
 .ff-seg button:hover{color:var(--text)}
 .ff-seg button[aria-pressed="true"]{background:var(--panel);color:var(--text);box-shadow:var(--shadow);border:1px solid var(--line-2)}
-.ff-seg.ff-size button{font-weight:700}
-.ff-seg.ff-size .aa-min{font-size:.8rem}
-.ff-seg.ff-size .aa-max{font-size:1.15rem}
+/* Text size — a 5-step scale; each button shows "A" at its own size (set inline). */
+.ff-seg.ff-size button{font-family:var(--display);font-weight:700;line-height:1;padding:.32rem .2rem}
+/* Accent picker — a row of colour circles. */
+.ff-swatches{display:flex;flex-wrap:wrap;gap:.44rem;padding-top:.1rem}
+.ff-swatch{width:26px;height:26px;flex:none;border-radius:50%;cursor:pointer;padding:0;border:2px solid var(--line-2);
+  background:var(--sw,var(--panel-3));transition:transform .14s var(--ease),box-shadow .14s var(--ease)}
+.ff-swatch:hover{transform:scale(1.14)}
+.ff-swatch[aria-pressed="true"]{border-color:transparent;box-shadow:0 0 0 2px var(--panel),0 0 0 4px var(--text)}
+.ff-swatch-default{background:conic-gradient(from 210deg,#ff8368,#f6a13a,#57c964,#5aa2f0,#c79bf0,#ff6a9a,#ff8368)}
 .ff-reader-panel .ff-hint{margin:.9rem 0 0;font-size:.72rem;color:var(--text-faint);line-height:1.5}

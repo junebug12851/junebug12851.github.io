@@ -11,45 +11,51 @@ a fully designed **light** theme that follows `prefers-color-scheme`, plus a man
 
 | Token | Value | Use |
 |-------|-------|-----|
-| `--bg` | `#191116` | Page background |
-| `--bg-grad-top` | `#211622` | Top of the page background gradient |
-| `--panel` | `#241823` | Raised surfaces (header, cards, sidebar) |
-| `--panel-2` | `#2a1d29` | Secondary surface (chips, hover) |
-| `--panel-3` | `#322433` | Tertiary surface (inline code bg, deep hover) |
-| `--line` | `#3a2a37` | Hairline borders/dividers |
-| `--line-2` | `#4a3646` | Stronger borders (controls) |
-| `--text` | `#f7ece6` | Primary text |
-| `--text-soft` | `#cdb8c2` | Secondary text |
-| `--text-faint` | `#9c8893` | Muted/meta text |
-| `--accent` | `#ff7a5e` (`--violet`) | Accent (warm coral) |
-| `--accent-ink` | `#ffb59f` | Accent text on dark (inline code, emphasis) |
-| `--on-accent` | `#241016` | Text on an accent fill |
-| `--link` | `#ffb59f` | Links |
-| `--link-hover` | `#ffd0c2` | Link hover |
-| `--glow` | `rgba(255,122,94,.34)` | Accent glow (shadows behind brand/buttons) |
+| `--bg` | `#181017` | Page background |
+| `--bg-grad-top` | `#241827` | Top of the page background gradient |
+| `--panel` | `#281b28` | Raised surfaces (header, cards, sidebar) |
+| `--panel-2` | `#342433` | Secondary surface (chips, hover) |
+| `--panel-3` | `#402e3e` | Tertiary surface (inline code bg, deep hover) |
+| `--line` | `#483446` | Hairline borders/dividers |
+| `--line-2` | `#5e4659` | Stronger borders (controls) |
+| `--text` | `#fbf3ee` | Primary text |
+| `--text-soft` | `#e0cdd7` | Secondary text |
+| `--text-faint` | `#b8a3af` | Muted/meta text |
+| `--accent` | `#ff8368` (`--violet`) | Accent (warm coral) |
+| `--accent-ink` | `#ffc6b3` | Accent text on dark (inline code, emphasis) |
+| `--on-accent` | `#2a1219` | Text on an accent fill |
+| `--link` | `#ffc6b3` | Links |
+| `--link-hover` | `#ffe0d5` | Link hover |
+| `--glow` | `rgba(255,131,104,.4)` | Accent glow (shadows behind brand/buttons) |
 | `--code-bg` | `#120c12` | Code block background |
+
+Panels are raised a clear step off `--bg` and secondary/faint text is kept bright
+enough to read on them — the palette is tuned for real surface separation and AA text.
 
 ## Colour — light theme (`prefers-color-scheme: light`)
 
 | Token | Value |
 |-------|-------|
-| `--bg` | `#fbf2ea` |
-| `--bg-grad-top` | `#fff6ee` |
-| `--panel` | `#fffaf5` |
-| `--panel-2` | `#fdf2e9` |
-| `--panel-3` | `#f7e7da` |
-| `--line` | `#efddcf` |
-| `--line-2` | `#e6cdba` |
-| `--text` | `#2c2230` |
-| `--text-soft` | `#6a5a62` |
-| `--text-faint` | `#9c8b92` |
-| `--accent` | `#ef6149` |
-| `--accent-ink` | `#c8462f` |
+| `--bg` | `#efe4d1` |
+| `--bg-grad-top` | `#f7eede` |
+| `--panel` | `#fffdf8` |
+| `--panel-2` | `#f5ead8` |
+| `--panel-3` | `#eaddc6` |
+| `--line` | `#e0cfb4` |
+| `--line-2` | `#c9b088` |
+| `--text` | `#231a25` |
+| `--text-soft` | `#50444f` |
+| `--text-faint` | `#67586a` |
+| `--accent` | `#d1462c` |
+| `--accent-ink` | `#a5361d` |
 | `--on-accent` | `#fff8f4` |
-| `--link` | `#c8462f` |
-| `--link-hover` | `#bb3c25` |
-| `--glow` | `rgba(239,97,73,.26)` |
+| `--link` | `#a5361d` |
+| `--link-hover` | `#89290f` |
+| `--glow` | `rgba(209,70,44,.22)` |
 | `--code-bg` | `#2b2030` |
+
+A deeper cream ground with near-white panels and stronger hairlines, so cards and
+surfaces read as distinct (not washed-out).
 
 ## Manual themes & the reader ("Aa") menu
 
@@ -67,41 +73,53 @@ manual choice always wins:
 
 ### Sepia theme (manual only — warm paper for long reading)
 
+A proper tan ground with clearly raised panels and near-ink brown text (strong
+contrast, not flat):
+
 | Token | Value | | Token | Value |
 |-------|-------|-|-------|-------|
-| `--bg` | `#ece0c8` | | `--text` | `#3d3427` |
-| `--bg-grad-top` | `#f3e9d4` | | `--text-soft` | `#63563f` |
-| `--panel` | `#f1e7d3` | | `--text-faint` | `#756445` |
-| `--panel-2` | `#e7dabf` | | `--accent` | `#bb5a3c` |
-| `--panel-3` | `#ddcdac` | | `--accent-ink` | `#8a3a1c` |
-| `--line` | `#dccba9` | | `--on-accent` | `#fdf6ea` |
-| `--line-2` | `#cdb891` | | `--link` | `#8a3a1c` |
-| `--code-bg` | `#33291b` | | `--link-hover` | `#782f14` |
+| `--bg` | `#e5d6b6` | | `--text` | `#2c2411` |
+| `--bg-grad-top` | `#eee2c8` | | `--text-soft` | `#544625` |
+| `--panel` | `#f4ead0` | | `--text-faint` | `#665730` |
+| `--panel-2` | `#e4d5b0` | | `--accent` | `#a94c2a` |
+| `--panel-3` | `#d8c79c` | | `--accent-ink` | `#883718` |
+| `--line` | `#cdb888` | | `--on-accent` | `#fdf6ea` |
+| `--line-2` | `#b89c68` | | `--link` | `#883718` |
+| `--code-bg` | `#332818` | | `--link-hover` | `#712c10` |
 
-`--glow: rgba(187,90,60,.22)`; shadows as light. Match these **verbatim** — sepia is
-part of the shared origin, so it must look identical on the hub and every project.
+`--glow: rgba(169,76,42,.24)`. Match these **verbatim** — sepia is part of the shared
+origin, so it must look identical on the hub and every project.
 
 ### The reader menu (required shared component)
 
 Every fairyfox.io site — the hub **and** every project's docs — carries the same
-Kindle-style **"Aa"** reader menu in the header. It controls four things and
-**remembers the choice under one origin-wide `localStorage` key so the setting is
-shared across every same-origin `fairyfox.io` site**:
+**"Aa"** reader menu in the header. It controls five things and **remembers the choice
+under one versioned origin-wide `localStorage` key so the setting is shared across
+every same-origin `fairyfox.io` site**:
 
-- **Key:** `fairyfox:reader` → JSON `{ theme, size, lh, width }`.
+- **Key:** `fairyfox:reader:b` → JSON `{ theme, accent, size, lh, width }`. The `:b`
+  suffix **versions the schema** — bump the suffix when the value shape changes, so a
+  site running the old model never mis-reads the new one (and vice versa).
 - **Theme:** `system` (default) · `light` · `sepia` · `dark` → drives `data-theme`.
-- **Text size:** index into `[0.92, 0.99, 1.05, 1.14, 1.24, 1.36]rem` (default `2`) → `--reading-fs`.
-- **Line spacing:** `tight 1.6` · `normal 1.8` (default) · `relaxed 2.05` → `--reading-lh`.
-- **Width:** `narrow 38rem` · `normal 46rem` (default) · `wide 56rem` → `--reading-width`.
+- **Accent:** `null` (theme default) or a hex from a small colour-circle picker. When
+  set it overrides `--accent` / `--violet` / `--violet-deep` and derives
+  `--accent-ink` / `--link` / `--link-hover` by **mixing the hex toward `--text`**
+  (`color-mix(in srgb, <hex>, var(--text) 42%)`) so it stays legible in every theme,
+  plus a translucent `--glow`.
+- **Text size:** index `0..4` into root font-size **`[15, 16.5, 18, 20, 22]px`**
+  (default `1`), set on `<html>` — this scales the whole rem-based UI, so text size
+  visibly applies on **every** page (not just prose).
+- **Line spacing:** `tight 1.5` · `normal 1.65` (default) · `relaxed 1.9` → `--reading-lh`
+  (drives `body` line-height).
+- **Width:** `narrow 38rem` · `normal 46rem` (default) · `wide 58rem` → `--reading-width`
+  (caps the reading measure on prose/doc pages).
 
 These constants are **normative** — keep them byte-identical across the mesh so a
-choice made on one site carries to the next. Apply the saved theme + reading vars
-**before first paint** (a tiny inline script in `<head>`) to avoid a flash. The
-`--reading-*` vars drive the reading surfaces (prose / doc content / article body).
-Canonical implementation: the reader module in the bundled reference
-([`reference/main.css`](reference/main.css) for the button/panel styles) and
-fairyfox.io's `assets/js/reader.js`. Component appearance is in
-[`04-components.md`](04-components.md).
+choice made on one site carries to the next. Apply the saved theme / accent / size /
+reading vars **before first paint** (a tiny inline script in `<head>`) to avoid a flash.
+Canonical implementation: the button/panel styles in the bundled
+[`reference/main.css`](reference/main.css) and fairyfox.io's `assets/js/reader.js`.
+Component appearance is in [`04-components.md`](04-components.md).
 
 ## Fixed status hues (both themes)
 
@@ -162,8 +180,8 @@ on hover underline with `text-underline-offset: 3px`.
 | `--maxw` | `1180px` | Page content max width (`.wrap`) |
 | `--maxw-text` | `43rem` | Reading-measure max width for prose |
 | `--gutter` | `clamp(1.15rem, 4vw, 2.75rem)` | Horizontal page padding |
-| `--reading-fs` | `1.05rem` (default) | Reading font size — set live by the reader menu |
-| `--reading-lh` | `1.8` (default) | Reading line-height — set live by the reader menu |
+| `html` font-size | `16.5px` (default) | The reader's "Text size" lever — scaled on `<html>` to resize the whole rem UI |
+| `--reading-lh` | `1.65` (default) | `body` line-height — set live by the reader menu |
 | `--reading-width` | `46rem` (default) | Reading measure — set live by the reader menu |
 
 Pill controls (buttons, nav items, chips, badges) use `border-radius: 999px`.
