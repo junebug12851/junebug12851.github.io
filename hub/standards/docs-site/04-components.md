@@ -63,11 +63,13 @@ behaviour and constants are normative; see
   `--line-2`, `16px` radius, `--shadow-lg` — modelled on Apple Books / Kindle appearance
   menus. A **sticky header** (`.ff-rp-head`: title "Reading settings" + a `×` close),
   then grouped sections divided by hairlines:
-  - **Theme** — four **preview tiles** (`.ff-theme`), each rendering "Aa" in *that
-    theme's* real colours (Auto = a light/dark split, then Light, Sepia, Dark), so the
-    tile looks like the theme it selects. The active tile gets an `--accent` ring.
-  - **Accent** — a row of colour **dots** (`.ff-swatch`, 27px), a multi-colour "Default"
-    first (reverts to the theme accent) then the presets. Picking one recolours the
+  - **Theme** — a segmented row of **weather/time icon buttons** (`.ff-theme-ic`): sun
+    = Light, sunset = Sepia, moon = Dark (icon + caption). An **Auto** toggle
+    (`.ff-auto`) sits in the section header (`.ff-rp-schead`) for `system`. The active
+    control gets an accent wash.
+  - **Accent** — a row of colour **dots** (`.ff-swatch`, 27px), led by a clean
+    **reset/default** swatch (`.ff-swatch-default`, a slashed-circle icon that reverts to
+    the theme accent), then a curated set of distinct hues. Picking one recolours the
     accent site-wide; the active dot gets a ring.
   - **Text size** — a **slider** (`.ff-range`, `<input type="range">`) flanked by a small
     and a large "A". Not a `+`/`−` pair. Scales the document root font-size live.

@@ -8,16 +8,29 @@ permalink: /blog/
 <div class="prose">
 <ul class="post-list">
   {%- for post in site.posts -%}
-    {%- assign pc = '#f59f0a' -%}{%- assign pname = 'Site' -%}
-    {%- for proj in site.data.projects -%}
-      {%- if post.tags contains proj.key -%}{%- assign pc = proj.color -%}{%- assign pname = proj.name -%}{%- endif -%}
-    {%- endfor -%}
+    {%- comment -%} Colour + label come from the post's PRIMARY subject: the first tag
+      that names a project (tags are authored most-prominent-first). {%- endcomment -%}
+    {%- assign pc = '#f59f0a' -%}{%- assign pname = 'Site' -%}{%- assign matched = false -%}
+    {%- for t in post.tags -%}{%- unless matched -%}{%- for proj in site.data.projects -%}
+      {%- if proj.key == t -%}{%- assign pc = proj.color -%}{%- assign pname = proj.name -%}{%- assign matched = true -%}{%- endif -%}
+    {%- endfor -%}{%- endunless -%}{%- endfor -%}
     {%- assign dt = post.title -%}
     {%- if pname != 'Site' -%}{%- assign dt = post.title | remove_first: pname | remove_first: ": " | strip -%}{%- endif -%}
   <li style="--pc:{{ pc }}">
     <div class="meta"><span class="pdot" aria-hidden="true"></span><span>{{ pname }}</span> · {{ post.date | date: "%b %-d, %Y" }}</div>
     <h3><a href="{{ post.url | relative_url }}">{{ dt }}</a></h3>
     <p>{{ post.subtitle | default: post.excerpt | strip_html | truncate: 180 }}</p>
+    {%- assign othertags = '' | split: '' -%}
+    {%- for t in post.tags -%}
+      {%- unless t == 'update' or t == 'site' -%}
+        {%- assign tn = t | capitalize -%}
+        {%- for proj in site.data.projects -%}{%- if proj.key == t -%}{%- assign tn = proj.name -%}{%- endif -%}{%- endfor -%}
+        {%- assign othertags = othertags | push: tn -%}
+      {%- endunless -%}
+    {%- endfor -%}
+    {%- if othertags.size > 1 -%}
+    <div class="post-tags">{%- for tn in othertags -%}<span class="tag">{{ tn }}</span>{%- endfor -%}</div>
+    {%- endif -%}
   </li>
   {%- else -%}
   <li><p class="muted">No updates yet.</p></li>

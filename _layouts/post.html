@@ -6,10 +6,20 @@ layout: default
     <p class="post-meta">
       <a href="{{ '/blog/' | relative_url }}">Updates</a> ·
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-      {%- if page.tags and page.tags.size > 0 %} ·
-        {% for t in page.tags %}<span class="tag muted">{{ t }}</span>{% endfor %}
-      {%- endif %}
     </p>
+    {%- if page.tags and page.tags.size > 0 -%}
+    <div class="post-tags">
+      {%- comment -%} Project tags render as colour chips (project's accent); topical tags
+        as plain chips. The structural "update" tag is hidden. {%- endcomment -%}
+      {%- for t in page.tags -%}
+        {%- unless t == 'update' -%}
+          {%- assign isproj = false -%}{%- assign tn = t | capitalize -%}{%- assign tc = '' -%}
+          {%- for proj in site.data.projects -%}{%- if proj.key == t -%}{%- assign isproj = true -%}{%- assign tn = proj.name -%}{%- assign tc = proj.color -%}{%- endif -%}{%- endfor -%}
+          {%- if isproj -%}<span class="tag tag-proj" style="--pc:{{ tc }}">{{ tn }}</span>{%- else -%}<span class="tag">{{ tn }}</span>{%- endif -%}
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
     <h1>{{ page.title }}</h1>
     {% if page.subtitle %}<p class="lead">{{ page.subtitle }}</p>{% endif %}
     <div class="content">

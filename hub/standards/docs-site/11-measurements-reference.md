@@ -80,8 +80,9 @@ Inserted at the far right of the header, just **after** `.nav` (past "About"), w
 | `.ff-reader-panel` | fixed, `z-index:1300`, `top:calc(64px + .5rem)`, `right:clamp(.7rem,3vw,1.4rem)`, `width:min(21rem, 100vw − 1.4rem)`, `max-height:calc(100vh − 84px)` scroll, bg `--panel`, `1px --line-2`, radius `16px`, `--shadow-lg` |
 | `.ff-rp-head` | sticky title bar, padding `.8rem 1rem`, `1px --line` bottom; `.ff-rp-title` `--display` 700 `1rem`; `.ff-rp-close` `28px` |
 | `.ff-rp-sec` | padding `.85rem 1rem`, `1px --line` top divider between sections; `.ff-rp-label` `.65rem`, weight 700, uppercase, `--text-faint` |
-| `.ff-themes` / `.ff-theme` | 4-col grid, `gap:.5rem`; tile **`44px`** tall, radius `10px`, shows "Aa" in the theme's own colours; selected → ring `0 0 0 2px --panel, 0 0 0 4px --accent` |
-| `.ff-swatches` / `.ff-swatch` | flex, `gap:.5rem`; each dot **`27px`** circle; selected → ring `0 0 0 2px --panel, 0 0 0 4px --text`; `.ff-swatch-default` = conic multi-colour |
+| `.ff-rp-schead` / `.ff-auto` | section header row; the **Auto** toggle is a `.72rem` pill (`--panel-2`, `1px --line-2`), active → `--accent` wash + `--accent-ink` |
+| `.ff-theme-seg` / `.ff-theme-ic` | flex, `gap:.42rem`; each button an icon (`22px`) + `.68rem` caption, radius `12px`, `--panel-3`; active → `--accent` 15% wash + accent border/ink |
+| `.ff-swatches` / `.ff-swatch` | flex, `gap:.5rem`; each dot **`27px`** circle; selected → ring `0 0 0 2px --panel, 0 0 0 4px --text`; `.ff-swatch-default` = a slashed-circle reset icon on `--panel-2` |
 | `.ff-size-row` / `.ff-range` | slider flanked by small (`.85rem`) + large (`1.45rem`) "A"; track `6px` on `--panel-3`, thumb `20px` `--accent` |
 | `.ff-seg` | flex, `gap:.28rem`, bg `--panel-3`, `1px --line`, radius `11px`, padding `.26rem`; buttons `.82rem` weight 600, radius `8px`; selected (`aria-pressed`) bg `--panel`, `1px --line-2`, `--shadow` |
 | `.ff-rp-foot` | padding `.7rem 1rem`, `1px --line` top, bg `--panel-2`; hint `.7rem --text-faint`; `.ff-rp-reset` `.75rem` weight 650 `--accent-ink` |

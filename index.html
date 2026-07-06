@@ -60,8 +60,9 @@ title: null
     </div>
     <div class="pulse">
       {%- for post in site.posts limit: 6 -%}
-        {%- assign pc = '#ef6149' -%}
-        {%- for proj in site.data.projects -%}{%- if post.tags contains proj.key -%}{%- assign pc = proj.color -%}{%- endif -%}{%- endfor -%}
+        {%- comment -%} Colour from the post's primary subject — the first tag naming a project. {%- endcomment -%}
+        {%- assign pc = '#ef6149' -%}{%- assign matched = false -%}
+        {%- for t in post.tags -%}{%- unless matched -%}{%- for proj in site.data.projects -%}{%- if proj.key == t -%}{%- assign pc = proj.color -%}{%- assign matched = true -%}{%- endif -%}{%- endfor -%}{%- endunless -%}{%- endfor -%}
         <a class="pulse-row" href="{{ post.url | relative_url }}" style="--pc:{{ pc }}">
           <span class="pdot" aria-hidden="true"></span>
           <span class="pwhat">{{ post.title }}</span>

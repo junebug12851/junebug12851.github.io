@@ -1,36 +1,39 @@
 // reader.js — the reading-appearance menu (the "Aa" button + panel): theme, accent
 // colour, text size, line spacing and reading width, tuned live and remembered.
 //
-// Modelled on Apple Books / Kindle appearance menus: theme PREVIEW TILES (each shows
-// its own colours), accent colour DOTS, and a text-size SLIDER (small A → large A) —
-// not a +/- stepper. Text size scales the document ROOT font-size, so it resizes the
-// whole rem-based UI on every page. Line spacing drives body line-height; width caps
-// the reading measure.
+// Theme is a row of weather/time icon buttons (sun = Light, sunset = Sepia, moon =
+// Dark) plus an "Auto" toggle in the section header (follow the OS). Accent is a row
+// of colour dots with a "reset to theme default" swatch. Text size is a slider (small
+// A → large A) that scales the document ROOT font-size, so it resizes the whole UI on
+// every page. Line spacing drives body line-height; width caps the reading measure.
 //
-// Prefs live under a VERSIONED origin-wide localStorage key ("fairyfox:reader:b"), so
-// the choice is shared across every same-origin fairyfox.io site. The early apply
-// happens inline in <head> to avoid a flash; this builds the button + panel.
+// Prefs live under a VERSIONED origin-wide key ("fairyfox:reader:b"), shared across
+// every same-origin fairyfox.io site. Early apply is inline in <head> (no flash).
 (function () {
   "use strict";
 
   var KEY = "fairyfox:reader:b";
-  var SIZES = [15, 16.5, 18, 20, 22];          // root px, 5 steps (slider 0..4)
+  var SIZES = [15, 16.5, 18, 20, 22];          // root px, slider 0..4
   var LH = { tight: 1.5, normal: 1.65, relaxed: 1.9 };
   var WIDTH = { narrow: "38rem", normal: "46rem", wide: "58rem" };
-  // Theme tiles carry each theme's real preview colours (fixed, independent of the
-  // current theme) so the tile looks like the theme it selects.
-  var THEMES = [
-    ["system", "Auto", "linear-gradient(120deg,#efe4d1 0 50%,#181017 50% 100%)", "#9a8f95"],
-    ["light", "Light", "#efe4d1", "#231a25"],
-    ["sepia", "Sepia", "#e5d6b6", "#2c2411"],
-    ["dark", "Dark", "#181017", "#fbf3ee"],
-  ];
+  // Curated, distinct accent hues (refined — not neon, no duplicate oranges).
   var ACCENTS = [
-    ["#ff8368", "Coral"], ["#f6a13a", "Amber"], ["#57c964", "Green"],
-    ["#33c0c9", "Teal"], ["#5aa2f0", "Blue"], ["#c79bf0", "Violet"], ["#ff6a9a", "Rose"],
+    ["#e0573f", "Coral"], ["#cf7f22", "Ochre"], ["#3f9e63", "Green"],
+    ["#2a9ca0", "Teal"], ["#4478c9", "Blue"], ["#7d68c8", "Indigo"], ["#c9508a", "Rose"],
   ];
   var ACCENT_VARS = ["--accent", "--violet", "--violet-deep", "--accent-ink", "--link", "--link-hover", "--glow"];
   var DEFAULTS = { theme: "system", accent: null, size: 1, lh: "normal", width: "normal" };
+
+  var svg = function (inner) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + inner + "</svg>";
+  };
+  var ICON = {
+    sun: svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
+    sunset: svg('<path d="M17 17a5 5 0 0 0-10 0"/><path d="M12 3v3M4.5 9.5l1.5 1.5M18 11l1.5-1.5M2 17h3M19 17h3"/><path d="M3 21h18"/>'),
+    moon: svg('<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>'),
+  };
+  var RESET_ICON = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><line x1="6.6" y1="17.4" x2="17.4" y2="6.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  var THEME_BTNS = [["light", "Light", "sun"], ["sepia", "Sepia", "sunset"], ["dark", "Dark", "moon"]];
 
   var prefs = Object.assign({}, DEFAULTS);
   function clampSize(n) { return Math.max(0, Math.min(SIZES.length - 1, n | 0)); }
@@ -39,9 +42,7 @@
     try { return Object.assign({}, DEFAULTS, JSON.parse(localStorage.getItem(KEY) || "{}")); }
     catch (e) { return Object.assign({}, DEFAULTS); }
   }
-  function save() {
-    try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch (e) { /* private mode — ignore */ }
-  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch (e) { /* ignore */ } }
 
   function applyAccent(root, hex) {
     if (!hex) { ACCENT_VARS.forEach(function (v) { root.style.removeProperty(v); }); return; }
@@ -87,24 +88,24 @@
     });
     btn.innerHTML = '<span class="aa-lg">A</span><span class="aa-sm">a</span>';
 
-    var panel = el("div", { id: "ff-reader-panel", class: "ff-reader-panel", role: "dialog", "aria-label": "Reading settings", "aria-modal": "false" });
+    var panel = el("div", { id: "ff-reader-panel", class: "ff-reader-panel", role: "dialog", "aria-label": "Reading settings" });
 
-    var tiles = THEMES.map(function (t) {
-      return '<button type="button" class="ff-theme" data-act="theme" data-val="' + t[0] + '">' +
-        '<span class="tile" style="background:' + t[2] + ';color:' + t[3] + '">Aa</span>' +
-        '<span class="cap">' + t[1] + "</span></button>";
+    var themeBtns = THEME_BTNS.map(function (t) {
+      return '<button type="button" class="ff-theme-ic" data-act="theme" data-val="' + t[0] + '" title="' + t[1] + '" aria-label="' + t[1] + '">' +
+        ICON[t[2]] + '<span class="cap">' + t[1] + "</span></button>";
     }).join("");
 
-    var swatches = '<button type="button" class="ff-swatch ff-swatch-default" data-acc="" aria-label="Default accent"></button>' +
+    var swatches = '<button type="button" class="ff-swatch ff-swatch-default" data-acc="" aria-label="Theme default accent" title="Theme default">' + RESET_ICON + "</button>" +
       ACCENTS.map(function (a) {
-        return '<button type="button" class="ff-swatch" data-acc="' + a[0] + '" style="--sw:' + a[0] + '" aria-label="' + a[1] + ' accent"></button>';
+        return '<button type="button" class="ff-swatch" data-acc="' + a[0] + '" style="--sw:' + a[0] + '" aria-label="' + a[1] + ' accent" title="' + a[1] + '"></button>';
       }).join("");
 
     panel.innerHTML =
       '<div class="ff-rp-head"><span class="ff-rp-title">Reading settings</span>' +
       '<button type="button" class="ff-rp-close" data-act="close" aria-label="Close">×</button></div>' +
-      '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-theme">Theme</span>' +
-      '<div class="ff-themes" role="group" aria-labelledby="ff-rl-theme">' + tiles + "</div></div>" +
+      '<div class="ff-rp-sec"><div class="ff-rp-schead"><span class="ff-rp-label" id="ff-rl-theme">Theme</span>' +
+      '<button type="button" class="ff-auto" data-act="theme" data-val="system"><span class="dot"></span>Auto</button></div>' +
+      '<div class="ff-theme-seg" role="group" aria-labelledby="ff-rl-theme">' + themeBtns + "</div></div>" +
       '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-accent">Accent</span>' +
       '<div class="ff-swatches" role="group" aria-labelledby="ff-rl-accent">' + swatches + "</div></div>" +
       '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-size">Text size</span>' +
@@ -115,7 +116,7 @@
       seg("lh", "ff-rl-lh", [["tight", "Tight"], ["normal", "Normal"], ["relaxed", "Relaxed"]]) + "</div>" +
       '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-width">Width</span>' +
       seg("width", "ff-rl-width", [["narrow", "Narrow"], ["normal", "Normal"], ["wide", "Wide"]]) + "</div>" +
-      '<div class="ff-rp-foot"><p class="ff-rp-hint">Saved &amp; shared across Fairy Fox.</p>' +
+      '<div class="ff-rp-foot"><p class="ff-rp-hint">Saved &amp; shared across Fairy Fox.</p>' +
       '<button type="button" class="ff-rp-reset" data-act="reset">Reset</button></div>';
 
     var range = panel.querySelector(".ff-range");
@@ -144,9 +145,7 @@
       }
       apply(); save(); markActive();
     });
-    range.addEventListener("input", function () {
-      prefs.size = clampSize(+range.value); apply(); save();
-    });
+    range.addEventListener("input", function () { prefs.size = clampSize(+range.value); apply(); save(); });
 
     function setOpen(open) {
       panel.classList.toggle("open", open);
@@ -161,7 +160,6 @@
       if (e.key === "Escape" && panel.classList.contains("open")) { setOpen(false); btn.focus(); }
     });
 
-    // Far right of the header, just after the primary nav (past "About").
     var wrap = document.querySelector(".site-header .wrap");
     var nav = wrap && wrap.querySelector(".nav");
     if (wrap && nav) nav.parentNode.insertBefore(btn, nav.nextSibling);

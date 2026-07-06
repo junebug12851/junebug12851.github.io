@@ -21,12 +21,12 @@ a fully designed **light** theme that follows `prefers-color-scheme`, plus a man
 | `--text` | `#fbf3ee` | Primary text |
 | `--text-soft` | `#e0cdd7` | Secondary text |
 | `--text-faint` | `#b8a3af` | Muted/meta text |
-| `--accent` | `#ff8368` (`--violet`) | Accent (warm coral) |
+| `--accent` | `#f26a4c` (`--violet`) | Accent (warm coral, deepened so it isn't neon) |
 | `--accent-ink` | `#ffc6b3` | Accent text on dark (inline code, emphasis) |
 | `--on-accent` | `#2a1219` | Text on an accent fill |
-| `--link` | `#ffc6b3` | Links |
-| `--link-hover` | `#ffe0d5` | Link hover |
-| `--glow` | `rgba(255,131,104,.4)` | Accent glow (shadows behind brand/buttons) |
+| `--link` | `#ffc0ab` | Links |
+| `--link-hover` | `#ffdccf` | Link hover |
+| `--glow` | `rgba(242,106,76,.38)` | Accent glow (shadows behind brand/buttons) |
 | `--code-bg` | `#120c12` | Code block background |
 
 Panels are raised a clear step off `--bg` and secondary/faint text is kept bright
@@ -73,21 +73,21 @@ manual choice always wins:
 
 ### Sepia theme (manual only — warm paper for long reading)
 
-A proper tan ground with clearly raised panels and near-ink brown text (strong
-contrast, not flat):
+A classic warm **parchment** — a golden cream ground (clearly distinct from the neutral
+Light theme), raised near-white panels, and near-ink warm-brown text:
 
 | Token | Value | | Token | Value |
 |-------|-------|-|-------|-------|
-| `--bg` | `#e5d6b6` | | `--text` | `#2c2411` |
-| `--bg-grad-top` | `#eee2c8` | | `--text-soft` | `#544625` |
-| `--panel` | `#f4ead0` | | `--text-faint` | `#665730` |
-| `--panel-2` | `#e4d5b0` | | `--accent` | `#a94c2a` |
-| `--panel-3` | `#d8c79c` | | `--accent-ink` | `#883718` |
-| `--line` | `#cdb888` | | `--on-accent` | `#fdf6ea` |
-| `--line-2` | `#b89c68` | | `--link` | `#883718` |
-| `--code-bg` | `#332818` | | `--link-hover` | `#712c10` |
+| `--bg` | `#f1e3c2` | | `--text` | `#453620` |
+| `--bg-grad-top` | `#f8edd4` | | `--text-soft` | `#6b5636` |
+| `--panel` | `#fbf3da` | | `--text-faint` | `#806a45` |
+| `--panel-2` | `#efe0ba` | | `--accent` | `#ad4f26` |
+| `--panel-3` | `#e6d4a8` | | `--accent-ink` | `#8a3a16` |
+| `--line` | `#e1cfa0` | | `--on-accent` | `#fdf7ec` |
+| `--line-2` | `#cfb67e` | | `--link` | `#8a3a16` |
+| `--code-bg` | `#33291b` | | `--link-hover` | `#72300e` |
 
-`--glow: rgba(169,76,42,.24)`. Match these **verbatim** — sepia is part of the shared
+`--glow: rgba(173,79,38,.24)`. Match these **verbatim** — sepia is part of the shared
 origin, so it must look identical on the hub and every project.
 
 ### The reader menu (required shared component)
@@ -101,11 +101,14 @@ every same-origin `fairyfox.io` site**:
   suffix **versions the schema** — bump the suffix when the value shape changes, so a
   site running the old model never mis-reads the new one (and vice versa).
 - **Theme:** `system` (default) · `light` · `sepia` · `dark` → drives `data-theme`.
-- **Accent:** `null` (theme default) or a hex from a small colour-circle picker. When
-  set it overrides `--accent` / `--violet` / `--violet-deep` and derives
-  `--accent-ink` / `--link` / `--link-hover` by **mixing the hex toward `--text`**
-  (`color-mix(in srgb, <hex>, var(--text) 42%)`) so it stays legible in every theme,
-  plus a translucent `--glow`.
+  Presented as **weather/time icon buttons** — sun (Light), sunset (Sepia), moon (Dark)
+  — with an **Auto** toggle in the section header for `system`.
+- **Accent:** `null` (theme default) or a hex from a small colour-dot picker (a curated,
+  distinct set: coral, ochre, green, teal, blue, indigo, rose — plus a "reset to theme
+  default" swatch). When set it overrides `--accent` / `--violet` / `--violet-deep` and
+  derives `--accent-ink` / `--link` / `--link-hover` by **mixing the hex toward `--text`**
+  (`color-mix(in srgb, <hex>, var(--text) 42%)`) so it stays legible in every theme, plus
+  a translucent `--glow`.
 - **Text size:** index `0..4` into root font-size **`[15, 16.5, 18, 20, 22]px`**
   (default `1`), set on `<html>` — this scales the whole rem-based UI, so text size
   visibly applies on **every** page (not just prose).
