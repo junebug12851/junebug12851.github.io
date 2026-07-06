@@ -15,7 +15,7 @@
 pokered-save-editor-2:
   commit: 1bae326187b72c9eb8c67d716c44e1a887d52738
   branch: dev
-  seen: 2026-07-05
+  seen: 2026-07-06
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -52,11 +52,13 @@ pokered-save-editor-2:
   # reconcile or blog. Marker unchanged; seen → 2026-07-04.
   # 2026-07-05 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
   # reconcile or blog. Marker unchanged; seen → 2026-07-05.
+  # 2026-07-06 round-up: still "Already up to date" at 1bae326 (still 0.14.2-alpha). Nothing to
+  # reconcile or blog. Marker unchanged; seen → 2026-07-06.
 
 random-ai-prompt:
-  commit: 5dcd6213bb9b4437713a2ffb016ccf3fa7c185e5
+  commit: 8f56153c7ae3bea791a694dd6982bae0562e2dbb
   branch: dev
-  seen: 2026-07-05
+  seen: 2026-07-06
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -180,11 +182,24 @@ random-ai-prompt:
   # projects.yml (RAP → 2.42.1 / Jul 4). Folded into the 2026-07-04 day post ("A ninth game, and prompts
   # that scale to 100k"). Marker → 5dcd621, VERSION 2.41.0 → 2.42.1. (New sibling report
   # 2026-07-04-propose-regression-testing-standard.md left for the inbound report-review pass.)
+  # 2026-07-06 round-up: clean fast-forward 5dcd621 → 8f56153, VERSION 2.42.1 → 2.43.1 (all commits
+  # dated 2026-07-05). The 2.43.0–2.43.1 line turned the tool outward: a **pre-built desktop edition**
+  # (Tauri shell running the unmodified local app + Node backend as a bundled sidecar, user data
+  # preserved across upgrades) and a "every edition ships pre-built" reframing — hosted online build,
+  # a self-hostable copy of it, and the desktop installers all interchangeable (2.43.0, MINOR). Plus a
+  # full **docs-site rebuild**: adopted the fairyfox.io hub header + organized subnav, self-hosted the
+  # doc fonts (no third-party call), a comfortable centred reading column + softer light/sepia themes +
+  # a Kindle-style reader menu, full SEO/social/sitemap across all pages, a WCAG 2.1 AA pass (0 axe
+  # violations), sidebar confined to the API pages, then adopted the hub's shared chrome + reader menu
+  # directly on the new `fairyfox:reader:b` key (2.43.1) with Overview-spillover / sidebar-flash /
+  # footer-logo fixes; README + CONTRIBUTING rewritten, screenshots recaptured. Reconciled: projects.yml
+  # (RAP → 2.43.1 / Jul 5, blurb notes the desktop edition + Desktop tag). Folded into the 2026-07-05 day
+  # post ("A tenth game, a desktop app, and a sharper reader"). Marker → 8f56153, VERSION 2.42.1 → 2.43.1.
 
 fairyfox-games:
-  commit: 0a8db920d8ca1f8a6b16206bc02648b52e362b5c
+  commit: 5f908ae1892987a1776f0846c38936fe23a9cf33
   branch: dev
-  seen: 2026-07-05
+  seen: 2026-07-06
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -237,3 +252,14 @@ fairyfox-games:
   # default on green (the old approve-first gate had frozen the live site at 0.11.2). Reconciled: projects.yml
   # (games → 0.13.1 / Jul 4), _projects/fairyfox-games.md (added Symmetry). Folded into the 2026-07-04 day
   # post. Marker → 0a8db92, VERSION 0.13.1.
+  # 2026-07-06 round-up: clean fast-forward 0a8db92 → 5f908ae, VERSION 0.13.1 → 0.16.3 (all commits dated
+  # 2026-07-05). A tenth, mechanically-distinct game **Arc** (judge-power charge-and-release lob — fixed 45°,
+  # centre-bullseye precision combo, 3 lives; pure core + external shell, full growth stack, 26 tests; v0.14.0)
+  # + grew Loft with a near-miss line. Then **varied structure**: a run is a seeded sequence of named
+  # formations from a stage-weighted pool (progression-first, not textureless noise) — Polarity as the
+  # reference build, Echo Chamber converted onto stage-gated cadences — plus a player-facing changelog page +
+  # a homepage "recently updated" strip + relative dates (0.15.0), and a public rebrand to an **AI-managed
+  # game farm** (new games planted ~every 3 days, existing games grown daily onto the pattern; the automation
+  # split PLANT/GROW) with the homepage pulse filtered to games and a subnav "Overview" rename (0.16.0–0.16.3).
+  # Reconciled: projects.yml (games → 0.16.3 / Jul 5). Folded into the 2026-07-05 day post ("A tenth game, a
+  # desktop app, and a sharper reader"). Marker → 5f908ae, VERSION 0.13.1 → 0.16.3.
