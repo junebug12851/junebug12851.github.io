@@ -7,7 +7,19 @@ sitemap: false
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Games · Fairy Fox</title>
+  <meta name="theme-color" content="#ef6149" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#191116" media="(prefers-color-scheme: dark)">
+  <!-- Paint the reader-resolved theme colour before the (instant) meta-refresh, so this
+       redirect stub never flashes white on the way to the games site. Shared origin-wide
+       fairyfox:reader:b key + the same design tokens as the rest of fairyfox.io. -->
+  <script>(function(){try{var p=JSON.parse(localStorage.getItem("fairyfox:reader:b")||"{}"),
+  t=(p.theme&&p.theme!=="system")?p.theme:(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"),
+  B={light:"#efe4d1",sepia:"#f1e3c2",dark:"#181017"},F={light:"#231a25",sepia:"#453620",dark:"#fbf3ee"},
+  r=document.documentElement;r.style.background=B[t]||"#181017";r.style.color=F[t]||"#fbf3ee";}
+  catch(e){var r=document.documentElement;r.style.background="#181017";r.style.color="#fbf3ee";}})();</script>
+  <style>html{background:#181017;color:#fbf3ee}body{margin:0;min-height:100vh;display:grid;place-items:center;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}a{color:inherit}</style>
   <link rel="canonical" href="{{ '/fairyfox-games/' | absolute_url }}">
   <meta http-equiv="refresh" content="0; url={{ '/fairyfox-games/' | relative_url }}">
   <meta name="robots" content="noindex, follow">
