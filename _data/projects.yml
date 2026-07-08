@@ -52,14 +52,14 @@
     An open-source generator for AI image and text prompts: it builds richer, more
     detailed prompts than most people write by hand — from a controllable
     dynamic-prompt language (DPL) — and can run them through 40+ image and text
-    models from a React + Vite web app, offered pre-built as a hosted site or a
-    downloadable desktop app, with a built-in photo gallery.
+    models from a React + Vite web app, offered pre-built as a hosted site, a
+    downloadable desktop app, or a command-line tool, with a built-in photo gallery.
   tags: [JavaScript, Node 24, Web UI, Desktop]
   lifecycle: released
-  version: "2.49.6"
+  version: "2.50.1"
   activity: active
-  updated: "Jul 6, 2026"
-  updated_iso: "2026-07-06"
+  updated: "Jul 7, 2026"
+  updated_iso: "2026-07-07"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -126,10 +126,10 @@
     pure, tested logic from rendering; play them embedded on the Games page.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.19.2"
+  version: "0.19.3"
   activity: active
-  updated: "Jul 6, 2026"
-  updated_iso: "2026-07-06"
+  updated: "Jul 7, 2026"
+  updated_iso: "2026-07-07"
   integrated: true
   color: "#8b7bff"
   featured: true
@@ -147,10 +147,10 @@
     cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.15.2"
+  version: "0.15.3"
   activity: active
-  updated: "Jul 7, 2026"
-  updated_iso: "2026-07-07"
+  updated: "Jul 8, 2026"
+  updated_iso: "2026-07-08"
   meta: true
   color: "#ff7a5e"
   icon: fox

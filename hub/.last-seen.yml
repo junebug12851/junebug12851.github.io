@@ -15,7 +15,7 @@
 pokered-save-editor-2:
   commit: acc09b9d88222bf2ca60384ccf19d35c4f89f21e
   branch: dev
-  seen: 2026-07-07
+  seen: 2026-07-08
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -61,11 +61,13 @@ pokered-save-editor-2:
   # exact measures, and added a themed /screenshots/ gallery as an internal subnav item. Mentioned in the
   # 2026-07-06 day post. Marker → acc09b9; seen → 2026-07-07. (New report 2026-07-06-adopting-updates.md
   # left for the inbound report-review pass.)
+  # 2026-07-08 round-up: "Already up to date" at acc09b9 (still 0.14.2-alpha). Nothing to reconcile or blog.
+  # Marker unchanged; seen → 2026-07-08.
 
 random-ai-prompt:
-  commit: 5ea076140f61ef7cf5f89ea0b37ff60f5b00b007
+  commit: 3147535af354e73597e6c01cb0f6285353d8b6fb
   branch: dev
-  seen: 2026-07-07
+  seen: 2026-07-08
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -212,11 +214,23 @@ random-ai-prompt:
   # Reconciled: projects.yml (RAP → 2.49.6 / Jul 6). Folded into the 2026-07-06 day post ("Auto-updating
   # prompts, an eleventh game, and a shelf of stories"). Marker → 5ea0761, VERSION 2.43.1 → 2.49.6. (New
   # sibling report 2026-07-05-adopt-docs-chrome-reader.md left for the inbound report-review pass.)
+  # 2026-07-08 round-up: clean fast-forward 5ea0761 → 3147535, VERSION 2.49.6 → 2.50.1 (all commits dated
+  # 2026-07-07). A new **command-line target** — `targets/cli/`, the `prompt` CLI (2.50.0, MINOR): a
+  # traditional args-and-flags tool covering every feature as a subcommand (generate/list/config/keys/
+  # rewrite/upscale/completion), with --help, colours, and bash/zsh/fish/PowerShell completion, reusing the
+  # SAME engine/providers/settings/on-disk store as the web+desktop app (Node provider registry replacing
+  # the SPA's Vite globs; the real backend run in-process on an ephemeral port with a fetch shim; api
+  # providers only billed with --images). Then 2.50.1: disposed of the pre-DPL **`chaos`** knob for good
+  # (already unmounted 2026-06-19, never an engine setting; byte-identical output) and extracted the
+  # duplicated seed/reroll logic into an engine-owned isomorphic `engine/promptRun.js` the web facade + CLI
+  # now share (groundwork for the PLANNED-not-built ComfyUI target). Reconciled: projects.yml (RAP → 2.50.1
+  # / Jul 7, blurb editions list gains the command-line tool). Folded into the 2026-07-07 day post ("A
+  # command-line prompt tool, and a fifth game onto varied structure"). Marker → 3147535, VERSION 2.49.6 → 2.50.1.
 
 fairyfox-games:
-  commit: 71982e52c8fc92cede00ef28707b1817b995db76
+  commit: 24111785e1e0b2842a0d5e9a4771f354f839d93d
   branch: dev
-  seen: 2026-07-07
+  seen: 2026-07-08
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -291,11 +305,19 @@ fairyfox-games:
   # varied structure (0.17.0/0.17.1). Reconciled: projects.yml (games → 0.19.2 / Jul 6). Folded into the
   # 2026-07-06 day post. Marker → 71982e5, VERSION 0.16.3 → 0.19.2. (New sibling report
   # 2026-07-06-adopting-updates.md left for the inbound report-review pass.)
+  # 2026-07-08 round-up: clean fast-forward 71982e5 → 2411178, VERSION 0.19.2 → 0.19.3 (commits dated
+  # 2026-07-07). A GROW day: brought **Symmetry** onto the varied-structure standard (the 5th of 11 games
+  # on the pattern) — its flat per-tick twin/single coin-flip is now a seeded sequence of named cadences
+  # from a stage-weighted pool (Mirror/Reflection/Cascade/Weave/Split/Kaleidoscope, minStage-gated so
+  # climbing opens the pool; a #formCue flashes notable cadences). Copied Polarity's shape into Symmetry's
+  # own core (self-contained); +8 pure-core tests (23 → 31), collection 369/369 green; Chrome-previewed.
+  # Reconciled: projects.yml (games → 0.19.3 / Jul 7). Folded into the 2026-07-07 day post. Marker → 2411178,
+  # VERSION 0.19.2 → 0.19.3.
 
 fairyfox-stories:
   commit: 803db1ff2b4b57e51783696b62fa08bf2deeef09
   branch: dev
-  seen: 2026-07-07
+  seen: 2026-07-08
   reports_through: []          # digested-report filenames (append-only); see header
   # 2026-07-07 round-up: first pass for this newly-registered node — full-history dev mirror cloned fresh
   # under assets/references/fairyfox-stories (it became reference:true when the site registered it in 0.15.1).
@@ -305,3 +327,5 @@ fairyfox-stories:
   # Already mesh-onboarded (notes, mesh-aware CLAUDE.md, shared fairyfox chrome). Folded into the 2026-07-06
   # day post as a newly-tracked node. Marker set → 803db1f. (New report 2026-07-06-setup.md left for the
   # inbound report-review pass.)
+  # 2026-07-08 round-up: "Already up to date" at 803db1f (still 0.2.0). Nothing to reconcile or blog.
+  # Marker unchanged; seen → 2026-07-08.
