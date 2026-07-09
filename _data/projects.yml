@@ -29,9 +29,8 @@
   docs: https://fairyfox.io/pokered-save-editor-2/
   notes: https://github.com/junebug12851/pokered-save-editor-2/tree/main/notes
   blurb: >-
-    A desktop save-file editor for Pokémon Red & Blue, built in Qt 6 (C++/QML):
-    byte-exact save read/write, full team/box/item/randomiser editing, and an
-    in-game font keyboard.
+    A Qt 6 (C++/QML) desktop save-file editor for Pokémon Red & Blue — byte-exact
+    read/write with full team, box, item, and randomiser editing.
   tags: [Qt 6, C++, QML, Desktop]
   lifecycle: alpha
   version: "0.14.2"
@@ -49,11 +48,9 @@
   docs: https://fairyfox.io/random-ai-prompt/
   notes: https://github.com/junebug12851/random-ai-prompt/tree/main/notes
   blurb: >-
-    An open-source generator for AI image and text prompts: it builds richer, more
-    detailed prompts than most people write by hand — from a controllable
-    dynamic-prompt language (DPL) — and can run them through 40+ image and text
-    models from a React + Vite web app, offered pre-built as a hosted site, a
-    downloadable desktop app, or a command-line tool, with a built-in photo gallery.
+    An open-source AI prompt generator built on a controllable dynamic-prompt
+    language (DPL) that runs prompts through 40+ image and text models — as a
+    hosted site, desktop app, or CLI.
   tags: [JavaScript, Node 24, Web UI, Desktop]
   lifecycle: released
   version: "2.50.1"
@@ -71,9 +68,8 @@
   docs: null
   notes: https://github.com/junebug12851/pokered-save-editor#readme
   blurb: >-
-    The predecessor to Pokered Save Editor 2 — a complete, stable save-file
-    editor for Pokémon Red & Blue, built with Electron, Angular, and TypeScript.
-    The recommended working tool until the Qt 6 rewrite reaches parity.
+    The stable Electron/Angular/TypeScript predecessor to Pokered Save Editor 2 —
+    the recommended tool until the Qt 6 rewrite reaches parity.
   tags: [TypeScript, Angular, Electron, Desktop]
   lifecycle: released
   version: "2.0.1"
@@ -96,9 +92,8 @@
   notes: https://github.com/junebug12851/fairyfox-stories/tree/main/notes
   blurb: >-
     An AI-managed story farm: a growing library of short, pre-planned interactive
-    books — genuine fiction written a chapter at a time — set in living, cross-linked
-    universes, with new books sown regularly and the ones already growing deepened
-    over time. Each book ships a public blueprint you can read before you start.
+    books set in living, cross-linked universes, each shipping a public blueprint
+    you can read before you start.
   tags: [Jekyll, Ruby, Web]
   lifecycle: alpha
   version: "0.2.0"
@@ -122,8 +117,7 @@
   notes: https://github.com/junebug12851/fairyfox-games/tree/main/notes
   blurb: >-
     A collection of small, self-contained canvas games — the one-mechanic,
-    beat-your-own-score kind, with a fresh experiment most days. Each game splits
-    pure, tested logic from rendering; play them embedded on the Games page.
+    beat-your-own-score kind, each splitting pure, tested logic from rendering.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
   version: "0.19.3"
@@ -142,15 +136,14 @@
   doc_url: "/docs/"
   notes: https://github.com/junebug12851/junebug12851.github.io/tree/main/notes
   blurb: >-
-    The project hub and documentation library itself — this site. A custom Jekyll
-    build with its own living notes, the shared engineering standards, and the
-    cross-project sync model.
+    The project hub and documentation library itself — a custom Jekyll build
+    carrying the shared engineering standards and the cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.15.3"
+  version: "0.15.4"
   activity: active
-  updated: "Jul 8, 2026"
-  updated_iso: "2026-07-08"
+  updated: "Jul 9, 2026"
+  updated_iso: "2026-07-09"
   meta: true
   color: "#ff7a5e"
   icon: fox

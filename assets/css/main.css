@@ -293,13 +293,31 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
   border-radius:0 3px 3px 0;background:var(--pc);opacity:.9}
 .proj-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);
   border-color:color-mix(in srgb,var(--pc) 45%,var(--line))}
-.proj-top{display:flex;align-items:center;gap:.85rem;margin-bottom:.7rem}
+.proj-top{display:flex;align-items:center;gap:.85rem;margin-bottom:.7rem;padding-right:1.9rem}
 .proj-glyph{flex:none;width:50px;height:50px;border-radius:13px;overflow:hidden;display:grid;place-items:center;background:transparent}
 .proj-glyph img{width:100%;height:100%;object-fit:cover;display:block}
 .proj-card h3{margin:0;font-size:1.14rem}
 .proj-status{display:flex;align-items:center;gap:.4rem;margin-top:.2rem;font-size:.78rem;color:var(--text-faint)}
 .proj-status .sdot{width:.5rem;height:.5rem;border-radius:50%;background:var(--pc)}
-.proj-card .blurb{flex:1 0 auto;color:var(--text-soft);font-size:.96rem;margin:0 0 1rem}
+/* Help "?" — the project blurb, shown on hover/focus instead of an always-on line */
+.proj-help{position:absolute;top:1.15rem;right:1.15rem;z-index:4;
+  width:1.55rem;height:1.55rem;flex:none;padding:0;display:grid;place-items:center;
+  border-radius:50%;border:1px solid var(--line);background:var(--panel-3);
+  color:var(--text-faint);cursor:help;
+  transition:color .15s var(--ease),border-color .15s var(--ease),background .15s var(--ease)}
+.proj-help .proj-help-mark{font-family:var(--sans);font-size:.82rem;font-weight:700;line-height:1}
+.proj-help:hover,.proj-help:focus-visible{color:var(--text);
+  border-color:color-mix(in srgb,var(--pc,var(--accent)) 55%,var(--line));
+  background:color-mix(in srgb,var(--pc,var(--accent)) 14%,var(--panel-3))}
+.proj-help:focus{outline:none}
+.proj-tip{position:absolute;top:calc(100% + .5rem);right:0;z-index:6;
+  width:max-content;max-width:15rem;padding:.62rem .72rem;
+  background:var(--panel);border:1px solid var(--line-2);border-radius:.6rem;
+  box-shadow:var(--shadow-lg);
+  color:var(--text-soft);font-size:.82rem;font-weight:400;line-height:1.5;text-align:left;
+  opacity:0;visibility:hidden;transform:translateY(-.25rem);pointer-events:none;
+  transition:opacity .15s var(--ease),transform .15s var(--ease),visibility .15s}
+.proj-help:hover .proj-tip,.proj-help:focus-visible .proj-tip{opacity:1;visibility:visible;transform:translateY(0)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.2rem 0 1rem}
 .tag{display:inline-block;font-size:.71rem;font-weight:600;letter-spacing:.01em;padding:.2rem .55rem;border-radius:999px;
   background:var(--panel-3);color:var(--text-soft);border:1px solid var(--line)}
