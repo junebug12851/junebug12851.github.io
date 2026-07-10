@@ -140,7 +140,7 @@
     carrying the shared engineering standards and the cross-project sync model.
   tags: [Jekyll, Ruby, GitHub Pages]
   lifecycle: beta
-  version: "0.15.5"
+  version: "0.15.6"
   activity: active
   updated: "Jul 10, 2026"
   updated_iso: "2026-07-10"

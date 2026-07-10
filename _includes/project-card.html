@@ -33,28 +33,38 @@
   </div>
   <div class="proj-bottom">
     {%- if p.tags and p.tags.size > 0 -%}
+    {%- comment -%} Icons grouped by kind (language · framework/runtime · platform), a faint
+         divider between groups. Each tag maps to a Font Awesome glyph + a category. {%- endcomment -%}
     <div class="tech">
-      {%- for t in p.tags -%}
-        {%- case t -%}
-          {%- when 'JavaScript' -%}{%- assign ic = 'fa-brands fa-js' -%}
-          {%- when 'Node 24' -%}{%- assign ic = 'fa-brands fa-node-js' -%}
-          {%- when 'Node' -%}{%- assign ic = 'fa-brands fa-node-js' -%}
-          {%- when 'Angular' -%}{%- assign ic = 'fa-brands fa-angular' -%}
-          {%- when 'GitHub Pages' -%}{%- assign ic = 'fa-brands fa-github' -%}
-          {%- when 'Ruby' -%}{%- assign ic = 'fa-solid fa-gem' -%}
-          {%- when 'Jekyll' -%}{%- assign ic = 'fa-solid fa-flask' -%}
-          {%- when 'Electron' -%}{%- assign ic = 'fa-solid fa-atom' -%}
-          {%- when 'Qt 6' -%}{%- assign ic = 'fa-solid fa-cubes' -%}
-          {%- when 'C++' -%}{%- assign ic = 'fa-solid fa-code' -%}
-          {%- when 'QML' -%}{%- assign ic = 'fa-solid fa-paintbrush' -%}
-          {%- when 'TypeScript' -%}{%- assign ic = 'fa-solid fa-code' -%}
-          {%- when 'Web UI' -%}{%- assign ic = 'fa-solid fa-globe' -%}
-          {%- when 'Web' -%}{%- assign ic = 'fa-solid fa-globe' -%}
-          {%- when 'Desktop' -%}{%- assign ic = 'fa-solid fa-desktop' -%}
-          {%- when 'Canvas' -%}{%- assign ic = 'fa-solid fa-palette' -%}
-          {%- else -%}{%- assign ic = 'fa-solid fa-tag' -%}
-        {%- endcase -%}
-        <span class="tech-item" role="img" aria-label="{{ t }}"><i class="{{ ic }}" aria-hidden="true"></i><span class="tech-label" aria-hidden="true">{{ t }}</span></span>
+      {%- assign tech_cats = 'lang,framework,platform' | split: ',' -%}
+      {%- for cat in tech_cats -%}
+        {%- capture group_html -%}
+          {%- for t in p.tags -%}
+            {%- assign ic = 'fa-solid fa-tag' -%}{%- assign tcat = 'platform' -%}
+            {%- case t -%}
+              {%- when 'JavaScript' -%}{%- assign ic = 'fa-brands fa-js' -%}{%- assign tcat = 'lang' -%}
+              {%- when 'TypeScript' -%}{%- assign ic = 'fa-solid fa-code' -%}{%- assign tcat = 'lang' -%}
+              {%- when 'C++' -%}{%- assign ic = 'fa-solid fa-code' -%}{%- assign tcat = 'lang' -%}
+              {%- when 'QML' -%}{%- assign ic = 'fa-solid fa-paintbrush' -%}{%- assign tcat = 'lang' -%}
+              {%- when 'Ruby' -%}{%- assign ic = 'fa-solid fa-gem' -%}{%- assign tcat = 'lang' -%}
+              {%- when 'Node 24' -%}{%- assign ic = 'fa-brands fa-node-js' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Node' -%}{%- assign ic = 'fa-brands fa-node-js' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Qt 6' -%}{%- assign ic = 'fa-solid fa-cubes' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Angular' -%}{%- assign ic = 'fa-brands fa-angular' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Electron' -%}{%- assign ic = 'fa-solid fa-atom' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Jekyll' -%}{%- assign ic = 'fa-solid fa-flask' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Canvas' -%}{%- assign ic = 'fa-solid fa-palette' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Web UI' -%}{%- assign ic = 'fa-solid fa-globe' -%}{%- assign tcat = 'platform' -%}
+              {%- when 'Web' -%}{%- assign ic = 'fa-solid fa-globe' -%}{%- assign tcat = 'platform' -%}
+              {%- when 'Desktop' -%}{%- assign ic = 'fa-solid fa-desktop' -%}{%- assign tcat = 'platform' -%}
+              {%- when 'GitHub Pages' -%}{%- assign ic = 'fa-brands fa-github' -%}{%- assign tcat = 'platform' -%}
+              {%- else -%}{%- assign ic = 'fa-solid fa-tag' -%}{%- assign tcat = 'platform' -%}
+            {%- endcase -%}
+            {%- if tcat == cat -%}<span class="tech-item" role="img" aria-label="{{ t }}"><i class="{{ ic }}" aria-hidden="true"></i><span class="tech-label" aria-hidden="true">{{ t }}</span></span>{%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- assign group_html = group_html | strip -%}
+        {%- if group_html != '' -%}<span class="tech-group" data-cat="{{ cat }}">{{ group_html }}</span>{%- endif -%}
       {%- endfor -%}
     </div>
     {%- endif -%}
