@@ -13,9 +13,9 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: acc09b9d88222bf2ca60384ccf19d35c4f89f21e
+  commit: 43effcfc9aeb6e0ad7721f8b311566181e1de762
   branch: dev
-  seen: 2026-07-08
+  seen: 2026-07-11
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -63,11 +63,21 @@ pokered-save-editor-2:
   # left for the inbound report-review pass.)
   # 2026-07-08 round-up: "Already up to date" at acc09b9 (still 0.14.2-alpha). Nothing to reconcile or blog.
   # Marker unchanged; seen → 2026-07-08.
+  # 2026-07-11 round-up (three-day catch-up): clean fast-forward acc09b9 → 43effcf, 9 commits dated
+  # 2026-07-09/10, VERSION 0.14.2-alpha → 0.14.6-alpha. Two save-file truth fixes (single-type mons write
+  # duplicate-of-type1; copyFrom wrote Speed stat-exp to spExp), then the trainer card rebuilt to the
+  # Pokémon-details "combo" language — [dice | trash] action groups on Money/Coins/Playtime, a titled
+  # Playtime grouping box, Enabled/Paused as real toggles, a wider card (the clock had been overlapping the
+  # artwork), button columns aligned (0.14.4–0.14.6) — on a new DEBUG-only automation harness (CLI flags,
+  # live TCP channel, QML hot-reload that now preserves the current screen). Docs: manual releases, mandatory
+  # screenshot review, notes-over-memory. Reconciled: projects.yml (PSE2 → 0.14.6 / Jul 10). Folded into the
+  # 2026-07-09 + 2026-07-10 day posts. Marker → 43effcf; seen → 2026-07-11. (New report
+  # 2026-07-06-adopting-updates.md still pending for the inbound report-review pass.)
 
 random-ai-prompt:
-  commit: 3147535af354e73597e6c01cb0f6285353d8b6fb
+  commit: 3686435b4a5282331ebf531a9411a606a4052255
   branch: dev
-  seen: 2026-07-08
+  seen: 2026-07-11
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -226,11 +236,28 @@ random-ai-prompt:
   # now share (groundwork for the PLANNED-not-built ComfyUI target). Reconciled: projects.yml (RAP → 2.50.1
   # / Jul 7, blurb editions list gains the command-line tool). Folded into the 2026-07-07 day post ("A
   # command-line prompt tool, and a fifth game onto varied structure"). Marker → 3147535, VERSION 2.49.6 → 2.50.1.
+  # 2026-07-11 round-up (three-day catch-up): clean fast-forward 3147535 → 3686435, 84 commits dated
+  # 2026-07-07 → 2026-07-10, VERSION 2.50.1 → 2.52.0. Two threads. (1) A **ComfyUI target** (2.51.0):
+  # targets/comfyui/ custom nodes (generator + batch/combine/show, example workflow, status sidebar) fed by
+  # new headless /api/prompt + /api/prompt/catalog routes over the same engine; fitted to the Comfy ecosystem
+  # (Rewrite dropped, Settings-only config); pre-release hardening (preset-loader path traversal, non-http app
+  # URLs rejected). Then 2.51.1: the DPL editor's gutter/active line stop leaking CodeMirror's light defaults
+  # into dark mode. Plus a maintenance-sweep runbook, proposed to the hub as a standard (report
+  # 2026-07-09-propose-maintenance-sweep-standard.md — left for the inbound report-review pass). (2) A
+  # **native Android edition** (2.52.0, MINOR): a Metro catalog generator + loader proven byte-identical to the
+  # web (89 blocks / 88 lists / 150 seeded gens), an Expo/Hermes scaffold, then the full 4-tab app rebuilt to the
+  # web's design tokens/chrome, theming + language, the whole provider data layer with BYOK keys and local-direct
+  # providers, a parity Gallery (search / multi-select / metadata, memoized at 100k), a rebuilt Single view, the
+  # Manage port (folder tree, block + list editors, Sort/Dedupe, AI Expand, Refine/Modify/Draft with a
+  # byte-identical rewrite-prompt gate, built-in browse + override, a LIVE user overlay feeding generation),
+  # tablet layouts + Single two-pane, an 80-test harness, and strict per-surface parity gates. Reconciled:
+  # projects.yml (RAP → 2.52.0 / Jul 10; blurb + tags gain the Android app). Folded into the 2026-07-08,
+  # 2026-07-09 and 2026-07-10 day posts. Marker → 3686435, VERSION 2.50.1 → 2.52.0.
 
 fairyfox-games:
-  commit: 24111785e1e0b2842a0d5e9a4771f354f839d93d
+  commit: e7d27681a086def0639a83128b1e62a9f1a387b2
   branch: dev
-  seen: 2026-07-08
+  seen: 2026-07-11
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -313,11 +340,25 @@ fairyfox-games:
   # own core (self-contained); +8 pure-core tests (23 → 31), collection 369/369 green; Chrome-previewed.
   # Reconciled: projects.yml (games → 0.19.3 / Jul 7). Folded into the 2026-07-07 day post. Marker → 2411178,
   # VERSION 0.19.2 → 0.19.3.
+  # 2026-07-11 round-up (three-day catch-up): clean fast-forward 2411178 → e7d2768, VERSION 0.19.3 → 0.20.2
+  # (commits dated 2026-07-08 and 2026-07-10). GROW: Orbit Slingshot (0.19.4, the 6th of 11) then Arc (0.19.5,
+  # the 7th — completing the aim/precision line) onto varied structure. The collection got its own emblem —
+  # self-hosted favicon + OG/Twitter social card + masthead logo, the header brand deliberately still the shared
+  # fairyfox fox (0.19.6). The headline is **0.20.0 (MINOR): "depth inside the mechanic"**, built from owner
+  # feedback that the games stagnate after ~5 minutes — root-caused in reference/depth-inside-the-mechanic.md
+  # (meta-progression is invisible on a fresh play; varied structure is variety at a FIXED intensity ceiling;
+  # the one felt axis, speed, plateaued). Polarity is the reference build: a no-plateau speed asymptote, a
+  # hidden SNAP timing window (never explained), an earned OVERCHARGE double-score bloom, a secret 6th stage
+  # (Supernova), a trimmed intro — no new controls, all safe to not know. The layer supersedes "add one more
+  # formation" as the lead GROW lever and rolls across the collection one game at a time. Then a landing
+  # declutter (0.20.1, corrected in 0.20.2): each GAME CARD's description moves into a corner "?" (matching the
+  # hub's project cards), mechanic tags restyled as pills. 392/392 green. Reconciled: projects.yml (games →
+  # 0.20.2 / Jul 10). Folded into the 2026-07-08 and 2026-07-10 day posts. Marker → e7d2768.
 
 fairyfox-stories:
-  commit: 803db1ff2b4b57e51783696b62fa08bf2deeef09
+  commit: 05b46f00e52e3770bf78a564ec2f8cd719a46fbb
   branch: dev
-  seen: 2026-07-08
+  seen: 2026-07-11
   reports_through: []          # digested-report filenames (append-only); see header
   # 2026-07-07 round-up: first pass for this newly-registered node — full-history dev mirror cloned fresh
   # under assets/references/fairyfox-stories (it became reference:true when the site registered it in 0.15.1).
@@ -329,3 +370,11 @@ fairyfox-stories:
   # inbound report-review pass.)
   # 2026-07-08 round-up: "Already up to date" at 803db1f (still 0.2.0). Nothing to reconcile or blog.
   # Marker unchanged; seen → 2026-07-08.
+  # 2026-07-11 round-up (three-day catch-up): clean fast-forward 803db1f → 05b46f0, VERSION 0.2.0 → 0.2.2
+  # (both commits dated 2026-07-09). 0.2.1 made the farm actually RUN: a scheduled daily job grows 2 books a
+  # day and plants a new one once 3 days have passed, then auto-publishes (the cadence had been written down
+  # but nothing executed it, so the shelf sat still after 0.2.0); the grow count became a single number in the
+  # operating model. 0.2.2 put the Stories emblem to work — landing masthead, jekyll-seo-tag publisher logo,
+  # and the default social share card (shared links previously had no preview); the shared fairyfox fox stays
+  # in the header/footer. Reconciled: projects.yml (stories date → Jul 9; version already 0.2.2). Folded into
+  # the 2026-07-09 day post. Marker → 05b46f0; seen → 2026-07-11.

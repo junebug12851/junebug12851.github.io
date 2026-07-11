@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.15.3` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.15.8` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -113,9 +113,16 @@ The rest of the structure is in place end to end:
   web app to be **responsive** across phone/tablet/desktop, **flattened the repo** to a single
   project at the root — retiring the `engine-v3`/`engine-v1-2` split — and branch-protected
   `main` with PR releases + signed assets; earlier adopted git-flow with the
-  `master` → `main` rename) and Pokered Save Editor 2
-  (`0.14.2-alpha`, themed Doxygen docs; adopted git-flow + process-reports + compliance +
-  express-authorizations on 2026-06-26).
+  `master` → `main` rename. The 2.50–2.52 line then multiplied its **targets**: a `prompt`
+  **CLI**, a **ComfyUI** custom-node target with headless `/api/prompt` routes behind it, and a
+  native **Android** app built to strict, gated parity with the web — every edition on the same
+  engine, catalog, and store) and Pokered Save Editor 2
+  (`0.14.6-alpha`, themed Doxygen docs; the trainer card rebuilt onto the shared control
+  language, on a new debug automation harness; adopted git-flow + process-reports + compliance +
+  express-authorizations on 2026-06-26). The two integrated nodes are Fairy Fox Games
+  (`0.20.2` — eleven games; the current growth lever is **depth inside the mechanic**, Polarity
+  the reference build) and Fairy Fox Stories (`0.2.2` — the daily grow/plant automation now
+  actually runs).
 - **Notes:** this living-notes system, mirroring the convention used across my
   projects.
 - **Sync:** the pull-only cross-project model is documented

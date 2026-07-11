@@ -7,21 +7,23 @@
 # bars    : per-day commit counts across all projects (oldest → newest)
 # changes : recent micro-changes for the scrolling ticker (newest first)
 #           c = a CSS colour var so it adapts to light/dark
+#           Per-project colour: green = Random AI Prompt · amber = Fairy Fox Games
+#           plum = Fairy Fox Stories · pink = Pokered Save Editor 2 · coral = this site
 
-bars: [15, 25, 31, 14, 6, 11, 20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33, 78, 52, 41, 70, 6, 46, 43, 72, 44]
+bars: [14, 6, 11, 20, 34, 22, 10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33, 78, 52, 41, 70, 6, 46, 43, 72, 44, 18, 29, 49]
 
 changes:
-  - { c: "var(--green)", text: "Random AI Prompt 2.50.0 — a command-line tool (the prompt CLI): every feature as a subcommand, reusing the same engine, providers, settings, and on-disk store as the app, with bash/zsh/fish/PowerShell completion", when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.50.1 — retired the old chaos knob and lifted the seed/re-roll logic into one engine-owned module the web app and CLI now share", when: "1d" }
-  - { c: "var(--green)", text: "Fairy Fox Games 0.19.3 — Symmetry grown onto varied structure: a run is now a seeded sequence of named cadences (Mirror, Weave, Split, Kaleidoscope) that opens up as you climb", when: "1d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.49 — an interactive DPL editor: hover intensity/focus dials, per-line actions, line numbers, an active-line highlight, plus AI refine and draft-from-description in Manage", when: "2d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.46–2.48 — a repo restructure into engine/ + targets/, dynamic prompts renamed to 'blocks' throughout, and a user content overlay beside the built-in data", when: "2d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.44–2.45 — auto-updating (a check-and-notify banner + desktop auto-install) and a gallery composer with live placeholders, multi-select delete, a11y and SEO", when: "2d" }
-  - { c: "var(--green)", text: "Fairy Fox Games 0.18.0 — Sluice: a colour-sorting game, a brand-new verb for the collection — eleven games now", when: "2d" }
-  - { c: "var(--green)", text: "Fairy Fox Games 0.19 — the collection moves onto Jekyll: the landing rendered from a _games collection, a /tags/ browse page by mechanic, and an in-place tag filter", when: "2d" }
-  - { c: "var(--plum)", text: "Fairy Fox Stories 0.2.0 — a new mesh node: an AI-managed story farm plants its first shelf of five illustrated books, each with a public blueprint", when: "2d" }
-  - { c: "var(--coral)", text: "Site 0.15.0 — the header/reader/footer chrome becomes a vendored, pull-at-build bundle so every project's shell stays byte-identical; a Stories slot joins the nav", when: "2d" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 — its Doxygen docs site adopts the hub 0.14 chrome and shared reader, with a rebuilt Overview and a themed screenshots gallery", when: "2d" }
-  - { c: "var(--green)", text: "Fairy Fox Games 0.14.0 — Arc: a charge-and-release power lob where a centre bullseye grows a precision combo", when: "3d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.43.0 — a pre-built desktop edition (Tauri) and a self-hostable online build; every edition now ships ready to run", when: "3d" }
-  - { c: "var(--coral)", text: "Site 0.14 — the reader rebuilt as a proper appearance panel: theme icons, a classic sepia, and curated accents", when: "3d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.52.0 — an Android app: the prompt tool as a native mobile build (Expo/React Native), with the same engine, catalog, and providers as the web app", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt — the mobile Manage tab reaches parity: a folder tree, block and list editors, AI refine/expand, and a live overlay so your own content feeds generation on-device", when: "1d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.20.0 — depth inside the mechanic: Polarity gains a hidden snap-timing window, an earned overcharge bloom, and a secret sixth stage, all on the same single flip", when: "1d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.14.4–0.14.6 — the trainer card rebuilt: [dice | trash] action groups on Money/Coins/Playtime, a titled Playtime box, and Enabled/Paused as real toggles", when: "1d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 — a debug-only automation harness: CLI flags, a live control channel, and QML hot-reload that keeps you on the screen you're editing", when: "1d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.19.5–0.19.6 — Arc grown onto varied structure (the aim line is fully converted) and the collection gets its own emblem: favicon, social card, masthead", when: "1d" }
+  - { c: "var(--coral)", text: "Site 0.15.5–0.15.7 — project cards trade text tags for a row of platform/language icons, grouped by kind, with the Updated date moved to the card's base", when: "1d" }
+  - { c: "var(--green)", text: "Random AI Prompt — the mobile foundation: a Metro catalog generator and a parity-proven loader, so the phone build draws from byte-identical content (89 blocks, 88 lists)", when: "2d" }
+  - { c: "var(--plum)", text: "Fairy Fox Stories 0.2.1–0.2.2 — the farm actually runs now: a daily job grows two books and plants a new one every third day; the shelf gets its emblem and social cards", when: "2d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 — save-file truth fixes: single-type Pokémon now write a duplicate type-2, and copyFrom writes Speed stat-exp to the right field", when: "2d" }
+  - { c: "var(--coral)", text: "Site 0.15.4 — a project card's description moves into a corner \"?\" so the card itself stays a clean read", when: "2d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.51.0 — a ComfyUI target: the prompt engine as custom Comfy nodes (batch, combine, show), plus headless /api/prompt routes behind them", when: "3d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.19.4 — Orbit Slingshot grown onto varied structure: its runs become a seeded sequence of named formations", when: "3d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.51.1 — the DPL editor's gutter and active line stop leaking CodeMirror's light defaults into dark mode", when: "3d" }

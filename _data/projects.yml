@@ -33,10 +33,10 @@
     read/write with full team, box, item, and randomiser editing.
   tags: [Qt 6, C++, QML, Desktop]
   lifecycle: alpha
-  version: "0.14.2"
+  version: "0.14.6"
   activity: active
-  updated: "Jul 6, 2026"
-  updated_iso: "2026-07-06"
+  updated: "Jul 10, 2026"
+  updated_iso: "2026-07-10"
   color: "#e6488f"
   icon: pse2
   featured: true
@@ -50,13 +50,13 @@
   blurb: >-
     An open-source AI prompt generator built on a controllable dynamic-prompt
     language (DPL) that runs prompts through 40+ image and text models — as a
-    hosted site, desktop app, or CLI.
-  tags: [JavaScript, Node 24, Web UI, Desktop, CLI]
+    hosted site, desktop app, Android app, CLI, or ComfyUI node.
+  tags: [JavaScript, Node 24, Web UI, Desktop, Android, CLI]
   lifecycle: released
-  version: "2.50.1"
+  version: "2.52.0"
   activity: active
-  updated: "Jul 7, 2026"
-  updated_iso: "2026-07-07"
+  updated: "Jul 10, 2026"
+  updated_iso: "2026-07-10"
   color: "#2dd4a7"
   icon: rap
   featured: true
@@ -96,10 +96,10 @@
     you can read before you start.
   tags: [Jekyll, Ruby, Web]
   lifecycle: alpha
-  version: "0.2.0"
+  version: "0.2.2"
   activity: active
-  updated: "Jul 6, 2026"
-  updated_iso: "2026-07-06"
+  updated: "Jul 9, 2026"
+  updated_iso: "2026-07-09"
   integrated: true
   color: "#b06ad0"
   featured: true
@@ -120,10 +120,10 @@
     beat-your-own-score kind, each splitting pure, tested logic from rendering.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.19.3"
+  version: "0.20.2"
   activity: active
-  updated: "Jul 7, 2026"
-  updated_iso: "2026-07-07"
+  updated: "Jul 10, 2026"
+  updated_iso: "2026-07-10"
   integrated: true
   color: "#8b7bff"
   featured: true
@@ -140,10 +140,10 @@
     carrying the shared engineering standards and the cross-project sync model.
   tags: [Jekyll, Ruby, Web]
   lifecycle: beta
-  version: "0.15.7"
+  version: "0.15.8"
   activity: active
-  updated: "Jul 10, 2026"
-  updated_iso: "2026-07-10"
+  updated: "Jul 11, 2026"
+  updated_iso: "2026-07-11"
   meta: true
   color: "#ff7a5e"
   icon: fox
