@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="en">
+{%- comment -%} `data-story` opts a page into the reader's story controls (line spacing +
+  width). Set `story: true` in a page's front matter; on every other page those two
+  controls stay locked and reading falls back to the normal defaults. {%- endcomment -%}
+<html lang="en"{% if page.story %} data-story{% endif %}>
 <head>
   {%- include head.html -%}
 </head>

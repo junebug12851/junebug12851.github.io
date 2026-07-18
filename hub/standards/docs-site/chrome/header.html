@@ -3,7 +3,9 @@
 
   Copy verbatim as the FIRST element inside <body> on every page. The primary nav is
   the FIXED mesh-wide set, identical on every page of every project — do not reorder,
-  drop, add, or rename items. Mark the current top-level section with class="active".
+  drop, add, or rename items. Stories + Games live under the "Farms" dropdown (nav.js
+  drives it). Mark the current top-level section with class="active" — on a Stories or
+  Games page, mark BOTH the Farms <summary> and the matching link inside it.
 
   URLs: shown as absolute https://fairyfox.io/... so the chrome works whether the
   project is same-origin on Pages or on its own host. On a same-origin Pages project
@@ -27,8 +29,19 @@
     <nav class="nav" aria-label="Primary">
       <a href="https://fairyfox.io/">Home</a>
       <a href="https://fairyfox.io/projects/">Projects</a>
-      <a href="https://fairyfox.io/stories/">Stories</a>
-      <a href="https://fairyfox.io/games/">Games</a>
+      <!-- Farms groups the two "grown daily" collections — Stories + Games. On a Stories
+           or Games page add class="active" to the <summary> and to the matching link. -->
+      <details class="dd">
+        <summary>Farms</summary>
+        <div class="dd-panel">
+          <div class="dd-group">
+            <div class="dd-links">
+              <a href="https://fairyfox.io/stories/">Stories</a>
+              <a href="https://fairyfox.io/games/">Games</a>
+            </div>
+          </div>
+        </div>
+      </details>
       <a href="https://fairyfox.io/docs/">Docs</a>
       <a href="https://fairyfox.io/blog/">Updates</a>
       <a href="https://fairyfox.io/about/">About</a>

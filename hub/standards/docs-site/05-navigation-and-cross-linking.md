@@ -77,10 +77,13 @@ bundle verbatim** (see [`12-shared-chrome.md`](12-shared-chrome.md)) so there is
 visible "jump":
 
 - **Primary nav (global, identical on every page).** Slot order:
-  **Home · Projects · Stories · Games · Docs · Updates · About** (About last). These
-  point at the main-site sections (same origin for Pages projects). The set and order
-  are fixed across the mesh — don't reorder, drop, or add items per project. The exact
-  markup is in [`reference/`](reference/); mark the current top-level section `.active`.
+  **Home · Projects · Farms (Stories · Games) · Docs · Updates · About** (About last).
+  Stories + Games sit inside the **Farms** dropdown (a single `details.dd`); everything
+  else is a plain link. These point at the main-site sections (same origin for Pages
+  projects). The set and order are fixed across the mesh — don't reorder, drop, or add
+  items per project. The exact markup is in [`reference/`](reference/); mark the current
+  top-level section `.active` (on a Stories/Games page, both the Farms `<summary>` and
+  the matching dropdown link).
 - **Submenu (recommended) — a secondary row directly below the primary nav** that
   carries the **context** links and localizes you within a section. It's the same flat
   pill style as the primary nav. Two canonical uses, identical in shape:

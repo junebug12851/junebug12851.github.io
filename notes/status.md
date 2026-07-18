@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.15.15` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.16.0` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -45,13 +45,19 @@ through the `0.4.x` line; it now includes:
   the choice is shared across every fairyfox.io
   site (the hub + each project's docs). Adopted from Random AI Prompt's docs theme and
   codified as a required shared component in `hub/standards/docs-site/`. The button sits
-  at the **far right** of the header (past About).
+  at the **far right** of the header (past About). **Line spacing + width are story-only**
+  (`0.16.0`): they apply and un-lock only on a page that opts in with `data-story` on
+  `<html>` (a book/chapter reading page); everywhere else they sit disabled with an
+  "Enables when reading a story." note and reading uses the designed defaults. Text size,
+  theme and accent apply on every page. On the hub nothing sets `data-story`, so the two
+  stay locked here — the sibling reading sites un-lock them when they re-adopt the chrome.
 - **Trimmed to the projects** (`0.13.1`): removed the **Downloads** section (page, nav,
   data) and the **duplicated on-site per-project docs** (each project links to its own docs
   from its card); the Projects submenu no longer auto-enables (reserved for future project
   categories); the About page's projects list was dropped as a duplicate of `/projects/`.
-  Fixed global nav is now **Home · Projects · Stories · Games · Docs · Updates · About**
-  (**Stories** added `0.15.0`, left of Games — a `/stories/` stub → `/fairyfox-stories/`).
+  Fixed global nav is now **Home · Projects · Farms (Stories · Games) · Docs · Updates ·
+  About** (**Stories** added `0.15.0`, left of Games — a `/stories/` stub →
+  `/fairyfox-stories/`; **Stories + Games grouped under the "Farms" dropdown** in `0.16.0`).
 - A plain-link header nav (Projects · Updates · Docs; no dropdowns) and an
   **on-site documentation library** (`/docs/`, the `_docs` collection): the ecosystem
   overview, a **"This site"** group surfacing the whole `notes/` tree, the **shared

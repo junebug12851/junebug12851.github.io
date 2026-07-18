@@ -565,6 +565,13 @@ a.card:hover{text-decoration:none;transform:translateY(-4px);box-shadow:var(--sh
   font-weight:600;color:var(--text-soft);background:transparent;transition:background .14s var(--ease),color .14s var(--ease)}
 .ff-seg button:hover{color:var(--text)}
 .ff-seg button[aria-pressed="true"]{background:var(--panel);color:var(--text);box-shadow:var(--shadow);border:1px solid var(--line-2)}
+/* Story-only lock (line spacing + width). Off a story page these two controls sit
+   visible-but-disabled with a note; text size, theme + accent stay live everywhere. */
+.ff-rp-note{margin:.55rem 0 0;font-size:.7rem;color:var(--text-faint);line-height:1.4;display:none}
+.ff-rp-sec.is-locked .ff-rp-note{display:block}
+.ff-rp-sec.is-locked .ff-rp-label{opacity:.55}
+.ff-rp-sec.is-locked .ff-seg{opacity:.45;filter:saturate(.55)}
+.ff-seg button:disabled{cursor:not-allowed}
 /* Footer — hint + reset */
 .ff-rp-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;
   padding:.7rem 1rem;border-top:1px solid var(--line);background:var(--panel-2)}

@@ -113,13 +113,22 @@ every same-origin `fairyfox.io` site**:
   (default `1`), set on `<html>` — this scales the whole rem-based UI, so text size
   visibly applies on **every** page (not just prose).
 - **Line spacing:** `tight 1.5` · `normal 1.65` (default) · `relaxed 1.9` → `--reading-lh`
-  (drives `body` line-height).
+  (drives `body` line-height). **Story-only** (see below).
 - **Width:** `narrow 38rem` · `normal 46rem` (default) · `wide 58rem` → `--reading-width`
-  (caps the reading measure on prose/doc pages).
+  (caps the reading measure on prose/doc pages). **Story-only** (see below).
+
+**Story-only controls.** Line spacing + width apply, and their controls un-lock, **only
+on story pages** — those that opt in with **`data-story` on `<html>`** (a book/chapter
+reading page). Everywhere else the two sit visible-but-disabled with an "Enables when
+reading a story" note, and reading keeps the designed defaults (`1.65` / `46rem`). **Text
+size, theme and accent apply on every page.** The saved values persist across the boundary
+either way — they're just not *applied* off a story. Detail:
+[`12-shared-chrome.md`](12-shared-chrome.md#the-readers-story-only-controls-data-story).
 
 These constants are **normative** — keep them byte-identical across the mesh so a
 choice made on one site carries to the next. Apply the saved theme / accent / size /
-reading vars **before first paint** (a tiny inline script in `<head>`) to avoid a flash.
+reading vars **before first paint** (a tiny inline script in `<head>`) to avoid a flash;
+gate the reading vars on `<html data-story>` so ordinary pages don't flash a story measure.
 Canonical implementation: the button/panel styles in the bundled
 [`reference/main.css`](reference/main.css) and fairyfox.io's `assets/js/reader.js`.
 Component appearance is in [`04-components.md`](04-components.md).
@@ -184,8 +193,8 @@ on hover underline with `text-underline-offset: 3px`.
 | `--maxw-text` | `43rem` | Reading-measure max width for prose |
 | `--gutter` | `clamp(1.15rem, 4vw, 2.75rem)` | Horizontal page padding |
 | `html` font-size | `16.5px` (default) | The reader's "Text size" lever — scaled on `<html>` to resize the whole rem UI |
-| `--reading-lh` | `1.65` (default) | `body` line-height — set live by the reader menu |
-| `--reading-width` | `46rem` (default) | Reading measure — set live by the reader menu |
+| `--reading-lh` | `1.65` (default) | `body` line-height — set live by the reader menu, **story pages only** (`<html data-story>`); otherwise the default stands |
+| `--reading-width` | `46rem` (default) | Reading measure — set live by the reader menu, **story pages only** (`<html data-story>`); otherwise the default stands |
 
 Pill controls (buttons, nav items, chips, badges) use `border-radius: 999px`.
 

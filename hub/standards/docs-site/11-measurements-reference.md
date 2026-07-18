@@ -85,6 +85,8 @@ Inserted at the far right of the header, just **after** `.nav` (past "About"), w
 | `.ff-swatches` / `.ff-swatch` | flex, `gap:.5rem`; each dot **`27px`** circle; selected → ring `0 0 0 2px --panel, 0 0 0 4px --text`; `.ff-swatch-default` = a slashed-circle reset icon on `--panel-2` |
 | `.ff-size-row` / `.ff-range` | slider flanked by small (`.85rem`) + large (`1.45rem`) "A"; track `6px` on `--panel-3`, thumb `20px` `--accent` |
 | `.ff-seg` | flex, `gap:.28rem`, bg `--panel-3`, `1px --line`, radius `11px`, padding `.26rem`; buttons `.82rem` weight 600, radius `8px`; selected (`aria-pressed`) bg `--panel`, `1px --line-2`, `--shadow` |
+| `.ff-rp-note` (story-only lock) | `.7rem --text-faint`, `margin-top:.55rem`, hidden by default; shown when the section is `.is-locked` |
+| `.ff-rp-sec.is-locked` | line-spacing/width off a story page: `.ff-rp-label` `opacity:.55`, `.ff-seg` `opacity:.45` + `saturate(.55)`, buttons `disabled` (`cursor:not-allowed`), `.ff-rp-note` shown |
 | `.ff-rp-foot` | padding `.7rem 1rem`, `1px --line` top, bg `--panel-2`; hint `.7rem --text-faint`; `.ff-rp-reset` `.75rem` weight 650 `--accent-ink` |
 
 ## Buttons

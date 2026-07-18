@@ -10,11 +10,23 @@
     </button>
 
     {%- assign p = page.url -%}
+    {%- assign in_farms = false -%}
+    {%- if p contains '/stories' or p contains '/games' -%}{%- assign in_farms = true -%}{%- endif -%}
     <nav class="nav" aria-label="Primary">
       <a href="{{ '/' | relative_url }}" class="{% if p == '/' %}active{% endif %}">Home</a>
       <a href="{{ '/projects/' | relative_url }}" class="{% if p contains '/projects' %}active{% endif %}">Projects</a>
-      <a href="{{ '/stories/' | relative_url }}" class="{% if p contains '/stories' %}active{% endif %}">Stories</a>
-      <a href="{{ '/games/' | relative_url }}" class="{% if p contains '/games' %}active{% endif %}">Games</a>
+      {%- comment -%} Farms groups the two "grown daily" collections — Stories + Games. {%- endcomment -%}
+      <details class="dd"{% if in_farms %} open{% endif %}>
+        <summary class="{% if in_farms %}active{% endif %}">Farms</summary>
+        <div class="dd-panel">
+          <div class="dd-group">
+            <div class="dd-links">
+              <a href="{{ '/stories/' | relative_url }}" class="{% if p contains '/stories' %}active{% endif %}">Stories</a>
+              <a href="{{ '/games/' | relative_url }}" class="{% if p contains '/games' %}active{% endif %}">Games</a>
+            </div>
+          </div>
+        </div>
+      </details>
       <a href="{{ '/docs/' | relative_url }}" class="{% if p contains '/docs' %}active{% endif %}">Docs</a>
       <a href="{{ '/blog/' | relative_url }}" class="{% if p contains '/blog' %}active{% endif %}">Updates</a>
       <a href="{{ '/about/' | relative_url }}" class="{% if p contains '/about' %}active{% endif %}">About</a>

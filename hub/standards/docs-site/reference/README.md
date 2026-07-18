@@ -10,11 +10,12 @@ for the docs-site standard. When a value isn't restated in
 primary nav + submenu + footer), snapshotted from the hub's `_includes/` with Liquid
 resolved to plain links. Copy it as the starting structure so a project's docs site
 appears as a page of fairyfox.io — the brand/Home link is the way home, the primary
-nav is the fixed mesh-wide set (incl. Stories + Games), and there's no separate back-button.
+nav is the fixed mesh-wide set (Stories + Games under the Farms dropdown), and there's no separate back-button.
 Reproduce it in the project's own stack; don't hot-link it.
 
 Snapshot: `main.css` **2026-06-25** (site `0.5.x` warm line), with the **`.subnav`
-submenu added 2026-06-30** · `chrome.html` **2026-06-30**.
+submenu added 2026-06-30** and the **reader story-only lock added 2026-07-18** ·
+`chrome.html` **2026-07-18** (the **Farms** dropdown grouping Stories + Games).
 
 ## How to use it
 

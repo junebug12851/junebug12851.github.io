@@ -36,9 +36,12 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
 
 - [ ] Buttons, cards, chips, badges, code, blockquote, tables match the component
       specs (shape, radius, border, shadow, hover).
-- [ ] The **reader ("Aa") menu** is present in the header with the four controls
-      (theme/size/spacing/width), saving to the origin-wide `fairyfox:reader` key with
-      the normative constants, applied before first paint.
+- [ ] The **reader ("Aa") menu** is present in the header with its controls
+      (theme / accent / size / spacing / width), saving to the origin-wide
+      `fairyfox:reader` key with the normative constants, applied before first paint.
+      **Line spacing + width are story-only** — locked (disabled + "reading a story" note)
+      unless the page carries `data-story` on `<html>`; text size / theme / accent stay
+      live everywhere.
 - [ ] `:focus-visible` shows the accent outline on every interactive element.
 
 ## Chrome, cross-linking & branding
@@ -51,8 +54,8 @@ record the deviation (see [`09-adopting-and-maintaining.md`](09-adopting-and-mai
       `.active` differ; no runtime hot-link to fairyfox.io; the adopted `chrome/VERSION`
       is recorded. Full check: [`12-shared-chrome.md`](12-shared-chrome.md#verify-is-it-being-followed).
 - [ ] The **shared header** is present with the **global primary nav** in the fixed
-      order **Home · Projects · Stories · Games · Docs · Updates · About** (not
-      reordered or trimmed per project).
+      order **Home · Projects · Farms (Stories · Games) · Docs · Updates · About** (not
+      reordered or trimmed per project; Stories + Games under the **Farms** dropdown).
 - [ ] The **brand mark and `Home` nav item link to `https://fairyfox.io/`** — this is
       the way home. There is **no separate "← Back to Fairy Fox" back-button**.
 - [ ] The site is reachable at `fairyfox.io/<key>/` and the registry entry

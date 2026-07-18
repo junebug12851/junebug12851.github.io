@@ -20,7 +20,7 @@ Three facts make true seamlessness possible rather than aspirational:
    compact set of variables (colour, type, spacing, motion). Reproducing it is a
    matter of applying tokens, not reverse-engineering a sprawling stylesheet.
 3. **A shared shell.** A sticky header carrying the **same global primary nav**
-   (Home · Projects · Stories · Games · Docs · Updates · About), an optional submenu
+   (Home · Projects · Farms [Stories · Games] · Docs · Updates · About), an optional submenu
    row for section links, and a footer with a fixed structure. Implement that shared
    chrome once per project — copy [`reference/chrome.html`](reference/chrome.html) — and
    most of the continuity is already there.

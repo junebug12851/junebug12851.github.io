@@ -35,10 +35,14 @@ A round logo image + the wordmark, used in the header and footer.
   `border-radius: 999px`, no wrap.
 - Hover: `--text` on a `--panel-2` fill. **Active page**: `--text` on a faint
   accent wash (`color-mix(--accent 16%, transparent)`).
-- **No dropdowns.** Plain top-level links in the fixed mesh-wide order
-  **Home · Projects · Stories · Games · Docs · Updates · About**. This is the
-  **shared global nav** — every project carries the same set in the same order (a
-  project's *own* pages go in the submenu below, not in the primary nav).
+- **One dropdown: Farms.** The fixed mesh-wide order is
+  **Home · Projects · Farms (Stories · Games) · Docs · Updates · About** — plain
+  top-level links except **Farms**, a single `details.dd` dropdown that groups the two
+  "grown daily" collections (Stories + Games). This is the **shared global nav** — every
+  project carries the same set in the same order (a project's *own* pages go in the
+  submenu below, not in the primary nav). `nav.js` drives the dropdown (one open at a
+  time, close on outside-click/Escape); on a Stories or Games page mark both the Farms
+  `<summary>` and the matching link `.active`.
 - **Mobile (`≤820px`):** the row hides behind a `.nav-toggle` (42px square, `--panel-2`
   fill, `--line-2` border, three bars) and opens as a `--panel` dropdown with
   `--shadow-lg`.
@@ -79,9 +83,15 @@ behaviour and constants are normative; see
     the theme accent), then a curated set of distinct hues. Picking one recolours the
     accent site-wide; the active dot gets a ring.
   - **Text size** — a **slider** (`.ff-range`, `<input type="range">`) flanked by a small
-    and a large "A". Not a `+`/`−` pair. Scales the document root font-size live.
-  - **Line spacing** — segmented Tight/Normal/Relaxed.
-  - **Width** — segmented Narrow/Normal/Wide.
+    and a large "A". Not a `+`/`−` pair. Scales the document root font-size live. Live on
+    **every** page.
+  - **Line spacing** — segmented Tight/Normal/Relaxed. **Story-only.**
+  - **Width** — segmented Narrow/Normal/Wide. **Story-only.**
+  - **Story-only lock.** Off a story page (no `data-story` on `<html>`) the line-spacing
+    and width sections carry `.is-locked`: the segmented buttons are `disabled` and a
+    `.ff-rp-note` reading "Enables when reading a story." shows. `reader.js` sets this on
+    load; text size / theme / accent stay live. See
+    [`12-shared-chrome.md`](12-shared-chrome.md#the-readers-story-only-controls-data-story).
   - A **footer** (`.ff-rp-foot`) with a "saved & shared" hint and a **Reset** button.
 
   Each tile / dot / segmented item carries `aria-pressed="true"` when active. Closes on

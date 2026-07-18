@@ -51,11 +51,25 @@ Full inventory + the pull commands + the placeholder contract live in
 ## The fixed / fillable line
 
 The bundle is **fixed** except for marked slots. Fixed (never edited by a project): the
-primary-nav set and order (**Home · Projects · Stories · Games · Docs · Updates ·
-About**), the reader "Aa" button, the palette, the footer structure. Fillable per
-project: `{{FF_CSS_HREF}}`, `{{FF_SUBNAV_ITEMS}}`, `{{FF_PROJECT_KEY}}`,
-`{{FF_PROJECT_NAME}}`, and the per-page `.active` marker. Editing a fixed part is not a
-"deviation" — it's the drift this bundle exists to remove.
+primary-nav set and order (**Home · Projects · Farms [Stories · Games] · Docs · Updates ·
+About**, with Stories + Games under the **Farms** `details.dd` dropdown), the reader "Aa"
+button, the palette, the footer structure. Fillable per project: `{{FF_CSS_HREF}}`,
+`{{FF_SUBNAV_ITEMS}}`, `{{FF_PROJECT_KEY}}`, `{{FF_PROJECT_NAME}}`, and the per-page
+`.active` marker (on a Stories/Games page mark both the Farms `<summary>` and the matching
+dropdown link). Editing a fixed part is not a "deviation" — it's the drift this bundle
+exists to remove.
+
+## The reader's story-only controls (`data-story`)
+
+The reader menu's **line spacing** and **width** are **story-only**: they apply, and their
+controls un-lock, only on pages that opt in with **`data-story` on the `<html>` element**
+(e.g. a book/chapter reading page). Everywhere else the two controls sit
+visible-but-disabled with an "Enables when reading a story" note, and reading uses the
+designed default measure. **Text size, theme and accent apply on every page.** The signal
+lives on `<html>` (not `<body>`) so the pre-paint `head.html` script can read it before
+first paint. This is part of the fixed reader behaviour (`reader.js` + `head.html`) — a
+project doesn't reimplement it; it just adds `data-story` to the `<html>` of its own story
+pages when it wants those controls live there.
 
 ## Versioning & sync
 
@@ -83,8 +97,9 @@ parts via the matching [adapter](chrome/adapters/), fill the slots, load `nav.js
 
 - The project's shipped chrome is the **vendored bundle**, not a hand-built lookalike:
   its header/subnav/footer markup matches [`chrome/`](chrome/) (same classes, same fixed
-  primary nav in the exact order incl. **Stories** and **Games**), and its `main.css` /
-  `reader.js` / `nav.js` are copies of the live master (not a re-authored variant).
+  primary nav in the exact order, with **Stories** and **Games** under the **Farms**
+  dropdown), and its `main.css` / `reader.js` / `nav.js` are copies of the live master
+  (not a re-authored variant).
 - The assets are **vendored, not hot-linked** — no runtime `<link>`/`<script>` pointing
   at `fairyfox.io`; the site renders with the main site unreachable.
 - Only the `{{FF_*}}` slots + `.active` differ from the bundle; no fixed part (primary

@@ -7,7 +7,8 @@
   - Verbatim source: the hub's _includes/header.html and _includes/footer.html
     (Liquid resolved to plain links here). Snapshot: 2026-06-30.
   - The PRIMARY nav is the fixed mesh-wide set, identical on every page/project:
-    Home · Projects · Stories · Games · Docs · Updates · About (About last).
+    Home · Projects · Farms (Stories · Games) · Docs · Updates · About (About last).
+    Stories + Games sit inside the "Farms" dropdown (nav.js drives it).
   - The brand mark + the Home item ARE the way home — there is no separate
     "← Back to Fairy Fox" button.
   - Use absolute https://fairyfox.io/... URLs (shown) so the chrome works whether the
@@ -32,8 +33,17 @@
     <nav class="nav" aria-label="Primary">
       <a href="https://fairyfox.io/">Home</a>
       <a href="https://fairyfox.io/projects/">Projects</a>
-      <a href="https://fairyfox.io/stories/">Stories</a>
-      <a href="https://fairyfox.io/games/">Games</a>
+      <details class="dd">
+        <summary>Farms</summary>
+        <div class="dd-panel">
+          <div class="dd-group">
+            <div class="dd-links">
+              <a href="https://fairyfox.io/stories/">Stories</a>
+              <a href="https://fairyfox.io/games/">Games</a>
+            </div>
+          </div>
+        </div>
+      </details>
       <a href="https://fairyfox.io/docs/">Docs</a>
       <a href="https://fairyfox.io/blog/">Updates</a>
       <a href="https://fairyfox.io/about/">About</a>

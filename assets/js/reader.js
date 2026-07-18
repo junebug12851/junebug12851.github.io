@@ -7,6 +7,13 @@
 // A → large A) that scales the document ROOT font-size, so it resizes the whole UI on
 // every page. Line spacing drives body line-height; width caps the reading measure.
 //
+// Text size, theme and accent apply everywhere. Line spacing + width are STORY-ONLY:
+// they take effect (and their controls un-lock) only when the page is a story —
+// `<html data-story>` — so ordinary pages keep the normal, designed measure. Off a
+// story the two controls sit visible-but-disabled with a "reading a story" note; the
+// saved values are kept, just not applied. The signal is an attribute on <html> so the
+// pre-paint <head> script (which runs before <body>) can read it too.
+//
 // Prefs live under a VERSIONED origin-wide key ("fairyfox:reader:b"), shared across
 // every same-origin fairyfox.io site. Early apply is inline in <head> (no flash).
 (function () {
@@ -37,6 +44,9 @@
 
   var prefs = Object.assign({}, DEFAULTS);
   function clampSize(n) { return Math.max(0, Math.min(SIZES.length - 1, n | 0)); }
+  // Story pages opt in via `data-story` on <html>. Only there do line spacing + width
+  // apply and their controls un-lock; everywhere else reading uses the normal defaults.
+  function isStory() { return document.documentElement.hasAttribute("data-story"); }
 
   function load() {
     try { return Object.assign({}, DEFAULTS, JSON.parse(localStorage.getItem(KEY) || "{}")); }
@@ -60,8 +70,15 @@
     if (prefs.theme === "system") root.removeAttribute("data-theme");
     else root.setAttribute("data-theme", prefs.theme);
     root.style.fontSize = SIZES[clampSize(prefs.size)] + "px";
-    root.style.setProperty("--reading-lh", String(LH[prefs.lh] || LH.normal));
-    root.style.setProperty("--reading-width", WIDTH[prefs.width] || WIDTH.normal);
+    // Line spacing + width are story-only. Off a story, drop the overrides so the
+    // designed defaults (from the stylesheet) stand.
+    if (isStory()) {
+      root.style.setProperty("--reading-lh", String(LH[prefs.lh] || LH.normal));
+      root.style.setProperty("--reading-width", WIDTH[prefs.width] || WIDTH.normal);
+    } else {
+      root.style.removeProperty("--reading-lh");
+      root.style.removeProperty("--reading-width");
+    }
     applyAccent(root, prefs.accent);
   }
 
@@ -112,10 +129,12 @@
       '<div class="ff-size-row"><span class="a-end a-min" aria-hidden="true">A</span>' +
       '<input type="range" class="ff-range" min="0" max="' + (SIZES.length - 1) + '" step="1" value="' + clampSize(prefs.size) + '" aria-label="Text size">' +
       '<span class="a-end a-max" aria-hidden="true">A</span></div></div>' +
-      '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-lh">Line spacing</span>' +
-      seg("lh", "ff-rl-lh", [["tight", "Tight"], ["normal", "Normal"], ["relaxed", "Relaxed"]]) + "</div>" +
-      '<div class="ff-rp-sec"><span class="ff-rp-label" id="ff-rl-width">Width</span>' +
-      seg("width", "ff-rl-width", [["narrow", "Narrow"], ["normal", "Normal"], ["wide", "Wide"]]) + "</div>" +
+      '<div class="ff-rp-sec ff-rp-lockable"><span class="ff-rp-label" id="ff-rl-lh">Line spacing</span>' +
+      seg("lh", "ff-rl-lh", [["tight", "Tight"], ["normal", "Normal"], ["relaxed", "Relaxed"]]) +
+      '<p class="ff-rp-note">Enables when reading a story.</p></div>' +
+      '<div class="ff-rp-sec ff-rp-lockable"><span class="ff-rp-label" id="ff-rl-width">Width</span>' +
+      seg("width", "ff-rl-width", [["narrow", "Narrow"], ["normal", "Normal"], ["wide", "Wide"]]) +
+      '<p class="ff-rp-note">Enables when reading a story.</p></div>' +
       '<div class="ff-rp-foot"><p class="ff-rp-hint">Saved &amp; shared across Fairy Fox.</p>' +
       '<button type="button" class="ff-rp-reset" data-act="reset">Reset</button></div>';
 
@@ -131,6 +150,17 @@
       if (range) range.value = clampSize(prefs.size);
     }
     markActive();
+
+    // Lock line spacing + width off a story page: disable the controls (so they can't be
+    // focused or clicked) and reveal the "reading a story" note. The saved values stay.
+    if (!isStory()) {
+      panel.querySelectorAll(".ff-rp-lockable").forEach(function (sec) {
+        sec.classList.add("is-locked");
+        var g = sec.querySelector(".ff-seg");
+        if (g) g.setAttribute("aria-disabled", "true");
+        sec.querySelectorAll(".ff-seg button").forEach(function (b) { b.disabled = true; });
+      });
+    }
 
     panel.addEventListener("click", function (e) {
       var b = e.target.closest("button");
