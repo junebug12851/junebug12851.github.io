@@ -13,13 +13,42 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: cb8b1d7947f1f31617e772eb349af19699ec9d68
+  commit: 1679d2f058ce6bd2b973aaf4133909a41fc76f24
   branch: dev
-  seen: 2026-07-17
+  seen: 2026-07-18
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
     - 2026-06-26-check-for-updates.md            # digested 2026-06-28 report-review (0.9.8) — no-change confirming pass, nothing to fold
+  # 2026-07-18 round-up: clean fast-forward cb8b1d79 → 1679d2f0, VERSION 0.41.8-alpha → 0.42.13-alpha, 37
+  # commits ALL dated 2026-07-17 (a complete day — today is 07-18). The project's single biggest day yet, and
+  # a day about naming/measuring the right thing. (1) MAP STATES as DATA (0.42.13) — every map's default states
+  # per progression computed as 98 per-map JSON blueprints (196 resting stages, 34 story maps hand-curated off
+  # pret's own scripts), so the app can roll a map fwd/back a stage, build a proper destination on map change,
+  # and hand the randomiser whole legal states. Finding: a map's SCRIPT_* value is NOT its state (every gym
+  # rests at the same script on both sides of its leader) — a stage = script byte + ABSOLUTE event set +
+  # ABSOLUTE missable visibility + badges. pret has no format for this (executable asm only) → genuinely new
+  # artefact, extractor is --check-idempotent; data-only, no app code, suite 91/91. Also renamed "map script" →
+  # "map state" on the map screen. (2) THE 16f INTERACTION MODEL briefed — whose click wins when flag boxes
+  # overlap draggable sprites/warps/signs: NOT any of the three invented-precedence candidates. Hover reaches
+  # everything; click priority IS the Layers panel's own visible order; each layer's colour tab is a click-AND-
+  # DRAG escape hatch. Reuses a rule already on screen + under user control (inspectable, re-orderable) and
+  # retires the buried-object risk instead of mitigating it — the answer that adds the least. (3) THE UNITS:
+  # there are THREE, and the middle was miscalled a "tile". Tile 8×8 (attributes), HALF-BLOCK 16×16 (the walk
+  # grid: objects/warps/signs/hidden items+coins/coord triggers), Block 32×32 (.blk/shape/connections). The
+  # game proves it (low bit of wYCoord = which half of the block). Boxes shipping were the right SIZE; the WORD
+  # was wrong. Rename, don't resize — a self-contradicting notes sentence ("walk in half-blocks = 2×2 tiles")
+  # retired. (4) ONE Qt EVERYWHERE (Fairy Fox chose to bring the shipping toolchain UP, not hold the app back):
+  # kit == container == CI at 6.11.0. The Windows 6.11 install failure was a repo-layout reorg fixed in
+  # aqtinstall PR #1000 (merged 4 months ago, never released) → pinned via aqtsource to the merge commit;
+  # "the latest release can't" ≠ "can't". Twin lesson one layer down: the container's 3 emu-test "failures"
+  # were a path-exists availability gate (checks a FILE, not whether the interpreter RUNS) tripping on host
+  # scratch rsynced in → now runnability-based. (5) CI GREEN first time since 0.29.0 (0.41.9): with the
+  # toolchain level + container fixed, the safety nets ran and found 4 real things — a heap-use-after-free in
+  # the music parser (label by-ref into a growing list → append frees the caller's ref; ASan 7× from 5 tests,
+  # never crashed, rode 12 releases), a null deref, a dead check hiding a missing bounds test, a needless copy.
+  # Reconciled: projects.yml (PSE2 → 0.42.13 / Jul 17; blurb gains in-game trades + completion milestones).
+  # Folded into the new 2026-07-17 day post. Marker → 1679d2f0; seen → 2026-07-18.
   # 2026-07-17 round-up: clean fast-forward 9d0fdbd4 → cb8b1d79, VERSION 0.40.4-alpha → 0.41.8-alpha, 29
   # commits ALL dated 2026-07-16 (a complete day — today is 07-17, tip cb8b1d79 is a 07-16 commit). The day
   # the project put its own confident claims in front of the cartridge and lost four of them. (1) ROUTE 22
@@ -239,7 +268,7 @@ pokered-save-editor-2:
 random-ai-prompt:
   commit: 2f1459ff0d2eba7deba7e5396cefbec363d3ab4b
   branch: dev
-  seen: 2026-07-17
+  seen: 2026-07-18
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -252,6 +281,11 @@ random-ai-prompt:
     - 2026-07-01-propose-git-workflow-backmerge.md # digested 0.12.0 — git-workflow dev-contains-main invariant + branch-sync.yml
     - 2026-07-01-upgrade-policy-proposal.md      # digested 0.12.0 — new dependencies.md standard
     - 2026-07-02-propose-scorecard-hardening.md  # digested 0.12.0 — new supply-chain-hardening.md (mandatory branch protection, reconciled release flow)
+  # 2026-07-18 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-17; the
+  # tip is still the 07-12 session-log commit. Six quiet days now. Nothing to reconcile (projects.yml left at
+  # 2.60.1 / Jul 12) or blog; RAP is absent from the 2026-07-17 day post's tags. It is also the mesh's only
+  # standards-bearing sibling, so an unchanged RAP means no hub standard could have moved this pass. Marker
+  # unchanged; seen → 2026-07-18.
   # 2026-07-17 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-16; the
   # tip is still the 07-12 session-log commit. Five quiet days now. Nothing to reconcile (projects.yml left
   # at 2.60.1 / Jul 12) or blog; RAP is absent from the 2026-07-16 day post's tags. It is also the mesh's
@@ -475,13 +509,26 @@ random-ai-prompt:
   # 2026-07-09 and 2026-07-10 day posts. Marker → 3686435, VERSION 2.50.1 → 2.52.0.
 
 fairyfox-games:
-  commit: 450db5d80dd599b782096e387c33afd7c227fae3
+  commit: 728a76fc51f3bd1b888cfa17ddaab79c6b3753fc
   branch: dev
-  seen: 2026-07-17
+  seen: 2026-07-18
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
     - 2026-06-30-docs-site-feedback.md    # digested 0.10.0 — one-seamless-site model (no back-button, shared chrome + submenu, Games nav slot); tags kept games-local
+  # 2026-07-18 round-up: clean fast-forward 450db5d → 728a76f, VERSION 0.23.1 → 0.23.2 (commits dated
+  # 2026-07-17). A pure GROW run, no plant: **Orbit Slingshot gets the depth layer** — the oldest game
+  # without it (5th of 13), carrying the same plateau symptom the sweep flags (its pickup radius shrank
+  # per stage then hit a floor). Four items on the one hold-to-thrust verb: no-plateau pickup radius (score
+  # asymptote, hard floor); the hidden **Kiss** (razor sub-window 7px inside the 60px close band → +2, gold
+  # ring, streak); **Aurora** (3 kisses chained → ~5s every-point-doubles over the planet); secret
+  # **Interstellar** stage at score 240 (reveal toast, badge). The layer is the reference build's SHAPE poured
+  # into Orbit Slingshot's own physics, not a copy. 3 new badges (8→11), totals.kisses (lossless legacy
+  # upgrade); +10 pure-core tests (39→49), collection 572/572. Merged Dependabot #47 (ruby/setup-ruby minor,
+  # both checks green); #46 (setup-node major) + #31 (attest-build-provenance major) held for a deliberate
+  # pass. Depth-layer rollout now 5 of 13 (Polarity, Brim, Echo Chamber, Ink Bloom, Orbit Slingshot; Tether +
+  # Reprise from birth). Reconciled: projects.yml (games → 0.23.2 / Jul 17). Folded into the new 2026-07-17
+  # day post. Marker → 728a76f; seen → 2026-07-18.
   # 2026-07-17 round-up: clean fast-forward ebc896c → 450db5d, VERSION 0.23.0 → 0.23.1 (commits dated
   # 2026-07-16). A pure GROW run, no plant: **Ink Bloom gets the depth layer** — the OLDEST game without it,
   # and it carried the exact plateau the status sweep flags (speedOf = SPEED + score·0.012, hard-capped 4.4
@@ -663,10 +710,28 @@ fairyfox-games:
   # 0.20.2 / Jul 10). Folded into the 2026-07-08 and 2026-07-10 day posts. Marker → e7d2768.
 
 fairyfox-stories:
-  commit: 6e78be52f692d1c170a15fc79aee172885180f52
+  commit: c677b3f5acf3a0987eee18664cd3ef3724134492
   branch: dev
-  seen: 2026-07-17
+  seen: 2026-07-18
   reports_through: []          # digested-report filenames (append-only); see header
+  # 2026-07-18 round-up: clean fast-forward 6e78be5 → c677b3f, VERSION 0.4.1 → 0.4.2 (commits dated
+  # 2026-07-17). A pure GROW run, no plant (next plant eligible on/after 07-18, the sibling -new job's call).
+  # TWO books finished on one run — the shelf goes from one completed book to THREE. Blindfold ch.2, **The
+  # Girl Who Sold the Wind ch.5 (COMPLETE)**, **The Cartographer of Decks ch.6 (COMPLETE)**. The mechanical
+  # story: NO override this run (rolls 94/40/50, ≤18 fires) — a clean blend draw, top three straight down —
+  # and it PAID BACK 07-16's debt exactly as that note predicted: *The Blindfold Act*, robbed of its slot by
+  # last run's override, came back at 0.917 (the highest single blend score the farm has recorded) and led;
+  # the two near-complete books (Girl 0.600, Cartographer 0.583) were picked purely on STALENESS, which is
+  # the whole reason the second blend term exists (a 5/6 book never finishes otherwise). Every Lock but Hers
+  # missed the third slot by 0.015; nothing re-picked after the fact. A 6th integrity check added: book state
+  # must match chapters on disk AND sequel-lock honoured at completion (catches a book that quietly stays
+  # "growing" after its last chapter — today was the first run that could produce one, by finishing two at
+  # once); it can't set state, only refuse a wrong one. npm 6/6; jekyll build clean, 3 chapter pages verified,
+  # shelf renders 3 "Complete" badges. STILL NEEDS FAIRY FOX (carried, no change): the grow-count reconcile
+  # (operating-model says exactly 2/day, other files say up to 5; 7 runs have grown 3); sequel-lock part (b) —
+  # exclude locked books from the weekly roll — still owed, now on a 07-21 deadline (all 3 books eligible then
+  # are unlocked, so that roll is safe either way); five Dependabot Actions PRs held. Reconciled: projects.yml
+  # (stories → 0.4.2 / Jul 17). Folded into the new 2026-07-17 day post. Marker → c677b3f; seen → 2026-07-18.
   # 2026-07-17 round-up: clean fast-forward 86c5ffc → 6e78be5, VERSION 0.4.0 → 0.4.1 (commits dated
   # 2026-07-16). A pure GROW run, no plant (the sibling -new job owns that; next plant eligible on/after
   # 07-18). Three chapters, one each: **Every Lock but Hers ch.4 "The Bolt"** (~1,600w) — the wound named in

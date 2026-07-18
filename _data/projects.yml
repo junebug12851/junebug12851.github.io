@@ -32,14 +32,15 @@
     A Qt 6 (C++/QML) desktop save-file editor for Pokémon Red & Blue — byte-exact
     read/write with full team, box, item, and randomiser editing, plus an emulated
     map view whose cast, doors, signs, edge connections, wild encounters and player
-    state you can place, move and edit, per-map script progress and all 2,560 world
-    event flags, and the game's own soundtrack played by a Game Boy sound chip in C++.
+    state you can place, move and edit, per-map script progress, in-game trades and
+    completion milestones, and all 2,560 world event flags, and the game's own
+    soundtrack played by a Game Boy sound chip in C++.
   tags: [Qt 6, C++, QML, Desktop]
   lifecycle: alpha
-  version: "0.41.8"
+  version: "0.42.13"
   activity: active
-  updated: "Jul 16, 2026"
-  updated_iso: "2026-07-16"
+  updated: "Jul 17, 2026"
+  updated_iso: "2026-07-17"
   color: "#e6488f"
   icon: pse2
   featured: true
@@ -99,10 +100,10 @@
     you can read before you start.
   tags: [Jekyll, Ruby, Web]
   lifecycle: alpha
-  version: "0.4.1"
+  version: "0.4.2"
   activity: active
-  updated: "Jul 16, 2026"
-  updated_iso: "2026-07-16"
+  updated: "Jul 17, 2026"
+  updated_iso: "2026-07-17"
   integrated: true
   color: "#b06ad0"
   featured: true
@@ -123,10 +124,10 @@
     beat-your-own-score kind, each splitting pure, tested logic from rendering.
   tags: [JavaScript, Canvas, Web]
   lifecycle: alpha
-  version: "0.23.1"
+  version: "0.23.2"
   activity: active
-  updated: "Jul 16, 2026"
-  updated_iso: "2026-07-16"
+  updated: "Jul 17, 2026"
+  updated_iso: "2026-07-17"
   integrated: true
   color: "#8b7bff"
   featured: true

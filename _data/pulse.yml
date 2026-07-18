@@ -10,22 +10,22 @@
 #           Per-project colour: green = Random AI Prompt · amber = Fairy Fox Games
 #           plum = Fairy Fox Stories · pink = Pokered Save Editor 2 · coral = this site
 
-bars: [10, 13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33, 78, 52, 41, 70, 6, 46, 43, 72, 44, 18, 29, 49, 38, 64, 24, 22, 50, 31]
+bars: [13, 24, 30, 9, 28, 6, 27, 42, 3, 38, 33, 78, 52, 41, 70, 6, 46, 43, 72, 44, 18, 29, 49, 38, 64, 24, 22, 50, 31, 44]
 
 changes:
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.41.7 — the Event Flags UI ships, and reading its own map list found a third of the game unreachable: 33 maps had no page at all, so their flags could never be edited", when: "today" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 — two headline crash claims went to the cartridge and neither survived: the Route 22 rival conflict is refuted, and \"all flags on crashes\" did not reproduce", when: "today" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 — a dev autopilot that plays the real game: describe a destination and it pathfinds there through doors, elevators, water and cut trees, every step checked against the console", when: "today" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.41.8 — the remote build had been failing since 0.40.4's predecessor: a Qt 6.9-only call that only the release compiler sees. Caught one step before a shipped release would have", when: "today" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.23.1 — Ink Bloom gets the depth layer: a hidden graze band just outside your own lethal trail, a doubling window it chains into, and a secret stage past the end", when: "today" }
-  - { c: "var(--plum)", text: "Fairy Fox Stories 0.4.1 — three chapters grow, and the random override fires for the first time in three runs — landing on The Wintering House, with the mechanical draw left to stand", when: "today" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.40.4 — edge connections on the map: a neighbouring map renders right up to the border and drags to re-align, backed by the exact bytes the cartridge stores for a join", when: "1d" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 — a wild-encounter panel for the map, which caught a real bug: the model had been reading species before level, inverting every save's encounter table", when: "1d" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.23.0 — Reprise, the 14th game and a new verb: call-and-response memory, where echoing each beat in tempo is the greedy, higher-scoring play", when: "1d" }
-  - { c: "var(--plum)", text: "Fairy Fox Stories 0.4.0 — a seventh book, The Blindfold Act: the shelf's first mystery and its first non-magical setting, a 1926 carnival murder written to end where it's planned to", when: "1d" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.36.0–0.39.0 — doors, signs and the full player panel land on the map, each researched against the cartridge first — which overruled us on some fields and confirmed us on others", when: "2d" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.22.2 — Poise comes onto varied structure, completing the rollout: all 13 games now build a run from named, stage-gated routes instead of flat noise", when: "2d" }
-  - { c: "var(--plum)", text: "Fairy Fox Stories 0.3.6 — the shelf finishes its first book: The Two-O'Clock Launderette reaches its planned ending, and the random-override pick held off cleanly", when: "2d" }
-  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.25.1–0.34.0 — the towns get their people (all 72 overworld sprites) and the music ships as the game's own sheet music, parsed from 376 vendored .asm files", when: "3d" }
-  - { c: "var(--amber)", text: "Fairy Fox Games 0.22.1 — Loft gets weather: the thing that varies is the air, not the orbs, so a run is a seeded sequence of thermals, gusts and downdrafts", when: "3d" }
-  - { c: "var(--green)", text: "Random AI Prompt 2.60.1 — a critical command injection in the local backend: a filename could close the quote and run the rest. No more shell — the program and its arguments go to the OS separately", when: "4d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.42.13 — every map's default states shipped as data: 98 per-map progression blueprints computed from the game's own scripts, so the editor can roll a map forward or back one story stage at a time", when: "today" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 — the map's storage panel gains in-game trades, town-visited flags, completion milestones and the fossil choice, each read off the save at its real spot", when: "today" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.41.9 — CI is green for the first time since 0.29.0, and the gates it unblocked immediately found a heap-use-after-free in the music parser that twelve releases had carried", when: "today" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.23.2 — Orbit Slingshot gets the depth layer: a hidden Kiss window inside the close pass, an Aurora doubling wave it chains into, and a secret Interstellar stage past the visible end", when: "today" }
+  - { c: "var(--plum)", text: "Fairy Fox Stories 0.4.2 — two books finish on a single run: The Girl Who Sold the Wind and The Cartographer of Decks both reach their planned endings, taking the shelf from one complete book to three", when: "today" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.41.7 — the Event Flags UI ships, and reading its own map list found a third of the game unreachable: 33 maps had no page at all, so their flags could never be edited", when: "1d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.41.8 — the remote build had been failing for twelve versions: a Qt 6.9-only call that only the release compiler sees. Caught one step before a shipped release would have", when: "1d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.23.1 — Ink Bloom gets the depth layer: a hidden graze band just outside your own lethal trail, a doubling window it chains into, and a secret stage past the end", when: "1d" }
+  - { c: "var(--plum)", text: "Fairy Fox Stories 0.4.1 — three chapters grow, and the random override fires for the first time in three runs — landing on The Wintering House, with the mechanical draw left to stand", when: "1d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.40.4 — edge connections on the map: a neighbouring map renders right up to the border and drags to re-align, backed by the exact bytes the cartridge stores for a join", when: "2d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.23.0 — Reprise, the 14th game and a new verb: call-and-response memory, where echoing each beat in tempo is the greedy, higher-scoring play", when: "2d" }
+  - { c: "var(--plum)", text: "Fairy Fox Stories 0.4.0 — a seventh book, The Blindfold Act: the shelf's first mystery and its first non-magical setting, a 1926 carnival murder written to end where it's planned to", when: "2d" }
+  - { c: "var(--pink)", text: "Pokered Save Editor 2 0.36.0–0.39.0 — doors, signs and the full player panel land on the map, each researched against the cartridge first — which overruled us on some fields and confirmed us on others", when: "3d" }
+  - { c: "var(--amber)", text: "Fairy Fox Games 0.22.2 — Poise comes onto varied structure, completing the rollout: all 13 games now build a run from named, stage-gated routes instead of flat noise", when: "3d" }
+  - { c: "var(--plum)", text: "Fairy Fox Stories 0.3.6 — the shelf finishes its first book: The Two-O'Clock Launderette reaches its planned ending, and the random-override pick held off cleanly", when: "3d" }
+  - { c: "var(--green)", text: "Random AI Prompt 2.60.1 — a critical command injection in the local backend: a filename could close the quote and run the rest. No more shell — the program and its arguments go to the OS separately", when: "5d" }
