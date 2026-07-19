@@ -98,13 +98,13 @@ under one versioned origin-wide `localStorage` key so the setting is shared acro
 every same-origin `fairyfox.io` site**:
 
 - **Key:** `fairyfox:reader:b` → JSON `{ theme, accent, size, lh, width }`. The `:b`
-  suffix **versions the schema**. **Never lose a user's saved settings.** Prefer evolving
+  suffix **versions the schema**. **Strive to keep a user's saved settings.** Prefer evolving
   the value in place (merge unknown/missing fields against defaults, as `reader.js` does) so
-  a shape change needs no new key. If the suffix ever *must* bump, the new version **must
-  read the old key and migrate the data forward** (carry every still-meaningful field over),
-  never start empty — an orphaned old key is data loss, which is not allowed (see the
-  durability mandate in [`../coins.md`](../coins.md#durability--no-data-loss), which governs
-  the reader key too).
+  a shape change needs no new key. If the suffix ever *must* bump, the new version should
+  **read the old key and migrate the data forward** (carry every still-meaningful field over)
+  rather than start empty — an orphaned old key loses data, so avoid it (see the durability
+  section in [`../coins.md`](../coins.md#durability--strive-to-persist), which governs the
+  reader key too).
 - **Theme:** `system` (default) · `light` · `sepia` · `dark` → drives `data-theme`.
   Presented as **weather/time icon buttons** — sun (Light), sunset (Sepia), moon (Dark)
   — with an **Auto** toggle in the section header for `system`.

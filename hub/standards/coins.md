@@ -44,11 +44,13 @@ Earning is owned by the shared `coins.js`; a project does **not** re-implement o
   `todayEarned`. It lives only in the browser and is never sent to a server (disclose it in the
   project's legal pages — see [`legal-docs.md`](legal-docs.md)).
 
-## Durability — no data loss
+## Durability — strive to persist
 
-**A user's coins (and reader settings) must never be lost** — not by a site update, not by an
-internal data-structure change, not when a sub-project starts handling the shared state. Balances
-and preferences are the user's; the mesh treats them as durable.
+**Strive to keep a user's coins (and reader settings) across site updates** — a site update, an
+internal data-structure change, or a sub-project taking over the shared state should carry them
+forward, not drop them. Balances and preferences are the user's; treat them as durable and take
+deliberate care not to *cause* loss through carelessness. (This is an engineering discipline, not a
+user-facing guarantee — user copy says "we strive to keep them", never "never lost".)
 
 - **Evolve the shape in place.** Read the stored value and merge it against defaults (as
   `coins.js` does — unknown/missing fields are tolerated, integers are sanitised), so ordinary
@@ -106,7 +108,7 @@ The per-standard slice the [compliance audit](compliance.md) aggregates — repo
 | Passes only when… | How to check |
 |-------------------|--------------|
 | The coin counter comes from the **shared chrome** (`coins.js` pulled from master), not a re-implementation | diff against master `assets/js/coins.js`; confirm it's loaded after `reader.js` |
-| **No data loss — enforced.** Neither the hub nor any sub-project can lose a user's coins or reader prefs: the store is read-and-merged (not replaced) on load, a key-version change migrates the old data forward (never orphans a key), and nothing clears the wallet except a user's own `spend`/browser reset | read every place the project touches `fairyfox:coins:a` / `fairyfox:reader:b`; confirm no reset/overwrite-on-load and any migration carries data |
+| **Persistence — enforced.** Neither the hub nor any sub-project loses a user's coins or reader prefs through carelessness: the store is read-and-merged (not replaced) on load, a key-version change migrates the old data forward (doesn't orphan a key), and nothing clears the wallet except the user (their `spend`, the **Clear my data** button, or a browser reset) | read every place the project touches `fairyfox:coins:a` / `fairyfox:reader:b`; confirm no reset/overwrite-on-load and any migration carries data |
 | The project **gates nothing** on coins — the full experience works at zero balance | use/read the project with an empty wallet |
 | Any project-added coin moments are **subtle, optional, and engagement-tied** — no grinds, no nags, no paywall shapes | exercise the coin moments; read where `reward`/`spend` are called |
 | Coin UI does **not** clutter or detract from the project's own brand/content | look at the pages that add coin moments |

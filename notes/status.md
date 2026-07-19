@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.18.0` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.18.1` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -70,7 +70,7 @@ through the `0.4.x` line; it now includes:
   read **today** — anywhere same-origin under fairyfox.io — earns a coin (+1, 10% → +2; a
   1%/repeat-view bonus capped at 10/day), with a playful coin-pop and a mini panel. State is
   the origin-wide `fairyfox:coins:a` key; projects tap `window.FairyFoxCoins` as an **extra**
-  reward only — never a gate, never overused, never lost (durability mandate). Governed by
+  reward only — never a gate, never overused, persistence striven for (durability). Governed by
   `hub/standards/coins.md`; explained at `/legal/coins/`. The hub also now serves its own
   `/legal/{privacy,terms,cookies}/` pages (it had none). Chrome bundle → `2.1.0`.
 - **Trimmed to the projects** (`0.13.1`): removed the **Downloads** section (page, nav,

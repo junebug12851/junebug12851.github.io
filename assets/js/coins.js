@@ -106,11 +106,11 @@
   }
 
   // ── UI ────────────────────────────────────────────────────────────────────
+  // A clean, monochrome line coin (currentColor) — a rimmed token, not a filled/gold icon.
   var COIN_SVG =
-    '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none">' +
-    '<circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.16"/>' +
-    '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/>' +
-    '<path d="M12 7.3l1.25 2.62 2.87.36-2.12 1.96.55 2.85L12 16.1l-2.55 1.35.55-2.85-2.12-1.96 2.87-.36z" fill="currentColor"/>' +
+    '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">' +
+    '<circle cx="12" cy="12" r="8.5"/>' +
+    '<circle cx="12" cy="12" r="5.25"/>' +
     "</svg>";
 
   function el(tag, attrs, html) {
@@ -162,16 +162,25 @@
       '<div class="ff-coin-stat"><span class="ff-coin-k">Earned today</span><span class="ff-coin-v" data-ff-today>0</span></div>' +
       '<div class="ff-coin-stat"><span class="ff-coin-k">Lifetime</span><span class="ff-coin-v" data-ff-life>0</span></div>' +
       "</div>" +
-      '<div class="ff-rp-sec"><p class="ff-coin-how">Open a page you haven’t read yet today — anywhere across Fairy Fox — to earn a coin. Now and then a page is worth a little more.</p>' +
+      '<div class="ff-rp-sec"><p class="ff-coin-how">Navigating around and using fairyfox.io lets you earn and use coins.</p>' +
       '<a class="ff-coin-more" href="https://fairyfox.io/legal/coins/">How coins work →</a></div>' +
-      '<div class="ff-rp-foot"><p class="ff-rp-hint">Not money · never lost · saved in your browser.</p></div>';
+      '<div class="ff-rp-foot"><p class="ff-rp-hint">Saved &amp; shared across Fairy Fox.</p>' +
+      '<button type="button" class="ff-rp-clear" data-ff-clear>Clear my data</button></div>';
     document.body.appendChild(panel);
     updatePanel();
 
     panel.addEventListener("click", function (e) {
-      var c = e.target.closest("[data-ff-close]");
-      if (c) { setOpen(false); btn.focus(); }
+      if (e.target.closest("[data-ff-close]")) { setOpen(false); btn.focus(); return; }
+      if (e.target.closest("[data-ff-clear]")) { clearData(); }
     });
+  }
+
+  // "Clear my data" — remove the coins store from this browser and reflect it live,
+  // without re-persisting an empty wallet (the key stays cleared until the next earn).
+  function clearData() {
+    try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
+    state = Object.assign({}, DEFAULTS, { day: today() });
+    emit(0, "clear");
   }
 
   function setOpen(open) {

@@ -142,7 +142,8 @@
       seg("width", "ff-rl-width", [["narrow", "Narrow"], ["normal", "Normal"], ["wide", "Wide"]]) +
       '<p class="ff-rp-note">Enables on reading pages.</p></div>' +
       '<div class="ff-rp-foot"><p class="ff-rp-hint">Saved &amp; shared across Fairy Fox.</p>' +
-      '<button type="button" class="ff-rp-reset" data-act="reset">Reset</button></div>';
+      '<span class="ff-rp-actions"><button type="button" class="ff-rp-reset" data-act="reset">Reset</button>' +
+      '<button type="button" class="ff-rp-clear" data-act="clear">Clear my data</button></span></div>';
 
     var range = panel.querySelector(".ff-range");
 
@@ -175,6 +176,9 @@
       else {
         var act = b.getAttribute("data-act");
         if (act === "close") { setOpen(false); btn.focus(); return; }
+        // "Clear my data" — remove the reader store from this browser; reset appearance to
+        // the designed defaults, and leave the key cleared (don't re-save defaults).
+        if (act === "clear") { try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ } prefs = Object.assign({}, DEFAULTS); apply(); markActive(); return; }
         if (act === "reset") { prefs = Object.assign({}, DEFAULTS); }
         else if (act === "theme" || act === "lh" || act === "width") prefs[act] = b.getAttribute("data-val");
         else return;
