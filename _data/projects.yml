@@ -106,6 +106,7 @@
   updated_iso: "2026-07-18"
   integrated: true
   color: "#b06ad0"
+  icon: stories
   featured: true
   reference: true
 
@@ -130,6 +131,7 @@
   updated_iso: "2026-07-18"
   integrated: true
   color: "#8b7bff"
+  icon: games
   featured: true
   reference: true
 

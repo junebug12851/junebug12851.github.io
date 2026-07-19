@@ -9,7 +9,7 @@ title: null
       <p class="lead">Plus a running log of changes.</p>
       <div class="hero-actions">
         <a class="btn primary" href="#projects">Projects</a>
-        <a class="btn" href="{{ '/docs/' | relative_url }}">Documentation</a>
+        <a class="btn" href="https://github.com/1fairyfox">GitHub profile ↗</a>
       </div>
       {%- assign latest = site.posts | first -%}
       <p class="hero-stat">{{ site.data.projects | size }} projects{% if latest %} · updated <b>{{ latest.date | date: "%b %-d" }}</b>{% endif %}</p>
@@ -41,13 +41,12 @@ title: null
       <h2>Projects</h2>
       <a class="more" href="{{ '/projects/' | relative_url }}">All projects →</a>
     </div>
+    {%- comment -%} Home grid shows the standalone projects only. The "farm" collections
+      (integrated tier) live in their own section on /projects/; the site's own (meta)
+      card is not shown here. {%- endcomment -%}
     {%- assign ff_projs = site.data.projects | where_exp: "p", "p.meta != true and p.integrated != true" | sort: "updated_iso" | reverse -%}
-    {%- assign ff_integrated = site.data.projects | where_exp: "p", "p.integrated == true" | sort: "updated_iso" | reverse -%}
-    {%- assign ff_metas = site.data.projects | where: "meta", true -%}
     <div class="grid cols-3">
       {%- for proj in ff_projs -%}{%- if proj.featured -%}{% include project-card.html proj=proj %}{%- endif -%}{%- endfor -%}
-      {%- for proj in ff_integrated -%}{%- if proj.featured -%}{% include project-card.html proj=proj %}{%- endif -%}{%- endfor -%}
-      {%- for proj in ff_metas -%}{%- if proj.featured -%}{% include project-card.html proj=proj %}{%- endif -%}{%- endfor -%}
     </div>
   </div>
 </section>

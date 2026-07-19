@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.16.1` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.16.2` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -36,10 +36,16 @@ through the `0.4.x` line; it now includes:
   + a scrolling "Recently" ticker), both rendered at build time in Liquid from
   `_data/pulse.yml` (no client JS), plus a single-column "Recently" list.
 - **Standardized project cards** (lifecycle badge · version · activity, sorted
-  newest-first with the hub last) that are **fully clickable straight through to each
+  newest-first) that are **fully clickable straight through to each
   project's own page** on the domain (`fairyfox.io/<key>/`, repo as the fallback) —
   the hub-local `/projects/<key>/` node pages were **retired in `0.13.0`** (they cached
   detail that went stale; each project explains itself). See the design note below.
+  **The home grid shows the standalone tier only** (`0.16.2`): the two **farm** collections
+  (integrated tier) and the site's own **(meta)** card were pulled off the home page — the
+  farms now sit in a dedicated **Farms** section near the bottom of `/projects/` (with their
+  own icons, `assets/icons/{stories,games}.png`), and the meta card stays in the `/projects/`
+  grid. The home hero's secondary button now links to the **GitHub profile**
+  (`github.com/1fairyfox`) rather than `/docs/`.
 - A **shared "Aa" reader menu** (`0.13.0`, redesigned `0.14.0`): a reading control in the
   header — Theme (Auto/Light/**Sepia**/Dark) · an **accent-colour picker** · text size ·
   line spacing · width — saved under a **versioned origin-wide `fairyfox:reader:b` key**, so
