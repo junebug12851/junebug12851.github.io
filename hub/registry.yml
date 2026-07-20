@@ -56,6 +56,18 @@ projects:
     notes_system: true
     last_seen: null
 
+  # First PaperMC plugin (Kotlin/Gradle, Paper 26.1 / Java 25) — a modern rewrite
+  # of a 2021 Java/Maven plugin, resurfaced and fully onboarded: mesh-aware
+  # CLAUDE.md, the shared notes system, and a fairyfox-themed docs site are all in
+  # place, so adopts_hub is true. Category `papermc` in ../_data/projects.yml; more
+  # PaperMC plugins are expected under the same category.
+  - key: papermc-despawned-items
+    repo: https://github.com/1fairyfox/papermc-despawned-items
+    branch: dev
+    adopts_hub: true
+    notes_system: true
+    last_seen: null
+
   # Integrated with the site (a /games/ player page will embed it — still to be built
   # on the hub). Onboarded: mesh-aware CLAUDE.md, notes system, and themed docs site
   # are all in place, so adopts_hub is true.

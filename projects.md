@@ -6,13 +6,29 @@ subtitle: Fairy Fox's software projects — open a card to go straight to the pr
 permalink: /projects/
 ---
 
-{%- assign ff_projs = site.data.projects | where_exp: "p", "p.meta != true and p.integrated != true" | sort: "updated_iso" | reverse -%}
+{%- comment -%} Main grid = standalone, uncategorized projects. Categorized projects
+  (e.g. category: papermc) get their own section below; the two farm collections
+  (integrated) and the site's own (meta) card are handled separately too. {%- endcomment -%}
+{%- assign ff_projs = site.data.projects | where_exp: "p", "p.meta != true and p.integrated != true and p.category == nil" | sort: "updated_iso" | reverse -%}
+{%- assign ff_papermc = site.data.projects | where: "category", "papermc" | sort: "updated_iso" | reverse -%}
 {%- assign ff_integrated = site.data.projects | where_exp: "p", "p.integrated == true" | sort: "updated_iso" | reverse -%}
 {%- assign ff_metas = site.data.projects | where: "meta", true -%}
 <div class="grid cols-3" style="margin-bottom:2.4rem">
 {%- for proj in ff_projs -%}{% include project-card.html proj=proj %}{%- endfor -%}
 {%- for proj in ff_metas -%}{% include project-card.html proj=proj %}{%- endfor -%}
 </div>
+
+{%- if ff_papermc.size > 0 -%}
+<div class="prose">
+  <h2>PaperMC Plugins</h2>
+  <p>Server-side plugins for <a href="https://papermc.io/">Paper</a> Minecraft
+  servers — self-contained gameplay and administration tools, each packaged as a
+  drop-in jar with its own documentation. More are on the way.</p>
+</div>
+<div class="grid cols-3" style="margin-top:1.4rem;margin-bottom:2.4rem">
+{%- for proj in ff_papermc -%}{% include project-card.html proj=proj %}{%- endfor -%}
+</div>
+{%- endif -%}
 
 <div class="prose">
   <h2>Farms</h2>

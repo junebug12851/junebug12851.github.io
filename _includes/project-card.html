@@ -61,6 +61,14 @@
               {%- when 'Android' -%}{%- assign ic = 'fa-brands fa-android' -%}{%- assign tcat = 'platform' -%}
               {%- when 'Mobile' -%}{%- assign ic = 'fa-solid fa-mobile-screen' -%}{%- assign tcat = 'platform' -%}
               {%- when 'GitHub Pages' -%}{%- assign ic = 'fa-brands fa-github' -%}{%- assign tcat = 'platform' -%}
+              {%- when 'Kotlin' -%}{%- assign ic = 'fa-solid fa-code' -%}{%- assign tcat = 'lang' -%}
+              {%- when 'Java 25' -%}{%- assign ic = 'fa-brands fa-java' -%}{%- assign tcat = 'lang' -%}
+              {%- when 'Java' -%}{%- assign ic = 'fa-brands fa-java' -%}{%- assign tcat = 'lang' -%}
+              {%- when 'Gradle' -%}{%- assign ic = 'fa-solid fa-gears' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Paper 26.1' -%}{%- assign ic = 'fa-solid fa-scroll' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Paper' -%}{%- assign ic = 'fa-solid fa-scroll' -%}{%- assign tcat = 'framework' -%}
+              {%- when 'Minecraft' -%}{%- assign ic = 'fa-solid fa-cube' -%}{%- assign tcat = 'platform' -%}
+              {%- when 'Server' -%}{%- assign ic = 'fa-solid fa-server' -%}{%- assign tcat = 'platform' -%}
               {%- else -%}{%- assign ic = 'fa-solid fa-tag' -%}{%- assign tcat = 'platform' -%}
             {%- endcase -%}
             {%- if tcat == cat -%}<span class="tech-item" role="img" aria-label="{{ t }}"><i class="{{ ic }}" aria-hidden="true"></i><span class="tech-label" aria-hidden="true">{{ t }}</span></span>{%- endif -%}

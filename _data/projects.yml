@@ -20,6 +20,9 @@
 #   icon       icon slug under /assets/icons/<icon>.png
 #   featured   show on the home page
 #   reference  pulled into assets/references for cross-project sync
+#   category   optional grouping slug (e.g. papermc) — grouped into its own
+#              section on /projects/ (excluded from the main flat grid there);
+#              still shown in the home grid in the normal recent-order flow.
 #
 # fairyfox.io itself is listed as a (meta) project, treated like the others.
 
@@ -63,6 +66,33 @@
   updated_iso: "2026-07-12"
   color: "#2dd4a7"
   icon: rap
+  featured: true
+  reference: true
+
+# ── PaperMC plugins ──────────────────────────────────────────────────────────
+# Server-side Minecraft plugins for Paper. `category: papermc` groups them into
+# their own section on /projects/ (see projects.md); they still appear in the
+# home grid in the normal recent-order flow. More of these are on the way.
+- name: DespawnedItems
+  key: papermc-despawned-items
+  repo: https://github.com/1fairyfox/papermc-despawned-items
+  docs: https://fairyfox.io/papermc-despawned-items/
+  notes: https://github.com/1fairyfox/papermc-despawned-items/tree/main/notes
+  blurb: >-
+    A Paper (Minecraft) server plugin that catches items about to despawn on the
+    ground and relocates them into a network of nearby containers, cookers,
+    entities, or empty space instead of deleting them — with player-managed
+    despawn locations and a /recycle command. A Kotlin rewrite for Paper 26.1 /
+    Java 25.
+  tags: [Kotlin, Java 25, Gradle, Paper 26.1, Server]
+  lifecycle: released
+  version: "1.0.2"
+  activity: active
+  updated: "Jul 20, 2026"
+  updated_iso: "2026-07-20"
+  category: papermc
+  color: "#2f9bd4"
+  icon: despi
   featured: true
   reference: true
 
