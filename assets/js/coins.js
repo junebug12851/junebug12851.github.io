@@ -14,8 +14,8 @@
 //   - READING PAGES (`data-read`/`data-story`) also show an estimated "X min read", and:
 //       * a read-through bonus (+1) once you've genuinely read a long page (> ~2 min)
 //         through — reached the end and dwelled a fair fraction of the estimate; once/page/day.
-//       * a rare (<2%/page/day) HIDDEN COIN: a word marked very subtly; clicking it claims
-//         a coin, up to 3 per day.
+//       * a rare (<2%) HIDDEN COIN: rolled once PER PAGE (ever, not per day) — a word marked
+//         very subtly; clicking it claims a coin, with claims capped at 3 per day.
 //   - "Today" is the local calendar day; at rollover the day's per-page sets + counters
 //     reset, the balance carries over.
 //
@@ -79,7 +79,9 @@
     var t = today();
     if (state.day !== t) {
       state.day = t; state.seen = {}; state.bonus = 0; state.todayEarned = 0;
-      state.read = {}; state.hidRolled = {}; state.hidClaimed = 0;
+      state.read = {}; state.hidClaimed = 0;
+      // NOTE: state.hidRolled is PERSISTENT — a page is rolled for a hidden coin once
+      // ever (not per day). Only the claim count (hidClaimed, cap MAX_HIDDEN) is daily.
     }
   }
   function pathKey() {
@@ -298,8 +300,8 @@
     iv = setInterval(finish, 3000); // also catches a slow read with little scrolling
   }
 
-  // Once per page per day, a <2% roll may hide a coin in a word of the content; clicking
-  // that (very subtly marked) word claims a coin, up to MAX_HIDDEN per day.
+  // Rolled once PER PAGE (ever, not per day): a <2% chance to hide a coin in a word of the
+  // content; clicking that (very subtly marked) word claims a coin, up to MAX_HIDDEN per day.
   function maybeHiddenCoin(el2) {
     var key = pathKey();
     if (state.hidRolled[key] || state.hidClaimed >= MAX_HIDDEN) return;
