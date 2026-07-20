@@ -20,9 +20,15 @@ tests, pse2's console/emulator oracle, Random AI Prompt's two-gate isomorphic ve
    math/data, state transitions, boundaries, win/lose or success/failure paths, and
    integration where units meet. **One or two cheap asserts is not coverage.** A test suite that
    can't fail on a real regression isn't doing its job.
-3. **A bug fix ships with its failing-case test.** Every fixed bug lands with a regression test
-   that fails before the fix and passes after, so it can never silently return. This is the
-   single highest-leverage test a project writes.
+3. **A bug fix ships with its failing-case test** — the regression rule. Every fixed defect lands,
+   **in the same change**, with a test that fails on the pre-fix behavior and passes on the fix, so
+   it can never silently return. **Demonstrate** the fail-then-pass (revert the fix, watch it fail,
+   restore) rather than assuming it. Put the test in the **right home**: logic/data bugs in the
+   unit/regression suite; UI/layout/z-order bugs in the end-to-end lane, written **functionally**
+   (e.g. hit-test with `elementFromPoint` for stacking) rather than as brittle pixel baselines. Give
+   each a one-line symptom + date/version note so the guard is self-documenting. Skip only the truly
+   trivial (a cosmetic tweak with no behavior to assert). This is the single highest-leverage test a
+   project writes.
 4. **Run the gate before shipping; only proceed on green.** The project's full suite runs (and
    passes) before a release. Where the code runs in **more than one runtime** (e.g. an isomorphic
    engine under Node *and* the browser), one gate isn't enough — verify **each** runtime (a green

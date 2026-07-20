@@ -292,6 +292,20 @@ random-ai-prompt:
     - 2026-07-01-propose-git-workflow-backmerge.md # digested 0.12.0 — git-workflow dev-contains-main invariant + branch-sync.yml
     - 2026-07-01-upgrade-policy-proposal.md      # digested 0.12.0 — new dependencies.md standard
     - 2026-07-02-propose-scorecard-hardening.md  # digested 0.12.0 — new supply-chain-hardening.md (mandatory branch protection, reconciled release flow)
+    - 2026-06-29-adopting-updates.md             # 2026-07-19 report-review — run feedback (successful adopt), no standalone standard change
+    - 2026-06-30-adopting-updates.md             # 2026-07-19 report-review — run feedback (successful adopt), no standalone standard change
+    - 2026-07-01-check-for-updates.md            # 2026-07-19 report-review — check-only, nothing to fold
+    - 2026-07-02-check-only-update-scan.md       # 2026-07-19 report-review — check-only, nothing to fold
+    - 2026-07-02-shareable-systems-roundup.md    # digested 0.18.0 — repo-hygiene.md + docs-lifecycle.md (+ check-links/check-tidy templates)
+    - 2026-07-04-propose-regression-testing-standard.md # digested 0.18.0 testing.md; demonstrate-fail-then-pass + right-home nuance folded 0.20.0
+    - 2026-07-05-adopt-docs-chrome-reader.md     # 2026-07-19 report-review — node docs-chrome/reader adoption feedback, already reflected
+    - 2026-07-09-propose-maintenance-sweep-standard.md # digested 0.20.0 — new maintenance-sweep.md
+  # 2026-07-19 report-review (0.20.0): read the eight RAP reports above past the 0.12.0 marker. The three
+  # proposals were folded — shareable-systems-roundup + regression-testing into the 0.18.0 batch
+  # (repo-hygiene/docs-lifecycle/testing), maintenance-sweep into new 0.20.0 maintenance-sweep.md; the run
+  # reports (adopt/check) are run-feedback with no standalone standard change. pse2/games/stories run
+  # reports past their markers remain a follow-up (run feedback; their conventions were already extracted
+  # in the 0.18.0 deep-read). See notes/fairyfox-reports/2026-07-19-report-review.md.
   # 2026-07-19 round-up: "Already up to date" at 2f1459f (still 2.60.1) — no commits dated 2026-07-18; seven
   # quiet days now. Nothing to reconcile (projects.yml left at 2.60.1 / Jul 12) or blog; RAP is absent from the
   # new 2026-07-18 day post's tags. As the mesh's only standards-bearing sibling, an unchanged RAP means no hub
