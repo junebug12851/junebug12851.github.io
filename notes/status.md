@@ -3,7 +3,7 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `0.20.3` (single source of truth: repo-root `VERSION`; see
+**Version:** `0.20.5` (single source of truth: repo-root `VERSION`; see
 [`reference/versioning.md`](reference/versioning.md)).
 
 ## Current state (read this first)
@@ -80,6 +80,11 @@ through the `0.4.x` line; it now includes:
   Fixed global nav is now **Home · Projects · Farms (Stories · Games) · Docs · Updates ·
   About** (**Stories** added `0.15.0`, left of Games — a `/stories/` stub →
   `/fairyfox-stories/`; **Stories + Games grouped under the "Farms" dropdown** in `0.16.0`).
+  The first **project category** landed in `0.20.4`: **DespawnedItems** — a Paper/Minecraft
+  server plugin (`v1.3.4`, Paper 1.21.11 / Java 21) — joined the hub in a dedicated **"PaperMC
+  Plugins"** section on `/projects/` (a new `category` field; categorized projects are excluded
+  from the flat grid there, but appear in the home grid in normal recent-update order), with more
+  PaperMC plugins expected under the same heading. The Projects submenu stays dormant.
 - A plain-link header nav (Projects · Updates · Docs; no dropdowns) and an
   **on-site documentation library** (`/docs/`, the `_docs` collection): the ecosystem
   overview, a **"This site"** group surfacing the whole `notes/` tree, the **shared
@@ -191,7 +196,7 @@ The rest of the structure is in place end to end:
 
 ## In flight / awaiting
 
-- **Warm redesign is shipped (`0.4.x`; the repo is now at `0.20.3`).** The design language, the
+- **Warm redesign is shipped (`0.4.x`; the repo is now at `0.20.5`).** The design language, the
   **portal home** (hero + static activity panel), the **standardized status cards**, the
   **day-centric updates feed**, the **clickable cards / simpler nav** review pass, and the
   **project node pages** (`/projects/<key>/`) are all live — built increment-by-increment,

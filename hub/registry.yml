@@ -56,7 +56,7 @@ projects:
     notes_system: true
     last_seen: null
 
-  # First PaperMC plugin (Kotlin/Gradle, Paper 26.1 / Java 25) — a modern rewrite
+  # First PaperMC plugin (Kotlin/Gradle, Paper 1.21.11 / Java 21) — a modern rewrite
   # of a 2021 Java/Maven plugin, resurfaced and fully onboarded: mesh-aware
   # CLAUDE.md, the shared notes system, and a fairyfox-themed docs site are all in
   # place, so adopts_hub is true. Category `papermc` in ../_data/projects.yml; more

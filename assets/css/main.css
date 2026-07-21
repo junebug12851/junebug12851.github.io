@@ -8,7 +8,7 @@
 :root{
   /* brand hues — warmed. Lifecycle status hues are fixed: alpha=red, beta=yellow, released=green */
   --violet:#f26a4c; --violet-deep:#e2543a; --pink:#ff7ab0; --amber:#f6b25a; --green:#38d3a3;
-  --coral:#f26a4c; --honey:#f6b25a; --mint:#38d3a3; --plum:#c79bf0;
+  --coral:#f26a4c; --honey:#f6b25a; --mint:#38d3a3; --plum:#c79bf0; --sky:#2f9bd4;
   --hue-alpha:#f0565b; --hue-beta:#eeb01e; --hue-released:#33b982;
 
   /* warm dark theme (default) — raised panels + brighter secondary text for real
@@ -81,7 +81,7 @@
    ground clearly distinct from the neutral Light theme, raised near-white panels, and
    near-ink warm-brown text for strong, comfortable contrast. */
 :root[data-theme="sepia"]{
-  --violet:#ad4f26; --violet-deep:#8c3d18; --pink:#b0466f; --amber:#9c6415; --green:#3a774f; --plum:#725291;
+  --violet:#ad4f26; --violet-deep:#8c3d18; --pink:#b0466f; --amber:#9c6415; --green:#3a774f; --plum:#725291; --sky:#3f7f9e;
   --coral:#ad4f26; --honey:#9c6415; --mint:#3a774f;
   --bg:#f1e3c2; --bg-grad-top:#f8edd4;
   --panel:#fbf3da; --panel-2:#efe0ba; --panel-3:#e6d4a8;

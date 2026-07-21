@@ -13,9 +13,9 @@
 # pass — see hub/standards/process-reports.md. [] = none digested yet.
 
 pokered-save-editor-2:
-  commit: 5ae9dad3a2e9cf38a78b75a3bcbce09d1f752a22
+  commit: b31286522b85d2301b27186754ba9a2876f85e34
   branch: dev
-  seen: 2026-07-20
+  seen: 2026-07-21
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-express-auth.md # folded into standards 0.9.3 (verification floor + this marker scheme)
@@ -27,6 +27,13 @@ pokered-save-editor-2:
     - 2026-07-02-check-for-updates.md            # 2026-07-19 report-review — check-only, no-change confirming pass
     - 2026-07-06-adopting-updates.md             # 2026-07-19 report-review — run feedback (successful adopt), no standalone standard change
     - 2026-07-19-adopting-updates.md             # 2026-07-19 report-review — run feedback (successful adopt), no standalone standard change
+  # 2026-07-21 round-up: clean fast-forward 5ae9dad3 → b3128652, 3 commits ALL dated 2026-07-20 (a complete
+  # day — today is 07-21), VERSION unchanged at 0.43.6-alpha (docs/identity only, no engine change). A
+  # de-personalization pass took the project's own name out of its copyright line, credits and first-person
+  # notes (→ Fairy Fox attributions), the same neutral-voice discipline the site keeps, plus a typo fix in
+  # the docs domain (→ pokeredsaveeditor2.fairyfox.io, correct TLD). Reconciled: projects.yml (PSE2 date →
+  # Jul 20; version held at 0.43.6). Folded into the new 2026-07-20 day post. Marker → b3128652; seen →
+  # 2026-07-21.
   # 2026-07-20 round-up: clean fast-forward 4d2ffc8c → 5ae9dad3, VERSION 0.43.4-alpha → 0.43.6-alpha, 14
   # commits ALL dated 2026-07-19 (a complete day — today is 07-20). Two strands. (1) The map reads a save's
   # real progress: 0.43.5 retires the "Custom (matches no researched state)" row — the app scores every
@@ -301,7 +308,7 @@ pokered-save-editor-2:
 random-ai-prompt:
   commit: 35b1370a882381511e854f8b3a75fcc2d4b07679
   branch: dev
-  seen: 2026-07-20
+  seen: 2026-07-21
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-26-adopting-updates.md             # folded into standards 0.9.1
     - 2026-06-26-adopting-updates-2.md           # digested 0.9.8 — CI-owns-tag release callout (git-workflow) + hub_version-placeholder backfill note (process-reports)
@@ -322,6 +329,10 @@ random-ai-prompt:
     - 2026-07-04-propose-regression-testing-standard.md # digested 0.18.0 testing.md; demonstrate-fail-then-pass + right-home nuance folded 0.20.0
     - 2026-07-05-adopt-docs-chrome-reader.md     # 2026-07-19 report-review — node docs-chrome/reader adoption feedback, already reflected
     - 2026-07-09-propose-maintenance-sweep-standard.md # digested 0.20.0 — new maintenance-sweep.md
+  # 2026-07-21 round-up: "Already up to date" at 35b1370 (still 2.60.1) — no commits dated 2026-07-20; the
+  # tip is still the 07-19 docs-adoption commit. Nothing to reconcile (projects.yml left at 2.60.1 / Jul 12)
+  # or blog; RAP is absent from the new 2026-07-20 day post's tags. As the mesh's only standards-bearing
+  # sibling, an unchanged RAP means no hub standard moved this pass. Marker unchanged; seen → 2026-07-21.
   # 2026-07-20 round-up: clean fast-forward 2f1459f → 35b1370 (5 commits, all dated 2026-07-19), VERSION
   # unchanged at 2.60.1 — docs/adoption only, no engine change. RAP's docs site adopted the hub's new coins
   # counter into its chrome and took six of the new mesh standards in as reference notes (a check-for-updates
@@ -566,10 +577,29 @@ random-ai-prompt:
   # projects.yml (RAP → 2.52.0 / Jul 10; blurb + tags gain the Android app). Folded into the 2026-07-08,
   # 2026-07-09 and 2026-07-10 day posts. Marker → 3686435, VERSION 2.50.1 → 2.52.0.
 
-fairyfox-games:
-  commit: a690442f69a202b148b7c937314a64b87760194d
+papermc-despawned-items:
+  commit: 2e2408350dca8a0b0de1f44b96b00dc6bc27bb9c
   branch: dev
-  seen: 2026-07-20
+  seen: 2026-07-21
+  reports_through: []          # digested-report filenames (append-only); see header — none yet
+  # 2026-07-21 round-up (FIRST marker for this node): onboarded site-side on 2026-07-20 at v1.0.2 (the 0.20.4
+  # release registered it + opened the PaperMC Plugins category), but no round-up marker had been set yet, so
+  # this pass establishes the baseline. The Kotlin/Paper rewrite + mesh onboarding (v1.0.0/v1.0.1) landed
+  # 2026-07-19; then on 2026-07-20 the plugin went v1.0.2 → v1.3.4 in one day — retargeted Paper 26.1/Java 25
+  # → Paper 1.21.11/Java 21 (zero API changes), an indexed O(1) LocationStore, off-thread incremental
+  # persistence, a throttled DespawnScheduler, pluggable YAML/SQLite/MySQL storage, per-user limits, correctness
+  # fixes (PDC recycle rewards, particle-data crash, reload re-reads config), Brigadier commands, a JUnit 5 +
+  # MockBukkit suite (~49 tests gating build) + Ktlint/Detekt/Kover, a package move to
+  # io.fairyfox.papermc.despawneditems, the shared fairyfox chrome on the Dokka docs, and a full hub-standards
+  # audit (branch protection, PR-based releases, build-provenance) shipped through the protected PR path.
+  # Reconciled: projects.yml (papermc → 1.3.4 / Jul 20; tags + blurb retargeted to Paper 1.21.11 / Java 21) and
+  # registry.yml comment. Folded into the new 2026-07-20 day post. Marker → 2e24083 (last 2026-07-20 commit,
+  # v1.3.4); seen → 2026-07-21. (07-21 v1.3.5 — a docs-site notes-README render fix — left for the next pass.)
+
+fairyfox-games:
+  commit: 015a421c62e7a3fa14d32caf8c5e87e939700bbe
+  branch: dev
+  seen: 2026-07-21
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-06-29-setup.md                 # digested 0.10.0 — collection/monorepo as a recorded exception; static site doubles as docs
     - 2026-06-29-onboarding-verify.md     # digested 0.10.0 — same-day setup cross-ref added to onboarding
@@ -581,6 +611,16 @@ fairyfox-games:
     - 2026-07-06-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
     - 2026-07-18-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
     - 2026-07-18-update-check.md          # 2026-07-19 report-review — check-only, no standard change
+  # 2026-07-21 round-up: clean fast-forward a690442 → 015a421, VERSION 0.24.4 → 0.24.12. Marker PARKED at
+  # 015a421 (last 2026-07-20 commit, v0.24.12), NOT at HEAD ec503d3 (a 07-21 merge, day still in progress —
+  # left for the next pass). Two 07-19 commits sat just past the previous marker (coins phase 2 wire-into-
+  # chrome + phase 3 shared module/Polarity reference), then 07-20 finished the in-game coin rollout across
+  # the back half of the collection: batches 1–5 (Ward, Brim, Tether, Ink Bloom, Echo Chamber, Orbit
+  # Slingshot, Ricochet, Skyline, Loft, Poise, Symmetry, Arc, Sluice) each gaining the uniform capped earn +
+  # one optional cosmetic fun mode, capped by Reprise's visual "Light show" (15/15 — the audio-Choir game got
+  # a purely visual mode so no game carries an audio dependency), then the initiative closed. Reconciled:
+  # projects.yml (games → 0.24.12 / Jul 20). Folded into the new 2026-07-20 day post. Marker → 015a421; seen →
+  # 2026-07-21. (07-21 v0.24.13 — repo-hygiene check-links/check-tidy scripts — left for the next pass.)
   # 2026-07-20 round-up: clean fast-forward 5d89b0c → a690442, VERSION 0.24.2 → 0.24.4 (commits dated
   # 2026-07-19). A GROW then a standards adoption. (1) 0.24.3 GROW — Skyline gets "depth inside the mechanic"
   # (7th game on the layer, the oldest still without it): a razor Keystone sub-window (1.2px) inside the flush
@@ -798,12 +838,22 @@ fairyfox-games:
   # 0.20.2 / Jul 10). Folded into the 2026-07-08 and 2026-07-10 day posts. Marker → e7d2768.
 
 fairyfox-stories:
-  commit: fb160a580349f4e1b866367a49dcae32d5c5d00d
+  commit: 6e253090aa69bd14adf1abb520ab27e5e87ad403
   branch: dev
-  seen: 2026-07-20
+  seen: 2026-07-21
   reports_through:             # digested-report filenames (append-only); see header
     - 2026-07-06-setup.md                 # 2026-07-19 report-review — setup run feedback, no standalone standard change
     - 2026-07-18-adopting-updates.md      # 2026-07-19 report-review — run feedback (successful adopt), no standard change
+  # 2026-07-21 round-up: clean fast-forward fb160a5 → 6e25309, VERSION 0.5.5 → 0.6.0, all commits dated
+  # 2026-07-20 (a complete day — today is 07-21). Two strands. (1) 0.5.6 GROW — the daily automation grew
+  # The Hundredth Wind ch.2 "The Ear of the House" (~1,930w); override roll 21 (>18) → no override → blend
+  # leader (Hundredth Wind 0.929, the shelf's highest incompleteness), exactly as 07-19 forecast; book 2/7.
+  # (2) 0.6.0 — Phase 2 of the coins adoption, the visible half deferred on 07-19 until a browser session:
+  # vendored coins.js into the reader chrome (coin button left of "Aa", first-view-today earn, read-time
+  # bonus), coin CSS ported into reader.css on existing themed tokens, and Privacy/Cookies/Terms updated to
+  # disclose the fairyfox:coins:a store + link the shared explainer. Built/verified in connected Chrome.
+  # Reconciled: projects.yml (stories → 0.6.0 / Jul 20). Folded into the new 2026-07-20 day post. Marker →
+  # 6e25309; seen → 2026-07-21.
   # 2026-07-20 round-up: clean fast-forward 82b5a5b → fb160a5, VERSION 0.5.3 → 0.5.5 (commits dated
   # 2026-07-19). A GROW then a standards adoption. (1) 0.5.4 GROW — The Blindfold Act ch.3 "The Tells"
   # (~2,100w); no random override (roll 49 vs ≤18), blend leader picked clean (0.833, 2/6 + 2 days stale),
