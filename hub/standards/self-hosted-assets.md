@@ -25,20 +25,21 @@ Google Fonts hot-link); general to every user-facing site in the mesh.
    **disclose the IP exposure** in Privacy/Cookies ([`legal-docs.md`](legal-docs.md)) and record it
    as an exception with a remediation path — don't claim "no third-party requests" while hot-linking.
 
-## Known exception (to remediate)
+## Formerly-open exception — now closed (0.22.0 / 0.22.2)
 
-**Fonts: remediated (0.22.0).** The hub now self-hosts its typefaces — the three OFL variable
-subsets (Fraunces / Inter / JetBrains Mono) live in `assets/fonts/` with a local `fonts.css`, and
-`_includes/head.html` no longer references `fonts.googleapis.com` / `fonts.gstatic.com`. The shared
-chrome bundle ships the same self-hosted fonts (bundle 2.3.0), so **no node needs the font
-deviation** any more. Only the item below remains.
+The hub used to hot-link Google Fonts + cdnjs (Font Awesome); both are now **remediated**, so the
+hub makes **no third-party presentation request** and fully complies with this standard.
 
-**Font Awesome / cdnjs (still open).** The hub still hot-links Font Awesome from cdnjs
-(`cdnjs.cloudflare.com`, for the ~22 category/tech icons in the project cards). This is disclosed
-truthfully in the hub's `/legal/privacy/` + `/legal/cookies/` pages (IP exposure to Cloudflare
-flagged) and is a **recorded exception pending remediation** — either vendor the Font Awesome
-webfont subset into `assets/` or replace the icons with inline SVG, then drop the cdnjs `<link>`.
-Not a licence to hot-link. The farms (games, stories) carry no Font Awesome, so this is hub-only.
+- **Fonts (0.22.0).** The three OFL variable subsets (Fraunces / Inter / JetBrains Mono) live in
+  `assets/fonts/` with a local `fonts.css`; the shared chrome bundle (2.3.0) ships the same
+  self-hosted fonts, so **no node needs the font deviation** any more.
+- **Font Awesome (0.22.2).** Font Awesome Free 6.5.2 is vendored under `assets/vendor/font-awesome/`
+  (`css/all.min.css` + `webfonts/*.woff2`) and served from origin; `_includes/head.html` no longer
+  references `cdnjs.cloudflare.com`. The farms (games, stories) carry no Font Awesome, so this was
+  hub-only.
+
+This section is kept as the record that the exception existed and was closed; there is **no open
+hub exception** at present. If a new one ever arises, record it here with a remediation path (rule 4).
 
 ## Verify (is it being followed?)
 

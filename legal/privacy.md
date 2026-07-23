@@ -14,8 +14,8 @@ read: true
 <strong>fairyfox.io</strong> hub — the project home and documentation library. It has no
 accounts and collects no personal information about you. Your reading preferences and your
 Fairy&nbsp;Fox coins are saved only in your own browser. The site sets no cookies and runs
-no analytics or tracking. Its fonts are self-hosted; it still loads one icon font from a
-third-party CDN, which is disclosed below. Each linked project has its own policy.</p>
+no analytics or tracking. Its fonts and icons are self-hosted, so it makes no third-party
+request to render a page. Each linked project has its own policy.</p>
 
 <h2>What this covers</h2>
 <p>This policy explains how the <strong>fairyfox.io</strong> site
@@ -64,13 +64,12 @@ as our hosting provider under its own privacy policy. We add no analytics, profi
 database on top of it.</p>
 
 <h2>Fonts, icons, and third-party requests</h2>
-<p>The Site's <strong>typefaces are self-hosted</strong> — served from fairyfox.io's own origin,
-with no request to Google Fonts or any other font provider. It still loads one <strong>icon
-font</strong> (Font Awesome) from <strong>cdnjs</strong>, operated by Cloudflare. When a page loads,
-your browser requests that icon font directly from Cloudflare, which means your IP address and basic
-request data are visible to Cloudflare for the purpose of serving the file. We send them no other
-information about you, and the Site embeds no ad networks, analytics scripts, or social widgets. We
-intend to self-host the icon set as well to remove that remaining third-party exposure.</p>
+<p>The Site's <strong>typefaces and icon set are self-hosted</strong> — both the web fonts (Fraunces,
+Inter, JetBrains Mono) and the Font&nbsp;Awesome icon font are served from fairyfox.io's own origin.
+Loading a page makes <strong>no request to Google Fonts, cdnjs, or any other third-party provider</strong>
+for presentation, so no font/icon CDN sees your IP address. The Site embeds no ad networks, analytics
+scripts, or social widgets. (The one unavoidable third party is our host, GitHub Pages, which receives
+standard request logs to serve the Site at all — see below.)</p>
 
 <h2>Cookies</h2>
 <p>The Site sets <strong>no cookies</strong>. It uses your browser&rsquo;s local storage for the
@@ -93,7 +92,7 @@ reading preferences and coins) is on your own device and fully under your contro
 &ldquo;share&rdquo; (for cross-context behavioral advertising) your personal information, and we
 use no sensitive personal information.</p>
 <p><strong>For users in the EEA/UK (GDPR):</strong> where any limited processing occurs (such as
-the hosting logs and the third-party icon-font request described above), it is based on our
+the hosting logs described above), it is based on our
 legitimate interest in operating and securing the Site. You have the right to lodge a complaint
 with your local data protection authority.</p>
 
