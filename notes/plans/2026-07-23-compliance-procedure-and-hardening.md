@@ -63,3 +63,16 @@ tag `v1.1.0`, back-merge into `dev`. Then a process report in `notes/fairyfox-re
 Re-run the affected rows after: agent-tooling, badges, dependencies, supply-chain
 (partial→improved), repo-hygiene (branch litter), and confirm compliance.md modes read
 cleanly. Record results in the process report.
+
+## Phase 2 (1.2.0) — the mandatory items weren't optional
+
+Re-reading `supply-chain-hardening.md`: branch protection + full-CI required check are
+**mandatory**, release flow reconciles to PR-based. So the 1.1.0 "deferrals" for those
+were wrong — closed in 1.2.0:
+- `scripts/check-links.mjs` (vendored zero-dep) + `.github/workflows/ci.yml` (build + link gate).
+- `.github/workflows/codeql.yml` (JS SAST).
+- `main` branch protection (solo config) via `gh api`; `CLAUDE.md` + git-workflow reconciled to PR releases.
+- Fixed 4 dangling hub-standard links the new gate caught.
+Order: release 1.2.0 by direct push (main still unprotected), THEN flip protection on —
+so future releases are PR-gated but this transition release isn't blocked. Genuine N-A
+remains: signed releases (no Pages artifacts), adoption-manifest (hub is the source).

@@ -180,14 +180,14 @@ A report that hides the rough parts defeats its only purpose.
 This is the **inbound** side — the hub reading the nodes — and it runs **on explicit
 request only**, never on a schedule that chains across repos.
 
-1. **Refresh the clones.** For each project in [`../registry.yml`](registry.yml),
+1. **Refresh the clones.** For each project in [`../registry.yml`](../registry.yml),
    fast-forward its `dev` in `assets/references/<project>/` (an ordinary single-branch
    clone — `fetch` + `merge --ff-only`; if a refresh ever fails, just delete and
    re-clone the disposable mirror). Reading reports reuses the round-up clones — no new
    sync.
 2. **Read new reports.** In each node's `notes/fairyfox-reports/`, read every report
    **not already in** that node's `reports_through` list in
-   [`.last-seen.yml`](.last-seen.yml). The marker is a **list of digested report
+   [`.last-seen.yml`](../.last-seen.yml). The marker is a **list of digested report
    filenames**, not a bare date or a commit SHA: two reports can share a date (a
    same-day follow-on like `…-adopting-updates-express-auth.md` even sorts
    *lexically before* `…-adopting-updates.md`), and a bare date or commit SHA is a

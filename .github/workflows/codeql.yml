@@ -1,0 +1,40 @@
+name: CodeQL
+
+# SAST (supply-chain-hardening standard). The site ships hand-written browser JS
+# (assets/js/{coins,nav,reader}.js) injected by the shared chrome — CodeQL analyzes it.
+# Runs on PRs into main/dev, dev pushes, and a weekly cron so the Scorecard SAST signal
+# stays green. No compiled build step: JS/TS is interpreted, so init → analyze directly.
+#
+# Supply-chain hardening: top-level permissions read-only; the analyze job elevates only
+# security-events: write; every `uses:` SHA-pinned with a version comment.
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [dev]
+  schedule:
+    - cron: "27 4 * * 1"   # weekly, Mondays
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  CodeQL:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write   # upload SARIF results
+      actions: read
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262   # v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@4187e74d05793876e9989daffde9c3e66b4acd07   # v3
+        with:
+          languages: javascript-typescript
+
+      - name: Analyze
+        uses: github/codeql-action/analyze@4187e74d05793876e9989daffde9c3e66b4acd07   # v3

@@ -1,0 +1,45 @@
+name: ci
+
+# Pre-merge gate (repo-hygiene + testing standards): builds the Jekyll site and runs the
+# zero-dependency doc-link checker. Runs on PRs into main/dev and on dev pushes, so the
+# `dev` merge — and the release PR into protected `main` — is the real gate. pages.yml
+# handles the actual deploy on the main push; this job just validates.
+#
+# Supply-chain hardening: top-level permissions are read-only; every `uses:` is SHA-pinned
+# with a version comment (Dependabot's github-actions ecosystem keeps them current).
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262   # v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b   # v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020   # v4
+        with:
+          node-version: "22"
+
+      - name: Check doc links
+        run: node scripts/check-links.mjs

@@ -92,3 +92,22 @@ noted below.
 A node never edits the hub, and the hub never edits a node to make it pass. This run was the
 hub auditing **and hardening itself** on an explicit owner go-ahead — in-scope. No node clone in
 `assets/references/` was touched; the audit reads them read-only.
+
+## Addendum (same day, 1.2.0) — the "deferred" security items were mandatory, so they shipped
+
+On re-reading `supply-chain-hardening.md`, the items this report listed as owner-call deferrals
+were **not** optional — the standard makes branch protection + a full-CI required check
+**mandatory**, with the release flow reconciling to PR-based. So under the owner's "complete
+everything required" mandate they were closed in **1.2.0**, not left deferred:
+
+- **CI gate** `ci.yml` (jekyll build + `scripts/check-links.mjs`) — the vendored zero-dep
+  doc-link checker; caught + fixed 4 real dangling links in the hub standards on first run.
+- **CodeQL** `codeql.yml` — JS SAST over `assets/js/`.
+- **Branch protection on `main`** (solo config) + PR-based releases; `CLAUDE.md` reconciled.
+
+Correction to this report's Deferrals list: only **signed releases / `.intoto`** (no release
+artifacts on a Pages deploy) and the **`adoption-manifest.md`** (hub is the source, doesn't
+self-adopt) remain genuine N-A. Branch protection / CodeQL / a self-run link gate are **done**.
+Process note for the standard: the audit's own report template should distinguish *mandatory*
+standard items (never "deferrable") from true N-A — a mandatory item can't be parked as an
+owner-call. Logged as a suggestion for a later hub pass.

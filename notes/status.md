@@ -3,17 +3,20 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `1.1.0` — **compliance procedure modes + hub self-hardening** (first MINOR past
-the `1.0.0` stable line). Single source of truth: repo-root `VERSION`; see
-[`reference/versioning.md`](reference/versioning.md).
+**Version:** `1.2.0` — **full supply-chain hardening** (CI gate + CodeQL + branch protection),
+following `1.1.0`'s compliance procedure modes + first hardening pass. Single source of truth:
+repo-root `VERSION`; see [`reference/versioning.md`](reference/versioning.md).
 
 `1.0.0` was the **first stable release** (Fairy Fox's call; a MAJOR bump is never automatic) —
 the `0.x` "in development" line closed once the site + shared-standards hub matured into a
-coherent, enforced whole. `1.1.0` then gave the compliance audit **invocation modes**
+coherent, enforced whole. `1.1.0` gave the compliance audit **invocation modes**
 (`full` / `partial` / `last N days` — [`../hub/standards/compliance.md`](../hub/standards/compliance.md))
-and closed the hub's own supply-chain gaps found by a full audit of itself: root `.gitattributes`
-+ `SECURITY.md` + `.github/dependabot.yml`, a hardened `pages.yml` (per-job write perms,
-SHA-pinned actions), and a README badge block. Report:
+and closed the first tier of the hub's own supply-chain gaps (root `.gitattributes` +
+`SECURITY.md` + `.github/dependabot.yml`, a hardened `pages.yml`, README badges). `1.2.0` then
+finished the mandatory security layer: a **`ci.yml`** doc-link + build gate (the vendored
+zero-dep `scripts/check-links.mjs`, which caught 4 real dangling links), **`codeql.yml`** JS
+SAST, and **branch protection on `main`** — so releases are now **PR-based** (`gh pr` flow,
+`CLAUDE.md` reconciled). Report:
 [`fairyfox-reports/2026-07-23-compliance-audit.md`](fairyfox-reports/2026-07-23-compliance-audit.md).
 
 ## Current state (read this first)

@@ -74,19 +74,26 @@ file/area, open items, release shape — in `notes/plans/`, then execute against
 
 After making changes, without being asked:
 
-1. **Build-check** the site (`jekyll build`); fix any errors before shipping.
+1. **Build-check** the site (`jekyll build`) and run the **doc-link gate**
+   (`node scripts/check-links.mjs`); fix any errors before shipping. CI runs both on
+   every PR (`.github/workflows/ci.yml`) plus CodeQL (`codeql.yml`).
 2. **Work on `dev`** — or a `feature/<name>` branch off `dev` for an actual feature,
    merged back `--no-ff` (a trivial fix may commit straight on `dev`). Stage specific
    files (never `git add -A`). The **changelog entry rides inside the commit** (top of
    `notes/version/YYYY-MM.md`, no hash marker); **bump `VERSION`** as part of the
    release (PATCH default, MINOR milestone, never MAJOR).
 3. When the build is green, **release to `main` the git-flow way** — path set by the
-   SemVer level (full flow: `hub/standards/git-workflow.md`). A **PATCH** releases
-   **directly** `dev → main`:
-   `git checkout main && git merge --no-ff dev && git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin main --tags && git checkout dev`
-   A **MINOR/MAJOR** goes through a `release/<x.y.0>` branch off `dev` (merge `--no-ff`
-   into `main`, tag, merge back into `dev`). Tag matches `VERSION`; pushing `main`
-   triggers the Pages deploy; `--no-ff` merge commits are additive, **not** a rewrite.
+   SemVer level (full flow: `hub/standards/git-workflow.md`). **`main` is branch-protected**
+   (supply-chain-hardening, solo config: require PR, 0 approvals, strict checks —
+   `ci` + `CodeQL` — enforce-admins, linear history off), so the release goes through a
+   **PR**, not a direct push:
+   `git push origin dev` (or the `release/<x.y.0>` branch) → `gh pr create --base main`
+   → `gh pr checks --watch` (wait for `build` + `CodeQL`) → `gh pr merge --merge` (a
+   `--no-ff` merge commit, **never** squash/rebase) → back-merge `git checkout dev &&
+   git merge --ff-only main && git push origin dev`. A **PATCH** PRs `dev → main`
+   directly; a **MINOR/MAJOR** bakes on a `release/<x.y.0>` branch first, then PRs that.
+   Tag matches `VERSION` (`v<VERSION>`, by hand after the merge — no CI tagger here);
+   pushing `main` triggers the Pages deploy; merge commits are additive, **not** a rewrite.
 
 **Hard safety rules:** never `push --force` / rewrite pushed history; never
 `reset --hard` / `rebase` / `clean -fd` / delete a branch without an explicit
