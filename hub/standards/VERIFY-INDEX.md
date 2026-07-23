@@ -93,6 +93,19 @@ The per-standard slice the [compliance audit](compliance.md) aggregates — repo
 | The pass ended with an explicit not-done / read-leniently disclosure | the report/completion note has the section without being asked |
 | A recorded lesson added its rule in the same commit | a session-log lesson has a matching `CLAUDE.md`/standard edit in that commit |
 
+## Standard: CI Service Secrets  
+<sub>[`ci-secrets.md`](ci-secrets.md#verify-is-it-being-followed)</sub>
+
+The per-standard slice the [compliance audit](compliance.md) aggregates — report
+`done`/`partial`/`missing`:
+
+| Passes only when… | How to check |
+|-------------------|--------------|
+| Every secret a workflow references is set on the repo | `gh secret list --repo OWNER/NAME`, cross-checked against `secrets.*` uses in `.github/workflows/` |
+| No workflow references a secret that isn't set (nothing renders "unknown"/unauthenticated) | grep the workflows for `secrets.` and confirm each has a matching secret |
+| The secret names match the canonical set (`SONAR_TOKEN`, `CODECOV_TOKEN`, `SCORECARD_TOKEN`) | inspect the secret list and the workflow references |
+| A repo wiring none of the three is a clean N/A, not a gap | confirm no `secrets.{SONAR,CODECOV,SCORECARD}_TOKEN` reference exists to satisfy |
+
 ## Standard: Coins (reading-engagement points)  
 <sub>[`coins.md`](coins.md#verify-is-it-being-followed)</sub>
 

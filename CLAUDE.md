@@ -153,3 +153,17 @@ request, read each sibling's reports past its `reports_through` marker in
 `hub/.last-seen.yml`, look for patterns, **report findings then stop**, and only
 improve `hub/standards/` on an explicit go-ahead — never edit a node to close out its
 report. Full procedure: `hub/standards/process-reports.md`.
+
+## Provisioning repo secrets — "fairyfox repo tokens"
+
+Three CI integrations each need a per-repo GitHub Actions secret — `SONAR_TOKEN`
+(SonarCloud), `CODECOV_TOKEN` (Codecov), `SCORECARD_TOKEN` (OpenSSF Scorecard PAT). The
+standard is `hub/standards/ci-secrets.md`; the provisioning tool is
+`hub/tools/repo-tokens.ps1`. On the **"fairyfox repo tokens"** trigger (or "set up the
+repo tokens/secrets"), print the get-it links from that standard and launch the tool in an
+interactive terminal so the values are typed locally into its concealed prompt — never ask
+for or handle the token values yourself. The tool streams each value straight to
+`gh secret set` (blank = skip; nothing touches disk or history) and targets the current
+repo by default (`-Repo OWNER/NAME` to override). "Are the tokens set?" is an auditable
+`## Verify` row — the [`ci-secrets`](hub/standards/ci-secrets.md) standard, aggregated by
+the [compliance audit](hub/standards/compliance.md).

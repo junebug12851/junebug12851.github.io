@@ -3,9 +3,11 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `1.2.0` — **full supply-chain hardening** (CI gate + CodeQL + branch protection),
-following `1.1.0`'s compliance procedure modes + first hardening pass. Single source of truth:
-repo-root `VERSION`; see [`reference/versioning.md`](reference/versioning.md).
+**Version:** `1.3.0` — **CI service secrets**: a new [`ci-secrets`](../hub/standards/ci-secrets.md)
+standard + the shared [`hub/tools/repo-tokens.ps1`](../hub/tools/repo-tokens.ps1) provisioning
+tool (the "fairyfox repo tokens" trigger), following `1.2.0`'s full supply-chain hardening (CI
+gate + CodeQL + branch protection). Single source of truth: repo-root `VERSION`; see
+[`reference/versioning.md`](reference/versioning.md).
 
 `1.0.0` was the **first stable release** (Fairy Fox's call; a MAJOR bump is never automatic) —
 the `0.x` "in development" line closed once the site + shared-standards hub matured into a
