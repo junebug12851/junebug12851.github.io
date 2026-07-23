@@ -43,7 +43,8 @@ r.style.setProperty("--glow","color-mix(in srgb, "+h+" 40%, transparent)");}}cat
 <link rel="preload" href="{{ '/assets/fonts/fraunces-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ '/assets/fonts/fonts.css' | relative_url }}">
 
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+<!-- Self-hosted Font Awesome 6.5.2 (free) — served from our own origin, no cdnjs request
+     (self-hosted-assets standard). CSS references ../webfonts/*.woff2 next to it. -->
+<link rel="stylesheet" href="{{ '/assets/vendor/font-awesome/css/all.min.css' | relative_url }}">
 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?{{ site.time | date: '%s' }}">

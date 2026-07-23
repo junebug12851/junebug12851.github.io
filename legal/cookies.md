@@ -39,10 +39,9 @@ your device; we never receive it. For more, see our
 <a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a>.</p>
 
 <h2>Third-party requests</h2>
-<p>The Site's typefaces are self-hosted (no font-provider request); it still loads one icon font
-from cdnjs (Cloudflare). That request delivers a file to your browser and exposes your IP address to
-Cloudflare, as described in our <a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a>;
-it sets no cookies on our behalf and carries no tracking on our behalf. The Site embeds no ad networks, analytics scripts,
+<p>The Site's typefaces and icon set are <strong>self-hosted</strong> — it makes no request to Google
+Fonts, cdnjs, or any other third-party provider to render a page, as described in our
+<a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a>. The Site embeds no ad networks, analytics scripts,
 or social widgets. The only other third party involved is our hosting provider (GitHub Pages),
 which processes basic request data to deliver the site.</p>
 

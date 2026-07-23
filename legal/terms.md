@@ -46,9 +46,8 @@ entitlements. They are a light, cosmetic reward stored only in your own browser 
 or removed at any time. Clearing your browser&rsquo;s local storage resets them.</p>
 
 <h2>Third-party links and services</h2>
-<p>The Site links to other projects, repositories, and third-party services (such as GitHub, and
-the icon-font provider described in our
-<a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a>). We are not responsible for the
+<p>The Site links to other projects, repositories, and third-party services (such as GitHub, our host,
+described in our <a href="{{ '/legal/privacy/' | relative_url }}">Privacy Policy</a>). We are not responsible for the
 content, policies, or practices of those third parties, and following such links is at your own
 discretion under their terms.</p>
 
