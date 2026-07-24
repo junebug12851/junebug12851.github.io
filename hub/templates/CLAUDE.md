@@ -36,6 +36,11 @@ follows the shared living-notes standard. Highlights:
   broken on this environment (stale/truncated reads, `.git` unlink failures, CRLF
   mangling). And **execute** verify/commit/release directly; don't hand the user a
   script. Full rule: the shared `agent-tooling` standard.
+- **Docker (mesh rule):** use **Docker locally whenever it helps** — build, test, and
+  setup/install/run — **especially for anything Linux-only.** Run the Linux build/test in a
+  container **on the desktop first**; CI is the backstop gate, not where you go to find out if
+  Linux passes. If the Docker path breaks, **fix it — don't write it off** and fall back to
+  CI-only. Full rule: the shared `docker` standard.
 - <How to build.>
 - <How to test.>
 - <How to run.>
