@@ -155,6 +155,21 @@ The per-standard slice the [compliance audit](compliance.md) aggregates — repo
 - The registry URL (`docs:` / public URL) points at the real deploy location, and
   `hub/registry.yml` and `_data/projects.yml` agree.
 
+## Standard: Docker — local-first build, test, setup & install  
+<sub>[`docker.md`](docker.md#verify-is-it-being-followed)</sub>
+
+The per-standard slice the [compliance audit](compliance.md) aggregates — report
+`done`/`partial`/`missing`:
+
+| Passes only when… | How to check |
+|-------------------|--------------|
+| A project with a **Linux-only or reproducibility-sensitive** build/test/setup ships a **working, committed Docker path** (`Dockerfile`/`compose.yaml`) used **locally** | look for the Docker assets; confirm they build/run |
+| Linux build/test is **run locally in Docker first**, with CI as the backstop — not "pushed to see what CI says" | check the workflow docs / `CLAUDE.md`; local run is the primary loop |
+| **Docker problems were fixed, not routed around** — no "gave up on Docker, CI-only" where a container was the right tool | look for a disabled/abandoned Dockerfile + a note that the fix was skipped |
+| The **setup/install/run** flow is reproducible in a container where that helps | try the documented `docker`/`compose` up path |
+| Windows↔Linux gotchas handled (CRLF per `.gitattributes`, mount/permission, platform pin) | build the image on the Windows host; confirm no CRLF/permission breakage |
+| A project that legitimately **doesn't need Docker** says so honestly (not a silent skip) | the adoption manifest records `N-A(reason)`, not an unexplained gap |
+
 ## Standard: Docs Lifecycle — current-state vs. dated history  
 <sub>[`docs-lifecycle.md`](docs-lifecycle.md#verify-is-it-being-followed)</sub>
 

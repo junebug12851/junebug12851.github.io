@@ -3,7 +3,13 @@
 _Current state only._ For the chronological history see [`sessions/`](sessions/README.md);
 for the commit-by-commit changelog see [`version.md`](version.md).
 
-**Version:** `1.4.0` — **complete-by-default + phase-by-default + web-interface enforcement**:
+**Version:** `1.5.0` — **Docker standard**: `hub/standards/docker.md` — use Docker locally
+whenever possible (Linux-only build/test/setup runs on the desktop, not deferred to online CI;
+fix Docker issues, don't write them off), wired into `compliance.md` + the CLAUDE template.
+**Pending (owner):** retire the `fairyfox.io` custom domain for the free `1fairyfox.github.io`
+URL — scoped and recommended to run as one migration when the replacement domain + email land
+([`plans/2026-07-23-mandate.md`](plans/2026-07-23-mandate.md)). Prior: `1.4.0`
+**complete-by-default + phase-by-default + web-interface enforcement**:
 an owner directive folded into the standards — the **full 20-badge set required by default in a
 fixed order** (swap the equivalent, never drop; omit only on a recorded **user** exception) and
 **project details complete by default**; **phase-by-default** work (research · planning ·

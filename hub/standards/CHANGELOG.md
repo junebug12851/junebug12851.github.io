@@ -10,6 +10,19 @@ anchor, then adopt + record in the [adoption manifest](../templates/notes-skelet
 Newest on top. This changelog starts at 0.21.0; earlier standards history lives in the
 hub's own `notes/version/` changelog.
 
+## 1.5.0 — Docker: local-first build/test/setup
+
+Owner directive (2026-07-23): projects should use Docker whenever possible — the developer runs
+Docker on Windows, so Linux-only build/test/setup should run **locally in a container**, not be
+deferred to the online CI runner; and Docker problems are **fixed, not written off**.
+
+**New standard**
+- **`docker.md`** — local-first build/test/setup & install; CI is the backstop gate, not where
+  you discover whether Linux passes; **fix Docker issues, don't route around them**; Windows↔Linux
+  is exactly what it's for (CRLF/mount/platform gotchas handled); vendor the Docker assets in-repo;
+  honest `N-A` when a project genuinely gains nothing. `## Verify` + a `compliance.md` matrix row;
+  the CLAUDE template's Build/Run section carries the mesh rule.
+
 ## 1.4.0 — complete-by-default + phase-by-default + web-interface enforcement
 
 Folded an owner directive (2026-07-23) targeting three recurring node failures: incomplete
